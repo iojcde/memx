@@ -12,7 +12,7 @@ const Home: NextPage = () => {
           <Image
             className="object-cover  rounded-full"
             priority
-            src=" https://avatars.githubusercontent.com/u/31413538?v=4"
+            src="https://avatars.githubusercontent.com/u/31413538"
             width="144"
             height="144"
             alt="Jeeho's Profile Photo"
