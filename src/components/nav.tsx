@@ -1,5 +1,5 @@
-import Toggle from "./toggle";
-import Link from "next/link";
+import Toggle from './toggle'
+import Link from 'next/link'
 
 const Nav: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Nav: React.FC = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

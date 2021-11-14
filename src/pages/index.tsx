@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import { AiFillHeart } from "react-icons/ai";
-import Layout from "../components/layout";
-import Tag from "../components/tag";
-import Image from "next/image";
+import type { NextPage } from 'next'
+import { AiFillHeart } from 'react-icons/ai'
+import Layout from '../components/layout'
+import Tag from '../components/tag'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

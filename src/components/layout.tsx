@@ -1,7 +1,7 @@
-import { ReactChild } from "react";
-import Footer from "./footer";
-import Nav from "./nav";
-import SEO from "./seo";
+import { ReactChild } from 'react'
+import Footer from './footer'
+import Nav from './nav'
+import SEO from './seo'
 
 const Layout: React.FC<{ className?: string; children: ReactChild }> = ({
   className,
@@ -18,7 +18,7 @@ const Layout: React.FC<{ className?: string; children: ReactChild }> = ({
         <Footer />
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
