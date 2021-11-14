@@ -22,6 +22,13 @@ export default function SEO() {
       />
       <Head>
         <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
+        <link
+          href="https://rsms.me/inter/font-files/Inter-roman.var.woff2?v=3.19"
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </Head>
     </>
   )
