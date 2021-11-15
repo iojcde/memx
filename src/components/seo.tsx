@@ -29,9 +29,8 @@ export default function SEO() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <script defer data-domain="jcde.xyz" src="https://stats.willit.fail/js/plausible.js" />
-
-
+        <script defer data-domain="jcde.xyz" 
+          src="https://stats.willit.fail/js/plausible.js" />
       </Head>
     </>
   )
