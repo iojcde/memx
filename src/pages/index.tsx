@@ -11,7 +11,6 @@ const Home: NextPage = () => {
         <div className="mt-8 ml-4 mb-16 h-36 w-36  rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
           <Image
             className="object-cover  rounded-full"
-            priority
             src="https://avatars.githubusercontent.com/u/31413538"
             width="144"
             height="144"
