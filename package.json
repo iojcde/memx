@@ -9,12 +9,12 @@
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write"
   },
   "dependencies": {
-    "@jcdea/nightwind": "^1.1.12",
     "@tailwindcss/typography": "^0.4.1",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "next": "12.0.3",
     "next-seo": "^4.28.1",
+    "next-themes": "^0.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1"

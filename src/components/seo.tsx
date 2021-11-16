@@ -1,4 +1,3 @@
-import nightwind from '@jcdea/nightwind/helper'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 
@@ -21,7 +20,6 @@ export default function SEO() {
         }}
       />
       <Head>
-        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
         <link
           href="https://rsms.me/inter/font-files/Inter-roman.var.woff2?v=3.19"
           rel="preload"

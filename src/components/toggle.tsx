@@ -1,17 +1,15 @@
-import nightwind from '@jcdea/nightwind/helper'
 import { HiSun, HiMoon } from 'react-icons/hi'
 import { useState } from 'react'
+import { useTheme } from 'next-themes'
 
 const Toggle: React.FC = () => {
-  const [dark, setDark] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   const toggle = () => {
-    if (!document.documentElement.classList.contains(`dark`)) {
-      setDark(true)
-      nightwind.toggle()
+    if (theme == 'light') {
+      setTheme('dark')
     } else {
-      setDark(false)
-      nightwind.toggle()
+      setTheme('light')
     }
   }
   return (
@@ -21,7 +19,7 @@ const Toggle: React.FC = () => {
         onClick={toggle}
         className="rounded-md p-2 bg-secondary"
       >
-        {dark === true ? <HiSun color="white" /> : <HiMoon />}
+        {theme === 'dark' ? <HiSun color="white" /> : <HiMoon />}
       </button>
     </>
   )
