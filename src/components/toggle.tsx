@@ -6,10 +6,10 @@ const Toggle: React.FC = () => {
   const { theme, setTheme } = useTheme()
 
   const toggle = () => {
-    if (theme == 'light') {
-      setTheme('dark')
+    if (theme == `light`) {
+      setTheme(`dark`)
     } else {
-      setTheme('light')
+      setTheme(`light`)
     }
   }
   return (
@@ -19,7 +19,7 @@ const Toggle: React.FC = () => {
         onClick={toggle}
         className="rounded-md p-2 bg-secondary"
       >
-        {theme === 'dark' ? <HiSun color="white" /> : <HiMoon />}
+        {theme === `dark` ? <HiSun color="white" /> : <HiMoon />}
       </button>
     </>
   )
