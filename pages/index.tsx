@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { AiFillHeart } from 'react-icons/ai'
-import Layout from '../components/layout'
+import Layout from '../components/layout/index'
 import Tag from '../components/tag'
 import Image from 'next/image'
 

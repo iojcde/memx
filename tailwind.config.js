@@ -4,7 +4,7 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       textColor: {
@@ -112,11 +112,7 @@ module.exports = {
       },
     },
     colors: colors,
-    inset: {
-      0: 0,
-      auto: 'auto',
-      '1/2': '50%',
-    },
+    
     fill: (theme) => ({
       light: theme('colors.gray.50'),
       dark: theme('colors.coolGray.900'),

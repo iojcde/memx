@@ -31,7 +31,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply dark:bg-primary
+  @apply dark:bg-primary;
 
 }
 
@@ -71,6 +71,7 @@ code {
 
   animation: heartbeat 1s infinite;
 }
+
 
 
 

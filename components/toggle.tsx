@@ -1,5 +1,4 @@
 import { HiSun, HiMoon } from 'react-icons/hi'
-import { useState } from 'react'
 import { useTheme } from 'next-themes'
 
 const Toggle: React.FC = () => {
