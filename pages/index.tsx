@@ -3,12 +3,13 @@ import { AiFillHeart } from 'react-icons/ai'
 import Layout from '../components/layout'
 import Tag from '../components/tag'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
     <Layout>
       <div className="container mx-auto max-w-4xl">
-        <div className="mt-8 ml-4 mb-16 h-36 w-36  rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
+        <div className="mt-16 ml-4 mb-16 h-36 w-36  rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
           <Image
             className="object-cover  rounded-full"
             src="https://avatars.githubusercontent.com/u/31413538"
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
           you here!
         </p>
 
-        <h2 className="text-3xl font-bold pt-16">
+        <h2 className="md:text-3xl text-2xl font-bold md:mt-24 mt-12">
           Technologies I{` `}
           <AiFillHeart
             size={26}
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
             color="red"
           />
         </h2>
-        <div className="flex flex-wrap gap-2 pt-4 ">
+        <div className="flex flex-wrap gap-2 mt-4 ">
           <Tag text="Next.js" />
           <Tag text="Tailwindcss" />
           <Tag text="TypeScript" />
@@ -57,7 +58,7 @@ const Home: NextPage = () => {
           <Tag text="..." />
         </div>
 
-        <div className="pt-8  prose dark:prose-light  prose dark:prose-light">
+        <div className="md:mt-12 mt-4  prose dark:prose-light  prose dark:prose-light">
           <div className=" ">
             <h3 className="">Work Experience</h3>
             <ul className="">
@@ -72,6 +73,9 @@ const Home: NextPage = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className=" mt-12 underline">
+          <Link href="/about">Learn more -&gt;</Link>
         </div>
       </div>
     </Layout>
