@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { parseISO, format } from 'date-fns'
 
-import Layout from './index'
+import Layout from '../layout'
 // import Subscribe from 'components/Subscribe';
 // import ViewCounter from 'components/ViewCounter';
 import type { PropsWithChildren } from 'react'

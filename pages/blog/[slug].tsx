@@ -5,7 +5,7 @@ import BlogLayout from '../../components/layout/blog'
 import { allBlogs } from '.contentlayer/data'
 import type { Blog } from '.contentlayer/types'
 
-export default function Blog({ post, tweets }: { post: Blog; tweets: any[] }) {
+export default function Blog({ post }: { post: Blog }) {
   const Component = useMemo(
     () => getMDXComponent(post.body.code),
     [post.body.code],

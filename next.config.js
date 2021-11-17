@@ -4,7 +4,7 @@ const { withContentlayer } = require('next-contentlayer')
 module.exports = withContentlayer()({
   reactStrictMode: true,
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: ['avatars.githubusercontent.com', 'raw.githubusercontent.com'],
     formats: ['image/avif', 'image/webp'],
   },
   swcMinify: true,

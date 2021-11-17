@@ -1,13 +1,14 @@
-import { ReactChild } from 'react'
-import Footer from '../footer'
-import Nav from '../nav'
+import Footer from './footer'
+import Nav from './nav'
 import { NextSeo } from 'next-seo'
 import Head from 'next/head'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
+import { ReactNode } from 'react'
 
 const Layout: React.FC<{
   className?: string
-  children: ReactChild
+  children: ReactNode
   title?: string
   date?: string
   image?: string
@@ -15,6 +16,7 @@ const Layout: React.FC<{
   type?: string
 }> = ({ className, children, image, date, title, desc, type }) => {
   const router = useRouter()
+
   return (
     <>
       <NextSeo
@@ -45,22 +47,24 @@ const Layout: React.FC<{
       />
       <Head>
         <link
-          href="https://rsms.me/inter/font-files/Inter-roman.var.woff2?v=3.19"
+          href="/static/fonts/Inter-roman.var.woff2"
           rel="preload"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <script
-          defer
+      </Head>
+      {process.env.NODE_ENV == `production` && (
+        <Script
+          strategy="afterInteractive"
           data-domain="jcde.xyz"
           src="https://stats.willit.fail/js/plausible.js"
         />
-      </Head>
+      )}
 
       <Nav />
       <main
-        className={`mx-auto max-w-2xl p-4 dark:text-gray-100 text-black  ${className}`}
+        className={`mx-auto max-w-2xl px-4  dark:text-gray-100 text-black  ${className}`}
       >
         {children}
         <Footer />

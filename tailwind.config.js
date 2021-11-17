@@ -37,7 +37,7 @@ module.exports = {
                 color: theme('colors.gray.300'),
               },
               a: {
-                color: 'var(--color-text-primary)'
+                color: theme('colors.teal.400')
               },
               strong: {
                 color: 'var(--color-text-primary)'
@@ -112,7 +112,7 @@ module.exports = {
       },
     },
     colors: colors,
-    
+
     fill: (theme) => ({
       light: theme('colors.gray.50'),
       dark: theme('colors.coolGray.900'),
