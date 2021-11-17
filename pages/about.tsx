@@ -65,7 +65,7 @@ export const About = (): JSX.Element => {
               >
                 Destack
               </a>
-              {` `}- Static page builder based on Next.js
+              {` `}- Static page builder based on Next.js.
             </li>
             <li>
               🦀{` `}
@@ -76,7 +76,7 @@ export const About = (): JSX.Element => {
               >
                 Linkerd2-proxy
               </a>
-              {` `}- A purpose-built proxy for the Linkerd service mesh.Written
+              {` `}- A purpose-built proxy for the Linkerd service mesh. Written
               in Rust.
             </li>
           </ul>
