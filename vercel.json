@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/images/*",
+      "source": "/images/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
