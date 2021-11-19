@@ -55,6 +55,13 @@ const Footer = () => (
                   </a>
                 </Link>
               </li>
+              <li>
+                <Link href="/api/trace">
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    Trace
+                  </a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
