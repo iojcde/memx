@@ -19,18 +19,28 @@ const Footer = () => (
             </h3>
             <ul className="mt-4 space-y-4 ">
               <li>
-                <Link href="/" passHref><a className="text-base text-footer-link hover:text-footer-link-hover">Home</a></Link>
+                <Link href="/" passHref>
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    Home
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <Link href="/about" passHref><a className="text-base text-footer-link hover:text-footer-link-hover">About</a></Link>
+                <Link href="/about" passHref>
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    About
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <Link href="/blog"><a className="text-base text-footer-link hover:text-footer-link-hover">Blog</a></Link>
+                <Link href="/blog">
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    Blog
+                  </a>
+                </Link>
               </li>
-
-
             </ul>
           </div>
           <div className="mt-12 md:mt-0">
@@ -38,9 +48,12 @@ const Footer = () => (
               Extra
             </h3>
             <ul className="mt-4 space-y-4 ">
-
               <li>
-                <Link href="/stats"><a className="text-base text-footer-link hover:text-footer-link-hover">Stats</a></Link>
+                <Link href="/stats">
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    Stats
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -64,7 +77,6 @@ const Footer = () => (
             <FaGithub className="h-5 w-5" />
           </a>
 
-
           <a
             href="https://www.linkedin.com/in/jcdea/"
             className="text-footer-icon hover:text-footer-icon-hover"
@@ -72,15 +84,11 @@ const Footer = () => (
             <span className="sr-only">LinkedIn</span>
             <FaLinkedin className="h-5 w-5" />
           </a>
-
         </div>
         <p className="mt-8 text-base text-footer-icon md:mt-0 md:order-1">
           &copy; {new Date().getFullYear()} Jeeho Ahn. All rights reserved.
         </p>
       </div>
-
-
-
     </div>
   </footer>
 )

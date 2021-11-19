@@ -153,17 +153,45 @@ export const About = (): JSX.Element => {
           </ul>
 
           <h3>Credits</h3>
-          <p>This website's design is mostly based on <a href="https://braydoncoyer.dev"
-            target="_blank"
-            rel="noopener noreferrer">Braydon Coyer&apos;s excellent website</a>, with some tweaks.
-          </p><p>
-            Kudos to Braydon to making their website <a href="https://github.com/braydoncoyer/braydoncoyer.dev"
+          <p>
+            This website&apos;s design is mostly based on{` `}
+            <a
+              href="https://braydoncoyer.dev"
               target="_blank"
-              rel="noopener noreferrer">open source</a>!</p>
+              rel="noopener noreferrer"
+            >
+              Braydon Coyer&apos;s excellent website
+            </a>
+            , with some tweaks.
+          </p>
+          <p>
+            Kudos to Braydon to making their website{` `}
+            <a
+              href="https://github.com/braydoncoyer/braydoncoyer.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              open source
+            </a>
+            !
+          </p>
 
-          <p>A lot of the components powering this website are originally from <a href="https://leerob.io" target="_blank"
-            rel="noopener noreferrer">Lee Robinson&nbsp;s website</a>. </p>
-          <p>My website wouldn't have been possible without these people, and the open source community which developed the packages I use.</p>
+          <p>
+            A lot of the components powering this website are originally from
+            {` `}
+            <a
+              href="https://leerob.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lee Robinson&nbsp;s website
+            </a>
+            .{` `}
+          </p>
+          <p>
+            My website wouldn&apos;t have been possible without these people, and the
+            open source community which developed the packages I use.
+          </p>
         </div>
       </div>
     </Layout>
