@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import Layout from '../components/layout'
-import BlogPost from '../components/blogPost'
+import Layout from 'components/Layout'
+import BlogPost from 'components/BlogPost'
 import { InferGetStaticPropsType } from 'next'
-import { pick } from '../lib/utils'
+import { pick } from 'lib/utils'
 import { allBlogs } from '.contentlayer/data'
 
 export default function Blog({

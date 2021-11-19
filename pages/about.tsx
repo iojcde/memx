@@ -1,5 +1,5 @@
-import Tag from '../components/tag'
-import Layout from '../components/layout'
+import Tag from 'components/Tag'
+import Layout from 'components/Layout'
 import { AiFillHeart } from 'react-icons/ai'
 
 export const About = (): JSX.Element => {

@@ -1,17 +1,18 @@
 import type { NextPage } from 'next'
 import { AiFillHeart } from 'react-icons/ai'
-import Layout from '../components/layout'
-import Tag from '../components/tag'
+import Layout from 'components/Layout'
+import Tag from 'components/Tag'
 import Image from 'next/image'
 import Link from 'next/link'
+import ViewCounter from 'components/ViewCounter'
 
 const Home: NextPage = () => {
   return (
     <Layout>
       <div className="container mx-auto max-w-4xl">
-        <div className="mt-16 ml-4 mb-16 h-36 w-36  rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
+        <div className="mt-16 ml-4 mb-16 h-36 w-36 transition duration-100 rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
           <Image
-            className="object-cover  rounded-full"
+            className="object-cover rounded-full"
             src="https://avatars.githubusercontent.com/u/31413538"
             width="144"
             height="144"
@@ -78,6 +79,7 @@ const Home: NextPage = () => {
           <Link href="/about">Learn more -&gt;</Link>
         </div>
       </div>
+      <ViewCounter slug="home" />
     </Layout>
   )
 }
