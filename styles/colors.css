@@ -44,7 +44,7 @@ body {
   /* Headings */
   --color-text-primary: #ffffff;
   /* All other text */
-  --color-text-secondary: #9ca3af;
+  --color-text-secondary:#E5E7EB;
   --color-text-secondary-hover: #6b7280;
   --color-text-footer-icons: #4b5563;
   --color-text-footer-icons-hover: #6b7280;
@@ -55,8 +55,8 @@ body {
 
   --color-text-emerald: #34d399;
   --color-text-emerald-hover: #10b981;
-  --color-text-indigo: #4f46e5;
-  --color-text-indigo-hover: #6366f1;
+  --color-text-indigo: #6366F1;
+  --color-text-indigo-hover: #818CF8;
   --color-text-orange: #f97316;
   --color-text-orange-hover: #fb923c;
   --color-text-rose: #f43f5e;

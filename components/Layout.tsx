@@ -1,5 +1,5 @@
-import Footer from './footer'
-import Nav from './nav'
+import Footer from './Footer'
+import Nav from './Nav'
 import { NextSeo } from 'next-seo'
 import Head from 'next/head'
 import { useRouter } from 'next/router'

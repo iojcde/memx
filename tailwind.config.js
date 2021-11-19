@@ -32,7 +32,7 @@ module.exports = {
         light: {
           css: [
             {
-              color: theme('colors.gray.400'),
+              color: 'var(--color-text-secondary)',
               '[class~="lead"]': {
                 color: theme('colors.gray.300'),
               },

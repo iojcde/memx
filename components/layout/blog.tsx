@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { parseISO, format } from 'date-fns'
 
-import Layout from '../layout'
+import Layout from '../Layout'
 // import Subscribe from 'components/Subscribe';
-// import ViewCounter from 'components/ViewCounter';
+import ViewCounter from '../ViewCounter'
 import type { PropsWithChildren } from 'react'
 import type { Blog } from '.contentlayer/types'
 
@@ -27,7 +27,7 @@ export default function BlogLayout({
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capitalize">
           {post.title}
         </h1>
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
@@ -36,7 +36,7 @@ export default function BlogLayout({
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="/static/profile.png"
+              src="/images/profile.png"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
@@ -47,10 +47,10 @@ export default function BlogLayout({
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime.text}
             {` • `}
-            {/* <ViewCounter slug={post.slug} /> */}
+            <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <div className="w-full mt-4 prose dark:prose-dark max-w-none">
+        <div className="w-full mt-4 prose dark:prose-light max-w-none">
           {children}
         </div>
         <div className="mt-8">{/* <Subscribe /> */}</div>
