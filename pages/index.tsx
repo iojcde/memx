@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
-import { AiFillHeart } from 'react-icons/ai'
 import Layout from 'components/Layout'
 import Tag from 'components/Tag'
 import Image from 'next/image'
 import Link from 'next/link'
-import ViewCounter from 'components/ViewCounter'
+import { BsHeartFill } from 'react-icons/bs'
 
 const Home: NextPage = () => {
   return (
@@ -26,17 +25,17 @@ const Home: NextPage = () => {
           I&apos;m Jeeho.
         </h1>
 
-        <p className="text-secondary prose-lg dark:prose-light pt-2">
+        <p className="text-secondary apply-prose pt-2">
           I&apos;m a student and a software developer based in Seoul, South
           Korea. Welcome to my corner of the internet. I&apos;m so happy to have
           you here!
         </p>
 
-        <h2 className="md:text-3xl text-2xl font-bold md:mt-24 mt-12">
+        <h2 className="md:text-3xl text-2xl font-bold md:mt-20 mt-12">
           Technologies I{` `}
-          <AiFillHeart
-            size={26}
-            className="heartbeat inline-block align-baseline "
+          <BsHeartFill
+            size={22}
+            className="heartbeat inline-block align-baseline ml-1 "
             color="red"
           />
         </h2>
@@ -47,19 +46,20 @@ const Home: NextPage = () => {
           <Tag text="JavaScript" />
           <Tag text="Golang" />
           <Tag text="Rust" />
-          <Tag text="HTTP/2" />
-          <Tag text="HTTPS" />
+          <Tag text="Docker" />
+          <Tag text="HTTP/3" />
           <Tag text="Linux" />
           <Tag text="Git" />
+          <Tag text="Wireguard" />
           <Tag text="Python" />
-          <Tag text="Docker" />
+          <Tag text="Nomad" />
           <Tag text="Kubernetes" />
           <Tag text="GraphQL" />
-          <Tag text="Discord.js" />
+          <Tag text="OAuth" />
           <Tag text="..." />
         </div>
 
-        <div className="md:mt-12 mt-4  prose dark:prose-light  prose dark:prose-light">
+        <div className="md:mt-12 mt-4 apply-prose ">
           <div className=" ">
             <h3 className="">Work Experience</h3>
             <ul className="">
@@ -79,7 +79,6 @@ const Home: NextPage = () => {
           <Link href="/about">Learn more -&gt;</Link>
         </div>
       </div>
-      <ViewCounter slug="home" />
     </Layout>
   )
 }

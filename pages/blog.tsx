@@ -22,10 +22,10 @@ export default function Blog({
   return (
     <Layout title="Blog – Jeeho Ahn" desc="Hi everyone">
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="sm:leading-snug font-semibold tracking-wide uppercase text-indigo dark:text-indigo mb-4">
+        <h1 className="sm:leading-snug font-semibold tracking-wide uppercase text-teal-400 dark:text-teal-500 mb-4">
           Blog
         </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
+        <p className="mb-4 prose dark:prose-light">
           {`I might not be the greatest writer ever, but I always try my best when writing posts.
             In total, I've written ${posts.length} articles on this site.
             Use the search below to filter by title.`}

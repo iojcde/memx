@@ -73,6 +73,6 @@ code {
   animation: heartbeat 1s infinite;
 }
 
-
-
-
+.apply-prose{
+  @apply prose lg:prose-lg  dark:prose-light;
+}

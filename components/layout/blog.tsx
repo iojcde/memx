@@ -27,7 +27,7 @@ export default function BlogLayout({
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capitalize">
           {post.title}
         </h1>
         <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
@@ -36,7 +36,7 @@ export default function BlogLayout({
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="/static/profile.png"
+              src="/images/profile.png"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
