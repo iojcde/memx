@@ -189,8 +189,8 @@ export const About = (): JSX.Element => {
             .{` `}
           </p>
           <p>
-            My website wouldn&apos;t have been possible without these people, and the
-            open source community which developed the packages I use.
+            My website wouldn&apos;t have been possible without these people,
+            and the open source community which developed the packages I use.
           </p>
         </div>
       </div>
