@@ -31,49 +31,19 @@ const Home: NextPage = () => {
           you here!
         </p>
 
-        <h2 className="md:text-3xl text-2xl font-bold md:mt-20 mt-12">
-          Technologies I{` `}
-          <BsHeartFill
-            size={22}
-            className="heartbeat inline-block align-baseline ml-1 "
-            color="red"
-          />
-        </h2>
-        <div className="flex flex-wrap gap-2 mt-4 ">
-          <Tag text="Next.js" />
-          <Tag text="Tailwindcss" />
-          <Tag text="TypeScript" />
-          <Tag text="JavaScript" />
-          <Tag text="Golang" />
-          <Tag text="Rust" />
-          <Tag text="Docker" />
-          <Tag text="HTTP/3" />
-          <Tag text="Linux" />
-          <Tag text="Git" />
-          <Tag text="Wireguard" />
-          <Tag text="Python" />
-          <Tag text="Nomad" />
-          <Tag text="Kubernetes" />
-          <Tag text="GraphQL" />
-          <Tag text="OAuth" />
-          <Tag text="..." />
-        </div>
-
-        <div className="md:mt-12 mt-4 apply-prose ">
-          <div className=" ">
-            <h3 className="">Work Experience</h3>
-            <ul className="">
-              <li>
-                <a href="https://fosshost.org">Fosshost</a> - TechOps Volunteer
-              </li>
-              <li>
-                <a className=" text-amber" href="https://vignetteapp.org">
-                  Vignette
-                </a>
-                {` `}- Web Developer / Community Relations / Infrastructure
-              </li>
-            </ul>
-          </div>
+        <div className="md:mt-24 mt-20 apply-prose ">
+          <h3 className="">Work Experience</h3>
+          <ul className="">
+            <li>
+              <a href="https://fosshost.org">Fosshost</a> - TechOps Volunteer
+            </li>
+            <li>
+              <a className=" text-amber" href="https://vignetteapp.org">
+                Vignette
+              </a>
+              {` `}- Web Developer / Community Relations / Infrastructure
+            </li>
+          </ul>
         </div>
         <div className=" mt-12 underline">
           <Link href="/about">Learn more -&gt;</Link>
