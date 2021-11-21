@@ -8,7 +8,8 @@ const Toggle: React.FC = () => {
     if (theme == `light`) {
       setTheme(`dark`)
     } else {
-      setTheme(`light`)
+
+
     }
   }
   if (theme != undefined) {
@@ -18,6 +19,7 @@ const Toggle: React.FC = () => {
           type="button"
           onClick={toggle}
           className="rounded-md p-2 bg-secondary"
+          aria-hidden
         >
           {theme === `dark` ? <HiSun color="white" /> : <HiMoon />}
         </button>

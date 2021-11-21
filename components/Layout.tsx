@@ -1,3 +1,4 @@
+
 import Footer from './Footer'
 import Nav from './Nav'
 import { NextSeo } from 'next-seo'
@@ -20,7 +21,7 @@ const Layout: React.FC<{
   return (
     <>
       <NextSeo
-        title={title || `Jeeho Ahn | Portfolio`}
+        title={title || `Jeeho Ahn - Portfolio`}
         description={
           desc || `Student, Full Stack Developer, Open Source enthusaist.`
         }
@@ -33,7 +34,7 @@ const Layout: React.FC<{
 
           description:
             desc || `Student, Full Stack Developer, Open Source enthusaist.`,
-          site_name: title || `Jeeho Ahn | Portfolio`,
+          site_name: title || `Jeeho Ahn - Portfolio`,
           images: [
             {
               url: image || ``,
@@ -65,6 +66,7 @@ const Layout: React.FC<{
       <Nav />
       <main
         className={`mx-auto max-w-2xl px-4  dark:text-gray-100 text-black  ${className}`}
+        id="content"
       >
         {children}
         <Footer />
