@@ -1,9 +1,7 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
-import Tag from 'components/Tag'
 import Image from 'next/image'
 import Link from 'next/link'
-import { BsHeartFill } from 'react-icons/bs'
 
 const Home: NextPage = () => {
   return (

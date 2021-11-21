@@ -1,4 +1,3 @@
-const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
@@ -111,7 +110,6 @@ module.exports = {
         navbar: '0.3',
       },
     },
-    colors: colors,
 
     fill: (theme) => ({
       light: theme('colors.gray.50'),
