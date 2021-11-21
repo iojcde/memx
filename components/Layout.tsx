@@ -1,4 +1,3 @@
-
 import Footer from './Footer'
 import Nav from './Nav'
 import { NextSeo } from 'next-seo'

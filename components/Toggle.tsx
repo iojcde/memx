@@ -8,8 +8,6 @@ const Toggle: React.FC = () => {
     if (theme == `light`) {
       setTheme(`dark`)
     } else {
-
-
     }
   }
   if (theme != undefined) {
