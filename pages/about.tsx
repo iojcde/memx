@@ -1,4 +1,4 @@
-eimport Tag from 'components/Tag'
+import Tag from 'components/Tag'
 import Layout from 'components/Layout'
 import { BsFillHeartFill } from 'react-icons/bs'
 
