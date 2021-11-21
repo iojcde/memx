@@ -1,4 +1,4 @@
-import Tag from 'components/Tag'
+eimport Tag from 'components/Tag'
 import Layout from 'components/Layout'
 import { BsFillHeartFill } from 'react-icons/bs'
 
@@ -184,7 +184,7 @@ export const About = (): JSX.Element => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Lee Robinson&nbsp;s website
+              Lee Robinson&apos;s website
             </a>
             .{` `}
           </p>
