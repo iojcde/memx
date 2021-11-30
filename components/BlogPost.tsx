@@ -14,8 +14,8 @@ export default function BlogPost({
   const views = data?.total
 
   return (
-    <Link href={`/blog/${slug}`}>
-      <a className="w-full">
+    <Link href={`/blog/${slug}`} passHref>
+      <a className="w-full no-underline">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">
             <h4 className="w-full mb-2 text-lg font-medium capitalize text-gray-900 md:text-xl dark:text-gray-100">

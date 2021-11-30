@@ -1,7 +1,8 @@
 tasks:
-  - init: yarn 
+  - init: yarn
     command: yarn dev
 vscode:
   extensions:
     - Prisma.prisma
     - bradlc.vscode-tailwindcss
+    - dbaeumer.vscode-eslint

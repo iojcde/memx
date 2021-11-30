@@ -1,34 +1,49 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
-import Image from 'next/image'
 import Link from 'next/link'
-
+import { motion } from 'framer-motion'
 const Home: NextPage = () => {
   return (
     <Layout>
-      <div className="container mx-auto max-w-4xl">
-        <div className="mt-16 ml-4 mb-16 h-36 w-36 transition duration-100 rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none">
-          <Image
-            className="object-cover rounded-full"
-            src="https://avatars.githubusercontent.com/u/31413538"
-            width="144"
-            height="144"
-            alt="Jeeho's Profile Photo"
-          />
+      <div className="flex" id="content">
+        <div className="mt-8 mb-48 sm:mt-60 sm:mb-72 lg:mt-48 lg:mb-96 ">
+          <h1 className="text-[22vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight ">
+            Hi, I&apos;m{` `}
+            <span className=" line-through">
+              <b>Jeeho Ahn</b>, a.k.a
+            </span>
+            {` `}
+            <b>JcdeA</b> or <b>io</b>.
+          </h1>
+          <h2 className=" font-medium text-2xl mt-6">
+            Volunteer at{` `}
+            <b>
+              <a className="font-bold" href="https://fosshost.org">
+                Fosshost
+              </a>
+            </b>
+          </h2>
         </div>
-        <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-teal-500 dark:text-teal-400 mb-3">
-          Hey there,
-        </h2>
-        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold dark:text-white">
-          I&apos;m Jeeho.
-        </h1>
-
-        <p className="text-secondary apply-prose pt-2">
-          I&apos;m a student and a software developer based in Seoul, South
-          Korea. Welcome to my corner of the internet. I&apos;m so happy to have
-          you here!
-        </p>
-
+      </div>
+      <motion.div className="mt-16">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-6xl leading-tight"
+        >
+          I&apos;m a <b>student</b> and a <b>software developer</b> based in
+          {` `}
+          <b>Seoul</b>, South Korea.
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-3xl mt-12"
+        >
+          Welcome to my corner of the internet.
+        </motion.h2>
         <div className="md:mt-24 mt-20 apply-prose ">
           <h3 className="">Work Experience</h3>
           <ul className="">
@@ -43,10 +58,10 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </div>
-        <div className=" mt-12 underline">
-          <Link href="/about">Learn more -&gt;</Link>
+        <div className="text-lg mt-12">
+          <Link href="/about">Learn more -&gt; </Link>
         </div>
-      </div>
+      </motion.div>
     </Layout>
   )
 }

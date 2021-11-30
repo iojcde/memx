@@ -5,12 +5,9 @@ import { BsFillHeartFill } from 'react-icons/bs'
 export const About = (): JSX.Element => {
   return (
     <Layout title="About - Jeeho Ahn">
-      <div className="container mx-auto max-w-4xl">
-        <h1 className="sm:leading-snug font-semibold tracking-wide uppercase text-teal-400 dark:text-teal-500 mb-4">
-          About me
-        </h1>
-        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold dark:text-white">
-          Here&apos;s my story.
+      <div className="container mx-auto max-w-5xl">
+        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold dark:text-white">
+          About
         </h1>
 
         <p className="text-secondary apply-prose pt-2">
@@ -153,28 +150,6 @@ export const About = (): JSX.Element => {
           </ul>
 
           <h3>Credits</h3>
-          <p>
-            This website&apos;s design is mostly based on{` `}
-            <a
-              href="https://braydoncoyer.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Braydon Coyer&apos;s excellent website
-            </a>
-            , with some tweaks.
-          </p>
-          <p>
-            Kudos to Braydon to making their website{` `}
-            <a
-              href="https://github.com/braydoncoyer/braydoncoyer.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              open source
-            </a>
-            !
-          </p>
 
           <p>
             A lot of the components powering this website are originally from
@@ -184,7 +159,15 @@ export const About = (): JSX.Element => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Lee Robinson&apos;s website
+              Lee Robinson&apos; s website
+            </a>
+            , and{` `}
+            <a
+              href="https://braydoncoyer.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Braydon Coyer&apos; s website
             </a>
             .{` `}
           </p>

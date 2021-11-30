@@ -3,7 +3,7 @@ body {
   --color-bg-secondary: #f3f4f6;
   --color-bg-emerald: #34d399;
   /* Headings */
-  --color-text-primary: #111827;
+  --color-text-primary: #000000;
   /* All other text */
   --color-text-secondary: #4b5563;
   --color-text-secondary-hover: #111827;
@@ -37,7 +37,7 @@ body {
 }
 
 .dark body {
-  --color-bg-primary: #111827;
+  --color-bg-primary: #000000;
   --color-bg-secondary: #1e293b;
   --color-bg-emerald: #34d399;
 

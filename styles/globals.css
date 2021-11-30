@@ -80,3 +80,33 @@ code {
 .apply-prose{
   @apply prose lg:prose-lg  dark:prose-light;
 }
+
+
+::selection{
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+a {
+  cursor: pointer;
+  line-height: 2.5em;
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+  @apply transition-all;
+}
+
+a:hover {
+  border-bottom: 1px solid #000000;
+}
+.no-underline a:hover{
+  border-bottom: 1px solid transparent;
+}
+
+a:hover.no-underline{
+  border-bottom: 1px solid transparent;
+}
+
+b{
+  font-weight: 700;
+}
