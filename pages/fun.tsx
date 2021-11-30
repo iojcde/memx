@@ -37,20 +37,21 @@ const Fun = () => {
             />
           </div>
 
-          <h2>The DVD Logo</h2>
+          {/*TODO: fix the dvd logo (doesn't work with preact/compat - works with react)*/}
+          {/* <h2>The DVD Logo</h2>
           <p className=" lg:hidden">
             tip: for even more fun try to keep the logo centered
           </p>
           <div className="overflow-auto lg:overflow-visible rounded-3xl w-full">
             <svg
-              width={svgWidth}
-              height={svgHeight}
+              width="800"
+              height="600"
               style={{ backgroundColor: `black` }}
               className="rounded-3xl"
             >
-              <DVDLogo width={svgWidth} height={svgHeight} speed={1} />
+              <DVDLogo width={800} height={600} speed={1} />
             </svg>
-          </div>
+          </div> */}
 
           <h2>{scrollProgress > 0.72 ? `Big` : `Small`} Chungus</h2>
           <div
