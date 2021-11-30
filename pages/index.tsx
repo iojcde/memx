@@ -25,25 +25,15 @@ const Home: NextPage = () => {
           </h2>
         </div>
       </div>
-      <motion.div className="mt-16">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-6xl leading-tight"
-        >
+      <div className="mt-16">
+        <h1 className="text-6xl leading-tight">
           I&apos;m a <b>student</b> and a <b>software developer</b> based in
           {` `}
           <b>Seoul</b>, South Korea.
-        </motion.h1>
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-3xl mt-12"
-        >
+        </h1>
+        <h2 className="text-3xl mt-12">
           Welcome to my corner of the internet.
-        </motion.h2>
+        </h2>
         <div className="md:mt-24 mt-20 apply-prose ">
           <h3 className="">Work Experience</h3>
           <ul className="">
@@ -61,7 +51,7 @@ const Home: NextPage = () => {
         <div className="text-lg mt-12">
           <Link href="/about">Learn more -&gt; </Link>
         </div>
-      </motion.div>
+      </div>
     </Layout>
   )
 }
