@@ -26,7 +26,7 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16">
+      <article className="flex flex-col items-start justify-center w-full max-w-4xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capitalize">
           {post.title}
         </h1>
@@ -50,9 +50,7 @@ export default function BlogLayout({
             <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <div className="w-full mt-4 prose dark:prose-light max-w-none">
-          {children}
-        </div>
+        <div className="w-full mt-4 apply-prose max-w-none">{children}</div>
         <div className="mt-8">{/* <Subscribe /> */}</div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a

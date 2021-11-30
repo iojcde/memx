@@ -29,6 +29,9 @@ module.exports = {
         'footer-icon-hover': 'var(--color-text-footer-icons-hover)',
       },
       typography: (theme) => ({
+        DEFAULT: {
+          css: [{ a: { 'text-decoration': 'none' } }]
+        },
         light: {
           css: [
             {
@@ -37,7 +40,8 @@ module.exports = {
                 color: theme('colors.gray.300'),
               },
               a: {
-                color: theme('colors.teal.400')
+                color: theme('colors.teal.400'),
+                'text-decoration': 'none'
               },
               strong: {
                 color: 'var(--color-text-primary)'

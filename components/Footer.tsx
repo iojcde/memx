@@ -4,7 +4,7 @@ import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 const Footer = () => (
   <footer
-    className="bg-primary border-t border-primary py-6 mt-12 transition duration-100"
+    className="bg-primary border-t border-primary py-6 mt-12 transition duration-100 max-w-5xl mx-auto"
     aria-labelledby="footerHeading"
   >
     <h2 id="footerHeading" className="sr-only">
@@ -62,12 +62,19 @@ const Footer = () => (
                   </a>
                 </Link>
               </li>
+              <li>
+                <Link href="/fun">
+                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                    Fun
+                  </a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="mt-2 py-8 md:flex md:items-center md:justify-between">
+      <div className="mt-2 py-8 md:flex md:items-center md:justify-between no-underline">
         <div className="flex space-x-6 md:order-2">
           <a
             href="https://twitter.com/IoJcde"

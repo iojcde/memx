@@ -21,16 +21,14 @@ export default function Blog({
 
   return (
     <Layout title="Blog – Jeeho Ahn" desc="Hi everyone">
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
-        <h1 className="sm:leading-snug font-semibold tracking-wide uppercase text-teal-400 dark:text-teal-500 mb-4">
-          Blog
-        </h1>
-        <p className="mb-4 prose dark:prose-light">
+      <div className="flex flex-col items-start justify-center max-w-5xl mx-auto mb-16">
+        <h1 className="text-3xl font-bold mb-4">Blog</h1>
+        <p className="mb-4 apply-prose">
           {`I might not be the greatest writer ever, but I always try my best when writing posts.
             In total, I've written ${posts.length} articles on this site.
             Use the search below to filter by title.`}
         </p>
-        <div className="relative w-full mb-4">
+        <div className="relative w-full mb-4 ">
           <input
             aria-label="Search articles"
             type="text"
@@ -76,7 +74,7 @@ export default function Blog({
             />
           </>
         )} */}
-        <h1 className="sm:leading-snug font-semibold tracking-wide uppercase text-emerald dark:text-emerald my-8">
+        <h1 className="sm:leading-snug font-bold tracking-wide uppercase my-8">
           All Posts
         </h1>
         {!filteredBlogPosts.length && (

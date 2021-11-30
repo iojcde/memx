@@ -14,13 +14,14 @@ const Layout: React.FC<{
   image?: string
   desc?: string
   type?: string
-}> = ({ className, children, image, date, title, desc, type }) => {
+  noNav?: boolean
+}> = ({ className, children, image, date, title, desc, type, noNav }) => {
   const router = useRouter()
 
   return (
     <>
       <NextSeo
-        title={title || `Jeeho Ahn | Portfolio`}
+        title={title || `Jeeho Ahn - Portfolio`}
         description={
           desc || `Student, Full Stack Developer, Open Source enthusaist.`
         }
@@ -33,7 +34,7 @@ const Layout: React.FC<{
 
           description:
             desc || `Student, Full Stack Developer, Open Source enthusaist.`,
-          site_name: title || `Jeeho Ahn | Portfolio`,
+          site_name: title || `Jeeho Ahn - Portfolio`,
           images: [
             {
               url: image || ``,
@@ -61,14 +62,16 @@ const Layout: React.FC<{
           src="https://stats.willit.fail/js/plausible.js"
         />
       )}
+      {!noNav && <Nav />}
 
-      <Nav />
       <main
-        className={`mx-auto max-w-2xl px-4  dark:text-gray-100 text-black  ${className}`}
+        className={`mx-auto max-w-5xl w-full px-8 dark:text-gray-100 text-black  ${className}`}
+        id="content"
       >
         {children}
-        <Footer />
       </main>
+
+      <Footer />
     </>
   )
 }
