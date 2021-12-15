@@ -8,7 +8,11 @@ const myLoader = ({ src, width, quality }) => {
 }
 
 const Image: React.FC<ImageProps> = (props) => {
-  return <NextImage loader={process.env.CLOUDFLARE && myLoader} {...props} />
+  if (process.env.CLOUDFLARE == "true") {
+    return <NextImage loader={myLoader} {...props} />
+  } else {
+    return <NextImage {..props} />
+  }
 }
 
 export default Image
