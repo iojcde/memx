@@ -1,4 +1,4 @@
-import Image from 'components/Image'
+import Image from 'next/Image'
 import { parseISO, format } from 'date-fns'
 
 import Layout from '../Layout'
@@ -36,7 +36,7 @@ export default function BlogLayout({
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="/images/profile.png"
+              src="https://avatars.githubusercontent.com/u/31413538"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
