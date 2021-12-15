@@ -6,7 +6,8 @@ module.exports = withContentlayer()({
   images: {
     domains: ['avatars.githubusercontent.com', 'raw.githubusercontent.com'],
     formats: ['image/avif', 'image/webp'],
-    loader: process.env.CLOUDFLARE ? 'custom' : undefined,
+    loader: 'imgix',
+    path: 'https://images.jcde.xyz/'
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
