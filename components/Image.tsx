@@ -11,7 +11,7 @@ const Image: React.FC<ImageProps> = (props) => {
   if (process.env.CLOUDFLARE == "true") {
     return <NextImage loader={myLoader} {...props} />
   } else {
-    return <NextImage {..props} />
+    return <NextImage {...props} />
   }
 }
 
