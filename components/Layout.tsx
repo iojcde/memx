@@ -55,6 +55,13 @@ const Layout: React.FC<{
           crossOrigin="anonymous"
         />
       </Head>
+      {process.env.NODE_ENV == `production` && (
+        <Script
+          strategy="afterInteractive"
+          data-domain="jcde.xyz"
+          src="https://stats.willit.fail/js/plausible.js"
+        />
+      )}
       {!noNav && <Nav />}
 
       <main
