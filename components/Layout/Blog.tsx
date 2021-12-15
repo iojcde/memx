@@ -36,7 +36,7 @@ export default function BlogLayout({
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="https://avatars.githubusercontent.com/u/31413538"
+              src="/images/profile.png"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
