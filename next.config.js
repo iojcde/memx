@@ -6,6 +6,7 @@ module.exports = withContentlayer()({
   images: {
     domains: ['avatars.githubusercontent.com', 'raw.githubusercontent.com'],
     formats: ['image/avif', 'image/webp'],
+    loader: 'custom',
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build

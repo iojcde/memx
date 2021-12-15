@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'components/Image'
 import { parseISO, format } from 'date-fns'
 
 import Layout from '../Layout'
@@ -22,7 +22,7 @@ export default function BlogLayout({
     <Layout
       title={`${post.title} – Jeeho Ahn`}
       desc={post.summary}
-      image={`https://leerob.io${post.image}`}
+      image={`https://jcde.xyz/${post.image}`}
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
