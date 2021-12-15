@@ -8,7 +8,7 @@ const myLoader = ({ src, width, quality }) => {
 }
 
 const Image: React.FC<ImageProps> = (props) => {
-  if (process.env.CLOUDFLARE == "true") {
+  if (process.env.CLOUDFLARE == `true`) {
     return <NextImage loader={myLoader} {...props} />
   } else {
     return <NextImage {...props} />
