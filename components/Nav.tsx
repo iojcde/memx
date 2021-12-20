@@ -6,7 +6,7 @@ const Nav: React.FC = () => {
     <>
       <a
         href="#content"
-        className="z-50 absolute -translate-y-24 focus:translate-y-3 text-sm ml-5 py-2 px-4 outline-none transition shadow-lg border rounded-md border-gray-200 dark:border-gray-500"
+        className="absolute z-50 px-3 py-1 transition-transform duration-200 transform -translate-y-12 focus:translate-y-12 ml-8 -top-8 text-md rounded-md border border-gray-300"
       >
         Skip to content
       </a>

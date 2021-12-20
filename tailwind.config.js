@@ -1,5 +1,5 @@
-const colors = require('tailwindcss/colors');
-const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   mode: 'jit',
@@ -30,7 +30,7 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: [{ a: { 'text-decoration': 'none' } }]
+          css: [{ a: { 'text-decoration': 'none' } }],
         },
         light: {
           css: [
@@ -41,13 +41,13 @@ module.exports = {
               },
               a: {
                 color: theme('colors.teal.400'),
-                'text-decoration': 'none'
+                'text-decoration': 'none',
               },
               strong: {
-                color: 'var(--color-text-primary)'
+                color: 'var(--color-text-primary)',
               },
               'ol > li::before': {
-                color: 'var(--color-text-primary)'
+                color: 'var(--color-text-primary)',
               },
               'ul > li::before': {
                 backgroundColor: theme('colors.gray.600'),
@@ -60,7 +60,7 @@ module.exports = {
                 borderLeftColor: theme('colors.gray.600'),
               },
               h1: {
-                color: 'var(--color-text-primary)'
+                color: 'var(--color-text-primary)',
               },
               h2: {
                 color: 'var(--color-text-primary)',
@@ -124,7 +124,8 @@ module.exports = {
     fontFamily: {
       inter: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
     },
-  }, variants: {
+  },
+  variants: {
     extend: {
       typography: ['dark'],
     },
@@ -136,15 +137,15 @@ module.exports = {
         const isFirefoxRule = postcss.atRule({
           name: '-moz-document',
           params: 'url-prefix()',
-        });
-        isFirefoxRule.append(container.nodes);
-        container.append(isFirefoxRule);
+        })
+        isFirefoxRule.append(container.nodes)
+        container.append(isFirefoxRule)
         isFirefoxRule.walkRules((rule) => {
           rule.selector = `.${e(
-            `firefox${separator}${rule.selector.slice(1)}`
-          )}`;
-        });
-      });
+            `firefox${separator}${rule.selector.slice(1)}`,
+          )}`
+        })
+      })
     }),
   ],
-};
+}

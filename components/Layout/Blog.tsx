@@ -6,6 +6,7 @@ import Layout from '../Layout'
 import ViewCounter from '../ViewCounter'
 import type { PropsWithChildren } from 'react'
 import type { Blog } from '.contentlayer/types'
+import PreviewImage from 'components/PreviewImage'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -50,6 +51,7 @@ export default function BlogLayout({
             <ViewCounter slug={post.slug} />
           </p>
         </div>
+        <PreviewImage src={post.title} width={800} height={450} />
         <div className="w-full mt-4 apply-prose max-w-none">{children}</div>
         <div className="mt-8">{/* <Subscribe /> */}</div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
