@@ -19,7 +19,7 @@ export default function BlogLayout({
 }: PropsWithChildren<{ post: Blog }>) {
   const socialImageConf = generateSocialImage({
     title: encodeURIComponent(post.title),
-    underlayImage: `banner.jpg`.slice(`banner.jpg`.lastIndexOf(`/`) + 1),
+    underlayImage: post.image.slice(post.image.lastIndexOf(`/`) + 1),
     cloudName: `jcdea`,
     imagePublicID: `social-template.png`,
   })
@@ -58,7 +58,10 @@ export default function BlogLayout({
         </div>
         <div className="py-6 mx-auto">
           <Image
-            src={socialImageConf}
+            src={
+              `https://res.cloudinary.com/jcdea/` +
+              post.image.slice(post.image.lastIndexOf(`/`) + 1)
+            }
             width={1200}
             height={630}
             alt="social preview"
