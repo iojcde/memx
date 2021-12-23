@@ -13,22 +13,29 @@ const handler: NextApiHandler = async (req, res) => {
   const post = allBlogs.find((post) => post.slug === (slug as string))
 
   const imageURL = imagekit.url({
-    path: `/images/banner.jpg`,
+    path: `/images/profile.png`,
     transformation: [
       {
         width: w as string,
-        aspectRatio: `1.91-1`,
+        aspectRatio: `40-21`,
+      },
+      {
+        overlayImage: `/images/social-template.png`,
+        overlayImageAspectRatio: `40-21`,
+        overlayX: `0`,
+        overlayY: `0`,
+        width: `1200`,
+        height: `630`,
+      },
+      {
         overlayX: `60`,
         overlayY: (((parseInt(w as string) / 16) * 9) / 3).toString(),
         quality: (q as string) || `80`,
         overlayText: encodeURIComponent(post.title),
-        overlayTextFontSize: `80`,
+        overlayTextFontSize: `75`,
         overlayTextFontFamily: `Inter-SemiBold_TXEoYv9nk.ttf`,
         overlayTextTypography: `b`,
         overlayTextColor: `FFFFFF`,
-      },
-      {
-        overlayImage: `/images/social-template.png`,
       },
     ],
     signed: true,
