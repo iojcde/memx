@@ -4,9 +4,12 @@ const { withContentlayer } = require('next-contentlayer')
 module.exports = withContentlayer()({
   reactStrictMode: true,
   images: {
-    domains: ['avatars.githubusercontent.com', 'raw.githubusercontent.com'],
+    domains: [
+      'avatars.githubusercontent.com',
+      'raw.githubusercontent.com',
+      'res.cloudinary.com',
+    ],
     formats: ['image/avif', 'image/webp'],
-    loader: 'custom',
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build

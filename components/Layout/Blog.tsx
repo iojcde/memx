@@ -1,12 +1,10 @@
-import Image from 'components/Image'
+import Image from 'next/image'
 import { parseISO, format } from 'date-fns'
-
 import Layout from '../Layout'
-// import Subscribe from 'components/Subscribe';
+import generateSocialImage from 'lib/generateSocialImage'
 import ViewCounter from '../ViewCounter'
 import type { PropsWithChildren } from 'react'
 import type { Blog } from '.contentlayer/types'
-import PreviewImage from 'components/PreviewImage'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -19,6 +17,14 @@ export default function BlogLayout({
   children,
   post,
 }: PropsWithChildren<{ post: Blog }>) {
+  const socialImageConf = generateSocialImage({
+    title: encodeURIComponent(post.title),
+    underlayImage: `banner.jpg`.slice(`banner.jpg`.lastIndexOf(`/`) + 1),
+    cloudName: `jcdea`,
+    imagePublicID: `social-template.png`,
+  })
+  console.log(socialImageConf)
+
   return (
     <Layout
       title={`${post.title} – Jeeho Ahn`}
@@ -37,7 +43,7 @@ export default function BlogLayout({
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="/images/profile.png"
+              src="/images/profile.jpeg"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
@@ -51,11 +57,12 @@ export default function BlogLayout({
             <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <div className="my-8 mx-auto rounded-xl">
-          <PreviewImage
-            src={post.slug}
+        <div className="py-6 mx-auto">
+          <Image
+            src={socialImageConf}
             width={1200}
             height={630}
+            alt="social preview"
             className="rounded-xl"
           />
         </div>
