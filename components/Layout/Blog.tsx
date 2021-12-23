@@ -23,13 +23,12 @@ export default function BlogLayout({
     cloudName: `jcdea`,
     imagePublicID: `social-template.png`,
   })
-  console.log(socialImageConf)
 
   return (
     <Layout
       title={`${post.title} – Jeeho Ahn`}
       desc={post.summary}
-      image={`https://jcde.xyz/api/image/preview?slug=${post.slug}`}
+      image={socialImageConf}
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
