@@ -1,9 +1,7 @@
 import NextImage, { ImageProps } from 'next/image'
 
 const imageKitLoader = ({ src, width, quality }) => {
-  return `/api/image/preview?src=${encodeURIComponent(src)}&w=${width}&q=${
-    quality || `75`
-  }`
+  return `/api/image/preview?slug=${src}&w=${width}&q=${quality || `75`}`
 }
 
 const Image: React.FC<ImageProps> = (props) => {

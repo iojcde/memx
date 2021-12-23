@@ -23,15 +23,15 @@ export default function BlogLayout({
     <Layout
       title={`${post.title} – Jeeho Ahn`}
       desc={post.summary}
-      image={`https://jcde.xyz/${post.image}`}
+      image={`https://jcde.xyz/api/image/preview?slug=${post.slug}`}
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-4xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capitalize">
+        <h1 className=" mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white capitalize">
           {post.title}
         </h1>
-        <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between w-full mt-2  md:flex-row md:items-center">
           <div className="flex items-center">
             <Image
               alt="Jeeho Ahn"
@@ -51,7 +51,15 @@ export default function BlogLayout({
             <ViewCounter slug={post.slug} />
           </p>
         </div>
-        <PreviewImage src={post.title} width={800} height={450} />
+        <div className="my-8 mx-auto rounded-xl">
+          <PreviewImage
+            src={post.slug}
+            width={1200}
+            height={630}
+            className="rounded-xl"
+          />
+        </div>
+
         <div className="w-full mt-4 apply-prose max-w-none">{children}</div>
         <div className="mt-8">{/* <Subscribe /> */}</div>
         <div className="text-sm text-gray-700 dark:text-gray-300">

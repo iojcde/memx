@@ -30,7 +30,7 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: [{ a: { 'text-decoration': 'none' } }],
+          css: [{ color: '#334155', a: { 'text-decoration': 'none' } }],
         },
         light: {
           css: [

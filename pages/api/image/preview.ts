@@ -1,30 +1,44 @@
 import type { NextApiHandler } from 'next'
 import ImageKit from 'imagekit'
 
+import { allBlogs } from '.contentlayer/data'
+
 const imagekit = new ImageKit({
   publicKey: `public_iNz2rODUT9E2m2UAs0hC418eyJA=`,
   privateKey: process.env.IMAGEKIT_PRIVATEKEY,
   urlEndpoint: `https://ik.imagekit.io/cl2zf5ydalng`,
 })
 const handler: NextApiHandler = async (req, res) => {
-  const { src, w, q } = req.query
+  const { slug, w, q } = req.query
+  const post = allBlogs.find((post) => post.slug === (slug as string))
+
   const imageURL = imagekit.url({
     path: `/images/banner.jpg`,
     transformation: [
       {
         width: w as string,
-        quality: (q as string) || `75`,
-        overlayText: src as string,
-        overlayTextFontFamily: `Inter-roman.var_PB0aSMGKnrm.woff2`,
+        aspectRatio: `1.91-1`,
+        overlayX: `60`,
+        overlayY: (((parseInt(w as string) / 16) * 9) / 3).toString(),
+        quality: (q as string) || `80`,
+        overlayText: encodeURIComponent(post.title),
+        overlayTextFontSize: `80`,
+        overlayTextFontFamily: `Inter-SemiBold_TXEoYv9nk.ttf`,
+        overlayTextTypography: `b`,
+        overlayTextColor: `FFFFFF`,
+      },
+      {
+        overlayImage: `/images/social-template.png`,
       },
     ],
     signed: true,
     expireSeconds: 300,
   })
-  res.setHeader(
-    `cache-control`,
-    `public, s-maxage=15552000, max-age=15552000, must-revalidate`,
-  )
+  // res.setHeader(
+  //   `cache-control`,
+  //   `public, s-maxage=15552000, max-age=15552000, must-revalidate`,
+  // )
+  console.log(imageURL)
   await fetch(imageURL, {
     headers: {
       accept: req.headers.accept,
