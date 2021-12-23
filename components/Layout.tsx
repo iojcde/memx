@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { ReactNode } from 'react'
+import { PageTransition } from './PageTransition'
 
 const Layout: React.FC<{
   className?: string
@@ -64,14 +65,16 @@ const Layout: React.FC<{
       )}
       {!noNav && <Nav />}
 
-      <main
-        className={`mx-auto max-w-5xl w-full px-8 dark:text-gray-100 text-black  ${className}`}
-        id="content"
-      >
-        {children}
-      </main>
+      <PageTransition>
+        <main
+          className={`mx-auto max-w-5xl w-full px-8 dark:text-gray-100 text-black  ${className}`}
+          id="content"
+        >
+          {children}
+        </main>
 
-      <Footer />
+        <Footer />
+      </PageTransition>
     </>
   )
 }

@@ -159,7 +159,7 @@ export const About = (): JSX.Element => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Lee Robinson&apos; s website
+              Lee Robinson&apos;s website
             </a>
             , and{` `}
             <a
@@ -167,7 +167,7 @@ export const About = (): JSX.Element => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Braydon Coyer&apos; s website
+              Braydon Coyer&apos;s website
             </a>
             .{` `}
           </p>

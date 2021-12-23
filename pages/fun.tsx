@@ -9,8 +9,8 @@ const svgHeight = 600
 
 const Fun = () => {
   const { scrollYProgress } = useViewportScroll()
-  const scaleX = useTransform(scrollYProgress, [0.7, 1], [1, 12])
-  const scaleY = useTransform(scrollYProgress, [0.7, 1], [1, 4])
+  const scaleX = useTransform(scrollYProgress, [0.4, 1], [1, 12])
+  const scaleY = useTransform(scrollYProgress, [0.4, 1], [1, 4])
   const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(
@@ -53,7 +53,7 @@ const Fun = () => {
             </svg>
           </div> */}
 
-          <h2>{scrollProgress > 0.72 ? `Big` : `Small`} Chungus</h2>
+          <h2>{scrollProgress > 0.5 ? `Big` : `Small`} Chungus</h2>
           <div
             className=" w-80 h-80 md:w-96 md:h-96 overflow-hidden mx-auto rounded-3xl flex shadow-inner m-32"
             style={{
