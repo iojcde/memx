@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
 import Link from 'next/link'
-import { PageTransition } from 'components/PageTransition'
 
 const Home: NextPage = () => {
   return (

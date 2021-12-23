@@ -8,6 +8,7 @@ module.exports = withContentlayer()({
       'avatars.githubusercontent.com',
       'raw.githubusercontent.com',
       'res.cloudinary.com',
+      'the.owo.foundation',
     ],
     formats: ['image/avif', 'image/webp'],
   },

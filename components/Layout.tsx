@@ -67,7 +67,7 @@ const Layout: React.FC<{
 
       <PageTransition>
         <main
-          className={`mx-auto max-w-5xl w-full px-8 dark:text-gray-100 text-black  ${className}`}
+          className={`mx-auto max-w-5xl w-full px-4 dark:text-gray-100 text-black  ${className}`}
           id="content"
         >
           {children}
