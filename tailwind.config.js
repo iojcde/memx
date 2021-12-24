@@ -30,7 +30,7 @@ module.exports = {
       },
       typography: (theme) => ({
         DEFAULT: {
-          css: [{ color: '#334155', a: { 'text-decoration': 'none' } }],
+          css: [{ color: '#18181b', a: { 'text-decoration': 'none' } }],
         },
         light: {
           css: [
@@ -40,7 +40,7 @@ module.exports = {
                 color: theme('colors.gray.300'),
               },
               a: {
-                color: theme('colors.blue.400'),
+                color: 'var(--color-text-secondary)',
                 'text-decoration': 'none',
               },
               strong: {

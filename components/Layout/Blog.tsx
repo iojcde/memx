@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'components/BlurImage'
 import { parseISO, format } from 'date-fns'
 import Layout from '../Layout'
 import generateSocialImage from 'lib/generateSocialImage'
@@ -65,7 +65,7 @@ export default function BlogLayout({
             alt="banner image"
             width={1200}
             height={630}
-            className="rounded-xl  rounded-xl"
+            className="rounded-xl object-cover bg-top object-top"
           />
         </div>
 

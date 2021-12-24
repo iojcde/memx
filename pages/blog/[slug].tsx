@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
-// import components from 'components/MDXComponents';
+import components from 'components/MDXComponents'
 import BlogLayout from 'components/Layout/Blog'
 import { allBlogs } from '.contentlayer/data'
 import type { Blog } from '.contentlayer/types'
@@ -15,7 +15,7 @@ export default function Blog({ post }: { post: Blog }) {
       <Component
         components={
           {
-            // ...components,
+            ...components,
           } as any
         }
       />
