@@ -82,13 +82,8 @@ code {
 }
 
 ::selection{
-  background:#79ffe1;
-  color: var(--color-text-primary);
-}
-
-.dark ::selection{
-  background:#f81ce5;
-  color: var(--color-text-primary);
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 a {
