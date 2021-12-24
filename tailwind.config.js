@@ -1,4 +1,3 @@
-const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
@@ -114,16 +113,19 @@ module.exports = {
       backgroundOpacity: {
         navbar: '0.3',
       },
+      backgroundImage: {
+        hero: 'url(/images/hero.jpg)',
+        'hero-dark': 'url(/images/hero-dark.jpg)',
+      },
+      fontFamily: {
+        inter: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+      },
     },
-    colors: colors,
 
     fill: (theme) => ({
       light: theme('colors.gray.50'),
       dark: theme('colors.coolGray.900'),
     }),
-    fontFamily: {
-      inter: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
-    },
   },
   variants: {
     extend: {

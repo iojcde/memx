@@ -20,14 +20,22 @@ export default function Blog({
     )
 
   return (
-    <Layout title="Blog – Jeeho Ahn" desc="Hi everyone">
+    <Layout
+      title="Blog – Jeeho Ahn"
+      desc="Blog posts by Jeeho on technology, software development, and more."
+    >
       <div className="flex flex-col items-start justify-center max-w-5xl mx-auto mb-16">
         <h1 className="text-3xl font-bold mb-4">Blog</h1>
-        <p className="mb-4 apply-prose">
-          {`I might not be the greatest writer ever, but I always try my best when writing posts.
-            In total, I've written ${posts.length} articles on this site.
-            Use the search below to filter by title.`}
-        </p>
+        <div className="mb-4 apply-prose">
+          <p>
+            I might not be the greatest writer ever, but I always try my best
+            when writing posts.
+            <br />
+            {` In total, I've written ${posts.length} articles on this site.
+        Use the search below to filter by title.`}
+          </p>
+        </div>
+
         <div className="relative w-full mb-4 ">
           <input
             aria-label="Search articles"

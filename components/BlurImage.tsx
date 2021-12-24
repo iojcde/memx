@@ -1,14 +1,24 @@
 import NextImage, { ImageProps } from 'next/image'
 
-const BlurImage = (props: ImageProps) => {
+interface Props extends ImageProps {
+  noRounded?: boolean
+}
+const Image = (props: Props) => {
   const isStatic = typeof props.src != `string`
+
   return (
-    <NextImage
-      src={props.src}
-      blurDataURL={!isStatic && (props.src as string)}
-      placeholder="blur"
-      {...props}
-    />
+    <div
+      className={`${
+        !props.noRounded && `rounded-xl`
+      } overflow-hidden inline-flex`}
+    >
+      <NextImage
+        src={props.src}
+        blurDataURL={!isStatic && (props.src as string)}
+        placeholder="blur"
+        {...props}
+      />
+    </div>
   )
 }
-export default BlurImage
+export default Image

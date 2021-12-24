@@ -1,13 +1,17 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
   return (
-    <Layout>
-      <div className="flex" id="content">
-        <div className="md:mt-8 mb-48 sm:mt-60 sm:mb-72 lg:mt-48 lg:mb-96 ">
-          <h1 className="text-[21vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight ">
+    <Layout hero>
+      <Head>
+        <link rel="preload" as="image" href="/images/hero.jpg" />
+      </Head>
+      <div className="flex w-full z-10" id="content">
+        <div className="md:mt-8 mb-48 sm:mt-60 sm:mb-72 lg:mt-48 lg:mb-96 z-20">
+          <h1 className="text-[21vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight">
             Hi, I&apos;m{` `}
             <span className=" line-through">
               <b>Jeeho Ahn</b>, a.k.a

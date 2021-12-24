@@ -16,7 +16,8 @@ const Layout: React.FC<{
   desc?: string
   type?: string
   noNav?: boolean
-}> = ({ className, children, image, date, title, desc, type, noNav }) => {
+  hero?: boolean
+}> = ({ className, children, hero, image, date, title, desc, type, noNav }) => {
   const router = useRouter()
 
   return (
@@ -64,6 +65,9 @@ const Layout: React.FC<{
         />
       )}
       {!noNav && <Nav />}
+      {hero && (
+        <div className="absolute inset-0 bg-hero dark:bg-hero-dark bg-bottom"></div>
+      )}
 
       <PageTransition>
         <main

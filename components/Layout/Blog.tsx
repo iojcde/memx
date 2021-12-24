@@ -32,7 +32,7 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-4xl mx-auto mb-16">
+      <article className="flex flex-col items-start justify-center w-full max-w-5xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black capitalize  md:text-5xl dark:text-white">
           {post.title}
         </h1>
@@ -43,6 +43,7 @@ export default function BlogLayout({
               height={24}
               width={24}
               src="/images/profile.jpeg"
+              placeholder="blur"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
