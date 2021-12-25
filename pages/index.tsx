@@ -9,9 +9,9 @@ const Home: NextPage = () => {
       <Head>
         <link rel="preload" as="image" href="/images/hero.jpg" />
       </Head>
-      <div className="flex w-full z-10" id="content">
-        <div className="md:mt-8 mb-48 sm:mt-60 sm:mb-72 lg:mt-48 lg:mb-96 z-20">
-          <h1 className="text-[21vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight">
+      <div className="flex w-full z-10 h-[90vh]" id="content">
+        <div className="z-20 sm:mt-24 md:mt-36">
+          <h1 className="text-[18vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight">
             Hi, I&apos;m{` `}
             <span className=" line-through">
               <b>Jeeho Ahn</b>, a.k.a
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
             {` `}
             <b>JcdeA</b> or <b>io</b>.
           </h1>
-          <h2 className=" font-medium text-2xl mt-6">
+          <h2 className="font-medium text-2xl mt-6">
             Volunteer at{` `}
             <b>
               <a className="font-bold" href="https://fosshost.org">
@@ -29,8 +29,8 @@ const Home: NextPage = () => {
           </h2>
         </div>
       </div>
-      <div className="mt-16 ">
-        <h1 className="text-6xl leading-tight">
+      <div className="mt-8 lg:mt-16">
+        <h1 className="text-5xl lg:text-6xl leading-tight">
           I&apos;m a <b>student</b> and a <b>software developer</b> based in
           {` `}
           <b>Seoul</b>, South Korea.

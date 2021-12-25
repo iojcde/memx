@@ -10,7 +10,7 @@ const Nav: React.FC = () => {
       >
         Skip to content
       </a>
-      <nav className="sticky top-0 z-30 flex justify-center items-center w-full px-4 py-4 my-0 mb-8 backdrop-filter backdrop-blur bg-opacity-70 firefox:bg-opacity-90 dark:bg-opacity-20 dark:firefox:bg-opacity-[85]   transition duration-100">
+      <nav className="sticky top-0 z-30 flex justify-center items-center w-full px-4 py-4 my-0 mb-8 backdrop-filter backdrop-blur bg-opacity-70 firefox:bg-opacity-90 firefox:bg-white dark:firefox:bg-black dark:bg-opacity-20 dark:firefox:bg-opacity-[85]   transition duration-100">
         <div className="flex justify-between items-center max-w-5xl w-full">
           <div className="text-primary font-semibold dark:text-gray-100 text-black">
             <Link href="/">Jeeho Ahn</Link>

@@ -9,7 +9,7 @@ const Image = (props: Props) => {
   return (
     <div
       className={`${
-        !props.noRounded && `rounded-xl`
+        !props.noRounded && `rounded-md`
       } overflow-hidden inline-flex`}
     >
       <NextImage

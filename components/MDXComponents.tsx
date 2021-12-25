@@ -1,8 +1,14 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'components/BlurImage'
 import { ImageProps } from 'next/image'
+import { ReactNode } from 'react'
 
-const CustomLink = (props) => {
+interface Props {
+  children: ReactNode
+  href: string
+}
+
+const CustomLink = (props: Props) => {
   const href = props.href
   const isInternalLink = href && (href.startsWith(`/`) || href.startsWith(`#`))
 
@@ -18,7 +24,7 @@ const CustomLink = (props) => {
 }
 
 const RoundedImage = (props: ImageProps) => {
-  return <Image alt={props.alt} className="rounded-xl" {...props} />
+  return <Image alt={props.alt} className=" rounded-lg" {...props} />
 }
 
 const MDXComponents = {

@@ -17,7 +17,7 @@ export default function BlogPost({
   return (
     <Link href={`/blog/${slug}`} passHref>
       <a className="w-full no-underline">
-        <div className="w-full mb-12 border transition  pb-2 hover:shadow-lg border-slate-200 dark:border-slate-800 rounded-xl">
+        <div className="w-full mb-12 border transition  pb-2 hover:shadow-lg border-slate-200 dark:border-slate-800 rounded-lg">
           <Image
             noRounded
             src={
@@ -27,11 +27,11 @@ export default function BlogPost({
             alt="banner image"
             width="1200"
             height="400"
-            className="object-cover rounded-t-xl object-top"
+            className="object-cover rounded-t-lg object-top"
           />
-          <div className="p-8 pt-4 ">
+          <div className="p-5 pt-2 lg:p-8 lg:pt-4 ">
             <div className=" flex flex-col justify-between md:flex-row">
-              <h2 className="w-full mb-2 text-lg font-semibold capitalize text-gray-900 md:text-3xl dark:text-gray-100">
+              <h2 className="w-full mb-2 text-2xl font-semibold capitalize text-gray-900 md:text-3xl dark:text-gray-100">
                 {title}
               </h2>
 

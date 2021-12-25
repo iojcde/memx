@@ -66,7 +66,7 @@ export default function BlogLayout({
             alt="banner image"
             width={1200}
             height={630}
-            className="rounded-xl object-cover bg-top object-top"
+            className="rounded-lg object-cover bg-top object-top"
           />
         </div>
 
