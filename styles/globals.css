@@ -31,7 +31,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-primary transition duration-100;
+  @apply bg-white dark:bg-black transition duration-100;
 
 }
 
@@ -40,10 +40,6 @@ html {
 }
 
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 @keyframes heartbeat
 {
@@ -78,12 +74,11 @@ code {
 }
 
 .apply-prose{
-  @apply prose lg:prose-xl  dark:prose-light;
+  @apply prose-lg md:prose-xl dark:prose-invert;
 }
 
 ::selection{
-  background: var(--color-text-primary);
-  color: var(--color-bg-primary);
+  @apply bg-black text-white dark:bg-white text-black;
 }
 
 a {
@@ -92,7 +87,6 @@ a {
   text-decoration: none;
 
   border-bottom: 1px solid transparent;
-  @apply transition-all;
 }
 
 a:hover {
@@ -114,16 +108,15 @@ b{
 /* syntax highlighting stuff */
 
 .prose pre {
-  @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-100 dark:bg-gray-900 transition duration-100;
 }
 
 .prose code {
-  @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 border border-gray-100 dark:border-gray-800 rounded-lg bg-gray-100 dark:bg-gray-900;
+  @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded-lg  ;
 }
 
 .prose pre code {
   @apply text-gray-800 dark:text-gray-200 p-0;
-  border: initial;
 }
 
 .prose img {
@@ -178,7 +171,7 @@ b{
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  @apply text-blue;
+  @apply text-blue-500;
 }
 
 .token.function,
@@ -192,9 +185,12 @@ b{
   @apply text-yellow-500;
 }
 
-code[class*='language-'],
+code[class*='language-'] {
+  @apply text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-black transition duration-100;
+}
+
 pre[class*='language-'] {
-  @apply text-gray-800 dark:text-gray-50;
+  @apply text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-700 transition duration-100;
 }
 
 pre::-webkit-scrollbar {
@@ -207,7 +203,7 @@ pre {
 }
 
 .rehype-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
+  @apply transition duration-100 px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-black;
 }
 
 .rehype-code-title + pre {

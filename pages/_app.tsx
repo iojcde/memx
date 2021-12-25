@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import '../styles/colors.css'
 import { ThemeProvider } from 'next-themes'
 import { AppProps } from 'next/app'
 

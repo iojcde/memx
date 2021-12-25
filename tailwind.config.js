@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
@@ -6,110 +7,46 @@ module.exports = {
   purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      textColor: {
-        white: '#ffffff',
-        primary: 'var(--color-text-primary)',
-        secondary: 'var(--color-text-secondary)',
-        emerald: 'var(--color-text-emerald)',
-        'emerald-hover': 'var(--color-text-emerald-hover)',
-        indigo: 'var(--color-text-indigo)',
-        'indigo-hover': 'var(--color-text-indigo-hover)',
-        orange: 'var(--color-text-orange)',
-        'orange-hover': 'var(--color-text-orange-hover)',
-        rose: 'var(--color-text-rose)',
-        amber: 'var(--color-text-amber)',
-        'amber-hover': 'var(--color-text-amber-hover)',
-        blue: 'var(--color-text-blue)',
-        link: 'var(--color-text-link)',
-        default: 'var(--color-text-default)',
-        'footer-link': 'var(--color-text-link-footer)',
-        'footer-link-hover': 'var(--color-text-link-footer-hover)',
-        'footer-icon': 'var(--color-text-footer-icons)',
-        'footer-icon-hover': 'var(--color-text-footer-icons-hover)',
+      colors: {
+        orange: colors.orange,
+        blueGray: colors.slate,
+        coolGray: colors.gray,
+        teal: colors.teal,
+        dark: '#111827',
+        darker: '#0d131f',
+        midnight: '#1e293b',
+        'midnight-hover': '#334155',
+        emerald: colors.emerald,
+        fuchsia: colors.fuchsia,
+        amber: colors.amber,
+        sky: colors.sky,
+        gray: {
+          0: '#fff',
+          100: '#fafafa',
+          200: '#eaeaea',
+          300: '#999999',
+          400: '#888888',
+          500: '#666666',
+          600: '#444444',
+          700: '#333333',
+          800: '#222222',
+          900: '#111111',
+        },
       },
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: [{ color: '#18181b', a: { 'text-decoration': 'none' } }],
         },
-        light: {
+        invert: {
           css: [
             {
-              color: 'var(--color-text-secondary)',
-              '[class~="lead"]': {
-                color: theme('colors.gray.300'),
-              },
-              a: {
-                color: 'var(--color-text-secondary)',
-                'text-decoration': 'none',
-              },
-              strong: {
-                color: 'var(--color-text-primary)',
-              },
-              'ol > li::before': {
-                color: 'var(--color-text-primary)',
-              },
-              'ul > li::before': {
-                backgroundColor: theme('colors.gray.600'),
-              },
-              hr: {
-                borderColor: theme('colors.gray.200'),
-              },
-              blockquote: {
-                color: theme('colors.gray.200'),
-                borderLeftColor: theme('colors.gray.600'),
-              },
-              h1: {
-                color: 'var(--color-text-primary)',
-              },
-              h2: {
-                color: 'var(--color-text-primary)',
-              },
-              h3: {
-                color: 'var(--color-text-primary)',
-              },
-              h4: {
-                color: 'var(--color-text-primary)',
-              },
-              'figure figcaption': {
-                color: theme('colors.gray.400'),
-              },
               code: {
-                color: 'var(--color-text-primary)',
-              },
-              'a code': {
-                color: 'var(--color-text-primary)',
-              },
-              pre: {
-                color: theme('colors.gray.200'),
-                backgroundColor: theme('colors.gray.800'),
-              },
-              thead: {
-                color: 'var(--color-text-primary)',
-                borderBottomColor: theme('colors.gray.400'),
-              },
-              'tbody tr': {
-                borderBottomColor: theme('colors.gray.600'),
+                color: colors.gray,
               },
             },
           ],
         },
       }),
-      backgroundColor: {
-        primary: 'var(--color-bg-primary)',
-        secondary: 'var(--color-bg-secondary)',
-        emerald: 'var(--color-bg-emerald)',
-        'button-indigo': 'var(--color-button-indigo)',
-        'button-indigo-hover': 'var(--color-button-indigo-hover)',
-        blockquote: 'var(--color-blockquote-bg)',
-      },
-      ringOffsetColor: {
-        primary: 'var(--color-bg-primary)',
-      },
-      borderColor: {
-        primary: 'var(--color-border)',
-        blockquote: 'var(--color-blockquote-border)',
-        infoquote: 'var(--color-infoquote-border)',
-      },
       backgroundOpacity: {
         navbar: '0.3',
       },
@@ -118,7 +55,7 @@ module.exports = {
         'hero-dark': 'url(/images/hero-dark.jpg)',
       },
       fontFamily: {
-        inter: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+        inter: ['Inter', '-apple-system', 'sans-serif'],
       },
     },
 
@@ -126,11 +63,6 @@ module.exports = {
       light: theme('colors.gray.50'),
       dark: theme('colors.coolGray.900'),
     }),
-  },
-  variants: {
-    extend: {
-      typography: ['dark'],
-    },
   },
   plugins: [
     require('@tailwindcss/typography'),

@@ -42,7 +42,7 @@ export default function Blog({
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search articles"
-            className="block w-full px-4 py-2 text-primary bg-white border border-gray-200 rounded-md dark:border-gray-900 bg-secondary hover:ring outline-none"
+            className="block w-full px-4 py-2 text-primary bg-white dark:bg-gray-800 border border-gray-200 rounded-md dark:border-gray-900 bg-secondary hover:ring outline-none"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3

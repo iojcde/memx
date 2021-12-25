@@ -14,13 +14,13 @@ const Footer = () => (
       <div className="grid grid-cols-2 gap-8 xl:col-span-2">
         <div className="md:grid md:grid-cols-2 md:gap-8">
           <div>
-            <h3 className="text-sm font-semibold text-primary tracking-wider uppercase">
+            <h3 className="text-sm font-semibold tracking-wider uppercase">
               Pages
             </h3>
             <ul className="mt-4 space-y-4 ">
               <li>
                 <Link href="/" passHref>
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     Home
                   </a>
                 </Link>
@@ -28,7 +28,7 @@ const Footer = () => (
 
               <li>
                 <Link href="/about" passHref>
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     About
                   </a>
                 </Link>
@@ -36,7 +36,7 @@ const Footer = () => (
 
               <li>
                 <Link href="/blog">
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     Blog
                   </a>
                 </Link>
@@ -44,27 +44,27 @@ const Footer = () => (
             </ul>
           </div>
           <div className="mt-12 md:mt-0">
-            <h3 className="text-sm font-semibold text-primary tracking-wider uppercase">
+            <h3 className="text-sm font-semibold tracking-wider uppercase">
               Extra
             </h3>
             <ul className="mt-4 space-y-4 ">
               <li>
                 <Link href="/stats">
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     Stats
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/api/trace">
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     Trace
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/fun">
-                  <a className="text-base text-footer-link hover:text-footer-link-hover">
+                  <a className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400">
                     Fun
                   </a>
                 </Link>
@@ -78,14 +78,14 @@ const Footer = () => (
         <div className="flex space-x-6 md:order-2">
           <a
             href="https://twitter.com/IoJcde"
-            className="text-footer-icon hover:text-footer-icon-hover"
+            className="text-gray-600 dark:text-gray-400"
           >
             <FaTwitter className="h-5 w-5" />
           </a>
 
           <a
             href="https://github.com/jcdea"
-            className="text-footer-icon hover:text-footer-icon-hover"
+            className="text-gray-600 dark:text-gray-400"
           >
             <span className="sr-only">GitHub</span>
             <FaGithub className="h-5 w-5" />
@@ -93,13 +93,13 @@ const Footer = () => (
 
           <a
             href="https://www.linkedin.com/in/jcdea/"
-            className="text-footer-icon hover:text-footer-icon-hover"
+            className="text-gray-600 dark:text-gray-400"
           >
             <span className="sr-only">LinkedIn</span>
             <FaLinkedin className="h-5 w-5" />
           </a>
         </div>
-        <p className="mt-8 text-base text-footer-icon md:mt-0 md:order-1">
+        <p className="mt-8 text-base text-gray-600 dark:text-gray-400 md:mt-0 md:order-1">
           &copy; {new Date().getFullYear()} Jeeho Ahn. All rights reserved.
         </p>
       </div>

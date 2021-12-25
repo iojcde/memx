@@ -3,7 +3,7 @@ import {
   defineDocumentType,
   makeSource,
 } from 'contentlayer/source-files'
-
+import codeExtra from 'remark-code-extra'
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'

@@ -39,7 +39,7 @@ export default function BlogPost({
                 {`${views ? new Number(views).toLocaleString() : `–––`} views`}
               </p>
             </div>
-            <p className=" apply-prose text-gray-600 dark:text-gray-400">
+            <p className=" apply-prose text-gray-600 dark:text-gray-300">
               {summary}
             </p>
           </div>
