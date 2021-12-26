@@ -74,7 +74,7 @@ html {
 }
 
 .apply-prose{
-  @apply prose-lg md:prose-xl dark:prose-invert;
+  @apply prose prose-lg md:prose-xl dark:prose-invert;
 }
 
 ::selection{
