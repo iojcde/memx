@@ -78,7 +78,7 @@ html {
 }
 
 ::selection{
-  @apply bg-black text-white dark:bg-white text-black;
+  @apply bg-black text-white dark:bg-white dark:text-black;
 }
 
 a {
