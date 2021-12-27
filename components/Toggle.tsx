@@ -11,7 +11,7 @@ const Toggle: React.FC = () => {
   }, [])
 
   if (!hasMounted) {
-    return null
+    return <div className="w-8 h-8 p-2" />
   }
 
   const toggle = () => {
@@ -34,7 +34,7 @@ const Toggle: React.FC = () => {
       </button>
     )
   } else {
-    return null
+    return <div className="w-8 h-8 p-2" />
   }
 }
 
