@@ -4,15 +4,11 @@ import { useState, useEffect } from 'react'
 
 const Toggle: React.FC = () => {
   const { theme, setTheme } = useTheme()
-  const [hasMounted, setHasMounted] = useState(false)
 
-  useEffect(() => {
-    setHasMounted(true)
-  }, [])
+  const [mounted, setMounted] = useState(false)
 
-  if (!hasMounted) {
-    return <div className="w-8 h-8 p-2" />
-  }
+  // After mounting, we have access to the theme
+  useEffect(() => setMounted(true), [])
 
   const toggle = () => {
     if (theme == `light`) {
@@ -22,20 +18,17 @@ const Toggle: React.FC = () => {
     }
   }
 
-  if (theme != undefined) {
-    return (
-      <button
-        type="button"
-        onClick={toggle}
-        className="rounded-md p-2"
-        aria-hidden
-      >
-        {theme === `dark` ? <HiSun color="white" /> : <HiMoon />}
-      </button>
-    )
-  } else {
-    return <div className="w-8 h-8 p-2" />
-  }
+  return (
+    <button
+      aria-label="Toggle Dark Mode"
+      type="button"
+      onClick={toggle}
+      className="rounded-md p-2 bg-secondary"
+      aria-hidden
+    >
+      {mounted && (theme === `dark` ? <HiSun color="white" /> : <HiMoon />)}
+    </button>
+  )
 }
 
 export default Toggle

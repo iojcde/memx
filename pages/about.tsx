@@ -10,7 +10,7 @@ export const About = (): JSX.Element => {
           About Me
         </h1>
 
-        <p className="text-secondary apply-prose pt-2">
+        <div className="text-secondary apply-prose pt-2">
           <p>I&apos;m an open source software and privacy advocate.</p>
           <p>
             I volunteer at{` `}
@@ -23,7 +23,7 @@ export const About = (): JSX.Element => {
             </a>
             , a free cloud compute platform for the open source community.
           </p>
-        </p>
+        </div>
 
         <div className="apply-prose pt-4">
           Here are some projects I&apos;m working on:

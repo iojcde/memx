@@ -27,10 +27,10 @@ const Layout: React.FC<{
         description={
           desc || `Student, Full Stack Developer, Open Source enthusaist.`
         }
-        canonical={`https:/jcde.xyz/${router.asPath}`}
+        canonical={`https:/jcde.xyz${router.asPath}`}
         openGraph={{
           type: type,
-          url: `https:/jcde.xyz/${router.asPath}`,
+          url: `https:/jcde.xyz${router.asPath}`,
           title: title || `Jeeho Ahn | Portfolio`,
           article: { publishedTime: date },
 
