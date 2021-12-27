@@ -19,7 +19,6 @@ export default function BlogPost({
       <a className="w-full no-underline">
         <div className="w-full mb-12 border transition  pb-2 hover:shadow-lg border-slate-200 dark:border-slate-800 rounded-lg">
           <Image
-            noRounded
             src={
               `https://res.cloudinary.com/jcdea/` +
               image.slice(image.lastIndexOf(`/`) + 1)

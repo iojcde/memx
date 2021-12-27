@@ -43,7 +43,6 @@ export default function BlogLayout({
               height={24}
               width={24}
               src="/images/profile.jpeg"
-              placeholder="blur"
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">

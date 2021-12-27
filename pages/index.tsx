@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <link rel="preload" as="image" href="/images/hero.jpg" />
       </Head>
       <div className="flex w-full z-10 h-[90vh]" id="content">
-        <div className="z-20 mt-8 sm:mt-28 md:mt-36">
+        <div className="z-20 mt-8 sm:mt-28 md:mt-36 lg:mt-40">
           <h1 className="text-[18vw] sm:text-8xl lg:text-8xl dark:text-white leading-tight">
             Hi, I&apos;m{` `}
             <span className=" line-through">

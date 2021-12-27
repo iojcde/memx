@@ -2,9 +2,11 @@ const plugin = require('tailwindcss/plugin')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
   darkMode: 'class',
-  purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -21,25 +23,26 @@ module.exports = {
         amber: colors.amber,
         sky: colors.sky,
         gray: {
-          0: '#fff',
-          100: '#fafafa',
-          200: '#eaeaea',
-          300: '#999999',
-          400: '#888888',
-          500: '#666666',
-          600: '#444444',
-          700: '#333333',
-          800: '#222222',
-          900: '#111111',
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
         },
       },
-      typography: () => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: [{ color: '#18181b', a: { 'text-decoration': 'none' } }],
         },
         invert: {
           css: [
             {
+              color: theme('colors.gray.200'),
               code: {
                 color: colors.gray,
               },

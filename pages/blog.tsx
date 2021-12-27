@@ -10,13 +10,19 @@ export default function Blog({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState(``)
+
   const filteredBlogPosts = posts
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     )
-    .filter((post) =>
-      post.title.toLowerCase().includes(searchValue.toLowerCase()),
+    .filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+        post.tags
+          .map((tag) => tag.toLowerCase())
+          .join(`,`)
+          .includes(searchValue.toLowerCase()),
     )
 
   return (
@@ -42,7 +48,7 @@ export default function Blog({
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search articles"
-            className="block w-full px-4 py-2 text-primary bg-white dark:bg-gray-800 border border-gray-200 rounded-md dark:border-gray-900 bg-secondary hover:ring outline-none"
+            className="block w-full px-4 py-2 text-primary bg-gray-200 dark:bg-gray-800 border border-gray-200 rounded-md dark:border-gray-900  outline-none"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3
@@ -100,7 +106,7 @@ export default function Blog({
 
 export function getStaticProps() {
   const posts = allBlogs.map((post) =>
-    pick(post, [`slug`, `title`, `summary`, `publishedAt`, `image`]),
+    pick(post, [`slug`, `title`, `summary`, `publishedAt`, `image`, `tags`]),
   )
 
   return { props: { posts } }

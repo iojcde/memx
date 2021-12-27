@@ -1,8 +1,18 @@
 import { HiSun, HiMoon } from 'react-icons/hi'
 import { useTheme } from 'next-themes'
+import { useState, useEffect } from 'react'
 
 const Toggle: React.FC = () => {
   const { theme, setTheme } = useTheme()
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) {
+    return null
+  }
 
   const toggle = () => {
     if (theme == `light`) {
@@ -11,6 +21,7 @@ const Toggle: React.FC = () => {
       setTheme(`light`)
     }
   }
+
   if (theme != undefined) {
     return (
       <button
@@ -23,7 +34,7 @@ const Toggle: React.FC = () => {
       </button>
     )
   } else {
-    return <div className="rounded-md p w-8 p-2 h-8 bg-secondary" />
+    return null
   }
 }
 
