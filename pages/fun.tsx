@@ -44,7 +44,7 @@ const Fun = () => {
         <div className="relative">
           <iframe
             className="w-full aspect-[4/3] rounded-lg dark:border dark:border-gray-700"
-            src="https://dvd.jcde.xyz/?speed=2"
+            src="https://dvd.jcde.xyz/?speed=2&embed=true"
           ></iframe>
           <Link href="https://dvd.jcde.xyz/?speed=2" passHref>
             <a className="absolute right-4 bottom-4 text-gray-300 text-xs">
