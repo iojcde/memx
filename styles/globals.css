@@ -89,6 +89,10 @@ a {
   border-bottom: 1px solid transparent;
 }
 
+a{
+  @apply transition duration-100;
+}
+
 a:hover {
   border-bottom: 1px solid #000000;
 }
