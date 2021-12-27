@@ -7,7 +7,7 @@ export const About = (): JSX.Element => {
     <Layout title="About - Jeeho Ahn">
       <div className="container mx-auto max-w-5xl">
         <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold dark:text-white">
-          About
+          About Me
         </h1>
 
         <p className="text-secondary apply-prose pt-2">

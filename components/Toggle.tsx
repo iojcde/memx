@@ -27,7 +27,7 @@ const Toggle: React.FC = () => {
       <button
         type="button"
         onClick={toggle}
-        className="rounded-md p-2 bg-secondary"
+        className="rounded-md p-2"
         aria-hidden
       >
         {theme === `dark` ? <HiSun color="white" /> : <HiMoon />}
