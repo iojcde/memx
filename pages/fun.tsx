@@ -1,7 +1,6 @@
 import { motion, useViewportScroll, useTransform } from 'framer-motion'
 
 import { useEffect, useState } from 'react'
-import Footer from 'components/Footer'
 import Link from 'next/link'
 import Layout from 'components/Layout'
 
@@ -75,7 +74,6 @@ const Fun = () => {
           </motion.div>
         </div>
       </div>
-      <Footer />
     </Layout>
   )
 }
