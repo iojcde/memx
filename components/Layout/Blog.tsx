@@ -2,7 +2,6 @@ import Image from 'components/BlurImage'
 import { parseISO, format } from 'date-fns'
 import Layout from '../Layout'
 import generateSocialImage from 'lib/generateSocialImage'
-import ViewCounter from '../ViewCounter'
 import type { PropsWithChildren } from 'react'
 import type { Blog } from '.contentlayer/types'
 
@@ -52,8 +51,6 @@ export default function BlogLayout({
           </div>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
             {post.readingTime.text}
-            {` • `}
-            <ViewCounter slug={post.slug} />
           </p>
         </div>
         <div className="pt-6 mx-auto">

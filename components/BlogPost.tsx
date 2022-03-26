@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import useSWR from 'swr'
 import Image from 'components/BlurImage'
-import fetcher from 'lib/fetcher'
-import { Views } from 'lib/types'
 import type { Blog } from '.contentlayer/types'
 
 export default function BlogPost({
@@ -11,9 +8,6 @@ export default function BlogPost({
   slug,
   image,
 }: Pick<Blog, 'title' | 'summary' | 'slug' | 'image'>) {
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher)
-  const views = data?.total
-
   return (
     <Link href={`/blog/${slug}`} passHref>
       <a className="w-full no-underline">
@@ -33,10 +27,6 @@ export default function BlogPost({
               <h2 className="w-full mb-2 text-2xl font-semibold capitalize text-gray-900 md:text-3xl dark:text-gray-100">
                 {title}
               </h2>
-
-              <p className=" w-32 mb-4 text-left text-gray-500 md:text-right md:mb-0">
-                {`${views ? new Number(views).toLocaleString() : `–––`} views`}
-              </p>
             </div>
             <p className=" apply-prose text-gray-600 dark:text-gray-300">
               {summary}
