@@ -30,7 +30,7 @@ export default function Blog({
       title="Blog – Jeeho Ahn"
       desc="Blog posts by Jeeho on technology, software development, and more."
     >
-      <div className="flex flex-col items-start justify-center max-w-5xl mx-auto mb-16">
+      <div className="flex flex-col items-start justify-center max-w-5xl mx-auto mb-16 container">
         <h1 className="text-3xl font-bold mb-4">Blog</h1>
         <div className="mb-4 apply-prose">
           <p>
