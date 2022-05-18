@@ -50,7 +50,7 @@ const Layout: React.FC<{
       />
       <Head>
         <link
-          href="/static/fonts/Inter-roman.var.woff2"
+          href="/static/fonts/PretendardVariable.woff2"
           rel="preload"
           as="font"
           type="font/woff2"

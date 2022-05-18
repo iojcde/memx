@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { useViewportScroll, motion, useTransform } from 'framer-motion'
 
 const Nav: React.FC = () => {
-  const { scrollYProgress } = useViewportScroll()
+  const { scrollY } = useViewportScroll()
 
-  const opacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1])
+  const opacity = useTransform(scrollY, [60, 100], [0, 1])
 
-  const backwardsopacity = useTransform(scrollYProgress, [0.1, 0.2], [1, 0])
+  const backwardsopacity = useTransform(scrollY, [60, 100], [1, 0])
 
   return (
     <>
@@ -22,7 +22,7 @@ const Nav: React.FC = () => {
         className="relative z-30 flex justify-center items-center w-full px-4 py-4 my-0 transition duration-100"
       >
         <div className="flex justify-between items-center max-w-5xl w-full">
-          <div className="text-3xl lg:text-4xl font-semibold dark:text-gray-100 text-black">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold dark:text-gray-100 text-black">
             <Link href="/">Jeeho Ahn</Link>
           </div>
           <div className="flex items-center justify-evenly space-x-3 lg:space-x-4 text-primary dark:text-gray-100">
