@@ -50,7 +50,7 @@ const Layout: React.FC<{
       />
       <Head>
         <link
-          href="/static/fonts/Inter-roman.var.woff2"
+          href="/static/fonts/PretendardVariable.woff2"
           rel="preload"
           as="font"
           type="font/woff2"
@@ -65,13 +65,10 @@ const Layout: React.FC<{
         />
       )}
       {!noNav && <Nav />}
-      {hero && (
-        <div className="absolute inset-0 bg-hero dark:bg-hero-dark bg-bottom"></div>
-      )}
 
       <PageTransition>
         <main
-          className={` mx-auto max-w-5xl w-full px-4 dark:text-gray-100 text-black  ${className}`}
+          className={` w-full dark:text-gray-100 relative text-black overflow-clip  ${className}`}
           id="content"
         >
           {children}
