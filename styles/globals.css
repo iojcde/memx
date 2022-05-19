@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+ul.wrapper {
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.wrapper li {
+  flex-shrink: 0;
+  width: clamp(500px, 60vw, 800px);
+  padding-right: 1rem;
+}
 
 /*
 Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.

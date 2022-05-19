@@ -2,6 +2,11 @@
 const { withContentlayer } = require('next-contentlayer')
 
 module.exports = withContentlayer()({
+  experimental: {
+    images: {
+      layoutRaw: true,
+    },
+  },
   reactStrictMode: true,
   images: {
     domains: [
@@ -9,6 +14,7 @@ module.exports = withContentlayer()({
       'raw.githubusercontent.com',
       'res.cloudinary.com',
       'the.owo.foundation',
+      'owo.whats-th.is',
     ],
     formats: ['image/avif', 'image/webp'],
   },

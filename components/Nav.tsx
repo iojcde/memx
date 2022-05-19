@@ -5,9 +5,9 @@ import { useViewportScroll, motion, useTransform } from 'framer-motion'
 const Nav: React.FC = () => {
   const { scrollY } = useViewportScroll()
 
-  const opacity = useTransform(scrollY, [60, 100], [0, 1])
+  const opacity = useTransform(scrollY, [70, 100], [0, 1])
 
-  const backwardsopacity = useTransform(scrollY, [60, 100], [1, 0])
+  const backwardsopacity = useTransform(scrollY, [70, 100], [1, 0])
 
   return (
     <>

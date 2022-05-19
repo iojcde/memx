@@ -19,7 +19,7 @@ const Fun = () => {
       title="Fun - Jeeho Ahn"
       desc="Experiments I've created for fun. Bouncing DVD Logo, and more!"
     >
-      <div className="apply-prose">
+      <div className="apply-prose container">
         <h1 className="">Have Fun! :p</h1>
 
         <h2>framer motion thing </h2>
