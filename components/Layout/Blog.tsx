@@ -31,11 +31,11 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="container flex flex-col items-start justify-center w-full max-w-5xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black capitalize  md:text-5xl dark:text-white">
+      <article className="container mx-auto mb-16 flex w-full max-w-5xl flex-col items-start justify-center">
+        <h1 className="mb-4 text-3xl font-bold capitalize tracking-tight text-black  dark:text-white md:text-5xl">
           {post.title}
         </h1>
-        <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
+        <div className="mt-2 flex w-full flex-col items-start justify-between md:flex-row md:items-center">
           <div className="flex items-center">
             <Image
               alt="Jeeho Ahn"
@@ -49,11 +49,11 @@ export default function BlogLayout({
               {format(parseISO(post.publishedAt), `MMMM dd, yyyy`)}
             </p>
           </div>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+          <p className="min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0">
             {post.readingTime.text}
           </p>
         </div>
-        <div className="pt-6 mx-auto">
+        <div className="mx-auto pt-6">
           <Image
             src={
               `https://res.cloudinary.com/jcdea/` +
@@ -62,11 +62,11 @@ export default function BlogLayout({
             alt="banner image"
             width={1200}
             height={630}
-            className="rounded-lg object-cover bg-top object-top"
+            className="rounded-lg bg-top object-cover object-top"
           />
         </div>
 
-        <div className="w-full mt-4 apply-prose max-w-none">{children}</div>
+        <div className="apply-prose mt-4 w-full max-w-none">{children}</div>
         <div className="mt-8">{/* <Subscribe /> */}</div>
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a

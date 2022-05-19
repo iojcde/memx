@@ -68,7 +68,7 @@ const Layout: React.FC<{
 
       <PageTransition>
         <main
-          className={` w-full dark:text-gray-100 relative text-black overflow-clip  ${className}`}
+          className={` relative w-full overflow-clip text-black dark:text-gray-100  ${className}`}
           id="content"
         >
           {children}

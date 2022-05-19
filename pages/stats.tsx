@@ -7,7 +7,7 @@ const Stats = () => {
     return (
       <Layout>
         <iframe
-          className="bg-primary opacity-0 dark:opacity-100 transition duration-200 hidden dark:flex"
+          className="bg-primary hidden opacity-0 transition duration-200 dark:flex dark:opacity-100"
           plausible-embed
           src={`https://stats.willit.fail/share/jcde.xyz?auth=Pqr0XnPWh6LTTlO6WjmEC&embed=true&background=transparent&theme=dark`}
           scrolling="no"
@@ -16,7 +16,7 @@ const Stats = () => {
           style={{ width: `1px`, minWidth: `100%`, height: `1600px` }}
         ></iframe>
         <iframe
-          className="bg-primary dark:opacity-0 opacity-100 transition duration-200 dark:hidden flex"
+          className="bg-primary flex opacity-100 transition duration-200 dark:hidden dark:opacity-0"
           plausible-embed
           src={`https://stats.willit.fail/share/jcde.xyz?auth=Pqr0XnPWh6LTTlO6WjmEC&embed=true&background=transparent&theme=light`}
           scrolling="no"

@@ -6,7 +6,7 @@ export const About = (): JSX.Element => {
   return (
     <Layout title="About - Jeeho Ahn">
       <div className="container mx-auto max-w-5xl">
-        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold dark:text-white">
+        <h1 className="text-3xl font-bold dark:text-white sm:text-5xl lg:text-5xl">
           About Me
         </h1>
 
@@ -78,15 +78,15 @@ export const About = (): JSX.Element => {
             </li>
           </ul>
         </div>
-        <h2 className="md:text-2xl text-xl font-bold md:mt-16 mt-8">
+        <h2 className="mt-8 text-xl font-bold md:mt-16 md:text-2xl">
           Technologies I{` `}
           <BsFillHeartFill
             size={18}
-            className="heartbeat inline-block align-baseline ml-1"
+            className="heartbeat ml-1 inline-block align-baseline"
             color="red"
           />
         </h2>
-        <div className="flex flex-wrap gap-2 mt-4 ">
+        <div className="mt-4 flex flex-wrap gap-2 ">
           <Tag text="Next.js" />
           <Tag text="Tailwindcss" />
           <Tag text="TypeScript" />
@@ -106,7 +106,7 @@ export const About = (): JSX.Element => {
           <Tag text="..." />
         </div>
 
-        <div className="mt-8 apply-prose ">
+        <div className="apply-prose mt-8 ">
           <div>
             <h3>Work Experience</h3>
             <ul>

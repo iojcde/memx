@@ -4,7 +4,7 @@ const Image = (props: ImageProps) => {
   const isStatic = typeof props.src != `string`
 
   return (
-    <div className={` overflow-hidden inline-flex`}>
+    <div className={` inline-flex overflow-hidden`}>
       <NextImage
         src={props.src}
         blurDataURL={!isStatic && (props.src as string)}

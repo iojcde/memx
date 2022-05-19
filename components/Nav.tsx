@@ -13,19 +13,19 @@ const Nav: React.FC = () => {
     <>
       <a
         href="#content"
-        className="absolute bg-white dark:bg-black z-50 px-3 py-1 transition-transform duration-100 transform -translate-y-12 focus:translate-y-12 ml-3 lg:ml-8 -top-8 text-md rounded-md border border-gray-300"
+        className="text-md absolute -top-8 z-50 ml-3 -translate-y-12 transform rounded-md border border-gray-300 bg-white px-3 py-1 transition-transform duration-100 focus:translate-y-12 dark:bg-black lg:ml-8"
       >
         Skip to content
       </a>
       <motion.nav
         style={{ opacity: backwardsopacity }}
-        className="relative z-30 flex justify-center items-center w-full px-4 py-4 my-0 transition duration-100"
+        className="relative z-30 my-0 flex w-full items-center justify-center px-4 py-4 transition duration-100"
       >
-        <div className="flex justify-between items-center max-w-5xl w-full">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold dark:text-gray-100 text-black">
+        <div className="flex w-full max-w-5xl items-center justify-between">
+          <div className="text-2xl font-semibold text-black dark:text-gray-100 md:text-3xl lg:text-4xl">
             <Link href="/">Jeeho Ahn</Link>
           </div>
-          <div className="flex items-center justify-evenly space-x-3 lg:space-x-4 text-primary dark:text-gray-100">
+          <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-gray-100 lg:space-x-4">
             <span>
               <Link href="/">Home</Link>
             </span>
@@ -41,13 +41,13 @@ const Nav: React.FC = () => {
       </motion.nav>
       <motion.nav
         style={{ opacity: opacity }}
-        className="z-20 flex fixed top-0 justify-center items-center w-full px-4 py-4 my-0 transition duration-100"
+        className="fixed top-0 z-20 my-0 flex w-full items-center justify-center px-4 py-4 transition duration-100"
       >
-        <div className="flex justify-between items-center max-w-5xl w-full">
-          <div className="text-primary font-semibold dark:text-gray-100 text-black">
+        <div className="flex w-full max-w-5xl items-center justify-between">
+          <div className="text-primary font-semibold text-black dark:text-gray-100">
             <Link href="/">Jeeho Ahn</Link>
           </div>
-          <div className="flex items-center justify-evenly space-x-3 lg:space-x-4 text-primary dark:text-gray-100">
+          <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-gray-100 lg:space-x-4">
             <span>
               <Link href="/">Home</Link>
             </span>

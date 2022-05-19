@@ -30,9 +30,9 @@ export default function Blog({
       title="Blog – Jeeho Ahn"
       desc="Blog posts by Jeeho on technology, software development, and more."
     >
-      <div className="flex flex-col items-start justify-center max-w-5xl mx-auto mb-16 container">
-        <h1 className="text-3xl font-bold mb-4">Blog</h1>
-        <div className="mb-4 apply-prose">
+      <div className="container mx-auto mb-16 flex max-w-5xl flex-col items-start justify-center">
+        <h1 className="mb-4 text-3xl font-bold">Blog</h1>
+        <div className="apply-prose mb-4">
           <p>
             I might not be the greatest writer ever, but I always try my best
             when writing posts.
@@ -42,16 +42,16 @@ export default function Blog({
           </p>
         </div>
 
-        <div className="relative w-full mb-4 ">
+        <div className="relative mb-4 w-full ">
           <input
             aria-label="Search articles"
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search articles"
-            className="block w-full px-4 py-2 text-primary bg-gray-200 dark:bg-gray-800 border border-gray-200 rounded-md dark:border-gray-900  outline-none"
+            className="text-primary block w-full rounded-md border border-gray-200 bg-gray-200 px-4 py-2 outline-none dark:border-gray-900  dark:bg-gray-800"
           />
           <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3
+            className="absolute right-3 top-3 h-5 w-5 text-gray-400
              dark:text-gray-300"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -88,7 +88,7 @@ export default function Blog({
             />
           </>
         )} */}
-        <h1 className="sm:leading-snug font-bold tracking-wide uppercase my-8">
+        <h1 className="my-8 font-bold uppercase tracking-wide sm:leading-snug">
           All Posts
         </h1>
         {!filteredBlogPosts.length && (

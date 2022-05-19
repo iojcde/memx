@@ -66,12 +66,12 @@ const Home: NextPage = () => {
   return (
     <Layout hero>
       <div className="h-[90vh]">
-        <div className="flex h-[90vh] max-w-[78rem] z-10 float-right bg-rose-200 dark:bg-black w-full transition duration-100">
-          <div className="z-20 px-4 lg:px-12 pb-8 mt-10 md:mt-36 lg:mt-40">
-            <h1 className="text-[18vw] text-6xl sm:text-7xl lg:text-8xl dark:text-white leading-tight">
+        <div className="z-10 float-right flex h-[90vh] dark:lg:border dark:border-gray-400 w-full max-w-[78rem] bg-rose-200 transition duration-100 dark:bg-black">
+          <div className="z-20 mt-10 px-4 pb-8 md:mt-36 lg:mt-40 lg:px-12">
+            <h1 className="text-[18vw] text-6xl leading-tight dark:text-white sm:text-7xl lg:text-8xl">
               <b> I&apos;m a full-stack developer & designer based in Seoul.</b>
             </h1>
-            <h2 className="font-medium text-2xl mt-6">
+            <h2 className="mt-6 text-2xl font-medium">
               <b>
                 <a className="font-bold" href="https://vignetteapp.org">
                   Vignette
@@ -82,12 +82,12 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="text-black overflow-hidden" ref={AboutSection}>
-        <div className="mt-8 lg:mt-16 w-full p-2 lg:p-8 float-left max-w-7xl bg-teal-200 wrapper">
-          <h1 className="text-4xl lg:text-6xl leading-tight">
+      <div className="overflow-hidden text-black" ref={AboutSection}>
+        <div className="wrapper float-left mt-8 w-full max-w-7xl bg-teal-200 p-2 lg:mt-16 lg:p-8">
+          <h1 className="text-4xl leading-tight lg:text-6xl">
             I design websites and develop software.
           </h1>
-          <div className="max-w-2xl leading-none text-lg lg:text-xl mt-4">
+          <div className="mt-4 max-w-2xl text-lg leading-none lg:text-xl">
             {` `}
             <p>
               I currently volunteer at {` `}
@@ -122,27 +122,27 @@ const Home: NextPage = () => {
             </p>
           </div>
 
-          <div className="text-lg mt-6 lg:mt-12 underline">
+          <div className="mt-6 text-lg underline lg:mt-12">
             <Link href="/about">Learn more -&gt; </Link>
           </div>
         </div>
       </div>
 
-      <div className="mt-20 pb-28">
+      <div className="mt-8 pb-28 lg:mt-16">
         <div ref={languageScrub1} className="w-full leading-none">
-          <div className="wrapper text-9xl w-full font-semibold flex whitespace-nowrap">
-            Typescript • Javascript • Go • Rust • Python
+          <div className="wrapper flex w-full whitespace-nowrap text-5xl font-semibold sm:text-6xl md:text-9xl">
+            TypeScript • JavaScript • Go • Rust • Python
           </div>
         </div>
-        <hr className="lg:px-8 my-4  h-2 bg-black dark:bg-white border-none max-w-7xl mx-auto px-4" />
+        <hr className="my-4 mx-auto  h-2 max-w-7xl border-none bg-black px-4 dark:bg-white lg:px-8" />
         <div ref={languageScrub2} className="w-full leading-none">
-          <div className="wrapper text-9xl font-semibold flex whitespace-nowrap">
-            Next.js • TailwindCSS • React • Linux • Docker • GraphQL • Git
+          <div className="wrapper flex whitespace-nowrap text-5xl font-semibold sm:text-6xl md:text-9xl">
+            React • TailwindCSS • Next.js • Linux • Docker • Ansible • GraphQL
           </div>
         </div>
-        <div className=" text-black overflow-hidden " ref={SkillsSection}>
-          <div className="mt-8 lg:mt-16 w-full p-2 lg:p-8 float-right max-w-7xl bg-violet-300 wrapper">
-            <h2 className="text-5xl lg:text-6xl leading-tight"> Skills</h2>
+        <div className=" overflow-hidden text-black " ref={SkillsSection}>
+          <div className="wrapper float-right mt-8 w-full max-w-7xl bg-violet-300 p-2 lg:mt-16 lg:p-8">
+            <h2 className="text-5xl leading-tight lg:text-6xl"> Skills</h2>
 
             <ul className="flex flex-col gap-1 text-lg">
               <li>Go</li>
@@ -155,7 +155,7 @@ const Home: NextPage = () => {
               <li>Python</li>
               <li>
                 Linux{` `}
-                <span className="line-through text-gray-500 ">
+                <span className="text-gray-500 line-through ">
                   (I use arch btw)
                 </span>
               </li>
@@ -167,9 +167,11 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div id="designs" className=" mt-8 lg:mt-16">
-          <h2 className="text-5xl lg:text-6xl container">Designs &darr;</h2>
-          <div ref={ImageScrub1} className="w-full mt-8 leading-none">
-            <div className="wrapper flex flex-nowrap gap-4 font-bold whitespace-nowrap">
+          <h2 className="container px-4 text-5xl lg:text-6xl">
+            Designs &darr;
+          </h2>
+          <div ref={ImageScrub1} className="mt-8 w-full leading-none">
+            <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
               {[
                 `https://owo.whats-th.is/APDfJDz.png`,
                 `https://owo.whats-th.is/5jnX5Vc.png`,
@@ -179,13 +181,13 @@ const Home: NextPage = () => {
                   key={i}
                   src={v}
                   alt=""
-                  className="max-h-96 border rounded"
+                  className="max-h-96 rounded border"
                 />
               ))}
             </div>
           </div>
-          <div ref={ImageScrub2} className="w-full mt-4 leading-none">
-            <div className="wrapper flex flex-nowrap gap-4 font-bold whitespace-nowrap">
+          <div ref={ImageScrub2} className="mt-4 w-full leading-none">
+            <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
               {[
                 `https://owo.whats-th.is/4c2J1EH.png`,
                 `https://owo.whats-th.is/DSsroGt.png`,
@@ -195,18 +197,18 @@ const Home: NextPage = () => {
                   key={i}
                   src={v}
                   alt=""
-                  className="max-h-96 border rounded"
+                  className="max-h-96 rounded border"
                 />
               ))}
             </div>
           </div>
         </div>
       </div>
-      <div id="contact" className="container">
+      <div id="contact" className="container px-4">
         <h2 className="text-5xl lg:text-6xl">Get in touch</h2>
-        <h3 className="text-4xl mt-4 mb-1">Email</h3>
+        <h3 className="mt-4 mb-1 text-4xl">Email</h3>
         io@[fosshost dot org]
-        <h3 className="text-4xl mt-4 mb-1">Discord</h3>
+        <h3 className="mt-4 mb-1 text-4xl">Discord</h3>
         io#8106
       </div>
     </Layout>

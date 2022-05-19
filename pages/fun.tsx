@@ -23,9 +23,9 @@ const Fun = () => {
         <h1 className="">Have Fun! :p</h1>
 
         <h2>framer motion thing </h2>
-        <div className=" w-80 h-80 bg-gradient-to-br mx-auto from-purple-500 to-fuchsia-500 rounded-lg flex shadow-inner mb-16">
+        <div className=" mx-auto mb-16 flex h-80 w-80 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-500 shadow-inner">
           <motion.div
-            className="bg-white w-24 h-24 m-auto  rounded-3xl drop-shadow-lg"
+            className="m-auto h-24 w-24 rounded-3xl  bg-white drop-shadow-lg"
             whileHover={{ scale: 1.2, rotate: 90 }}
             whileTap={{
               scale: 0.8,
@@ -42,18 +42,18 @@ const Fun = () => {
         </p>
         <div className="relative mx-auto">
           <iframe
-            className="w-full aspect-[4/3] rounded-lg dark:border dark:border-gray-700"
+            className="aspect-[4/3] w-full rounded-lg dark:border dark:border-gray-700"
             src="https://dvd.jcde.xyz/?speed=2&embed=true"
           ></iframe>
           <Link href="https://dvd.jcde.xyz/?speed=2" passHref>
-            <a className="absolute right-4 bottom-4 text-gray-300 text-xs">
+            <a className="absolute right-4 bottom-4 text-xs text-gray-300">
               View in glorious full screen
             </a>
           </Link>
         </div>
         <h2>{scrollProgress > 0.5 ? `Big` : `Small`} Chungus</h2>
         <div
-          className=" w-80 h-80 md:w-96 md:h-96 overflow-hidden mx-auto rounded-lg flex shadow-inner m-32"
+          className=" m-32 mx-auto flex h-80 w-80 overflow-hidden rounded-lg shadow-inner md:h-96 md:w-96"
           style={{
             backgroundImage: `url(images/chungusbg.jpeg)`,
             backgroundPosition: `center`,
