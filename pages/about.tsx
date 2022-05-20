@@ -5,7 +5,7 @@ import { BsFillHeartFill } from 'react-icons/bs'
 export const About = (): JSX.Element => {
   return (
     <Layout title="About - Jeeho Ahn">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container px-4">
         <h1 className="text-3xl font-bold dark:text-white sm:text-5xl lg:text-5xl">
           About Me
         </h1>

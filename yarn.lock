@@ -3615,6 +3615,11 @@ minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
+mouse-follower@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/mouse-follower/-/mouse-follower-1.0.6.tgz#61a4a980fcaf2a1b0c5720ae9ba33b62d53f3075"
+  integrity sha512-N5ZcWbCY/0OOBgkxDmVlqNsDiFSgBHRejYjc5lEoVZeecLN6ZtAapRbyLiWY6Z8I+v2GjE7JPah4e4qOF6XFAw==
+
 mri@^1.1.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/mri/-/mri-1.2.0.tgz"

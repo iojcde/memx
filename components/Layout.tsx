@@ -66,16 +66,14 @@ const Layout: React.FC<{
       )}
       {!noNav && <Nav />}
 
-      <PageTransition>
-        <main
-          className={` relative w-full overflow-clip text-black dark:text-gray-100  ${className}`}
-          id="content"
-        >
-          {children}
-        </main>
+      <main
+        className={` relative w-full overflow-clip text-black dark:text-gray-100  ${className}`}
+        id="content"
+      >
+        {children}
+      </main>
 
-        <Footer />
-      </PageTransition>
+      <Footer />
     </>
   )
 }

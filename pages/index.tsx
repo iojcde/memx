@@ -4,10 +4,22 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import MouseFollower from 'mouse-follower'
 import Image from 'next/image'
 
 const Home: NextPage = () => {
   gsap.registerPlugin(ScrollTrigger)
+
+  useEffect(() => {
+    MouseFollower.registerGSAP(gsap)
+    const cursor = new MouseFollower({
+      stateDetection: {
+        '-pointer': `a,button`,
+        '-hidden': `iframe`,
+      },
+    })
+  })
+
   const AboutSection = useRef<HTMLDivElement>(null)
   const SkillsSection = useRef<HTMLDivElement>(null)
   const languageScrub1 = useRef<HTMLDivElement>(null)
@@ -66,8 +78,8 @@ const Home: NextPage = () => {
   return (
     <Layout hero>
       <div className="h-[90vh]">
-        <div className="z-10 float-right flex h-[90vh] w-full max-w-[78rem] bg-rose-200 transition duration-100 dark:border-gray-400 dark:bg-black dark:lg:border">
-          <div className="z-20 mt-10 px-4 pb-8 md:mt-36 lg:mt-40 lg:px-12">
+        <div className="float-right flex h-[90vh] w-full max-w-[78rem] bg-rose-200 transition duration-100 dark:border-gray-500 dark:bg-black dark:lg:border">
+          <div className="mt-10 px-4 pb-8 md:mt-36 lg:mt-40 lg:px-12">
             <h1 className="text-[18vw] text-6xl leading-tight dark:text-white sm:text-7xl lg:text-8xl">
               <b> I&apos;m a full-stack developer & designer based in Seoul.</b>
             </h1>
@@ -185,17 +197,17 @@ const Home: NextPage = () => {
                   quality="100"
                   width={2000}
                   height={800}
-                  className="max-h-96 rounded border object-contain"
+                  className="max-h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
                 />
               ))}
             </div>
           </div>
           <div ref={ImageScrub2} className="mt-4 w-full leading-none">
-            <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
+            <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold ">
               {[
                 `https://owo.whats-th.is/4c2J1EH.png`,
-                `https://owo.whats-th.is/DSsroGt.png`,
                 `https://owo.whats-th.is/8X4rRPb.png`,
+                `https://owo.whats-th.is/DSsroGt.png`,
               ].map((v, i) => (
                 <Image
                   key={i}
@@ -205,7 +217,7 @@ const Home: NextPage = () => {
                   height={800}
                   quality="100"
                   layout="raw"
-                  className="max-h-96 rounded border  object-contain"
+                  className="max-h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
                   loading="lazy"
                 />
               ))}

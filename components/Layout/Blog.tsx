@@ -31,7 +31,7 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="container mx-auto mb-16 flex w-full max-w-5xl flex-col items-start justify-center">
+      <article className="container mb-16 flex w-full flex-col items-start justify-center px-4">
         <h1 className="mb-4 text-3xl font-bold capitalize tracking-tight text-black  dark:text-white md:text-5xl">
           {post.title}
         </h1>
