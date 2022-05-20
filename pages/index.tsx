@@ -177,11 +177,15 @@ const Home: NextPage = () => {
                 `https://owo.whats-th.is/5jnX5Vc.png`,
                 `https://owo.whats-th.is/8ULhpLf.png`,
               ].map((v, i) => (
-                <img
+                <Image
                   key={i}
                   src={v}
                   alt=""
-                  className="max-h-96 rounded border"
+                  layout="raw"
+                  quality="100"
+                  width={2000}
+                  height={800}
+                  className="max-h-96 rounded border object-contain"
                 />
               ))}
             </div>
@@ -193,11 +197,15 @@ const Home: NextPage = () => {
                 `https://owo.whats-th.is/DSsroGt.png`,
                 `https://owo.whats-th.is/8X4rRPb.png`,
               ].map((v, i) => (
-                <img
+                <Image
                   key={i}
                   src={v}
                   alt=""
-                  className="max-h-96 rounded border"
+                  width={2000}
+                  height={800}
+                  quality="100"
+                  layout="raw"
+                  className="max-h-96 rounded border  object-contain"
                   loading="lazy"
                 />
               ))}
