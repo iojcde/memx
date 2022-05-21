@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@ashthornton/asscroll@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@ashthornton/asscroll/-/asscroll-2.0.7.tgz#2e9624508ad9997036fd1952c725f593943beaf8"
+  integrity sha512-8OcuNdd7B1Edi2ERpWR9f6jy6ScpmZWIpKBVt4FyeGmK3ojQBpQ+oU7cDxn11aGAzGp7ULQnMb518gtodII7jQ==
+  dependencies:
+    "@unseenco/e" "^2.2.2"
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.12.11.tgz"
@@ -826,6 +833,13 @@
   dependencies:
     "@typescript-eslint/types" "5.3.1"
     eslint-visitor-keys "^3.0.0"
+
+"@unseenco/e@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@unseenco/e/-/e-2.2.2.tgz#aa013949789b9a65e61bb461fae9bf8f40f5a121"
+  integrity sha512-7d+CKXw5rJDz1zkKiAQQGBLOUZ1JqV+c9pTTERSKwfwjjq6sJkoDbo+L0usmu7kDzIUxJKWOtm1JoCTrYNHIZw==
+  dependencies:
+    selector-set "^1.1.5"
 
 acorn-jsx@^5.0.0, acorn-jsx@^5.3.1:
   version "5.3.2"
@@ -4459,6 +4473,11 @@ section-matter@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
+
+selector-set@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
+  integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
 
 semver@^6.3.0:
   version "6.3.0"

@@ -6,6 +6,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import MouseFollower from 'mouse-follower'
 import Image from 'next/image'
+import Hero from 'components/Sections/Hero'
+import Details from 'components/Sections/Details'
+import Skills from 'components/Sections/Skills'
 
 const Home: NextPage = () => {
   gsap.registerPlugin(ScrollTrigger)
@@ -20,14 +23,14 @@ const Home: NextPage = () => {
     })
   })
 
-  const AboutSection = useRef<HTMLDivElement>(null)
-  const SkillsSection = useRef<HTMLDivElement>(null)
+  const DetailsRef = useRef<HTMLDivElement>(null)
+  const SkillsRef = useRef<HTMLDivElement>(null)
   const languageScrub1 = useRef<HTMLDivElement>(null)
   const languageScrub2 = useRef<HTMLDivElement>(null)
   const ImageScrub1 = useRef<HTMLDivElement>(null)
   const ImageScrub2 = useRef<HTMLDivElement>(null)
 
-  const sectionRefs = [AboutSection, SkillsSection]
+  const sectionRefs = [DetailsRef, SkillsRef]
 
   const scrubRefs = [languageScrub1, languageScrub2, ImageScrub1, ImageScrub2]
 
@@ -76,69 +79,11 @@ const Home: NextPage = () => {
   })
 
   return (
-    <Layout hero>
-      <div className="h-[90vh]">
-        <div className="float-right flex h-[90vh] w-full max-w-[78rem] bg-rose-200 transition duration-100 dark:border-gray-500 dark:bg-black dark:lg:border">
-          <div className="mt-10 px-4 pb-8 md:mt-36 lg:mt-40 lg:px-12">
-            <h1 className="text-[18vw] text-6xl leading-tight dark:text-white sm:text-7xl lg:text-8xl">
-              <b> I&apos;m a full-stack developer & designer based in Seoul.</b>
-            </h1>
-            <h2 className="mt-6 text-2xl font-medium">
-              <b>
-                <a className="font-bold" href="https://vignetteapp.org">
-                  Vignette
-                </a>
-              </b>
-              {` `}Core Developer
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div className="overflow-hidden text-black" ref={AboutSection}>
-        <div className="wrapper float-left mt-8 w-full max-w-7xl bg-teal-200 p-2 lg:mt-16 lg:p-8">
-          <h1 className="text-4xl leading-tight lg:text-6xl">
-            I design websites and develop software.
-          </h1>
-          <div className="mt-4 max-w-2xl text-lg leading-none lg:text-xl">
-            {` `}
-            <p>
-              I currently volunteer at {` `}
-              <b>
-                <a href="https://fosshost.org">Fosshost</a>
-                {` `}
-              </b>
-              , a non-profit provider of cloud services for the open source
-              community.
-            </p>
-            <p className="mt-4">
-              I&apos;m a Core Developer at{` `}
-              <b>
-                <a href="https://vignetteapp.org">Vignette</a>,
-              </b>
-              {` `}
-              where I help out with <span className="underline">design</span>,
-              <br /> <span className="underline">web development</span>, and
-              {` `}
-              <span className="underline">managing infrastructure</span>.{` `}
-            </p>
-            {` `}
-            <p className="mt-8">
-              I also am a community moderator for the project, which means I
-              help moderate the Vignette
-              {` `}
-              <b>
-                {` `}
-                <a href="https://go.vignetteapp.org/discord">Discord Server</a>
-              </b>
-              {` `}.
-            </p>
-          </div>
+    <Layout>
+      <Hero />
+      <Details sectionRef={DetailsRef} />
 
-          <div className="mt-6 text-lg underline lg:mt-12">
-            <Link href="/about">Learn more -&gt; </Link>
-          </div>
-        </div>
-      </div>
+      <Skills sectionRef={SkillsRef} />
 
       <div className="mt-8 pb-28 lg:mt-16">
         <div ref={languageScrub1} className="w-full leading-none">
@@ -152,32 +97,7 @@ const Home: NextPage = () => {
             React • TailwindCSS • Next.js • Linux • Docker • Ansible • GraphQL
           </div>
         </div>
-        <div className=" overflow-hidden text-black " ref={SkillsSection}>
-          <div className="wrapper float-right mt-8 w-full max-w-7xl bg-violet-300 p-2 lg:mt-16 lg:p-8">
-            <h2 className="text-5xl leading-tight lg:text-6xl"> Skills</h2>
 
-            <ul className="flex flex-col gap-1 text-lg">
-              <li>Go</li>
-              <li>TypeScript</li>
-              <li>JavaScript</li>
-              <li>Next.js</li>
-              <li>TailiwndCSS</li>
-              <li>React</li>
-              <li>Rust</li>
-              <li>Python</li>
-              <li>
-                Linux{` `}
-                <span className="text-gray-500 line-through ">
-                  (I use arch btw)
-                </span>
-              </li>
-              <li>GraphQL</li>
-              <li>Kubernetes</li>
-              <li>Git</li>
-              <li>...more</li>
-            </ul>
-          </div>
-        </div>
         <div id="designs" className=" mt-8 lg:mt-16">
           <h2 className="container px-4 text-5xl lg:text-6xl">
             Designs &darr;
