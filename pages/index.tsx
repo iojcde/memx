@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
-import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
@@ -104,7 +103,7 @@ const Home: NextPage = () => {
                 layout="raw"
                 quality="100"
                 width={2000}
-                loading="eager"
+                priority
                 height={800}
                 className="aspect-video h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
               />
@@ -125,7 +124,7 @@ const Home: NextPage = () => {
                   height={800}
                   quality="100"
                   layout="raw"
-                  loading="eager"
+                  priority
                   className="h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
                 />
               ))}
