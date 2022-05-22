@@ -112,4 +112,15 @@
     transition-duration: 0.4s, 0.4s;
     transition-delay: 0s, 0s;
   }
+  .mf-cursor.-menu::before{
+    @apply scale-[1.32] ;
+  }
+  .mf-cursor.-opaque{
+    @apply mix-blend-exclusion text-white ;
+  }
+
+  .mf-cursor.mf-cursor.-opaque::before{
+
+      @apply scale-[1.32] ;
   
+  }

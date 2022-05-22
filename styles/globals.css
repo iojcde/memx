@@ -286,3 +286,21 @@ pre {
 .container {
   @apply lg:max-w-5xl mx-auto lg:px-4;
 }
+/* a ====================================*/
+
+
+.scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 4px;
+}
+
+
+.scrollbar-track {
+  @apply hidden;
+  
+}

@@ -4,7 +4,7 @@ import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 const Footer = () => (
   <footer
-    className="bg-primary border-primary mx-auto mt-12 max-w-5xl border-t py-6 transition duration-100"
+    className="border-primary container mx-auto mt-12  border-t px-4 py-6 transition duration-100"
     aria-labelledby="footerHeading"
   >
     <h2 id="footerHeading" className="sr-only">
