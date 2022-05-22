@@ -29,6 +29,7 @@ const Layout: React.FC<{
   useEffect(() => {
     MouseFollower.registerGSAP(gsap)
     document.getElementsByClassName(`mf-cursor`).length == 0 &&
+      !window.matchMedia(`(pointer: coarse)`).matches &&
       new MouseFollower({
         stateDetection: {
           '-pointer': `a,button`,
