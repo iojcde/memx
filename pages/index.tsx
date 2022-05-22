@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           w,
           { x: 0 },
           {
-            x: index % 2 == 0 ? w.scrollWidth * 0.1 : -(w.scrollWidth * 0.1),
+            x: index % 2 == 0 ? w.scrollWidth * 0.05 : -(w.scrollWidth * 0.05),
             scrollTrigger: {
               trigger: section.current,
               scrub: 1,

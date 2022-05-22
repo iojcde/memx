@@ -1,7 +1,7 @@
 const SkillsSection = ({ sectionRef }) => {
   return (
     <div className=" overflow-hidden text-black " ref={sectionRef}>
-      <div className="wrapper float-right mt-8 w-full max-w-7xl bg-violet-300 p-2 lg:mt-16 lg:p-8">
+      <div className="wrapper float-right mt-8 w-full max-w-2xl bg-violet-300 p-4 lg:mt-16 lg:max-w-7xl lg:p-8">
         <h2 className="text-5xl leading-tight lg:text-6xl"> Skills</h2>
 
         <ul className="flex flex-col gap-1 text-lg">

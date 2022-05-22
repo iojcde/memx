@@ -26,6 +26,9 @@ ul.wrapper {
 
 
 body {
+  height: 100vh;
+  
+  overflow: hidden;
   margin: 0;
   /* font-family: "Inter var",-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -115,6 +118,10 @@ b{
   font-weight: 700;
 }
 
+body .scroll-content {
+  height: 100%;
+  will-change: transform;
+}
 
 /* syntax highlighting stuff */
 
@@ -286,21 +293,17 @@ pre {
 .container {
   @apply lg:max-w-5xl mx-auto lg:px-4;
 }
-/* a ====================================*/
-
-
-.scrollbar-thumb {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background: rgba(0, 0, 0, .5);
-  border-radius: 4px;
+#__next .scrollbar-thumb {
+  background: #333;
 }
 
 
-.scrollbar-track {
-  @apply hidden;
+#__next .scrollbar-track {
+  background: 0 0;
+  
+}
+
+#__next .scrollbar-track-y {
+  right:3px;
   
 }

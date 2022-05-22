@@ -40,10 +40,9 @@ const Layout: React.FC<{
   const containerRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     Scrollbar.use(SoftScrollPlugin)
-    Scrollbar.detachStyle()
 
     const bodyScrollBar = Scrollbar.init(containerRef.current, {
-      alwaysShowTracks: true,
+      alwaysShowTracks: false,
       renderByPixels: false,
       damping: 0.075,
     })
