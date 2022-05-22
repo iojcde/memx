@@ -10,6 +10,8 @@
 import Scrollbar from 'smooth-scrollbar'
 
 class SoftScrollPlugin extends Scrollbar.ScrollbarPlugin {
+  lockX: number
+  lockY: number
   transformDelta(delta, fromEvent) {
     const dirX = delta.x > 0 ? 1 : -1
     const dirY = delta.y > 0 ? 1 : -1
