@@ -102,13 +102,12 @@ const Home: NextPage = () => {
                 src={v}
                 alt=""
                 layout="raw"
+                loading="lazy"
                 quality="100"
-                width={2000}
-                priority
+                width={1000}
+                height={400}
                 data-cursor-text="See more"
-                data-cursor="-inverse"
-                height={800}
-                className="aspect-video h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
+                className="aspect-video h-80 rounded border transition duration-100 dark:brightness-90 dark:hover:brightness-100"
               />
             ))}
           </div>
@@ -123,14 +122,13 @@ const Home: NextPage = () => {
                   key={i}
                   src={v}
                   alt=""
-                  width={2000}
-                  height={800}
+                  width={1000}
+                  height={400}
                   quality="100"
                   layout="raw"
-                  priority
+                  loading="lazy"
                   data-cursor-text="See more"
-                  data-cursor="-inverse"
-                  className="h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
+                  className="h-80 rounded border transition duration-100 dark:brightness-90 dark:hover:brightness-100"
                 />
               ))}
             </div>
