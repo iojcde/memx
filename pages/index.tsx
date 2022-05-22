@@ -13,6 +13,7 @@ const Home: NextPage = () => {
 
   const DetailsRef = useRef<HTMLDivElement>(null)
   const SkillsRef = useRef<HTMLDivElement>(null)
+
   const languageScrub1 = useRef<HTMLDivElement>(null)
   const languageScrub2 = useRef<HTMLDivElement>(null)
   const ImageScrub1 = useRef<HTMLDivElement>(null)
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
         )
       }
     })
-  })
+  }, [])
 
   useEffect(() => {
     scrubRefs.forEach((section, index) => {
@@ -87,7 +88,7 @@ const Home: NextPage = () => {
 
       <Skills sectionRef={SkillsRef} />
 
-      <div id="designs" className=" mt-8 lg:mt-16">
+      <div id="designs" className="mt-16">
         <h2 className="container px-4 text-5xl lg:text-6xl">Designs &darr;</h2>
         <div ref={ImageScrub1} className="mt-8 w-full leading-none">
           <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
@@ -104,6 +105,8 @@ const Home: NextPage = () => {
                 quality="100"
                 width={2000}
                 priority
+                data-cursor-text="See more"
+                data-cursor="-inverse"
                 height={800}
                 className="aspect-video h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
               />
@@ -125,6 +128,8 @@ const Home: NextPage = () => {
                   quality="100"
                   layout="raw"
                   priority
+                  data-cursor-text="See more"
+                  data-cursor="-inverse"
                   className="h-80 rounded border transition duration-100 dark:brightness-[.85] dark:hover:brightness-100"
                 />
               ))}

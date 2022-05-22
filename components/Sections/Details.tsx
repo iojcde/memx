@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Details = ({ sectionRef }) => {
   return (
     <div className="overflow-hidden text-black" ref={sectionRef}>
-      <div className="wrapper float-left mt-8 w-full max-w-7xl bg-teal-200 p-2 lg:mt-16 lg:p-8">
+      <div className="wrapper float-left mt-16 w-full max-w-7xl bg-teal-200 p-4 sm:p-8">
         <h1 className="text-4xl leading-tight lg:text-6xl">
           I design websites and develop software.
         </h1>

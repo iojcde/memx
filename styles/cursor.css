@@ -21,8 +21,8 @@
     border-radius: 50%;
     transition: transform 0.25s ease-in-out, opacity 0.1s;
   }
-  .mf-cursor.-inverse {
-    color: white;
+  .mf-cursor.-inverse::before {
+    @apply text-white dark:text-black;
   }
   @supports (mix-blend-mode:exclusion) {
     .mf-cursor.-exclusion {
@@ -63,11 +63,14 @@
     justify-content: center;
     transform: scale(0) rotate(10deg);
     opacity: 0;
-    color: #fff;
     font-size: 16px;
     line-height: 20px;
     text-align: center;
     transition: opacity 0.4s, transform 0.3s;
+    @apply text-white dark:text-black;
+  }
+  .-inverse .mf-cursor-text{
+    @apply text-black dark:text-white;
   }
   .mf-cursor.-text .mf-cursor-text, .mf-cursor.-icon .mf-cursor-text {
     opacity: 1;
