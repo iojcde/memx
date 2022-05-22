@@ -5,11 +5,9 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { ReactNode, useEffect, useRef } from 'react'
-import Scrollbar from 'smooth-scrollbar'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import gsap from 'gsap'
 import SoftScrollPlugin from 'lib/softScroll'
-import MouseFollower from 'mouse-follower'
 
 const Layout: React.FC<{
   className?: string
@@ -23,43 +21,46 @@ const Layout: React.FC<{
   hero?: boolean
 }> = ({ className, children, image, date, title, desc, type, noNav }) => {
   const router = useRouter()
-  const menuRef = useRef<HTMLDivElement>(null)
   gsap.registerPlugin(ScrollTrigger)
 
-  useEffect(() => {
-    MouseFollower.registerGSAP(gsap)
-    document.getElementsByClassName(`mf-cursor`).length == 0 &&
-      !window.matchMedia(`(pointer: coarse)`).matches &&
-      new MouseFollower({
-        stateDetection: {
-          '-pointer': `a,button`,
-          '-hidden': `iframe`,
-        },
-      })
-  })
-
   const containerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    Scrollbar.use(SoftScrollPlugin)
+    if (!window.matchMedia(`(pointer: coarse)`).matches) {
+      import(`mouse-follower`).then(({ default: MouseFollower }) => {
+        MouseFollower.registerGSAP(gsap)
+        document.getElementsByClassName(`mf-cursor`).length == 0 &&
+          new MouseFollower({
+            stateDetection: {
+              '-pointer': `a,button`,
+              '-hidden': `iframe`,
+            },
+          })
+      })
 
-    const bodyScrollBar = Scrollbar.init(containerRef.current, {
-      alwaysShowTracks: false,
-      renderByPixels: false,
-      damping: 0.075,
-    })
+      import(`smooth-scrollbar`).then(({ default: Scrollbar }) => {
+        Scrollbar.use(SoftScrollPlugin)
 
-    ScrollTrigger.scrollerProxy(containerRef.current, {
-      scrollTop(value) {
-        if (arguments.length) {
-          bodyScrollBar.scrollTop = value
-        }
-        return bodyScrollBar.scrollTop
-      },
-    })
+        const bodyScrollBar = Scrollbar.init(containerRef.current, {
+          alwaysShowTracks: false,
+          renderByPixels: false,
+          damping: 0.075,
+        })
 
-    bodyScrollBar.addListener(ScrollTrigger.update)
+        ScrollTrigger.scrollerProxy(containerRef.current, {
+          scrollTop(value) {
+            if (arguments.length) {
+              bodyScrollBar.scrollTop = value
+            }
+            return bodyScrollBar.scrollTop
+          },
+        })
 
-    ScrollTrigger.defaults({ scroller: containerRef.current })
+        bodyScrollBar.addListener(ScrollTrigger.update)
+
+        ScrollTrigger.defaults({ scroller: containerRef.current })
+      })
+    }
   })
 
   return (
