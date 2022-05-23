@@ -5,11 +5,10 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { ReactNode, useEffect, useRef } from 'react'
-import Scrollbar from 'smooth-scrollbar'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import gsap from 'gsap'
 import SoftScrollPlugin from 'lib/softScroll'
-import MouseFollower from 'mouse-follower'
+import Scrollbar from 'smooth-scrollbar'
 
 const Layout: React.FC<{
   className?: string
@@ -23,22 +22,25 @@ const Layout: React.FC<{
   hero?: boolean
 }> = ({ className, children, image, date, title, desc, type, noNav }) => {
   const router = useRouter()
-  const menuRef = useRef<HTMLDivElement>(null)
   gsap.registerPlugin(ScrollTrigger)
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    MouseFollower.registerGSAP(gsap)
-    document.getElementsByClassName(`mf-cursor`).length == 0 &&
-      !window.matchMedia(`(pointer: coarse)`).matches &&
-      new MouseFollower({
-        stateDetection: {
-          '-pointer': `a,button`,
-          '-hidden': `iframe`,
-        },
+    if (!window.matchMedia(`(pointer: coarse)`).matches) {
+      import(`mouse-follower`).then(({ default: MouseFollower }) => {
+        MouseFollower.registerGSAP(gsap)
+        document.getElementsByClassName(`mf-cursor`).length == 0 &&
+          new MouseFollower({
+            stateDetection: {
+              '-pointer': `a,button`,
+              '-hidden': `iframe`,
+            },
+          })
       })
+    }
   })
 
-  const containerRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     Scrollbar.use(SoftScrollPlugin)
 

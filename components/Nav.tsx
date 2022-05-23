@@ -11,7 +11,7 @@ const Nav: React.FC = () => {
       </a>
       <nav className="relative z-30 my-0 flex w-full items-center justify-center px-4 py-4 transition duration-100">
         <div className="flex w-full max-w-5xl items-center justify-between">
-          <div className="text-2xl font-semibold text-black dark:text-gray-100 md:text-3xl lg:text-4xl">
+          <div className="text-xl font-semibold text-black dark:text-gray-100 sm:text-2xl md:text-3xl lg:text-4xl">
             <Link href="/">Jeeho Ahn</Link>
           </div>
           <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-gray-100 lg:space-x-4">

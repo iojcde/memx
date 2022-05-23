@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-const Details = ({ sectionRef }) => {
+const Details = () => {
   return (
-    <div className="overflow-hidden text-black" ref={sectionRef}>
+    <div className="slide-section overflow-hidden text-black">
       <div className="wrapper float-left mt-16 w-full max-w-7xl bg-teal-200 p-4 sm:p-8">
         <h1 className="text-4xl leading-tight lg:text-6xl">
           I design websites and develop software.

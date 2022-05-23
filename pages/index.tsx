@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Layout from 'components/Layout'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image'
@@ -11,86 +11,78 @@ import Skills from 'components/Sections/Skills'
 const Home: NextPage = () => {
   gsap.registerPlugin(ScrollTrigger)
 
-  const DetailsRef = useRef<HTMLDivElement>(null)
-  const SkillsRef = useRef<HTMLDivElement>(null)
-
-  const languageScrub1 = useRef<HTMLDivElement>(null)
-  const languageScrub2 = useRef<HTMLDivElement>(null)
-  const ImageScrub1 = useRef<HTMLDivElement>(null)
-  const ImageScrub2 = useRef<HTMLDivElement>(null)
-
-  const sectionRefs = [DetailsRef, SkillsRef]
-
-  const scrubRefs = [languageScrub1, languageScrub2, ImageScrub1, ImageScrub2]
-
   // wait until DOM has been rendered
   useEffect(() => {
     const wideScreen = window.matchMedia(`(min-width: 800px)`)
 
-    sectionRefs.forEach((section, index) => {
-      const w = section.current.querySelector(`.wrapper`)
+    wideScreen.matches &&
+      gsap.utils
+        .toArray(`.slide-section`)
+        .forEach((section: HTMLElement, index) => {
+          const w = section.querySelector(`.wrapper`)
 
-      if (wideScreen.matches) {
+          gsap.fromTo(
+            w,
+            { x: 0 },
+            {
+              x:
+                index % 2 == 0 ? w.scrollWidth * 0.08 : -(w.scrollWidth * 0.08),
+              scrollTrigger: {
+                trigger: section,
+                scrub: 1,
+              },
+            },
+          )
+        })
+  })
+
+  useEffect(() => {
+    gsap.utils
+      .toArray(`.scrub-section`)
+      .forEach((section: HTMLElement, index) => {
+        const w = section.querySelector(`.wrapper`)
+        const [x, xEnd] =
+          index % 2
+            ? [`100%`, (w.scrollWidth - section.offsetWidth) * -1]
+            : [w.scrollWidth * -1, 0]
         gsap.fromTo(
           w,
-          { x: 0 },
+          { x },
           {
-            x: index % 2 == 0 ? w.scrollWidth * 0.08 : -(w.scrollWidth * 0.08),
+            x: xEnd,
             scrollTrigger: {
-              trigger: section.current,
-              scrub: 1,
+              trigger: section,
+              scrub: 0.5,
             },
           },
         )
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    scrubRefs.forEach((section, index) => {
-      const w = section.current.querySelector(`.wrapper`)
-      const [x, xEnd] =
-        index % 2
-          ? [`100%`, (w.scrollWidth - section.current.offsetWidth) * -1]
-          : [w.scrollWidth * -1, 0]
-      gsap.fromTo(
-        w,
-        { x },
-        {
-          x: xEnd,
-          scrollTrigger: {
-            trigger: section.current,
-            scrub: 0.5,
-          },
-        },
-      )
-    })
+      })
   })
 
   return (
     <Layout>
       <Hero />
-      <Details sectionRef={DetailsRef} />
+      <Details />
 
       <div className="my-16  lg:mt-16" data-cursor="-opaque">
-        <div ref={languageScrub1} className="w-full leading-none">
+        <div className="scrub-section w-full leading-none">
           <div className="wrapper flex w-full whitespace-nowrap text-5xl font-semibold sm:text-6xl md:text-9xl">
             TypeScript • JavaScript • Go • Rust • Python
           </div>
         </div>
         <hr className="my-4 mx-auto  h-2 max-w-7xl border-none bg-black px-4 dark:bg-white lg:px-8" />
-        <div ref={languageScrub2} className="w-full leading-none">
+        <div className="scrub-section w-full leading-none">
           <div className="wrapper  flex whitespace-nowrap text-5xl font-semibold sm:text-6xl md:text-9xl">
             React • TailwindCSS • Next.js • Linux • Docker • Ansible • GraphQL
           </div>
         </div>
       </div>
 
-      <Skills sectionRef={SkillsRef} />
+      <Skills />
 
       <div id="designs" className="mt-16">
         <h2 className="container px-4 text-5xl lg:text-6xl">Designs &darr;</h2>
-        <div ref={ImageScrub1} className="mt-8 w-full leading-none">
+        <div className="scrub-section mt-8 w-full leading-none">
           <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
             {[
               `https://owo.whats-th.is/APDfJDz.png`,
@@ -111,7 +103,7 @@ const Home: NextPage = () => {
               />
             ))}
           </div>
-          <div ref={ImageScrub2} className="mt-4 w-full leading-none">
+          <div className="scrub-section mt-4 w-full leading-none">
             <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold ">
               {[
                 `https://owo.whats-th.is/4c2J1EH.png`,
