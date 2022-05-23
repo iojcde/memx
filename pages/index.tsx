@@ -89,18 +89,19 @@ const Home: NextPage = () => {
               `https://owo.whats-th.is/5jnX5Vc.png`,
               `https://owo.whats-th.is/8ULhpLf.png`,
             ].map((v, i) => (
-              <Image
-                key={i}
-                src={v}
-                alt=""
-                layout="raw"
-                loading="lazy"
-                quality="100"
-                width={1000}
-                height={400}
-                data-cursor-text="See more"
-                className="aspect-video h-80 rounded border transition duration-100 dark:brightness-90 dark:hover:brightness-100"
-              />
+              <div className="relative aspect-video h-80" key={i}>
+                <Image
+                  src={v}
+                  alt=""
+                  layout="raw"
+                  width={960}
+                  height={600}
+                  loading="lazy"
+                  quality="100"
+                  data-cursor-text="See more"
+                  className="h-64 rounded border object-cover object-top transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-80"
+                />
+              </div>
             ))}
           </div>
           <div className="scrub-section mt-4 w-full leading-none">
@@ -110,18 +111,19 @@ const Home: NextPage = () => {
                 `https://owo.whats-th.is/8X4rRPb.png`,
                 `https://owo.whats-th.is/DSsroGt.png`,
               ].map((v, i) => (
-                <Image
-                  key={i}
-                  src={v}
-                  alt=""
-                  width={1000}
-                  height={400}
-                  quality="100"
-                  layout="raw"
-                  loading="lazy"
-                  data-cursor-text="See more"
-                  className="h-80 rounded border transition duration-100 dark:brightness-90 dark:hover:brightness-100"
-                />
+                <div className="relative aspect-video h-80" key={i}>
+                  <Image
+                    src={v}
+                    alt=""
+                    layout="raw"
+                    loading="lazy"
+                    width={960}
+                    height={600}
+                    quality="100"
+                    data-cursor-text="See more"
+                    className="h-64 rounded border object-cover object-top  transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-80"
+                  />
+                </div>
               ))}
             </div>
           </div>
