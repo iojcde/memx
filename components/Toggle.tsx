@@ -26,7 +26,12 @@ const Toggle: React.FC = () => {
       className="h-8 w-8 rounded-md p-2"
       aria-hidden
     >
-      {mounted && (theme === `dark` ? <HiSun color="white" /> : <HiMoon />)}
+      {mounted &&
+        (theme === `dark` ? (
+          <HiSun size="20" color="white" />
+        ) : (
+          <HiMoon size="20" />
+        ))}
     </button>
   )
 }

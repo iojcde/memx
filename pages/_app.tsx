@@ -1,6 +1,6 @@
 import '../styles/globals.css'
-import '../styles/fonts.css'
 import '../styles/cursor.css'
+import '../styles/syntax.css'
 import { ThemeProvider } from 'next-themes'
 import { AppProps } from 'next/app'
 

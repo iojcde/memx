@@ -1,17 +1,28 @@
 import Toggle from './Toggle'
 import Link from 'next/link'
+import Magnetic from 'lib/magnetic'
+import { useEffect } from 'react'
 const Nav: React.FC = () => {
+  // useEffect(() => {
+  //   const el = document.getElementById(`burger`)
+
+  //   new Magnetic(el, { x: 0.08, y: 0.08, s: 0.2, rs: 0.7 })
+  // })
   return (
     <>
       <a
         href="#content"
-        className="text-md absolute -top-8 z-50 ml-3 -translate-y-12 transform rounded-md border border-gray-300 bg-white px-3 py-1 transition-transform duration-100 focus:translate-y-12 dark:bg-black lg:ml-8"
+        className="text-md absolute -top-8 ml-3 -translate-y-12 transform rounded-md border border-gray-300  px-3 py-1 transition-transform duration-100 focus:translate-y-12 lg:ml-8"
       >
         Skip to content
       </a>
-      <nav className="relative z-30 my-0 flex w-full items-center justify-center px-4 py-4 transition duration-100">
-        <div className="flex w-full max-w-5xl items-center justify-between">
-          <div className="text-xl font-semibold text-black dark:text-gray-100 sm:text-2xl md:text-3xl lg:text-4xl">
+      <nav className=" my-0 flex w-full items-center justify-center py-4 px-4 transition duration-100 lg:px-14">
+        <div className="flex w-full  items-center justify-between">
+          <div
+            id="name"
+            className="relative text-xl text-black dark:text-gray-100 sm:text-2xl lg:text-4xl"
+            data-cursor="-opaque"
+          >
             <Link href="/">Jeeho Ahn</Link>
           </div>
           <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-gray-100 lg:space-x-4">

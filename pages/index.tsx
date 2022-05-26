@@ -129,13 +129,6 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div id="contact" className="container mt-16 px-4">
-        <h2 className="text-5xl lg:text-6xl">Get in touch</h2>
-        <h3 className="mt-4 mb-1 text-4xl">Email</h3>
-        io@[fosshost dot org]
-        <h3 className="mt-4 mb-1 text-4xl">Discord</h3>
-        io#8106
-      </div>
     </Layout>
   )
 }

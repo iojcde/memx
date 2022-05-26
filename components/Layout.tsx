@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import gsap from 'gsap'
 import SoftScrollPlugin from 'lib/softScroll'
 import Scrollbar from 'smooth-scrollbar'
+import Menu from './Menu'
 
 const Layout: React.FC<{
   className?: string
@@ -18,9 +19,8 @@ const Layout: React.FC<{
   image?: string
   desc?: string
   type?: string
-  noNav?: boolean
   hero?: boolean
-}> = ({ className, children, image, date, title, desc, type, noNav }) => {
+}> = ({ className, children, image, date, title, desc, type }) => {
   const router = useRouter()
   gsap.registerPlugin(ScrollTrigger)
 
@@ -65,60 +65,62 @@ const Layout: React.FC<{
   })
 
   return (
-    <div ref={containerRef} className="h-screen">
-      <NextSeo
-        title={title || `Jeeho Ahn - Portfolio`}
-        description={
-          desc || `Student, Full Stack Developer, Open Source enthusaist.`
-        }
-        canonical={`https:/jcde.xyz${router.asPath}`}
-        openGraph={{
-          type: type,
-          url: `https:/jcde.xyz${router.asPath}`,
-          title: title || `Jeeho Ahn | Portfolio`,
-          article: { publishedTime: date },
+    <>
+      {/* <Menu /> */}
+      <div ref={containerRef} className="h-screen">
+        <NextSeo
+          title={title || `Jeeho Ahn - Portfolio`}
+          description={
+            desc || `Student, Full Stack Developer, Open Source enthusaist.`
+          }
+          canonical={`https:/jcde.xyz${router.asPath}`}
+          openGraph={{
+            type: type,
+            url: `https:/jcde.xyz${router.asPath}`,
+            title: title || `Jeeho Ahn - Portfolio`,
+            article: { publishedTime: date },
 
-          description:
-            desc || `Student, Full Stack Developer, Open Source enthusaist.`,
-          site_name: title || `Jeeho Ahn - Portfolio`,
-          images: [
-            {
-              url: image || ``,
-            },
-          ],
-        }}
-        twitter={{
-          handle: `@IoJcde`,
-          cardType: `summary_large_image`,
-        }}
-      />
-      <Head>
-        <link
-          href="/static/fonts/PretendardVariable.woff2"
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
+            description:
+              desc || `Student, Full Stack Developer, Open Source enthusaist.`,
+            site_name: title || `Jeeho Ahn - Portfolio`,
+            images: [
+              {
+                url: image || ``,
+              },
+            ],
+          }}
+          twitter={{
+            handle: `@IoJcde`,
+            cardType: `summary_large_image`,
+          }}
         />
-      </Head>
-      {process.env.NODE_ENV == `production` && (
-        <Script
-          strategy="afterInteractive"
-          data-domain="jcde.xyz"
-          src="https://stats.willit.fail/js/plausible.js"
-        />
-      )}
+        <Head>
+          <link
+            href="/static/fonts/PretendardStdVariable.woff2"
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        </Head>
+        {process.env.NODE_ENV == `production` && (
+          <Script
+            strategy="afterInteractive"
+            data-domain="jcde.xyz"
+            src="https://stats.willit.fail/js/plausible.js"
+          />
+        )}
+        <Nav />
+        <main
+          className={`relative z-10 w-full overflow-clip text-black dark:text-gray-100  ${className}`}
+          id="content"
+        >
+          {children}
+        </main>
 
-      {!noNav && <Nav />}
-      <main
-        className={`relative w-full overflow-clip text-black dark:text-gray-100  ${className}`}
-        id="content"
-      >
-        {children}
-      </main>
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   )
 }
 

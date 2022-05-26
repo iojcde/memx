@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "lib/magnetic.js"  ],
   "exclude": [
     "node_modules"
   ]

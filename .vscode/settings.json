@@ -5,5 +5,8 @@
     "editor.codeActionsOnSave": {
         // For ESLint
         "source.fixAll.eslint": true,
+      },
+      "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
       }
 }
