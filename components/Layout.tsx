@@ -64,6 +64,18 @@ const Layout: React.FC<{
     ScrollTrigger.defaults({ scroller: containerRef.current })
   })
 
+  useEffect(() => {
+    gsap.fromTo(
+      `#footer-wrapper`,
+      { yPercent: 0 },
+      {
+        yPercent: 50,
+        scrollTrigger: { trigger: `footer`, scrub: true },
+        ease: `none`,
+      },
+    )
+  })
+
   return (
     <>
       {/* <Menu /> */}
@@ -112,7 +124,7 @@ const Layout: React.FC<{
         )}
         <Nav />
         <main
-          className={`relative z-10 w-full overflow-clip text-black dark:text-gray-100  ${className}`}
+          className={`relative z-10 w-full overflow-clip text-black dark:bg-black dark:text-gray-100  ${className}`}
           id="content"
         >
           {children}

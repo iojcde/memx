@@ -5,22 +5,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
 
 const Footer = () => {
-  useEffect(() => {
-    gsap.set(`#footer-wrapper`, { yPercent: -25 })
-
-    const uncover = gsap.timeline({ paused: true })
-
-    uncover.to(`#footer-wrapper`, { yPercent: 25, ease: `none` })
-
-    ScrollTrigger.create({
-      trigger: `#designs`,
-      start: `top top`,
-      end: `+=100%`,
-      animation: uncover,
-      scrub: true,
-    })
-  })
-
   return (
     <footer
       id="footer"
@@ -31,16 +15,16 @@ const Footer = () => {
       <h2 id="footerHeading" className="sr-only">
         Footer
       </h2>
-      <div id="footer-wrapper" className="relative h-[80vh]">
+      <div id="footer-wrapper" className="relative z-0 h-[80vh] ">
         <div
           id="contact"
           className="mx-auto max-w-7xl px-4 dark:text-white sm:px-16"
         >
           <h2 className="text-6xl sm:text-8xl lg:text-9xl">Get in touch</h2>
           <div className="mt-4">
-            <a className="text-3xl">
+            <div className="text-3xl">
               <a href="mailto:io@fosshost.org"> &rarr; io@fosshost.org</a>
-            </a>
+            </div>
             <h4 className="mt-4 mb-1 text-4xl">Discord</h4>
             io#8106
           </div>
