@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="dark relative z-0 mx-auto h-screen border-t bg-black transition duration-100"
+      className="dark relative z-0 mx-auto mt-24 h-screen border-t bg-black transition duration-100"
       aria-labelledby="footerHeading"
       data-cursor="-inverse"
     >
