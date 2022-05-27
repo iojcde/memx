@@ -1,83 +1,46 @@
 import Tag from 'components/Tag'
 import Layout from 'components/Layout'
 import { BsFillHeartFill } from 'react-icons/bs'
-
+import Image from 'next/image'
 export const About = (): JSX.Element => {
   return (
     <Layout title="About - Jeeho Ahn">
       <div className="container px-4">
-        <h1 className="text-3xl font-bold dark:text-white sm:text-5xl lg:text-5xl">
-          About Me
+        <h1
+          className="text-4xl dark:text-white sm:text-6xl lg:text-7xl"
+          data-cursor="-opaque"
+        >
+          Who am I???
         </h1>
-
-        <div className="text-secondary apply-prose pt-2">
-          <p>I&apos;m an open source software and privacy advocate.</p>
+        <div className="apply-prose  pt-2 text-lg prose-h2:font-normal lg:text-xl">
           <p>
-            I volunteer at{` `}
+            I&apos;m an open source software and privacy advocate. I also happen
+            to be intersted in full-stack development, and web design.
+          </p>
+          <h2 className="mt-2 text-2xl lg:text-4xl">Past work</h2>
+          <p>
+            I&apos;m a core developer at{` `}
             <a
-              href="https://fosshost.org"
+              href="https://vignetteapp.org"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Fosshost
+              Vignette
             </a>
-            , a free cloud compute platform for the open source community.
+            , the open source, modular streaming toolkit for virtual streaming.
+            <br />
+            <br />I led the development of our website and blog. &darr;
           </p>
         </div>
 
-        <div className="apply-prose pt-4">
-          Here are some projects I&apos;m working on:
-          <ul>
-            <li>
-              💻 &nbsp;
-              <a
-                href="https://fosshost.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Fosshost
-              </a>
-              {` `}- Nonprofit provider of free to use and accessible
-              cloud-hosting services for the free and open source software
-              community.
-            </li>
-            <li>
-              <span className="text-red-500">❤️</span>
-              {` `}
-              <a
-                href="https://vignetteapp.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Vignette
-              </a>
-              - The open source VTuber software.
-            </li>
-            <li>
-              🅧{` `}
-              <a
-                href="https://github.com/liveduo/destack"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Destack
-              </a>
-              {` `}- Static page builder based on Next.js.
-            </li>
-            <li>
-              🦀{` `}
-              <a
-                href="https://github.com/linkerd/linkerd2-proxy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Linkerd2-proxy
-              </a>
-              {` `}- A purpose-built proxy for the Linkerd service mesh. Written
-              in Rust.
-            </li>
-          </ul>
-        </div>
+        <Image
+          src="https://owo.whats-th.is/4c2J1EH.png"
+          width={1878}
+          height={1080}
+          className="my-2"
+          alt=""
+          layout="raw"
+        />
         <h2 className="mt-8 text-xl font-bold md:mt-16 md:text-2xl">
           Technologies I{` `}
           <BsFillHeartFill
@@ -105,7 +68,6 @@ export const About = (): JSX.Element => {
           <Tag text="OAuth" />
           <Tag text="..." />
         </div>
-
         <div className="apply-prose mt-8 ">
           <div>
             <h3>Work Experience</h3>
@@ -133,48 +95,6 @@ export const About = (): JSX.Element => {
               </li>
             </ul>
           </div>
-          <h3>Contacts</h3>
-          <ul>
-            <li>
-              <a
-                href="mailto:io@fosshost.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                io@fosshost.org
-              </a>
-            </li>
-            <li>
-              io#8106 on <a href="https://discord.com">Discord</a>
-            </li>
-          </ul>
-
-          <h3>Credits</h3>
-
-          <p>
-            A lot of the components powering this website are originally from
-            {` `}
-            <a
-              href="https://leerob.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Lee Robinson&apos;s website
-            </a>
-            , and{` `}
-            <a
-              href="https://braydoncoyer.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Braydon Coyer&apos;s website
-            </a>
-            .{` `}
-          </p>
-          <p>
-            My website wouldn&apos;t have been possible without these people,
-            and the open source community which developed the packages I use.
-          </p>
         </div>
       </div>
     </Layout>

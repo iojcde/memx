@@ -43,25 +43,26 @@ const Layout: React.FC<{
 
   useEffect(() => {
     Scrollbar.use(SoftScrollPlugin)
+    if (!window.matchMedia(`(pointer: coarse)`).matches) {
+      const bodyScrollBar = Scrollbar.init(containerRef.current, {
+        alwaysShowTracks: false,
+        renderByPixels: false,
+        damping: 0.075,
+      })
 
-    const bodyScrollBar = Scrollbar.init(containerRef.current, {
-      alwaysShowTracks: false,
-      renderByPixels: false,
-      damping: 0.075,
-    })
+      ScrollTrigger.scrollerProxy(containerRef.current, {
+        scrollTop(value) {
+          if (arguments.length) {
+            bodyScrollBar.scrollTop = value
+          }
+          return bodyScrollBar.scrollTop
+        },
+      })
 
-    ScrollTrigger.scrollerProxy(containerRef.current, {
-      scrollTop(value) {
-        if (arguments.length) {
-          bodyScrollBar.scrollTop = value
-        }
-        return bodyScrollBar.scrollTop
-      },
-    })
+      bodyScrollBar.addListener(ScrollTrigger.update)
 
-    bodyScrollBar.addListener(ScrollTrigger.update)
-
-    ScrollTrigger.defaults({ scroller: containerRef.current })
+      ScrollTrigger.defaults({ scroller: containerRef.current })
+    }
   })
 
   useEffect(() => {
