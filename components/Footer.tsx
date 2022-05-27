@@ -34,7 +34,7 @@ const Footer = () => {
                   <ul className="mt-4 space-y-4 ">
                     <li>
                       <Link href="/" passHref>
-                        <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                        <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                           Home
                         </a>
                       </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
 
                     <li>
                       <Link href="/about" passHref>
-                        <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                        <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                           About
                         </a>
                       </Link>
@@ -50,7 +50,7 @@ const Footer = () => {
 
                     <li>
                       <Link href="/blog">
-                        <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                        <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                           Blog
                         </a>
                       </Link>
@@ -60,21 +60,21 @@ const Footer = () => {
                     <ul className="mt-4 space-y-4 ">
                       <li>
                         <Link href="/stats">
-                          <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                          <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                             Stats
                           </a>
                         </Link>
                       </li>
                       <li>
                         <Link href="/api/trace">
-                          <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                          <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                             Trace
                           </a>
                         </Link>
                       </li>
                       <li>
                         <Link href="/fun">
-                          <a className="text-lg lg:text-xl text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                          <a className="text-lg text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 lg:text-xl">
                             Fun
                           </a>
                         </Link>
