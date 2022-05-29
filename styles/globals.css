@@ -70,10 +70,8 @@ a {
     cursor: pointer;
     line-height: 2.5em;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-}
-a {
-    @apply transition duration-100;
+    border-bottom: 1px solid transparent;  
+    transition: border .2s;  
 }
 a:hover {
     border-bottom: 1px solid #000000;
@@ -106,6 +104,30 @@ body .scroll-content {
 #__next .scrollbar-track-y {
     right: 3px;
 }
+#burger {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    width: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    -webkit-transition: color .2s;
+    -o-transition: color .2s;
+    -moz-transition: color .2s;
+    transition: color .2s;
+}
+#burger span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    top: 0;
+    @apply bg-black transition duration-200 dark:bg-white group-hover:bg-white dark:group-hover:bg-black;
+}
+#burger span.burger-dark {
+    @apply bg-white transition duration-200 dark:bg-black group-hover:bg-white dark:group-hover:bg-black;
+}
 #burger:before {
     content: "";
     display: block;
@@ -124,4 +146,41 @@ body .scroll-content {
     left: -10px;
     bottom: 0px;
     z-index:0
+}
+
+#menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+    transform: translate(calc(100% + 6vw),0) rotate(0.001deg);
+    transition: transform .8s cubic-bezier(.7, 0, .2, 1);
+    will-change: transform;
+}
+#menu.active{
+    transform: translate(0,0) rotate(0.001deg);   
+}
+
+
+#menu .nav-row a {
+    transform: translate(15vw,0) rotate(0.001deg);
+    transition: transform .8s cubic-bezier(.7, 0, .2, 1), border .2s;
+    will-change: transform;
+    @apply leading-tight;
+ }
+ 
+#menu.active .nav-row a {
+    transform: translate(0,0) rotate(0.001deg);
+ }
+ 
+#menu .nav-row a:nth-child(2) {transition-delay: .03s;}
+#menu .nav-row a:nth-child(3) {transition-delay: .06s;}
+#menu .nav-row a:nth-child(4) {transition-delay: .09s;}
+ 
+
+.bt
+#menu div a:nth-child(2) {
+        transition-delay: .03s;
+    
 }

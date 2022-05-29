@@ -2,12 +2,13 @@ import Toggle from './Toggle'
 import Link from 'next/link'
 import Magnetic from 'lib/magnetic'
 import { useEffect } from 'react'
-const Nav: React.FC = () => {
-  // useEffect(() => {
-  //   const el = document.getElementById(`burger`)
 
-  //   new Magnetic(el, { x: 0.08, y: 0.08, s: 0.2, rs: 0.7 })
-  // })
+const Nav: React.FC = () => {
+  useEffect(() => {
+    const el = document.getElementById(`burger`)
+
+    new Magnetic(el, { x: 0.08, y: 0.08, s: 0.2, rs: 0.7 })
+  })
   return (
     <>
       <a
@@ -25,8 +26,8 @@ const Nav: React.FC = () => {
           >
             <Link href="/">Jeeho Ahn</Link>
           </div>
-          <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-gray-100 lg:space-x-4">
-            <span>
+          <div className="text-primary flex items-center justify-evenly space-x-3 pr-12 dark:text-gray-100 lg:space-x-4">
+            {/* <span>
               <Link href="/">Home</Link>
             </span>
             <span>
@@ -34,8 +35,9 @@ const Nav: React.FC = () => {
             </span>
             <span>
               <Link href="/blog">Blog</Link>
-            </span>
+            </span> */}
             <Toggle />
+            <span className="hidden sm:block">Menu</span>
           </div>
         </div>
       </nav>

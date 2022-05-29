@@ -59,7 +59,6 @@ export default class Magnetic {
     this.el.addEventListener(`mousemove`, (e) => {
       const y = (e.clientY - this.y - this.height / 2) * this.options.y
       const x = (e.clientX - this.x - this.width / 2) * this.options.x
-      console.log({ x: x, y: y + 40 })
       this.move(x, y, this.options.s)
     })
 

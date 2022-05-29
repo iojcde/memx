@@ -13,9 +13,9 @@ const Home: NextPage = () => {
 
   // wait until DOM has been rendered
   useEffect(() => {
-    const wideScreen = window.matchMedia(`(min-width: 800px)`)
+    const wideScreen = window.matchMedia(`(min-width: 768px)`)
 
-    wideScreen.matches &&
+    if (wideScreen.matches) {
       gsap.utils
         .toArray(`.slide-section`)
         .forEach((section: HTMLElement, index) => {
@@ -34,6 +34,34 @@ const Home: NextPage = () => {
             },
           )
         })
+
+      gsap.utils
+        .toArray(`.designs-scrub-section`)
+        .forEach((section: HTMLElement, index) => {
+          const w = section.querySelector(`.wrapper`)
+
+          const [x, xEnd] = index % 2 ? [`3%`, `-1%`] : [`-3%`, `1%`]
+          // const [x, xEnd] = [0, 0]
+          gsap.fromTo(
+            w,
+            {
+              x,
+            },
+            {
+              x: xEnd,
+              scrollTrigger: {
+                trigger: `#design-scontainer`,
+                scrub: 0.5,
+                markers: {
+                  startColor: `green`,
+                  endColor: `red`,
+                  fontSize: `12px`,
+                },
+              },
+            },
+          )
+        })
+    }
   })
 
   useEffect(() => {
@@ -41,10 +69,12 @@ const Home: NextPage = () => {
       .toArray(`.scrub-section`)
       .forEach((section: HTMLElement, index) => {
         const w = section.querySelector(`.wrapper`)
+
         const [x, xEnd] =
           index % 2
             ? [`100%`, (w.scrollWidth - section.offsetWidth) * -1]
             : [w.scrollWidth * -1, 0]
+
         gsap.fromTo(
           w,
           { x },
@@ -82,46 +112,48 @@ const Home: NextPage = () => {
 
       <div id="designs" className="mt-16">
         <h2 className="container px-4 text-5xl lg:text-6xl">Designs &darr;</h2>
-        <div className="scrub-section mt-8 w-full leading-none">
-          <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold">
-            {[
-              `https://owo.whats-th.is/APDfJDz.png`,
-              `https://owo.whats-th.is/5jnX5Vc.png`,
-              `https://owo.whats-th.is/8ULhpLf.png`,
-            ].map((v, i) => (
-              <div className="relative aspect-video h-80" key={i}>
-                <Image
-                  src={v}
-                  alt=""
-                  layout="raw"
-                  width={960}
-                  height={600}
-                  loading="lazy"
-                  quality="100"
-                  data-cursor-text="See more"
-                  className="h-64 rounded border object-cover object-top transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-80"
-                />
-              </div>
-            ))}
+        <div id="design-scontainer">
+          <div className="designs-scrub-section mt-8 w-full overflow-x-scroll leading-none md:overflow-hidden">
+            <div className="wrapper mx-auto  flex flex-nowrap justify-center gap-4 whitespace-nowrap font-bold">
+              {[
+                `https://owo.whats-th.is/APDfJDz.png`,
+                `https://owo.whats-th.is/5jnX5Vc.png`,
+                `https://owo.whats-th.is/8ULhpLf.png`,
+              ].map((v, i) => (
+                <div className="relative aspect-video h-64" key={i}>
+                  <Image
+                    src={v}
+                    alt=""
+                    layout="raw"
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    quality="100"
+                    data-cursor-text="See more"
+                    className="h-64 rounded border object-cover object-top transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-64"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="scrub-section mt-4 w-full leading-none">
-            <div className="wrapper flex flex-nowrap gap-4 whitespace-nowrap font-bold ">
+          <div className="designs-scrub-section mt-4 w-full overflow-scroll leading-none md:overflow-hidden">
+            <div className="wrapper flex flex-nowrap justify-center gap-4 whitespace-nowrap font-bold ">
               {[
                 `https://owo.whats-th.is/4c2J1EH.png`,
                 `https://owo.whats-th.is/8X4rRPb.png`,
                 `https://owo.whats-th.is/DSsroGt.png`,
               ].map((v, i) => (
-                <div className="relative aspect-video h-80" key={i}>
+                <div className="relative aspect-video h-64" key={i}>
                   <Image
                     src={v}
                     alt=""
                     layout="raw"
                     loading="lazy"
-                    width={960}
+                    width={800}
                     height={600}
                     quality="100"
                     data-cursor-text="See more"
-                    className="h-64 rounded border object-cover object-top  transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-80"
+                    className="h-64 rounded border object-cover object-top  transition duration-100 dark:brightness-90 dark:hover:brightness-100 lg:h-64"
                   />
                 </div>
               ))}

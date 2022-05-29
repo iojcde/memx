@@ -22,7 +22,6 @@ const Layout: React.FC<{
   hero?: boolean
 }> = ({ className, children, image, date, title, desc, type }) => {
   const router = useRouter()
-  gsap.registerPlugin(ScrollTrigger)
 
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -42,12 +41,12 @@ const Layout: React.FC<{
   })
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     Scrollbar.use(SoftScrollPlugin)
-    if (!window.matchMedia(`(pointer: coarse)`).matches) {
+    if (!window.matchMedia(`(pointer: coarse)`).matches && false) {
       const bodyScrollBar = Scrollbar.init(containerRef.current, {
         alwaysShowTracks: false,
         renderByPixels: false,
-        damping: 0.075,
       })
 
       ScrollTrigger.scrollerProxy(containerRef.current, {
@@ -67,11 +66,32 @@ const Layout: React.FC<{
 
   useEffect(() => {
     gsap.fromTo(
-      `#footer-wrapper`,
-      { yPercent: 0 },
+      `#footer-content`,
+      { yPercent: -50 },
       {
-        yPercent: 50,
-        scrollTrigger: { trigger: `footer`, scrub: true },
+        scrollTrigger: {
+          scrub: true,
+          trigger: `footer`,
+          end: `bottom bottom`,
+        },
+        yPercent: 0,
+        ease: `none`,
+      },
+    )
+  })
+  useEffect(() => {
+    gsap.fromTo(
+      `#burger span`,
+      {
+        className: `burger`,
+      },
+      {
+        scrollTrigger: {
+          trigger: `main`,
+          start: `bottom 7%`,
+          scrub: true,
+        },
+        className: `burger-dark`,
         ease: `none`,
       },
     )
@@ -79,7 +99,7 @@ const Layout: React.FC<{
 
   return (
     <>
-      {/* <Menu /> */}
+      <Menu />
       <div ref={containerRef} className="h-screen">
         <NextSeo
           title={title || `Jeeho Ahn - Portfolio`}
@@ -125,7 +145,7 @@ const Layout: React.FC<{
         )}
         <Nav />
         <main
-          className={`relative z-10 w-full overflow-clip text-black dark:bg-black dark:text-gray-100  ${className}`}
+          className={`relative z-10 w-full overflow-clip pb-24 text-black dark:bg-black dark:text-gray-100  ${className}`}
           id="content"
         >
           {children}
