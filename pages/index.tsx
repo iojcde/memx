@@ -52,11 +52,11 @@ const Home: NextPage = () => {
               scrollTrigger: {
                 trigger: `#design-scontainer`,
                 scrub: 0.5,
-                markers: {
-                  startColor: `green`,
-                  endColor: `red`,
-                  fontSize: `12px`,
-                },
+                // markers: {
+                //   startColor: `green`,
+                //   endColor: `red`,
+                //   fontSize: `12px`,
+                // },
               },
             },
           )

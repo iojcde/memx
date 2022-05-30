@@ -43,7 +43,7 @@ const Layout: React.FC<{
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
     Scrollbar.use(SoftScrollPlugin)
-    if (!window.matchMedia(`(pointer: coarse)`).matches && false) {
+    if (!window.matchMedia(`(pointer: coarse)`).matches) {
       const bodyScrollBar = Scrollbar.init(containerRef.current, {
         alwaysShowTracks: false,
         renderByPixels: false,
