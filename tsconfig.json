@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -17,14 +21,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "lib/magnetic.js"  ],
+    "**/*.tsx",
+    "lib/magnetic.js",
+    ".next/types/**/*.ts",
+    ".contentlayer/generated"
+  ],
   "exclude": [
     "node_modules"
   ]

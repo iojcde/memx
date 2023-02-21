@@ -9,6 +9,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
+
 const computedFields: ComputedFields = {
   readingTime: { type: `json`, resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
@@ -32,9 +33,9 @@ const computedFields: ComputedFields = {
   },
 }
 
-const Blog = defineDocumentType(() => ({
-  name: `Blog`,
-  filePathPattern: `blog/*.mdx`,
+const research = defineDocumentType(() => ({
+  name: `research`,
+  filePathPattern: `research/*.mdx`,
   bodyType: `mdx`,
   fields: {
     title: { type: `string`, required: true },
@@ -53,7 +54,7 @@ const Blog = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: `data`,
-  documentTypes: [Blog],
+  documentTypes: [research],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

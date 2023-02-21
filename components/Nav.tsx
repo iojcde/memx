@@ -1,14 +1,8 @@
 import Toggle from './Toggle'
 import Link from 'next/link'
-import Magnetic from 'lib/magnetic'
 import { useEffect } from 'react'
 
 const Nav: React.FC = () => {
-  useEffect(() => {
-    const el = document.getElementById(`burger`)
-
-    new Magnetic(el, { x: 0.08, y: 0.08, s: 0.2, rs: 0.7 })
-  })
   return (
     <>
       <a

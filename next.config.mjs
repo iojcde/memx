@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
-const { withContentlayer } = require('next-contentlayer')
 
-module.exports = withContentlayer()({
+import { withContentlayer } from 'next-contentlayer'
+
+export default withContentlayer({
   experimental: {
-    images: {
-      layoutRaw: true,
-    },
+    appDir: true,
   },
   reactStrictMode: true,
   images: {

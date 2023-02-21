@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
 import { useRouter } from 'next/router'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
@@ -30,21 +29,13 @@ const Menu = () => {
           className="nav-row flex w-1/2 flex-col  gap-8 py-16 text-4xl"
           data-cursor="-opaque"
         >
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+          <Link href="/">Home</Link>
 
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+          <Link href="/about">About</Link>
 
-          <Link href="/blog">
-            <a>Blog</a>
-          </Link>
+          <Link href="/blog">Blog</Link>
 
-          <Link href="/fun">
-            <a>Fun</a>
-          </Link>
+          <Link href="/fun">Fun</Link>
         </div>
         <div className="absolute bottom-4 left-0 right-0 mx-auto flex w-full items-center justify-between px-4 py-8 no-underline lg:px-8 ">
           <span className="font-mono">Socials &rarr;</span>

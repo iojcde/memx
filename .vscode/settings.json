@@ -1,12 +1,14 @@
 {
-    "editor.formatOnSave": true,
-    "eslint.alwaysShowStatus": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": {
-        // For ESLint
-        "source.fixAll.eslint": true,
-      },
-      "[css]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
-      }
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    // For ESLint
+    "source.fixAll.eslint": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

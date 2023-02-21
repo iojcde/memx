@@ -5,10 +5,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { ReactNode, useEffect, useRef } from 'react'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import gsap from 'gsap'
-import SoftScrollPlugin from 'lib/softScroll'
-import Scrollbar from 'smooth-scrollbar'
+
 import Menu from './Menu'
 
 const Layout: React.FC<{
@@ -24,78 +21,6 @@ const Layout: React.FC<{
   const router = useRouter()
 
   const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!window.matchMedia(`(pointer: coarse)`).matches) {
-      import(`mouse-follower`).then(({ default: MouseFollower }) => {
-        MouseFollower.registerGSAP(gsap)
-        document.getElementsByClassName(`mf-cursor`).length == 0 &&
-          new MouseFollower({
-            stateDetection: {
-              '-pointer': `a,button`,
-              '-hidden': `iframe`,
-            },
-          })
-      })
-    }
-  })
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    Scrollbar.use(SoftScrollPlugin)
-    if (!window.matchMedia(`(pointer: coarse)`).matches) {
-      const bodyScrollBar = Scrollbar.init(containerRef.current, {
-        alwaysShowTracks: false,
-        renderByPixels: false,
-      })
-
-      ScrollTrigger.scrollerProxy(containerRef.current, {
-        scrollTop(value) {
-          if (arguments.length) {
-            bodyScrollBar.scrollTop = value
-          }
-          return bodyScrollBar.scrollTop
-        },
-      })
-
-      bodyScrollBar.addListener(ScrollTrigger.update)
-
-      ScrollTrigger.defaults({ scroller: containerRef.current })
-    }
-  })
-
-  useEffect(() => {
-    gsap.fromTo(
-      `#footer-content`,
-      { yPercent: -50 },
-      {
-        scrollTrigger: {
-          scrub: true,
-          trigger: `footer`,
-          end: `bottom bottom`,
-        },
-        yPercent: 0,
-        ease: `none`,
-      },
-    )
-  })
-  useEffect(() => {
-    gsap.fromTo(
-      `#burger span`,
-      {
-        className: `burger`,
-      },
-      {
-        scrollTrigger: {
-          trigger: `main`,
-          start: `bottom 7%`,
-          scrub: true,
-        },
-        className: `burger-dark`,
-        ease: `none`,
-      },
-    )
-  })
 
   return (
     <>
