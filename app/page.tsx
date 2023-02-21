@@ -1,4 +1,4 @@
-const Home: NextPage = () => {
+const Home = () => {
   return <>hi</>
 }
 
