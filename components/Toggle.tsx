@@ -1,3 +1,4 @@
+'use client'
 import { HiSun, HiMoon } from 'react-icons/hi'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'

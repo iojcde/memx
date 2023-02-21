@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'components/BlurImage'
-import type { Blog } from '.contentlayer/types'
+import type { Research } from 'contentlayer/generatedp'
 
 export default function BlogPost({
   title,
   summary,
   slug,
   image,
-}: Pick<Blog, 'title' | 'summary' | 'slug' | 'image'>) {
+}: Pick<Research, 'title' | 'summary' | 'slug' | 'image'>) {
   return (
     <Link href={`/blog/${slug}`}>
       <div className="mb-12 w-full rounded-lg border  border-slate-200 pb-2 transition hover:shadow-lg dark:border-slate-800">

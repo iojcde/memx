@@ -1,34 +1,28 @@
-'use client'
 import { useMemo } from 'react'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import components from 'components/MDXComponents'
 import BlogLayout from 'components/Layout/Blog'
-import { allBlogs } from 'contentlayer/generated'
-import type { Blog } from 'contentlayer/generated'
+import { allResearch } from 'contentlayer/generated'
+import type { Research } from 'contentlayer/generated'
 
 export default function Blog({ params }) {
-  console.log(allBlogs)
-  console.log(params)
-  const post = allBlogs.find((post) => post._raw.flattenedPath === params.slug)
+  const post = allResearch.find(
+    (post) => post._raw.flattenedPath === `research/` + params.slug,
+  )
+  console.log(post.body.raw)
 
-  const MDXContent = useMDXComponent(post.body.code)
+  const MDXContent = useMDXComponent(post.body.raw)
 
   return (
     <BlogLayout post={post}>
-      <MDXContent
-        components={
-          {
-            ...components,
-          } as any
-        }
-      />
+      <MDXContent />
     </BlogLayout>
   )
 }
 
 export async function getStaticPaths() {
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
+    paths: allResearch.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   }
 }

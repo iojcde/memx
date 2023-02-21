@@ -1,6 +1,6 @@
+'use client'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Menu = () => {
