@@ -15,7 +15,7 @@ export default function Blog({ params }) {
 
   return (
     <BlogLayout post={post}>
-      <MDXContent />
+      <MDXContent components={components as any} />
     </BlogLayout>
   )
 }
