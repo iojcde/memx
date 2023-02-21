@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns'
 import Layout from '../Layout'
 import generateSocialImage from 'lib/generateSocialImage'
 import type { PropsWithChildren } from 'react'
-import type { Research } from '.contentlayer/types'
+import type { Research } from 'contentlayer/generated'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
