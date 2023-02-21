@@ -9,9 +9,9 @@ export default function Blog({ params }) {
   const post = allResearch.find(
     (post) => post._raw.flattenedPath === `research/` + params.slug,
   )
-  console.log(post.body.raw)
 
-  const MDXContent = useMDXComponent(post.body.raw)
+
+  const MDXContent = useMDXComponent(post.body.code)
 
   return (
     <BlogLayout post={post}>
