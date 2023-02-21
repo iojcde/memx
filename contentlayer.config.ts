@@ -34,7 +34,7 @@ const computedFields: ComputedFields = {
 }
 
 const research = defineDocumentType(() => ({
-  name: `research`,
+  name: `Research`,
   filePathPattern: `research/*.mdx`,
   bodyType: `mdx`,
   fields: {
