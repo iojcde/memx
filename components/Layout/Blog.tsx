@@ -15,7 +15,7 @@ const discussUrl = (slug: string) =>
 export default function BlogLayout({
   children,
   post,
-}: PropsWithChildren<{ post: Blog }>) {
+}: PropsWithChildren<{ post: Research }>) {
   const socialImageConf = generateSocialImage({
     title: encodeURIComponent(post.title),
     underlayImage: post.image.slice(post.image.lastIndexOf(`/`) + 1),
