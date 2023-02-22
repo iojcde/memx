@@ -4,10 +4,8 @@ import type { Research } from 'contentlayer/generated'
 
 export default function BlogPost({
   title,
-  summary,
   slug,
-  image,
-}: Pick<Research, 'title' | 'summary' | 'slug' | 'image'>) {
+}: Pick<Research, 'title' | 'slug'>) {
   return (
     <Link href={`/blog/${slug}`}>
       <div className="mb-12 w-full rounded-lg border  border-slate-200 pb-2 transition hover:shadow-lg dark:border-slate-800">
@@ -17,9 +15,6 @@ export default function BlogPost({
               {title}
             </h2>
           </div>
-          <p className=" apply-prose text-gray-600 dark:text-gray-300">
-            {summary}
-          </p>
         </div>
       </div>
     </Link>
