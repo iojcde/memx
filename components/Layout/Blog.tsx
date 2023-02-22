@@ -16,21 +16,8 @@ export default function BlogLayout({
   children,
   post,
 }: PropsWithChildren<{ post: Research }>) {
-  const socialImageConf = generateSocialImage({
-    title: encodeURIComponent(post.title),
-    underlayImage: post.image.slice(post.image.lastIndexOf(`/`) + 1),
-    cloudName: `jcdea`,
-    imagePublicID: `social-template.png`,
-  })
-
   return (
-    <Layout
-      title={`${post.title} – Jeeho Ahn`}
-      desc={post.summary}
-      image={socialImageConf}
-      date={new Date(post.publishedAt).toISOString()}
-      type="article"
-    >
+    <Layout title={`${post.title} – Jeeho Ahn`} type="article">
       <article className="container mb-16 flex w-full flex-col items-start justify-center px-4">
         <h1 className="mb-4 text-3xl font-bold capitalize tracking-tight text-black  dark:text-white md:text-5xl">
           {post.title}
@@ -45,25 +32,12 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-              {`Jeeho Ahn / `}
-              {format(parseISO(post.publishedAt), `MMMM dd, yyyy`)}
+              {`Jeeho Ahn`}
             </p>
           </div>
           <p className="min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0">
             {post.readingTime.text}
           </p>
-        </div>
-        <div className="mx-auto pt-6">
-          <Image
-            src={
-              `https://res.cloudinary.com/jcdea/` +
-              post.image.slice(post.image.lastIndexOf(`/`) + 1)
-            }
-            alt="banner image"
-            width={1200}
-            height={630}
-            className="rounded-lg bg-top object-cover object-top"
-          />
         </div>
 
         <div className="apply-prose mt-4 w-full max-w-none">{children}</div>
