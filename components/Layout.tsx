@@ -18,8 +18,6 @@ const Layout: React.FC<{
   type?: string
   hero?: boolean
 }> = ({ className, children, image, date, title, desc, type }) => {
-  const router = useRouter()
-
   return (
     <>
       <Menu />
