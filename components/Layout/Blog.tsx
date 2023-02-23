@@ -1,9 +1,9 @@
-import Image from 'components/BlurImage'
 import { parseISO, format } from 'date-fns'
 import Layout from '../Layout'
 import generateSocialImage from 'lib/generateSocialImage'
 import type { PropsWithChildren } from 'react'
 import type { Research } from 'contentlayer/generated'
+import Image from 'next/image'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
