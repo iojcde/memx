@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "reading-time": "^1.5.0",
+    "remark-wiki-link-plus": "^1.1.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.2.0",
     "rehype-prism-plus": "^1.5.1",
