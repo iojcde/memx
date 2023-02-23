@@ -5,7 +5,7 @@ import {
 } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
-import remarkWikiLinks from 'remark-wiki-links-plus"
+import remarkWikiLinks from 'remark-wiki-links-plus'
 import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
