@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'components/BlurImage'
+import Image from 'next/image'
 import type { Research } from 'contentlayer/generated'
 
 export default function BlogPost({
