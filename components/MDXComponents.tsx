@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import Image from 'components/BlurImage'
-import { ImageProps } from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
 
 interface Props {
