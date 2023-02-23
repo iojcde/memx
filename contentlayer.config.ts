@@ -5,6 +5,7 @@ import {
 } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
+import remarkWikiLinks from 'remark-wiki-links-plus"
 import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -55,7 +56,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: `data`,
   documentTypes: [research],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm,remarkWikiLinks],
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
