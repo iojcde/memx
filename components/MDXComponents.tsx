@@ -12,7 +12,7 @@ const CustomLink = (props: Props) => {
   const href = props.href
   const isBacklink =
     href && props.className?.includes(`internal`) && props.href.startsWith(`/`)
-  console.log(props)
+
   if (isBacklink) {
     return (
       <Link href={filenames[href.replace(`/`, ``).toLowerCase()]}>

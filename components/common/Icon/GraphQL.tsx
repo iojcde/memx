@@ -2,7 +2,11 @@ import { FC } from 'react'
 
 export const GraphQLIcon: FC = () => {
   return (
-    <svg viewBox="0 0 256 256" fill="current" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 256 256"
+      fill="current"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path d="M25.3447 189.686L34.7424 195.112L139.437 13.7809L130.039 8.35499L25.3447 189.686Z" />
       <path d="M232.58 175.2H23.1908V186.051H232.58V175.2Z" />
       <path d="M27.3329 181.294L132.067 241.763L137.492 232.366L32.7588 171.896L27.3329 181.294Z" />

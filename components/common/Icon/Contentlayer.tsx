@@ -2,7 +2,11 @@ import { FC } from 'react'
 
 export const ContentlayerIcon: FC = () => {
   return (
-    <svg viewBox="0 0 256 256" fill="current" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 256 256"
+      fill="current"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

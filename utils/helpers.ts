@@ -12,4 +12,4 @@ export const arraysAreEqual = <T>(a: T[], b: T[]) => {
   return true
 }
 
-export const isExternalUrl = (link: string): boolean => !link.startsWith('/')
+export const isExternalUrl = (link: string): boolean => !link.startsWith(`/`)
