@@ -4,10 +4,10 @@ import type { Research } from 'contentlayer/generated'
 
 export default function BlogPost({
   title,
-  slug,
-}: Pick<Research, 'title' | 'slug'>) {
+  hex,
+}: Pick<Research, 'title' | 'hex'>) {
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link href={`/${hex}`}>
       <div className="mb-12 w-full rounded-lg border  border-slate-200 pb-2 transition hover:shadow-lg dark:border-slate-800">
         <div className="p-5 pt-2 lg:p-8 lg:pt-4 ">
           <div className=" flex flex-col justify-between md:flex-row">
