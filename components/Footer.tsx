@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
 import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Link from 'next/link'
 
 const Footer = () => {
@@ -22,7 +20,7 @@ const Footer = () => {
           <div className="grid grid-cols-3">
             <div className="col-span-2">
               <div className="text-3xl">
-                <a href="mailto:io@fosshost.org"> &rarr; io@fosshost.org</a>
+                <a href="mailto:io@fosshost.org"> &rarr; io@jcde.xyz</a>
               </div>
               <h4 className="mt-2 mb-1 text-4xl">Discord</h4>
               io#8106

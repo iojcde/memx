@@ -40,6 +40,24 @@ const computedFields: ComputedFields = {
     type: `string`,
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ``),
   },
+  backlinks: {
+    type: `list`,
+    resolve: (doc) => {
+      const title = doc._raw.sourceFileName.replace(/\.mdx$/, ``)
+      const backlinks: Record<string, Record<string, string>> = {}
+
+      const array = [...doc.body.raw.matchAll(/.*\[\[(.+?)\]\].*/g)]
+
+      array.forEach((m) => {
+        backlinks[m[1]] = {
+          ...backlinks[title],
+          [title]: m[0],
+        }
+        console.log(backlinks)
+        return backlinks
+      })
+    },
+  },
 }
 
 const research = defineDocumentType(() => ({
@@ -47,7 +65,7 @@ const research = defineDocumentType(() => ({
   filePathPattern: `research/*.mdx`,
   contentType: `mdx`,
   fields: {
-    hex: { type: `string` },
+    hex: { type: `string`, required: true },
   },
   computedFields,
 }))
@@ -56,7 +74,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: `data`,
   documentTypes: [research],
   mdx: {
-    remarkPlugins: [remarkGfm,remarkWikiLinks],
+    remarkPlugins: [remarkGfm, remarkWikiLinks],
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,

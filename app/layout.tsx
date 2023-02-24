@@ -2,6 +2,7 @@ import '../styles/globals.css'
 
 import '../styles/cursor.css'
 
+import Nav from 'components/Nav'
 import '../styles/syntax.css'
 
 export default function RootLayout({
@@ -13,7 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <Nav />
+      <body className="pt-16">{children}</body>
     </html>
   )
 }

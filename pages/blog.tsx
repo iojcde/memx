@@ -26,10 +26,7 @@ export default function Blog({
     )
 
   return (
-    <Layout
-      title="Blog – Jeeho Ahn"
-      desc="Blog posts by Jeeho on technology, software development, and more."
-    >
+    <>
       <div className="container mx-auto mb-16 flex max-w-5xl flex-col items-start justify-center px-4">
         <h1 className="mb-4 text-3xl font-bold">Blog</h1>
         <div className="apply-prose mb-4">
@@ -100,14 +97,12 @@ export default function Blog({
           <BlogPost key={post.title} {...post} />
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 
 export function getStaticProps() {
-  const posts = allResearch.map((post) =>
-    pick(post, [`slug`, `title`, `summary`, `publishedAt`, `image`, `tags`]),
-  )
+  const posts = allResearch.map((post) => pick(post, [`hex`, `title`]))
 
   return { props: { posts } }
 }

@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   darkMode: 'class',
   content: [
+    './app/**/*.{js,jsx,ts,tsx}',
     './pages/**/*.{js,jsx,ts,tsx}',
     './components/**/*.{js,jsx,ts,tsx}',
   ],
@@ -34,24 +35,6 @@ module.exports = {
           800: '#262626',
           900: '#171717',
         },
-      },
-       fontSize: {
-        xs: ['0.75rem', { lineHeight: '1rem' }],
-        sm: ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '-0.006em' }],
-        base: ['1rem', { lineHeight: '1.5rem', letterSpacing: '-0.011em' }],
-        lg: ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '-0.0143em' }],
-        xl: ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.017em' }],
-        '2xl': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.019em' }],
-        '3xl': [
-          '1.875rem',
-          { lineHeight: '2.25rem', letterSpacing: '-0.021em' },
-        ],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.022em' }],
-        '5xl': ['3rem', { lineHeight: '1', letterSpacing: '-0.022em' }],
-        '6xl': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.022em' }],
-        '7xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.0222em' }],
-        '8xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.0223em' }],
-        '9xl': ['8rem', { lineHeight: '1', letterSpacing: '-0.0223em' }],
       },
       typography: (theme) => ({
         DEFAULT: {

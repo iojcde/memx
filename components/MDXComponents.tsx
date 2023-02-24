@@ -1,19 +1,21 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
-
+import { filenames } from 'data/filenames'
 interface Props {
   children: ReactNode
   href: string
+  className?: string
 }
 
 const CustomLink = (props: Props) => {
   const href = props.href
-  const isInternalLink = href && (href.startsWith(`/`) || href.startsWith(`#`))
-
-  if (isInternalLink) {
+  const isBacklink =
+    href && props.className?.includes(`internal`) && props.href.startsWith(`/`)
+  console.log(props)
+  if (isBacklink) {
     return (
-      <Link {...props}>
+      <Link href={filenames[href.replace(`/`, ``).toLowerCase()]}>
         {props.children}
       </Link>
     )
@@ -23,7 +25,7 @@ const CustomLink = (props: Props) => {
 }
 
 const RoundedImage = (props: ImageProps) => {
-  return <Image alt={props.alt} className=" rounded-lg" {...props} />
+  return <Image className=" rounded-lg" {...props} />
 }
 
 const MDXComponents = {

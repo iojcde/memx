@@ -61,7 +61,7 @@ html {
     -webkit-text-stroke: black 1px;
 }
 .apply-prose {
-    @apply prose lg:prose-lg dark:prose-invert;
+    @apply prose dark:prose-invert;
 }
 ::selection {
     @apply bg-black text-white dark:bg-white dark:text-black;
@@ -73,18 +73,7 @@ a {
     border-bottom: 1px solid transparent;  
     transition: border .2s;  
 }
-a:hover {
-    border-bottom: 1px solid #000000;
-}
-.dark a:hover {
-    border-bottom: 1px solid #FFFFFF;
-}
-.no-underline a:hover {
-    border-bottom: 1px solid transparent;
-}
-a:hover.no-underline {
-    border-bottom: 1px solid transparent;
-}
+
 b {
     font-weight: 700;
 }
@@ -93,7 +82,7 @@ body .scroll-content {
     will-change: transform;
 }
 .container {
-    @apply lg:max-w-5xl mx-auto lg:px-4;
+    @apply lg:max-w-4xl mx-auto;
 }
 #__next .scrollbar-thumb {
     background: #333;

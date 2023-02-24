@@ -1,6 +1,5 @@
 import Toggle from './Toggle'
 import Link from 'next/link'
-import { useEffect } from 'react'
 
 const Nav: React.FC = () => {
   return (
@@ -11,14 +10,14 @@ const Nav: React.FC = () => {
       >
         Skip to content
       </a>
-      <nav className=" my-0 flex w-full items-center justify-center py-4 px-4 transition duration-100 lg:px-14">
+      <nav className="fixed top-0 my-0 flex h-16 w-full items-center justify-center border-b bg-white py-4 px-6 shadow transition duration-100 lg:px-16">
         <div className="flex w-full  items-center justify-between">
           <div
             id="name"
-            className="relative text-xl text-black dark:text-gray-100 sm:text-2xl lg:text-4xl"
+            className="relative text-xl text-black dark:text-gray-100"
             data-cursor="-opaque"
           >
-            <Link href="/">Jeeho Ahn</Link>
+            <Link href="/">memx</Link>
           </div>
           <div className="text-primary flex items-center justify-evenly space-x-3 pr-12 dark:text-gray-100 lg:space-x-4">
             {/* <span>
@@ -31,7 +30,6 @@ const Nav: React.FC = () => {
               <Link href="/blog">Blog</Link>
             </span> */}
             <Toggle />
-            <span className="hidden sm:block">Menu</span>
           </div>
         </div>
       </nav>
