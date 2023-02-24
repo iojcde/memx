@@ -32,6 +32,10 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "remark-wiki-link-plus": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^0.1.6",
+    "@radix-ui/react-scroll-area": "^0.1.4",
+    "@radix-ui/react-tabs": "^0.1.5",
+    "@radix-ui/react-tooltip": "^0.1.7",
     "swr": "^2.0.3"
   },
   "devDependencies": {
