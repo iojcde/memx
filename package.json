@@ -2,8 +2,8 @@
   "name": "website",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "yarn preprocess && next dev",
+    "build": "yarn preprocess && next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",

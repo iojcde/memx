@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <div className="container mx-auto mb-16 flex max-w-5xl flex-col items-start justify-center px-4">
-        <h1 className="mb-4 text-3xl font-bold">memx</h1>
-        <div className="mb-4">
+        <h1 className="mb-4 mt-8 text-3xl font-bold">memx</h1>
+        <div className="prose mb-4">
           <p>
             See Sunghyun Cho&apos;s post on {` `}
             <a href="https://cho.sh/r/6AE59D">building a second brain</a>.

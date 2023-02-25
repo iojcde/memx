@@ -71,8 +71,5 @@ for (const filename of files) {
   ] = hex
 
   // write filenames to file
-  fs.writeFileSync(
-    `./data/filenames.ts`,
-    `export const filenames = ${JSON.stringify(filenames, null, 2)}`,
-  )
+  fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))
 }

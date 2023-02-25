@@ -33,7 +33,7 @@ const NavLink: FC<{
         url == activePath
           ? `${
               level == 0 ? `font-medium` : `font-normal`
-            } bg-blue-50 text-blue-900 dark:bg-blue-500/20 dark:text-blue-50`
+            } bg-neutral-100 text-neutral-900 transition duration-200 dark:bg-neutral-500/20 dark:text-neutral-50`
           : `hover:bg-neutral-50 dark:hover:bg-neutral-900 ${
               level == 0
                 ? `font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
@@ -42,7 +42,7 @@ const NavLink: FC<{
       )}
     >
       <Link href={url} className="flex h-full grow items-center space-x-2">
-        <span>{title}</span>
+        <span className="">{title}</span>
         {label && <Label text={label} />}
       </Link>
       {collapsible && (
