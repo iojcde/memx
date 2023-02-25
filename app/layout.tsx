@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="pt-24" suppressHydrationWarning>
+      <body className="pt-16" suppressHydrationWarning>
         <Providers>
           <Nav />
 

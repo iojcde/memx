@@ -9,6 +9,28 @@
   @apply dark:border-neutral-700;
 }
 
+
+
+/* width */
+.thin-scrollbar ::-webkit-scrollbar {
+    width: 8px;
+}
+/* Track */
+.thin-scrollbar ::-webkit-scrollbar-track {
+@apply bg-neutral-800 bg-neutral-200;
+}
+
+/* Handle */
+.thin-scrollbar ::-webkit-scrollbar-thumb {
+  @apply bg-neutral-600 dark:bg-neutral-500 rounded-full
+
+}
+
+/* Handle on hover */
+.thin-scrollbar ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 @font-face {
     font-family: 'Pretendard Std Variable';
     font-weight: 45 920;
@@ -39,7 +61,7 @@ p {
     @apply dark:text-neutral-100 text-neutral-900;
 }
 
-a{
+.prose a {
     @apply dark:text-white text-black font-semibold;
 }
 html {

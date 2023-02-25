@@ -33,11 +33,11 @@ const NavLink: FC<{
         url == activePath
           ? `${
               level == 0 ? `font-medium` : `font-normal`
-            } bg-violet-50 text-violet-900 dark:bg-violet-500/20 dark:text-violet-50`
-          : `hover:bg-gray-50 dark:hover:bg-gray-900 ${
+            } bg-blue-50 text-blue-900 dark:bg-blue-500/20 dark:text-blue-50`
+          : `hover:bg-neutral-50 dark:hover:bg-neutral-900 ${
               level == 0
-                ? `font-medium text-slate-600 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-200`
-                : `font-normal hover:text-slate-600 dark:hover:text-slate-300`
+                ? `font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
+                : `font-normal hover:text-neutral-600 dark:hover:text-neutral-300`
             }`,
       )}
     >
@@ -107,7 +107,7 @@ const Tree: FC<{ tree: TreeNode[]; level: number; activePath: string }> = ({
     <div
       className={classNames(
         `ml-3 space-y-2 pl-3`,
-        level > 0 ? `border-l border-gray-200 dark:border-gray-800` : ``,
+        level > 0 ? `border-l border-neutral-200 dark:border-neutral-800` : ``,
       )}
     >
       {tree.map((treeNode, index) => (

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { pick } from 'lib/utils'
 import { allResearch } from 'contentlayer/generated'
 import Link from 'next/link'
