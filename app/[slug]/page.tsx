@@ -18,9 +18,7 @@ export default function Blog({ params }) {
   // useLiveReload()
 
   const slug = params.slug.toUpperCase() as string
-  const post = allResearch.find(
-    (post) => post.hex === slug || post.slug.toUpperCase() === slug,
-  )
+  const post = allResearch.find((post) => post.hex === slug)
   if (!post) {
     notFound()
   }

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
-import { filenames } from 'data/filenames'
+import filenames from 'data/filenames.json'
+import fs from 'fs'
+
 interface Props {
   children: ReactNode
   href: string

@@ -1,5 +1,5 @@
 import { allDocuments, DocumentTypes } from 'contentlayer/generated'
-import { filenames } from 'data/filenames'
+import filenames from 'data/filenames.json'
 
 export function getBacklinks(hex: string) {
   const backlinkingDocs = allDocuments.filter(
@@ -20,7 +20,7 @@ export function getBacklinks(hex: string) {
     const backlinks = [...doc.body.raw.matchAll(/.*\[\[(.+?)\]\].*/g)]
 
     return {
-      title: doc.title,
+      title: backlinks[0][1],
       url: doc.hex,
       type: doc.type,
       text: backlinks[0][0],
