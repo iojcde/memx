@@ -1,15 +1,16 @@
 /** @type {import('next').NextConfig} */
 const { withContentlayer } = require('next-contentlayer')
 const fs = require('fs')
-const filenames = fs.readFileSync('./data/filenames.json', 'utf8')
+const filenamesFile = fs.readFileSync('./data/filenames.json', 'utf8')
 
+const filenames = JSON.parse(filenamesFile)
 module.exports = withContentlayer({
   experimental: {
     appDir: true,
   },
   reactStrictMode: true,
   redirects: async () => {
-    return Object.keys(JSON.parse(filenames)).map((key) => ({
+    return Object.keys(filenames).map((key) => ({
       source: `/${key}`,
       destination: `/${filenames[key]}`,
       permanent: false,
