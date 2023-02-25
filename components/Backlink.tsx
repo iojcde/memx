@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const processBacklinkItem = (text: string, title: string) => {
@@ -30,7 +31,8 @@ const processBacklinkItem = (text: string, title: string) => {
   }
 
   return (
-    <pre
+    <p
+      className="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm"
       dangerouslySetInnerHTML={{
         __html: text.trim(),
       }}
@@ -40,10 +42,15 @@ const processBacklinkItem = (text: string, title: string) => {
 
 const Backlink = ({ backlinks }) => {
   return (
-    <div>
-      Links to this page
+    <div className="mt-8">
+      <h2 className="pb-2 text-sm">Links to this page</h2>
       {backlinks.map((backlink) => (
-        <div key={backlink.url}>
+        <div
+          key={backlink.url}
+          className="rounded border bg-neutral-100 p-4 shadow dark:bg-neutral-900"
+        >
+          <Link href={`/${backlink.url}`}>`/{backlink.url}`</Link>
+
           {processBacklinkItem(backlink.text, backlink.title)}
         </div>
       ))}

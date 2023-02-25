@@ -6,7 +6,6 @@ import { getBacklinks } from 'lib/markdown'
 import Link from 'next/link'
 import Backlink from 'components/Backlink'
 import Image from 'next/image'
-import { Sidebar } from 'components/Sidebar'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -31,7 +30,7 @@ export default function Blog({ params }) {
 
   return (
     <>
-      <article className="mb-16 flex w-full max-w-4xl flex-col items-start justify-center px-6 lg:px-16">
+      <article className="mb-16 mt-8 w-full max-w-4xl flex-col items-start justify-center px-6 lg:px-16">
         <h1 className="mb-4 text-3xl font-bold capitalize tracking-tight text-black  dark:text-white md:text-5xl">
           {post.title}
         </h1>
@@ -41,25 +40,25 @@ export default function Blog({ params }) {
               alt="Jeeho Ahn"
               height={24}
               width={24}
-              src="/images/profile.jpeg"
+              src="https://avatars.githubusercontent.com/u/31413538?v=4"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <p className="ml-2 text-sm text-neutral-700 dark:text-neutral-300">
               {`Jeeho Ahn`}
             </p>
           </div>
-          <p className="min-w-32 mt-2 text-sm text-gray-600 dark:text-gray-400 md:mt-0">
+          <p className="min-w-32 mt-2 text-sm text-neutral-600 dark:text-neutral-400 md:mt-0">
             {post.readingTime.text}
           </p>
         </div>
 
         <>
-          <div className="apply-prose mt-8 w-full max-w-none">
+          <div className="apply-prose mt-4 w-full max-w-none">
             <MDXContent components={components as any} />
           </div>
         </>
 
-        <div className="text-sm text-gray-700 dark:text-gray-300">
+        <div className="text-sm text-neutral-700 dark:text-neutral-400">
           <a
             href={discussUrl(post.slug)}
             target="_blank"

@@ -1,9 +1,10 @@
 import '../styles/globals.css'
 
 import '../styles/cursor.css'
-
 import Nav from 'components/Nav'
 import '../styles/syntax.css'
+
+import { Providers } from './providers'
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -14,8 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Nav />
-      <body className="pt-16">{children}</body>
+      <body className="pt-24" suppressHydrationWarning>
+        <Providers>
+          <Nav />
+
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

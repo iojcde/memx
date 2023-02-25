@@ -24,15 +24,11 @@ const Toggle: React.FC = () => {
       aria-label="Toggle Dark Mode"
       type="button"
       onClick={toggle}
-      className="h-8 w-8 rounded-md p-2"
+      className="h-8 w-8 rounded-md dark:fill-neutral-200"
       aria-hidden
     >
       {mounted &&
-        (theme === `dark` ? (
-          <HiSun size="20" color="white" />
-        ) : (
-          <HiMoon size="20" />
-        ))}
+        (theme === `dark` ? <HiSun size="20" /> : <HiMoon size="20" />)}
     </button>
   )
 }
