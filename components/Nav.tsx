@@ -20,7 +20,7 @@ const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [
   { label: `Discord`, icon: `discord`, url: `https://discord.gg/rytFErsARm` },
 ]
 
-const NavLink: FC<{
+const NavLink: React.FC<{
   label?: string
   hideLabel?: boolean
   icon?: IconName
