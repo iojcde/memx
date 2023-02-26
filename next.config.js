@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const { withContentlayer } = require('next-contentlayer')
 const fs = require('fs')
-const filenames = fs.readFileSync('./data/filenames.json', 'utf8')
+const filenamesFile = fs.readFileSync('./data/filenames.json', 'utf8')
 
 const filenames = JSON.parse(filenamesFile)
 module.exports = withContentlayer({
