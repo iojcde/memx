@@ -54,7 +54,6 @@ const Nav: React.FC = () => {
 
   return (
     <nav className="fixed top-0 z-50 my-0 flex  h-16 w-full items-center justify-center border-b bg-white  py-4 px-6 transition duration-200 dark:border-neutral-800 dark:bg-black lg:px-16">
-
       <a
         href="#content"
         className="text-md absolute -top-8 ml-3 -translate-y-12 transform rounded-md border border-neutral-300  px-3 py-1 transition-transform duration-100 focus:translate-y-10 lg:ml-8"
