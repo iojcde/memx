@@ -1,4 +1,5 @@
 'use client'
+
 import React, { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -33,8 +34,13 @@ const NavLink: FC<{
         url == activePath
           ? `${
               level == 0 ? `font-medium` : `font-normal`
+<<<<<<< HEAD
             } bg-neutral-100 text-neutral-900 transition duration-200 dark:bg-neutral-500/20 dark:text-neutral-50`
           : `hover:bg-neutral-50 dark:hover:bg-neutral-900 ${
+=======
+            } bg-neutral-100 text-black transition duration-200 dark:bg-neutral-500/20 dark:text-neutral-50`
+          : `hover:bg-neutral-50 dark:hover:bg-[rgb(16,16,16)] ${
+>>>>>>> c4d4667 (cool post heaader)
               level == 0
                 ? `font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
                 : `font-normal hover:text-neutral-600 dark:hover:text-neutral-300`

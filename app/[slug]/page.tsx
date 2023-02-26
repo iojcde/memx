@@ -1,11 +1,12 @@
 import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks'
 import { notFound } from 'next/navigation'
 import components from 'components/MDXComponents'
-import { allResearch, Research } from 'contentlayer/generated'
+import { allDocuments, allResearch, Research } from 'contentlayer/generated'
 import { getBacklinks } from 'lib/markdown'
 import Link from 'next/link'
 import Backlink from 'components/Backlink'
 import Image from 'next/image'
+import PostHeader from 'components/PostHeader'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -28,11 +29,20 @@ export default function Blog({ params }) {
 
   return (
     <>
-      <article className="mb-16 mt-8 w-full max-w-4xl flex-col items-start justify-center px-6 lg:px-16">
-        <h1 className="mb-4 text-3xl font-bold capitalize tracking-tight text-black  dark:text-white md:text-5xl">
-          {post.title}
-        </h1>
-        <div className="mt-2 flex w-full flex-col items-start justify-between md:flex-row md:items-center">
+      <article className="mb-16 mt-8 w-full max-w-4xl flex-col items-start justify-center ">
+        <PostHeader
+          tree={allDocuments.map((doc) => ({
+            title: doc.title,
+            nav_title: doc.title,
+            collapsible: false,
+            collapsed: false,
+            label: ``,
+            urlPath: `/${doc.hex}`,
+            children: [],
+          }))}
+          title={post.title}
+        />
+        <div className="mt-2 flex w-full flex-col items-start justify-between px-6 md:flex-row md:items-center lg:px-16">
           <div className="flex items-center">
             <Image
               alt="Jeeho Ahn"
@@ -49,14 +59,12 @@ export default function Blog({ params }) {
             {post.readingTime.text}
           </p>
         </div>
-
         <>
-          <div className="apply-prose mt-4 w-full max-w-none">
+          <div className="apply-prose mt-4 w-full max-w-none px-6 lg:px-16">
             <MDXContent components={components as any} />
           </div>
         </>
-
-        <div className="text-sm text-neutral-700 dark:text-neutral-400">
+        <div className="px-6 text-sm text-neutral-700 dark:text-neutral-400 lg:px-16">
           <a
             href={discussUrl(post.slug)}
             target="_blank"
@@ -73,7 +81,10 @@ export default function Blog({ params }) {
             {`Edit on GitHub`}
           </a>
         </div>
-        <Backlink backlinks={backlinks} />
+        <div className="px-6 lg:px-16">
+          <hr className="mt-8" />
+          <Backlink backlinks={backlinks} />
+        </div>
       </article>
     </>
   )

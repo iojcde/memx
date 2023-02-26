@@ -32,7 +32,7 @@ const processBacklinkItem = (text: string, title: string) => {
 
   return (
     <p
-      className="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap text-sm"
+      className="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap rounded bg-neutral-50 p-2 text-sm shadow-inner transition duration-200 dark:bg-neutral-900"
       dangerouslySetInnerHTML={{
         __html: text.trim(),
       }}
@@ -40,24 +40,29 @@ const processBacklinkItem = (text: string, title: string) => {
   )
 }
 
-const Backlink = ({ backlinks }) => {
+const Backlink: React.FC<{
+  backlinks: { title: string; url: string; type: string; text: string }[]
+}> = ({ backlinks }) => {
   return (
-    <div className="mt-8 rounded-md border p-4">
-      <h2 className="pb-2 text-sm font-semibold">Links to this note</h2>
-      <div className="grid grid-cols-2">
-        {backlinks.map((backlink) => (
-          <div
-            key={backlink.url}
-            className="rounded border bg-neutral-100 p-4 shadow transition duration-200 dark:bg-neutral-900"
-          >
-            <Link href={`/${backlink.url}`} className="font-semibold">
-              {backlink.title}
-            </Link>
+    <div className="mt-8  ">
+      <h2 className="pb-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+        Links to this note
+      </h2>
+      {backlinks.length > 0 ? (
+        <div className="grid xl:grid-cols-2">
+          {backlinks.map((backlink) => (
+            <div key={backlink.url} className="rounded-md border p-4 ">
+              <Link href={`/${backlink.url}`} className="font-semibold">
+                {backlink.title}
+              </Link>
 
-            {processBacklinkItem(backlink.text, backlink.title)}
-          </div>
-        ))}
-      </div>
+              {processBacklinkItem(backlink.text, backlink.title)}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm">Nothing here yet...</p>
+      )}
     </div>
   )
 }
