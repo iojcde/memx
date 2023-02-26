@@ -21,7 +21,7 @@ const PostHeader = ({ title, tree }) => {
   return (
     <>
       <header className="relative w-full">
-        <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 lg:max-w-full lg:px-16">
+        <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 lg:max-w-full px-6 lg:px-16">
           <ul className="-mx-1 flex flex-wrap items-center text-sm"></ul>
           <h1 className="sr-only text-2xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 md:text-3xl lg:not-sr-only lg:text-5xl">
             {title}
