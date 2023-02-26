@@ -10,7 +10,7 @@ module.exports = withContentlayer({
   },
   reactStrictMode: true,
   redirects: async () => {
-    return Object.keys(JSON.parse(filenames)).map((key) => ({
+    return Object.keys(filenames).map((key) => ({
       source: `/${key}`,
       destination: `/${filenames[key]}`,
       permanent: false,
