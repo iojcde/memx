@@ -62,7 +62,7 @@ const computedFields: ComputedFields = {
 
 const research = defineDocumentType(() => ({
   name: `Research`,
-  filePathPattern: `research/*.mdx`,
+  filePathPattern: `research/*.md`,
   contentType: `mdx`,
   fields: {
     hex: { type: `string`, required: true },
@@ -70,8 +70,8 @@ const research = defineDocumentType(() => ({
   computedFields,
 }))
 
-const Blog = defineDocumentType(() => ({
-  name: `Research`,
+const blog = defineDocumentType(() => ({
+  name: `Blog`,
   filePathPattern: `blog/*.mdx`,
   contentType: `mdx`,
   fields: {
@@ -82,7 +82,7 @@ const Blog = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: `data`,
-  documentTypes: [research],
+  documentTypes: [research, blog],
   mdx: {
     remarkPlugins: [remarkGfm, remarkWikiLinks],
     rehypePlugins: [
