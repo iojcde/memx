@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/anime idk.md",
+                "file": "blog/What is this Memx thing anyways.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,14 +25,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/What is this Memx thing.md",
+                "file": "research/TailwindCSS Colors.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/What is this Memx thing.md",
+                "file": "blog/What is this Memx thing anyways.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blog/What is this Memx thing.md",
+                "file": "blog/What is this Memx thing anyways.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/What is this Memx thing.md"
+                "file": "blog/What is this Memx thing anyways.md"
               }
             }
           }
@@ -159,12 +158,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3c55f3cf6203860a",
+  "active": "1b3599933140f367",
   "lastOpenFiles": [
     "research/anime idk.md",
+    "research/TailwindCSS Colors.md",
+    "blog/What is this Memx thing anyways.md",
     "research/Hi everyone.md",
     "research/Hello World.md",
-    "research/TailwindCSS Colors.md",
     "hello.md"
   ]
 }
