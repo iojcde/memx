@@ -21,14 +21,14 @@ export const Author: FC<{ name: string; handle: string; avatar: string }> = ({
         </div>
       </div>
       <div className="not-prose leading-tight">
-        <p className="mb-0 font-semibold text-slate-700 dark:text-slate-300">
+        <p className="mb-0 font-semibold text-neutral-700 dark:text-neutral-300">
           {name}
         </p>
         <Link
           href={`https://twitter.com/` + handle}
           target="_blank"
           rel="noreferrer"
-          className="text-sm text-slate-500 dark:text-slate-400"
+          className="text-sm text-neutral-500 dark:text-neutral-400"
           legacyBehavior
         >
           {`@` + handle}

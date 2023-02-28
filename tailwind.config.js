@@ -12,17 +12,7 @@ module.exports = {
     extend: {
       typography: (theme) => ({
         DEFAULT: {
-          css: [{ color: '#18181b', a: { 'text-decoration': 'none' } }],
-        },
-        invert: {
-          css: [
-            {
-              color: theme('colors.gray.200'),
-              code: {
-                color: colors.gray,
-              },
-            },
-          ],
+          css: [{ a: { 'text-decoration': 'none' } }],
         },
       }),
       backgroundOpacity: {

@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import '../styles/cursor.css'
 import Nav from 'components/Nav'
 import '../styles/syntax.css'
+import '../styles/fonts.css'
 
 import { Providers } from './providers'
 

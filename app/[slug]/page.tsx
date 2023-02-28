@@ -4,9 +4,9 @@ import components from 'components/MDXComponents'
 import { allDocuments, allResearch, Research } from 'contentlayer/generated'
 import { getBacklinks } from 'lib/markdown'
 import Link from 'next/link'
-import Backlink from 'components/Backlink'
+import Backlink from './Backlink'
 import Image from 'next/image'
-import PostHeader from 'components/PostHeader'
+import PostHeader from 'app/[slug]/PostHeader'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -15,7 +15,7 @@ const discussUrl = (slug: string) =>
     `https://jcde.xyz/blog/${slug}`,
   )}`
 
-export default function Blog({ params }) {
+export default function PostPage({ params }) {
   // useLiveReload()
 
   const slug = params.slug.toUpperCase() as string

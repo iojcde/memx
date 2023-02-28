@@ -42,14 +42,14 @@ const Menu = () => {
           <div className="flex space-x-6 md:order-2">
             <a
               href="https://twitter.com/IoJcde"
-              className="text-gray-600 dark:text-gray-400"
+              className="text-neutral-600 dark:text-neutral-400"
             >
               <FaTwitter size="24" />
             </a>
 
             <a
               href="https://github.com/jcdea"
-              className="text-gray-600 dark:text-gray-400"
+              className="text-neutral-600 dark:text-neutral-400"
             >
               <span className="sr-only">GitHub</span>
               <FaGithub size="24" />
@@ -57,7 +57,7 @@ const Menu = () => {
 
             <a
               href="https://www.linkedin.com/in/jcdea/"
-              className="text-gray-600 dark:text-gray-400"
+              className="text-neutral-600 dark:text-neutral-400"
             >
               <span className="sr-only">LinkedIn</span>
               <FaLinkedin size="24" />

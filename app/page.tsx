@@ -6,9 +6,9 @@ export default function Home() {
   const posts = allResearch.map((post) => pick(post, [`hex`, `title`]))
   return (
     <>
-      <div className="container mx-auto mb-16 flex max-w-5xl flex-col items-start justify-center px-4">
-        <h1 className="mb-4 mt-8 text-3xl font-bold">memx</h1>
-        <div className="prose mb-4">
+      <div className="container mx-auto mb-16 flex max-w-4xl flex-col items-start justify-center px-4">
+        <h1 className="font-display mb-4 mt-8 text-3xl font-bold">memx</h1>
+        <div className="apply-prose mb-4">
           <p>
             See Sunghyun Cho&apos;s post on {` `}
             <a href="https://cho.sh/r/6AE59D">building a second brain</a>.

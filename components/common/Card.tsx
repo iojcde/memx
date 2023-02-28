@@ -12,11 +12,13 @@ export const Card: FC<{
       className={classNames(
         `overflow-hidden rounded-2xl border`,
         dark
-          ? `border-gray-800 bg-gray-900`
-          : `border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-gray-900`,
+          ? `border-neutral-800 bg-neutral-900`
+          : `border-neutral-100 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900`,
         shadow &&
           `shadow-lg ${
-            dark ? `shadow-gray-900` : `shadow-gray-100 dark:shadow-gray-900`
+            dark
+              ? `shadow-neutral-900`
+              : `shadow-neutral-100 dark:shadow-neutral-900`
           }`,
         className,
       )}

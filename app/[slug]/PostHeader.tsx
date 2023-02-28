@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment, useEffect, useState } from 'react'
-import { Icon } from './common/Icon'
+import { Icon } from '../../components/common/Icon'
 import { Sidebar } from './Sidebar'
 
 const PostHeader = ({ title, tree }) => {
@@ -21,7 +21,7 @@ const PostHeader = ({ title, tree }) => {
   return (
     <>
       <header className="relative w-full">
-        <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 lg:max-w-full px-6 lg:px-16">
+        <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 px-6 lg:max-w-full lg:px-16">
           <ul className="-mx-1 flex flex-wrap items-center text-sm"></ul>
           <h1 className="sr-only text-2xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 md:text-3xl lg:not-sr-only lg:text-5xl">
             {title}
@@ -42,7 +42,7 @@ const PostHeader = ({ title, tree }) => {
       </header>
       {open && (
         <div className="fixed inset-0 z-50 h-screen bg-neutral-900/20 pb-20 backdrop-blur-lg backdrop-filter ">
-          <div className="absolute left-0 h-full divide-y divide-neutral-200 overflow-y-scroll border-l border-neutral-200 bg-white p-4 dark:divide-gray-800 dark:border-gray-800 dark:bg-black">
+          <div className="absolute left-0 h-full divide-y divide-neutral-200 overflow-y-scroll border-l border-neutral-200 bg-white p-4 dark:divide-neutral-800 dark:border-neutral-800 dark:bg-black">
             <div className="flex items-center justify-between pb-2">
               <h2 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200">
                 Documentation
@@ -65,7 +65,7 @@ const PostHeader = ({ title, tree }) => {
         </div>
       )}
       <div
-        className={`fixed top-16 z-10 hidden h-16 w-full border-b border-neutral-200 bg-white bg-opacity-90 backdrop-blur backdrop-filter transition-opacity duration-200 dark:bg-black lg:block ${
+        className={`fixed top-16 z-0 hidden h-16 w-full border-b border-neutral-200 bg-white bg-opacity-90 backdrop-blur backdrop-filter transition-opacity duration-200 dark:bg-black lg:block ${
           top ? `opacity-0` : `opacity-100`
         }`}
       >

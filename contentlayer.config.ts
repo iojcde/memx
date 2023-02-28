@@ -70,6 +70,16 @@ const research = defineDocumentType(() => ({
   computedFields,
 }))
 
+const Blog = defineDocumentType(() => ({
+  name: `Research`,
+  filePathPattern: `blog/*.mdx`,
+  contentType: `mdx`,
+  fields: {
+    hex: { type: `string`, required: true },
+  },
+  computedFields,
+}))
+
 const contentLayerConfig = makeSource({
   contentDirPath: `data`,
   documentTypes: [research],

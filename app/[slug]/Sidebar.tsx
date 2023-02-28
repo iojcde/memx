@@ -4,7 +4,7 @@ import React, { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
-import { TreeNode } from 'types/treenode'
+import { TreeNode } from 'types/TreeNode'
 import { Label } from 'components/common/Label'
 import { Icon } from 'components/common/Icon'
 

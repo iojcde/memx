@@ -3,41 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .font-display {
+        font-variation-settings:"opsz" 32;
+    }
+}
+
 *,
 ::before,
 ::after {
   @apply dark:border-neutral-800;
 }
 
-
-
-/* width */
-.thin-scrollbar ::-webkit-scrollbar {
-    width: 8px;
-}
-/* Track */
-.thin-scrollbar ::-webkit-scrollbar-track {
-@apply dark:bg-neutral-900 bg-neutral-200 transition duration-200;
-}
-
-/* Handle */
-.thin-scrollbar ::-webkit-scrollbar-thumb {
-  @apply bg-neutral-600 dark:bg-neutral-500 rounded-full
-
-}
-
-/* Handle on hover */
-.thin-scrollbar ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-@font-face {
-    font-family: 'Pretendard Std Variable';
-    font-weight: 45 920;
-    font-style: normal;
-    font-display: swap;
-    src: local('Pretendard Std Variable'), url('/static/fonts/PretendardStdVariable.woff2') format('woff2-variations');
-}
 ul.wrapper {
     padding-left: 1rem;
     list-style: none;
@@ -47,22 +24,20 @@ ul.wrapper {
     width: clamp(500px, 60vw, 800px);
     padding-right: 1rem;
 }
+
+:root { font-family: "Inter", sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: "InterVar", sans-serif; font-optical-sizing: auto; }
+} 
 body {
     margin: 0;
-    font-family: "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply bg-white dark:bg-black transition duration-200 dark:text-gray-100;
-
-    overscroll-behavior-y: none;
-}
-
-p {
-    @apply dark:text-neutral-100 text-neutral-900;
+    @apply bg-white dark:bg-black transition duration-200 dark:text-neutral-100;
 }
 
 .prose a {
-    @apply dark:text-white text-black font-semibold;
+    @apply text-[#0070f3] hover:underline font-normal;
 }
 html {
     scroll-behavior: smooth;
@@ -87,16 +62,10 @@ html {
         transform: scale(1);
    }
 }
-.heartbeat:hover {
-    animation: heartbeat 1s infinite;
-}
-.hero-text-outline {
-    color: transparent;
-    text-shadow: none;
-    -webkit-text-stroke: black 1px;
-}
-.apply-prose {
-    @apply prose dark:prose-invert;
+@layer base {
+    .apply-prose {
+        @apply prose prose-neutral dark:prose-invert;
+    }
 }
 ::selection {
     @apply bg-black text-white dark:bg-white dark:text-black;

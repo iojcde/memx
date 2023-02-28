@@ -32,7 +32,7 @@ const processBacklinkItem = (text: string, title: string) => {
 
   return (
     <p
-      className="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap rounded bg-neutral-50 p-2 text-sm shadow-inner transition duration-200 dark:bg-neutral-900"
+      className="mt-2 overflow-hidden overflow-ellipsis whitespace-nowrap rounded bg-neutral-50 p-2 text-sm transition duration-200 dark:bg-neutral-900"
       dangerouslySetInnerHTML={{
         __html: text.trim(),
       }}

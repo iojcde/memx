@@ -1,10 +1,13 @@
 'use client'
+
 import { useState } from 'react'
 import Toggle from './Toggle'
 import Link from 'next/link'
 import { Icon, IconName } from './common/Icon'
 import { usePathname } from 'next/navigation'
 import { isExternalUrl } from 'utils/helpers'
+import { useKBar } from 'kbar'
+import { Label } from './common/Label'
 
 const navLinks: Array<{ label: string; url: string }> = [
   { label: `Home`, url: `/` },
@@ -19,6 +22,27 @@ const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [
   },
   { label: `Discord`, icon: `discord`, url: `https://discord.gg/rytFErsARm` },
 ]
+
+export const SearchButton: React.FC<{ showShortcut?: boolean }> = ({
+  showShortcut = true,
+}) => {
+  const { query } = useKBar()
+  return (
+    <button
+      aria-label="Search"
+      onClick={query.toggle}
+      className="flex h-8 cursor-text items-center rounded-md border border-neutral-200 bg-neutral-50 px-2 text-sm hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700 dark:hover:bg-neutral-800"
+    >
+      <span className="mr-2 block w-3">
+        <Icon name="search" />
+      </span>
+      <span className="mr-8 text-neutral-400 dark:text-neutral-500">
+        Search...
+      </span>
+      {showShortcut && <Label text="⌘K" />}
+    </button>
+  )
+}
 
 const NavLink: React.FC<{
   label?: string
@@ -66,7 +90,9 @@ const Nav: React.FC = () => {
           className="relative text-xl text-black dark:text-neutral-100"
           data-cursor="-opaque"
         >
-          <Link href="/">memx</Link>
+          <Link href="/" className="font-display">
+            memx
+          </Link>
         </div>
         <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-neutral-100 lg:space-x-4">
           {/* <span>
@@ -95,7 +121,7 @@ const Nav: React.FC = () => {
                 <nav className="absolute right-0 h-full divide-y divide-neutral-200 border-l border-neutral-200 bg-white p-8 dark:divide-neutral-800 dark:border-neutral-800 dark:bg-black">
                   <div className="flex flex-col items-end space-y-2 pb-8">
                     <div className="mb-2">
-                      {/* <SearchButton showShortcut={false} /> */}
+                      <SearchButton showShortcut={false} />
                     </div>
                     {navLinks.map(({ label, url }, index) => (
                       <NavLink
@@ -110,6 +136,21 @@ const Nav: React.FC = () => {
               </div>
             )}
           </div>
+          <nav className="hidden items-center divide-x divide-neutral-200 dark:divide-neutral-800 lg:flex">
+            <div className="flex items-center pr-2 lg:space-x-4 lg:pr-8">
+              {navLinks.map(({ label, url }, index) => (
+                <NavLink
+                  key={index}
+                  label={label}
+                  url={url}
+                  icon={isExternalUrl(url) ? `external-link` : undefined}
+                />
+              ))}
+              <div className="px-3">
+                <SearchButton />
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
     </nav>

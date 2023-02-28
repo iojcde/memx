@@ -1,4 +1,4 @@
-import { Sidebar } from 'components/Sidebar'
+import { Sidebar } from './Sidebar'
 import { allDocuments } from 'contentlayer/generated'
 
 const Layout = ({ children }) => (
@@ -27,15 +27,3 @@ const Layout = ({ children }) => (
   </div>
 )
 export default Layout
-
-const a = [
-  {
-    title: `hi`,
-    navdoctitle: `hi`,
-    collapsible: false,
-    collapsed: false,
-    label: `hello`,
-    urlPath: `/hi`,
-    children: [],
-  },
-]

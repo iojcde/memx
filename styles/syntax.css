@@ -1,13 +1,13 @@
 .prose pre {
-    @apply border border-gray-200 dark:border-gray-100 dark:bg-gray-900 transition duration-100;
+    @apply border border-neutral-200 dark:border-neutral-100 dark:bg-neutral-900 transition duration-100;
 }
 
 .prose code {
-    @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded-lg;
+    @apply text-neutral-800 dark:text-neutral-200 px-1 py-0.5 rounded-lg;
 }
 
 .prose pre code {
-    @apply text-gray-800 dark:text-gray-200 p-0;
+    @apply text-neutral-800 dark:text-neutral-200 p-0;
 }
 
 .prose img {
@@ -25,11 +25,11 @@
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    @apply text-gray-700 dark:text-gray-300;
+    @apply text-neutral-700 dark:text-neutral-300;
 }
 
 .token.punctuation {
-    @apply text-gray-700 dark:text-gray-300;
+    @apply text-neutral-700 dark:text-neutral-300;
 }
 
 .token.property,
@@ -77,11 +77,11 @@
 }
 
 code[class*='language-'] {
-    @apply text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-black transition duration-100;
+    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black transition duration-100;
 }
 
 pre[class*='language-'] {
-    @apply text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-black border border-gray-200 dark:border-gray-700 transition duration-100;
+    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black border border-neutral-200 dark:border-neutral-700 transition duration-100;
 }
 
 pre::-webkit-scrollbar {
@@ -96,7 +96,7 @@ pre {
 }
 
 .rehype-code-title {
-    @apply transition duration-100 px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-black;
+    @apply transition duration-100 px-5 py-3 font-mono text-sm font-bold text-neutral-800 bg-neutral-200 border border-b-0 border-neutral-200 rounded-t-lg dark:text-neutral-200 dark:border-neutral-700 dark:bg-black;
 }
 
 .rehype-code-title+pre {
@@ -104,7 +104,7 @@ pre {
 }
 
 .highlight-line {
-    @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
+    @apply block px-4 -mx-4 bg-neutral-100 border-l-4 border-blue-500 dark:bg-neutral-800;
 }
 
 /* Remove Safari input shadow on mobile */

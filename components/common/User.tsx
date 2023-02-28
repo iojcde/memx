@@ -20,10 +20,10 @@ export const User: FC<{ name: string; bio: string; avatar: string }> = ({
         </div>
       </div>
       <div>
-        <p className="mb-0 font-semibold text-slate-700 dark:text-slate-300">
+        <p className="mb-0 font-semibold text-neutral-700 dark:text-neutral-300">
           {name}
         </p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">{bio}</p>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">{bio}</p>
       </div>
     </div>
   )
