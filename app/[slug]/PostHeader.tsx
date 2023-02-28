@@ -4,6 +4,31 @@ import { Fragment, useEffect, useState } from 'react'
 import { Icon } from '../../components/common/Icon'
 import { Sidebar } from './Sidebar'
 
+export const PostTitle: React.FC<{
+  title: string
+  setOpen?: (b: boolean) => void
+}> = ({ title, setOpen }) => {
+  return (
+    <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 px-6 lg:max-w-full lg:px-16">
+      <ul className="-mx-1 flex flex-wrap items-center text-sm"></ul>
+      <h1 className="sr-only text-2xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 md:text-3xl lg:not-sr-only lg:text-5xl">
+        {title}
+      </h1>
+      <div className="lg:hidden">
+        <button
+          aria-label="Show docs navigation"
+          onClick={() => setOpen && setOpen(true)}
+          className="flex space-x-2 text-left text-2xl font-semibold text-neutral-800 dark:text-neutral-200 md:space-x-3 md:text-3xl lg:text-4xl"
+        >
+          <span className="mt-1.5 inline-block w-4 flex-shrink-0 dark:fill-neutral-100 md:w-5">
+            <Icon name="chevron-down" />
+          </span>
+          <span className="inline-block flex-shrink capitalize">{title}</span>
+        </button>
+      </div>
+    </div>
+  )
+}
 const PostHeader = ({ title, tree }) => {
   const [open, setOpen] = useState<boolean>(false)
 
@@ -21,31 +46,14 @@ const PostHeader = ({ title, tree }) => {
   return (
     <>
       <header className="relative w-full">
-        <div className="mx-auto mb-4 w-full max-w-3xl space-y-2 px-6 lg:max-w-full lg:px-16">
-          <ul className="-mx-1 flex flex-wrap items-center text-sm"></ul>
-          <h1 className="sr-only text-2xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 md:text-3xl lg:not-sr-only lg:text-5xl">
-            {title}
-          </h1>
-          <div className="lg:hidden">
-            <button
-              aria-label="Show docs navigation"
-              onClick={() => setOpen(true)}
-              className="flex space-x-2 text-left text-2xl font-semibold text-neutral-800 dark:text-neutral-200 md:space-x-3 md:text-3xl lg:text-4xl"
-            >
-              <span className="mt-1.5 inline-block w-4 flex-shrink-0 dark:fill-neutral-100 md:w-5">
-                <Icon name="chevron-down" />
-              </span>
-              <span className="inline-block flex-shrink">{title}</span>
-            </button>
-          </div>
-        </div>
+        <PostTitle title={title} setOpen={setOpen} />
       </header>
       {open && (
         <div className="fixed inset-0 z-50 h-screen bg-neutral-900/20 pb-20 backdrop-blur-lg backdrop-filter ">
           <div className="absolute left-0 h-full divide-y divide-neutral-200 overflow-y-scroll border-l border-neutral-200 bg-white p-4 dark:divide-neutral-800 dark:border-neutral-800 dark:bg-black">
             <div className="flex items-center justify-between pb-2">
               <h2 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200">
-                Documentation
+                Research
               </h2>
               <button
                 type="button"

@@ -6,7 +6,9 @@ import { getBacklinks } from 'lib/markdown'
 import Link from 'next/link'
 import Backlink from './Backlink'
 import Image from 'next/image'
-import PostHeader from 'app/[slug]/PostHeader'
+import PostHeader, { PostTitle } from 'app/[slug]/PostHeader'
+import { buildResearchTree } from 'utils/buildTree'
+import { Suspense } from 'react'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -30,18 +32,12 @@ export default function PostPage({ params }) {
   return (
     <>
       <article className="mb-16 mt-8 w-full max-w-4xl flex-col items-start justify-center ">
-        <PostHeader
-          tree={allDocuments.map((doc) => ({
-            title: doc.title,
-            nav_title: doc.title,
-            collapsible: false,
-            collapsed: false,
-            label: ``,
-            urlPath: `/${doc.hex}`,
-            children: [],
-          }))}
-          title={post.title}
-        />
+        <Suspense fallback={<PostTitle title={post.title} />}>
+          <PostHeader
+            tree={buildResearchTree(allResearch)}
+            title={post.title}
+          />
+        </Suspense>
         <div className="mt-2 flex w-full flex-col items-start justify-between px-6 md:flex-row md:items-center lg:px-16">
           <div className="flex items-center">
             <Image

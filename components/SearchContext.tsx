@@ -66,8 +66,8 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
           name: element.label
             ? `${element.title} (${element.label})`
             : element.title,
-          keywords: element?.excerpt || ``,
-          section: `Documentation`,
+          keywords: `research post blog memex` + (element?.excerpt || ``),
+          section: `Research`,
           perform: () => router.push(element.urlPath),
         })
         id++
@@ -76,6 +76,7 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
     }
     mapDocs(researchTree, `Research`)
+
     return actions
   }, [researchTree, router])
 
@@ -84,9 +85,9 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
       <KBarPortal>
         <KBarPositioner className="bg-neutral-300/50 p-4 backdrop-blur backdrop-filter dark:bg-black/50">
           <KBarAnimator className="w-full max-w-xl">
-            <Card>
-              <div className="flex items-center space-x-4 p-4">
-                <span className="block w-5">
+            <Card className="relative z-50 border border-neutral-300 p-2">
+              <div className="mb-2 flex items-center space-x-4 border-b p-2">
+                <span className="block w-5 dark:fill-neutral-200">
                   <Icon name="search" />
                 </span>
                 <KBarSearch className="h-8 w-full bg-transparent text-neutral-600 placeholder-neutral-400 focus:outline-none dark:text-neutral-200 dark:placeholder-neutral-500" />
@@ -113,16 +114,16 @@ const RenderResults = () => {
           <div>
             {typeof item === `string` ? (
               <div className="pt-3">
-                <div className="block border-t border-neutral-100 px-4 pt-6 pb-2 text-xs font-semibold uppercase text-neutral-400 dark:border-neutral-800 dark:text-neutral-500">
+                <div className="block px-2 pb-2 text-xs text-neutral-400 dark:text-neutral-500">
                   {item}
                 </div>
               </div>
             ) : (
               <div
-                className={`block cursor-pointer px-4 py-2 text-neutral-600 dark:text-neutral-300 ${
+                className={`block cursor-pointer rounded-lg px-4 py-2 transition duration-75 ${
                   active
-                    ? `bg-neutral-100 dark:bg-neutral-800`
-                    : `bg-transparent`
+                    ? `bg-neutral-200 text-black dark:bg-neutral-800 dark:text-white`
+                    : `bg-transparent text-neutral-500 dark:text-neutral-500 `
                 }`}
               >
                 {item.subtitle && (

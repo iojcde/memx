@@ -43,7 +43,7 @@ const NavLink: FC<{
       )}
     >
       <Link href={url} className="flex h-full grow items-center space-x-2">
-        <span className="">{title}</span>
+        <span className="capitalize">{title}</span>
         {label && <Label text={label} />}
       </Link>
       {collapsible && (
