@@ -32,18 +32,18 @@ const computedFields: ComputedFields = {
     type: `string`,
     resolve: (doc) =>
       doc._raw.sourceFileName
-        .replace(/\.mdx$/, ``)
+        .replace(/\.md$/, ``)
         .replace(` `, `-`)
         .toLowerCase(),
   },
   title: {
     type: `string`,
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ``),
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.md$/, ``),
   },
   backlinks: {
     type: `list`,
     resolve: (doc) => {
-      const title = doc._raw.sourceFileName.replace(/\.mdx$/, ``)
+      const title = doc._raw.sourceFileName.replace(/\.md$/, ``)
       const backlinks: Record<string, Record<string, string>> = {}
 
       const array = [...doc.body.raw.matchAll(/.*\[\[(.+?)\]\].*/g)]

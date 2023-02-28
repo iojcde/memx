@@ -34,7 +34,7 @@ const getHex = (content: string, filename: string) => {
 const allBacklinks: Record<string, Record<string, string>> = {}
 
 const compileBacklinks = (content: string, filename: string) => {
-  const title = filename.replace(`.mdx`, ``)
+  const title = filename.replace(`.md`, ``)
 
   const hasBacklinks = content.includes(`[[`)
   if (hasBacklinks) {
@@ -63,12 +63,7 @@ for (const filename of files) {
   compileBacklinks(fileContent, filename)
 
   const hex = getHex(fileContent, filename)
-  filenames[
-    filename
-      .replace(/\.mdx$/, ``)
-      .replace(` `, `-`)
-      .toLowerCase()
-  ] = hex
+  filenames[filename.replace(/\.md$/, ``).replace(` `, `-`).toLowerCase()] = hex
 
   // write filenames to file
   fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))
