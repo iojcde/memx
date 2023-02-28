@@ -6,4 +6,5 @@ export type TreeNode = {
   children: TreeNode[]
   collapsible: boolean | null
   collapsed: boolean | null
+  excerpt: string | null
 }

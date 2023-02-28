@@ -6,7 +6,7 @@ export const buildResearchTree = (notes: Research[]): TreeNode[] => {
     nav_title: note.title ?? null,
     title: note.title,
     label: null,
-    excerpt: note.body.raw.slice(0, 20) ?? null,
+    excerpt: note.body.raw.slice(0, 40) ?? null,
     urlPath: `/${note.hex}`,
     collapsible: false,
     collapsed: false,
