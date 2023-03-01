@@ -3,6 +3,7 @@ import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
 import filenames from 'data/filenames.json'
 import fs from 'fs'
+import { isExternal } from 'util/types'
 
 interface Props {
   children: ReactNode
@@ -21,6 +22,8 @@ const CustomLink = (props: Props) => {
         {props.children}
       </Link>
     )
+  } else if (isExternal(href)) {
+    return <a target="_blank" rel="noopener noreferrer" {...props} />
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />
