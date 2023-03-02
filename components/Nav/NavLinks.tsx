@@ -101,7 +101,6 @@ const NavLinks = ({ links }) => {
               key={index}
               label={label}
               url={url}
-              icon={isExternalUrl(url) ? `external-link` : undefined}
             />
           ))}
           <div className="px-3">
