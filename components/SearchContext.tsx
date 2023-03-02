@@ -25,7 +25,7 @@ import { Label } from './common/Label'
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
-  const researchTree = buildTree(allResearch)
+  const researchTree = buildTree()
   const actions = useMemo(() => {
     const actions = [
       {
