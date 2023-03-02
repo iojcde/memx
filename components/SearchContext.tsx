@@ -71,7 +71,7 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
           perform: () => router.push(element.urlPath),
         })
         id++
-        if (element.children.length)
+        if (element.children?.length)
           mapDocs(element.children, parent + ` / ` + element.title)
       }
     }
