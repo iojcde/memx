@@ -97,11 +97,7 @@ const NavLinks = ({ links }) => {
       <nav className="hidden items-center divide-x divide-neutral-200 dark:divide-neutral-800 lg:flex">
         <div className="flex items-center pr-2 lg:space-x-4 lg:pr-8">
           {links.map(({ label, url }, index) => (
-            <NavLink
-              key={index}
-              label={label}
-              url={url}
-            />
+            <NavLink key={index} label={label} url={url} />
           ))}
           <div className="px-3">
             <SearchButton />
