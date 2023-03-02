@@ -6,7 +6,7 @@ import { FC, ReactNode, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { TreeNode } from 'types/TreeNode'
-import { buildResearchTree } from 'utils/buildTree'
+import { buildTree } from 'utils/buildTree'
 import { allResearch } from 'contentlayer/generated'
 
 import React from 'react'
@@ -25,7 +25,7 @@ import { Label } from './common/Label'
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
-  const researchTree = buildResearchTree(allResearch)
+  const researchTree = buildTree(allResearch)
   const actions = useMemo(() => {
     const actions = [
       {
@@ -83,8 +83,8 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <KBarProvider actions={actions}>
       <KBarPortal>
-        <KBarPositioner className="bg-neutral-300/50 p-4 backdrop-blur backdrop-filter dark:bg-black/50">
-          <KBarAnimator className="w-full max-w-xl">
+        <KBarPositioner className="z-10 bg-neutral-300/50 p-4 backdrop-blur backdrop-filter dark:bg-black/50">
+          <KBarAnimator className="relative z-50 w-full max-w-xl">
             <Card className="relative z-50 border border-neutral-300 p-2">
               <div className="mb-2 flex items-center space-x-4 border-b p-2">
                 <span className="block w-5 dark:fill-neutral-200">

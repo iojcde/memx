@@ -1,0 +1,68 @@
+@import url('icons/a.css');
+@import url('icons/b.css');
+@import url('icons/c.css');
+@import url('icons/d.css');
+@import url('icons/e.css');
+@import url('icons/f.css');
+@import url('icons/g.css');
+@import url('icons/h.css');
+@import url('icons/i.css');
+@import url('icons/j.css');
+@import url('icons/k.css');
+@import url('icons/l.css');
+@import url('icons/m.css');
+@import url('icons/n.css');
+@import url('icons/o.css');
+@import url('icons/p.css');
+@import url('icons/q.css');
+@import url('icons/r.css');
+@import url('icons/s.css');
+@import url('icons/t.css');
+@import url('icons/u.css');
+@import url('icons/v.css');
+@import url('icons/w.css');
+@import url('icons/x.css');
+@import url('icons/y.css');
+@import url('icons/z.css');
+@import url('icons/extra.css');
+@import url('icons/arc.css');
+a:has(img)::after,
+a:has(img)::before,
+a:has(i)::after,
+a:has(i)::before {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  content: none !important;
+}
+
+
+article a[href^='http']::before {
+  height: 1em;
+  width: 1em;
+  margin-left: 0.1em;
+  margin-right: 0.15em;
+  margin-bottom: 0.2em;
+  display: inline-block;
+  vertical-align: middle !important;
+  mask-repeat: no-repeat;
+  @apply bg-[#0070f3];
+}
+article a[href^='http']::after {
+  content: '\00a0';
+  height: 1em;
+  width: 1em;
+  margin-top: 0.1em;
+  margin-right: 0.1em;
+  margin-bottom: 0.15em;
+  display: inline-block;
+  vertical-align: middle !important;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3e%3cpath d='M40 10a2 2 0 0 0 0 4h7.172L30.586 30.586a2 2 0 1 0 2.828 2.828L50 16.828V24a2 2 0 0 0 4 0V12a2 2 0 0 0-2-2H40zm-22 2c-3.309 0-6 2.691-6 6v28c0 3.309 2.691 6 6 6h28c3.309 0 6-2.691 6-6V34a2 2 0 0 0-4 0v12c0 1.103-.897 2-2 2H18c-1.103 0-2-.897-2-2V18c0-1.103.897-2 2-2h12a2 2 0 0 0 0-4H18z'/%3e%3c/svg%3e");
+  mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3e%3cpath d='M40 10a2 2 0 0 0 0 4h7.172L30.586 30.586a2 2 0 1 0 2.828 2.828L50 16.828V24a2 2 0 0 0 4 0V12a2 2 0 0 0-2-2H40zm-22 2c-3.309 0-6 2.691-6 6v28c0 3.309 2.691 6 6 6h28c3.309 0 6-2.691 6-6V34a2 2 0 0 0-4 0v12c0 1.103-.897 2-2 2H18c-1.103 0-2-.897-2-2V18c0-1.103.897-2 2-2h12a2 2 0 0 0 0-4H18z'/%3e%3c/svg%3e");
+  @apply bg-[#0070f3];
+}
+
+article a[href*='memx.vercel.app']::before {
+  content: '\00a0';
+  display: none !important;
+}

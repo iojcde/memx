@@ -1,14 +1,12 @@
-import { useMDXComponent, useLiveReload } from 'next-contentlayer/hooks'
+import { useMDXComponent } from 'next-contentlayer/hooks'
 import { notFound } from 'next/navigation'
 import components from 'components/MDXComponents'
-import { allDocuments, allResearch, Research } from 'contentlayer/generated'
+import { allDocuments } from 'contentlayer/generated'
 import { getBacklinks } from 'lib/markdown'
-import Link from 'next/link'
 import Backlink from './Backlink'
 import Image from 'next/image'
-import PostHeader, { PostTitle } from 'app/[slug]/PostHeader'
-import { buildResearchTree } from 'utils/buildTree'
-import { Suspense } from 'react'
+import { buildTree } from 'utils/buildTree'
+import TopContext from './TopContext'
 
 const editUrl = (slug: string) =>
   `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
@@ -21,7 +19,7 @@ export default function PostPage({ params }) {
   // useLiveReload()
 
   const slug = params.slug.toUpperCase() as string
-  const post = allResearch.find((post) => post.hex === slug)
+  const post = allDocuments.find((post) => post.hex === slug)
   if (!post) {
     notFound()
   }
@@ -31,14 +29,14 @@ export default function PostPage({ params }) {
 
   return (
     <>
-      <article className="mb-16 mt-8 w-full max-w-4xl flex-col items-start justify-center ">
-        <Suspense fallback={<PostTitle title={post.title} />}>
-          <PostHeader
-            tree={buildResearchTree(allResearch)}
-            title={post.title}
-          />
-        </Suspense>
-        <div className="mt-2 flex w-full flex-col items-start justify-between px-6 md:flex-row md:items-center lg:px-16">
+      <div className="relative mb-16 mt-24 w-full max-w-4xl flex-col items-start justify-center lg:mt-12 ">
+        <TopContext title={post.title} tree={buildTree()} context={post.type} />
+        <header className="relative w-full px-6 lg:px-16">
+          <h1 className="text-3xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 lg:text-5xl">
+            {post.title}
+          </h1>
+        </header>
+        <div className="mt-4 flex w-full flex-col items-start justify-between px-6 md:flex-row md:items-center lg:px-16">
           <div className="flex items-center">
             <Image
               alt="Jeeho Ahn"
@@ -56,11 +54,11 @@ export default function PostPage({ params }) {
           </p>
         </div>
         <>
-          <div className="apply-prose mt-4 w-full max-w-none px-6 lg:px-16">
+          <article className="apply-prose mt-4 w-full max-w-none px-6 lg:px-16">
             <MDXContent components={components as any} />
-          </div>
+          </article>
         </>
-        <div className="px-6 text-sm text-neutral-700 dark:text-neutral-400 lg:px-16">
+        <div className="px-6 text-xs text-neutral-700 dark:text-neutral-400 lg:px-16">
           <a
             href={discussUrl(post.slug)}
             target="_blank"
@@ -81,11 +79,11 @@ export default function PostPage({ params }) {
           <hr className="mt-8" />
           <Backlink backlinks={backlinks} />
         </div>
-      </article>
+      </div>
     </>
   )
 }
 
 export async function generateStaticParams() {
-  return allResearch.map((p) => ({ slug: p.hex }))
+  return allDocuments.map((p) => ({ slug: p.hex }))
 }

@@ -23,7 +23,7 @@ module.exports = {
         'hero-dark': 'url(/images/hero-dark.jpg)',
       },
       fontFamily: {
-        inter: ['Inter', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-inter)'],
       },
     },
   },

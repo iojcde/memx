@@ -25,10 +25,6 @@ ul.wrapper {
     padding-right: 1rem;
 }
 
-:root { font-family: "Inter", sans-serif; }
-@supports (font-variation-settings: normal) {
-  :root { font-family: "InterVar", sans-serif; font-optical-sizing: auto; }
-} 
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -37,7 +33,7 @@ body {
 }
 
 .prose a {
-    @apply text-[#0070f3] hover:underline font-normal;
+    @apply text-[#0070f3] dark:text-[#3291ff] hover:underline font-normal underline-offset-1;
 }
 html {
     scroll-behavior: smooth;
@@ -64,7 +60,7 @@ html {
 }
 @layer base {
     .apply-prose {
-        @apply prose prose-neutral dark:prose-invert;
+        @apply prose prose-neutral prose-p:text-black dark:prose-p:text-neutral-100 dark:prose-invert;
     }
 }
 ::selection {

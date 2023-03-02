@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-const getHex = (content: string, filename: string) => {
+const getHex = (content: string, filename: string, dir: string) => {
   // go through each file in directory to see if frontmatter contains hex
   // if it doesn't, create a new hex and assign it to the file
 
@@ -12,7 +12,7 @@ const getHex = (content: string, filename: string) => {
 
     return hex
   } else {
-    console.log(`adding hex to ${filename}`)
+    console.log(`adding hex to ${filename}:`)
     const newHex = Math.floor(Math.random() * 16777215)
       .toString(16)
       .toUpperCase()
@@ -24,9 +24,9 @@ const getHex = (content: string, filename: string) => {
 
     const newContent = content.replace(/---/, `---\nhex: ${newHex}\n---`)
 
-    console.log(`assigning hex ${newHex} to `, filename)
+    console.log(`assigned hex ${newHex} to `, filename)
 
-    fs.writeFileSync(`./data/research/${filename}`, newContent)
+    fs.writeFileSync(`${dir}/${filename}`, newContent)
     return newHex
   }
 }
@@ -50,21 +50,22 @@ const compileBacklinks = (content: string, filename: string) => {
   }
   return content
 }
-
-// read in all files in directory
-const files = fs.readdirSync(`./data/research`)
-
 const filenames: Record<string, string> = {} // { hex: filename }
 
 // loop through files
-for (const filename of files) {
-  // read in file
-  const fileContent = fs.readFileSync(`./data/research/${filename}`, `utf8`)
-  compileBacklinks(fileContent, filename)
+for (const dir of [`./data/research`, `./data/blog`]) {
+  const files = fs.readdirSync(dir)
 
-  const hex = getHex(fileContent, filename)
-  filenames[filename.replace(/\.md$/, ``).replace(` `, `-`).toLowerCase()] = hex
+  for (const filename of files) {
+    // read in file
+    const fileContent = fs.readFileSync(`${dir}/${filename}`, `utf8`)
+    compileBacklinks(fileContent, filename)
 
-  // write filenames to file
-  fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))
+    const hex = getHex(fileContent, filename, dir)
+    filenames[filename.replace(/\.md$/, ``).replace(` `, `-`).toLowerCase()] =
+      hex
+  }
 }
+
+// write filenames to file
+fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))

@@ -10,6 +10,18 @@ import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
+import strip from 'strip-markdown'
+import { remark } from 'remark'
+
+const removeBacklinks = (content: string) => {
+  let newContent = content
+  const backlinks = content.matchAll(/.*\[\[(.+?)\]\].*/g)
+
+  for (const b of backlinks) {
+    newContent = newContent.replaceAll(`[[${b[1]}]]`, b[1])
+  }
+  return newContent
+}
 
 const computedFields: ComputedFields = {
   readingTime: { type: `json`, resolve: (doc) => readingTime(doc.body.raw) },
@@ -28,6 +40,21 @@ const computedFields: ComputedFields = {
       return tweetIDs ?? []
     },
   },
+  excerpt: {
+    type: `string`,
+    resolve: (doc) => {
+      const stripped = remark()
+        .use(strip)
+        .processSync(removeBacklinks(doc.body.raw))
+
+      const final = `${String(stripped).trim().slice(0, 201)}${
+        String(stripped).length > 200 ? `...` : ``
+      }`
+
+      return final
+    },
+  },
+
   slug: {
     type: `string`,
     resolve: (doc) =>
@@ -53,7 +80,6 @@ const computedFields: ComputedFields = {
           ...backlinks[title],
           [title]: m[0],
         }
-        console.log(backlinks)
         return backlinks
       })
     },
@@ -72,7 +98,7 @@ const research = defineDocumentType(() => ({
 
 const blog = defineDocumentType(() => ({
   name: `Blog`,
-  filePathPattern: `blog/*.mdx`,
+  filePathPattern: `blog/*.md`,
   contentType: `mdx`,
   fields: {
     hex: { type: `string`, required: true },

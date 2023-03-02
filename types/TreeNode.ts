@@ -1,10 +1,10 @@
 export type TreeNode = {
   title: string
-  nav_title: string | null
-  label: string | null
+  nav_title?: string
+  label?: string
   urlPath: string
-  children: TreeNode[]
-  collapsible: boolean | null
-  collapsed: boolean | null
-  excerpt: string | null
+  children?: TreeNode[]
+  collapsible?: boolean
+  collapsed?: boolean
+  excerpt?: string
 }

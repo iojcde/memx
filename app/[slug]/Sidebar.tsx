@@ -37,7 +37,7 @@ const NavLink: FC<{
             } bg-neutral-100 text-black transition duration-200 dark:bg-neutral-500/20 dark:text-neutral-50`
           : `hover:bg-neutral-50 dark:hover:bg-[rgb(16,16,16)] ${
               level == 0
-                ? `font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
+                ? `font-medium text-neutral-700 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
                 : `font-normal hover:text-neutral-600 dark:hover:text-neutral-300`
             }`,
       )}
@@ -74,7 +74,7 @@ const Node: FC<{ node: TreeNode; level: number; activePath: string }> = ({
   useEffect(() => {
     if (
       activePath == node.urlPath ||
-      node.children.map((_) => _.urlPath).includes(activePath)
+      node.children?.map((_) => _.urlPath).includes(activePath)
     ) {
       setCollapsed(false)
     }
@@ -92,7 +92,7 @@ const Node: FC<{ node: TreeNode; level: number; activePath: string }> = ({
         collapsed={collapsed}
         toggleCollapsed={toggleCollapsed}
       />
-      {node.children.length > 0 && !collapsed && (
+      {node.children && node.children.length > 0 && !collapsed && (
         <Tree tree={node.children} level={level + 1} activePath={activePath} />
       )}
     </>

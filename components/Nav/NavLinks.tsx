@@ -10,9 +10,8 @@ import { isExternalUrl } from 'utils/helpers'
 const NavLink: React.FC<{
   label?: string
   hideLabel?: boolean
-  icon?: IconName
   url: string
-}> = ({ label, hideLabel = false, icon, url }) => {
+}> = ({ label, hideLabel = false, url }) => {
   const active = usePathname()?.split(`/`)[1] == url.replace(`/`, ``)
 
   return (
@@ -20,17 +19,12 @@ const NavLink: React.FC<{
       href={url}
       className={`group flex h-8 items-center rounded-md bg-transparent px-3 text-sm font-medium leading-none ${
         active
-          ? `bg-violet-50 text-violet-900 dark:bg-violet-500/20 dark:text-violet-50`
-          : `text-neutral-600 hover:bg-neutral-50 hover:text-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-neutral-200`
+          ? `bg-blue-50 text-blue-900 dark:bg-blue-500/20 dark:text-blue-50`
+          : `text-neutral-600 hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-neutral-200`
       }`}
       target={isExternalUrl(url) ? `_blank` : undefined}
       rel={isExternalUrl(url) ? `noreferrer` : undefined}
     >
-      {icon && (
-        <span className="block w-5 text-neutral-400 group-hover:text-neutral-500 dark:text-neutral-500 dark:group-hover:text-neutral-400">
-          <Icon name={icon} />
-        </span>
-      )}
       {label && <span className={hideLabel ? `sr-only` : ``}>{label}</span>}
     </Link>
   )
@@ -67,28 +61,33 @@ const NavLinks = ({ links }) => {
       <div className="lg:hidden">
         <button
           type="button"
-          aria-label="Toggle menu"
+          aria-label="Open menu"
           onClick={() => setOpen(!open)}
           className="flex h-8 w-8 items-center justify-end fill-neutral-600 dark:fill-neutral-300"
         >
           <span className="inline-block w-4">
-            <Icon name={open ? `close` : `bars`} />
+            <Icon name={open ? `close` : `dots`} />
           </span>
         </button>
         {open && (
-          <div className="fixed inset-0 top-[65px] z-50 h-screen bg-neutral-900/10 pb-20  backdrop-filter dark:bg-neutral-900/50">
-            <nav className="absolute right-0 h-full divide-y divide-neutral-200 border-l border-neutral-200 bg-white p-8 dark:divide-neutral-800 dark:border-neutral-800 dark:bg-black">
-              <div className="flex flex-col items-end space-y-2 pb-8">
-                <div className="mb-2">
+          <div className="fixed inset-0 z-50 h-screen bg-neutral-900/10 pb-20  backdrop-filter dark:bg-neutral-900/50">
+            <nav className="absolute top-4 right-4 w-full max-w-xs rounded-xl border bg-white p-4 dark:bg-black">
+              <div className="flex flex-col space-y-2 pb-8">
+                <div className="mb-2 flex justify-between">
                   <SearchButton showShortcut={false} />
+                  <button
+                    type="button"
+                    aria-label="Close menu"
+                    onClick={() => setOpen(!open)}
+                    className="flex h-8 w-8 items-center justify-end fill-neutral-600 dark:fill-neutral-300"
+                  >
+                    <span className="inline-block w-4">
+                      <Icon name="close" />
+                    </span>
+                  </button>
                 </div>
                 {links.map(({ label, url }, index) => (
-                  <NavLink
-                    key={index}
-                    label={label}
-                    url={url}
-                    icon={isExternalUrl(url) ? `external-link` : undefined}
-                  />
+                  <NavLink key={index} label={label} url={url} />
                 ))}
               </div>
             </nav>

@@ -1,10 +1,6 @@
 import Toggle from 'components/Toggle'
 import Link from 'next/link'
-import { Icon, IconName } from 'components/common/Icon'
-import { usePathname } from 'next/navigation'
-import { isExternalUrl } from 'utils/helpers'
-import { useKBar } from 'kbar'
-import { Label } from 'components/common/Label'
+import { IconName } from 'components/common/Icon'
 import NavLinks from './NavLinks'
 
 const links: Array<{ label: string; url: string }> = [
@@ -38,11 +34,11 @@ const Nav: React.FC = () => {
           className="relative text-xl text-black dark:text-neutral-100"
           data-cursor="-opaque"
         >
-          <Link href="/" className="font-display">
+          <Link href="/" className="font-semibold">
             memx
           </Link>
         </div>
-        <div className="text-primary flex items-center justify-evenly space-x-3 dark:text-neutral-100 lg:space-x-4">
+        <div className="text-primary flex items-center justify-evenly dark:text-neutral-100 ">
           {/* <span>
               <Link href="/">Home</Link>
             </span>

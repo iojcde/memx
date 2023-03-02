@@ -19,6 +19,7 @@ import { ContentlayerIcon } from './Contentlayer'
 import { CrossCircleOutlineIcon } from './CrossCircleOutline'
 import { DatabaseIcon } from './Database'
 import { DiscordIcon } from './Discord'
+import { DotsIcon } from './Dots'
 import { ExclamationIcon } from './Exclamation'
 import { ExpandIcon } from './Expand'
 import { ExternalLinkIcon } from './ExternalLink'
@@ -65,6 +66,7 @@ export type IconName =
   | 'cross-circle-outline'
   | 'database'
   | 'discord'
+  | 'dots'
   | 'exclamation'
   | 'expand'
   | 'external-link'
@@ -113,6 +115,7 @@ const iconMap = {
   contentlayer: ContentlayerIcon,
   database: DatabaseIcon,
   discord: DiscordIcon,
+  dots: DotsIcon,
   exclamation: ExclamationIcon,
   expand: ExpandIcon,
   gear: GearIcon,
