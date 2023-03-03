@@ -53,7 +53,9 @@ const NavLink: FC<{
           className="mr-2 shrink-0 px-2 py-1"
         >
           <span
-            className={`block w-2.5 ${collapsed ? `-rotate-90 transform` : ``}`}
+            className={`block w-2.5 dark:fill-neutral-400 ${
+              collapsed ? `-rotate-90 transform` : ``
+            }`}
           >
             <Icon name="chevron-down" />
           </span>

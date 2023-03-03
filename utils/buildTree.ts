@@ -4,7 +4,7 @@ import { TreeNode } from 'types/TreeNode'
 export const buildTree = (): TreeNode[] => {
   const research = allResearch.map<TreeNode>((note) => ({
     title: note.title,
-    excerpt: note.body.raw.slice(0, 40) ?? null,
+    excerpt: note.excerpt,
     urlPath: `/${note.hex}`,
     collapsible: false,
     collapsed: false,
@@ -13,7 +13,7 @@ export const buildTree = (): TreeNode[] => {
 
   const blog = allBlogs.map<TreeNode>((note) => ({
     title: note.title,
-    excerpt: note.body.raw.slice(0, 40) ?? null,
+    excerpt: note.excerpt,
     urlPath: `/${note.hex}`,
     collapsible: false,
     collapsed: false,

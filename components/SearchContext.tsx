@@ -40,7 +40,7 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
         name: `Portfolio`,
         keywords: `About Jeeho Ahn Portfolio`,
         section: `Portfolio`,
-        perform: () => router.push(`/`),
+        perform: () => window.open(`https://jcde.xyz`, `_blank`),
       },
       {
         id: `3-github`,
