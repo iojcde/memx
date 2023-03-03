@@ -8,27 +8,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1b3599933140f367",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "blog/What is this Memx thing anyways.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "3c55f3cf6203860a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "research/TailwindCSS Colors.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -97,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/What is this Memx thing anyways.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blog/What is this Memx thing anyways.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "blog/What is this Memx thing anyways.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -158,13 +138,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1b3599933140f367",
+  "active": "6cb38ed63b6d2536",
   "lastOpenFiles": [
-    "research/anime idk.md",
-    "research/TailwindCSS Colors.md",
+    "research/Linkflags.md",
+    "research/Web Frameworks.md",
+    "Untitled.md",
+    "research/Untitled 1.md",
     "blog/What is this Memx thing anyways.md",
     "research/Hi everyone.md",
+    "research/anime idk.md",
     "research/Hello World.md",
+    "research/TailwindCSS Colors.md",
+    "research/Anime idk.md",
     "hello.md"
   ]
 }
