@@ -7,7 +7,7 @@ export default function Blog() {
   return (
     <>
       <div className="container mx-auto mb-16 flex max-w-4xl flex-col items-start justify-center px-4">
-        <h1 className="mb-4 mt-8 text-4xl font-bold">Research</h1>
+        <h1 className="mb-4 mt-8 text-4xl font-bold">Blog</h1>
         <div className="flex flex-col  gap-4 dark:text-neutral-200">
           {blog.map((post) => (
             <div key={post.hex}>

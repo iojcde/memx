@@ -40,7 +40,7 @@ article a[href^='http']::before {
   height: 1em;
   width: 1em;
   margin-left: 0.1em;
-  margin-right: 0.15em;
+  margin-right: 0.2em;
   margin-bottom: 0.2em;
   display: inline-block;
   vertical-align: middle !important;
@@ -52,7 +52,7 @@ article a[href^='http']::after {
   height: 1em;
   width: 1em;
   margin-top: 0.1em;
-  margin-right: 0.1em;
+  margin-right: 0.05em;
   margin-bottom: 0.15em;
   display: inline-block;
   vertical-align: middle !important;
