@@ -11,7 +11,7 @@ import { Icon } from 'components/common/Icon'
 const NavLink: FC<{
   title: string
   label?: string
-  url: string
+  url?: string
   level: number
   activePath: string
   collapsible: boolean

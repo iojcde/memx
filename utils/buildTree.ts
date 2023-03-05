@@ -27,7 +27,6 @@ export const buildTree = (): TreeNode[] => {
       children: research,
       collapsible: true,
       collapsed: true,
-      urlPath: `/research`,
     },
   ]
 }
