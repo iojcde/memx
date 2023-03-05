@@ -31,6 +31,10 @@ const getHex = (content: string, filename: string, dir: string) => {
   }
 }
 
+const DateToString = (date: Date) => {
+  return [date.getFullYear(), date.getMonth(), date.getDate()].join(`-`)
+}
+
 const allBacklinks: Record<string, Record<string, string>> = {}
 
 const compileBacklinks = (content: string, filename: string) => {
@@ -50,7 +54,27 @@ const compileBacklinks = (content: string, filename: string) => {
   }
   return content
 }
+
+const cachedLastEdited: Record<string, string> = JSON.parse(
+  fs.readFileSync(`./data/last-edited.json`, `utf-8`),
+)
+
+const isEdited = (filename: string, hex: string) => {
+  const a = cachedLastEdited[hex]
+  if (a) {
+    if (a != fs.statSync(filename).atime.toDateString()) {
+      return true
+    } else {
+      return false
+    }
+  } else {
+    return true
+  }
+}
+
+const editedFiles: string[] = []
 const filenames: Record<string, string> = {} // { hex: filename }
+const today = new Date()
 
 // loop through files
 for (const dir of [`./data/research`, `./data/blog`]) {
@@ -62,10 +86,39 @@ for (const dir of [`./data/research`, `./data/blog`]) {
     compileBacklinks(fileContent, filename)
 
     const hex = getHex(fileContent, filename, dir)
-    filenames[filename.replace(/\.md$/, ``).replace(` `, `-`).toLowerCase()] =
-      hex
+    filenames[
+      filename.replace(/\.md$/, ``).replaceAll(` `, `-`).toLowerCase()
+    ] = hex
+
+    if (isEdited(`${dir}/${filename}`, hex)) {
+      editedFiles.push(filename.replace(/\.md$/, ``))
+
+      cachedLastEdited[hex] = today.toDateString()
+    }
   }
 }
+
+fs.writeFileSync(
+  `./data/last-edited.json`,
+  JSON.stringify(cachedLastEdited, null, 2),
+)
+
+const generateJournal = () => {
+  const template = `
+${
+  fs.existsSync(`./data/journals/${DateToString(today)}.md`)
+    ? ``
+    : `## ${today.toDateString()}`
+}
+${editedFiles.map((f) => `- [[${f}]] `).join(`\n`)}`
+
+  return template
+}
+fs.writeFileSync(
+  `./data/journals/${DateToString(today)}.md`,
+  generateJournal(),
+  { flag: `a+` },
+)
 
 // write filenames to file
 fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))

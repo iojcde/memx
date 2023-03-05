@@ -12,6 +12,7 @@ interface Props {
 }
 
 const CustomLink = (props: Props) => {
+  console.log(props)
   const href = props.href
   const isBacklink =
     href && props.className?.includes(`internal`) && props.href.startsWith(`/`)

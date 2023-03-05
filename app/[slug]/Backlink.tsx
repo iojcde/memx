@@ -49,7 +49,7 @@ const Backlink: React.FC<{
         Links to this note
       </h2>
       {backlinks.length > 0 ? (
-        <div className="grid xl:grid-cols-2">
+        <div className="grid gap-2 xl:grid-cols-2">
           {backlinks.map((backlink) => (
             <div key={backlink.url} className="rounded-md border p-4 ">
               <Link href={`/${backlink.url}`} className="font-semibold">

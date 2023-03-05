@@ -60,7 +60,7 @@ const computedFields: ComputedFields = {
     resolve: (doc) =>
       doc._raw.sourceFileName
         .replace(/\.md$/, ``)
-        .replace(` `, `-`)
+        .replaceAll(` `, `-`)
         .toLowerCase(),
   },
   title: {
@@ -96,6 +96,13 @@ const research = defineDocumentType(() => ({
   computedFields,
 }))
 
+const journal = defineDocumentType(() => ({
+  name: `Journal`,
+  filePathPattern: `journals/*.md`,
+  contentType: `mdx`,
+  computedFields,
+}))
+
 const blog = defineDocumentType(() => ({
   name: `Blog`,
   filePathPattern: `blog/*.md`,
@@ -108,7 +115,7 @@ const blog = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: `data`,
-  documentTypes: [research, blog],
+  documentTypes: [research, blog, journal],
   mdx: {
     remarkPlugins: [remarkGfm, remarkWikiLinks],
     rehypePlugins: [

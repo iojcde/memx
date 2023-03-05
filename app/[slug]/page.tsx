@@ -19,7 +19,14 @@ export default function PostPage({ params }) {
   // useLiveReload()
 
   const slug = params.slug.toUpperCase() as string
-  const post = allDocuments.find((post) => post.hex === slug)
+  const post = allDocuments.find((post) => {
+    switch (post.type) {
+      case `Journal`:
+        return post.slug === slug
+      default:
+        return post.hex === slug
+    }
+  })
   if (!post) {
     notFound()
   }
@@ -85,5 +92,11 @@ export default function PostPage({ params }) {
 }
 
 export async function generateStaticParams() {
-  return allDocuments.map((p) => ({ slug: p.hex }))
+  return allDocuments.map((p) => {
+    if (p.type == `Journal`) {
+      return { slug: p.slug }
+    } else {
+      return { slug: p.hex }
+    }
+  })
 }

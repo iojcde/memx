@@ -27,6 +27,12 @@ const NavLink: FC<{
   collapsed,
   toggleCollapsed,
 }) => {
+  const K = ({ href, ...props }) => {
+    if (href) {
+      return <Link href={href} {...props}></Link>
+    } else return <div {...props} />
+  }
+
   return (
     <div
       className={classNames(
@@ -42,10 +48,10 @@ const NavLink: FC<{
             }`,
       )}
     >
-      <Link href={url} className="flex h-full grow items-center space-x-2">
+      <K href={url} className="flex h-full grow items-center space-x-2">
         <span className="capitalize">{title}</span>
         {label && <Label text={label} />}
-      </Link>
+      </K>
       {collapsible && (
         <button
           aria-label="Toggle children"

@@ -20,8 +20,8 @@ export function getBacklinks(hex: string) {
     const backlinks = [...doc.body.raw.matchAll(/.*\[\[(.+?)\]\].*/g)]
 
     return {
-      title: backlinks[0][1],
-      url: doc.hex,
+      title: doc.title,
+      url: doc.type == `Journal` ? doc.slug : doc.hex,
       type: doc.type,
       text: backlinks[0][0],
     }
