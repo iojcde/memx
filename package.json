@@ -7,8 +7,7 @@
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
-    "preprocess": "esbuild lib/preprocess.ts --bundle --platform=node --packages=external | node",
-    "generate-icons": "esbuild lib/generateExternalLinkCSS.ts --bundle --platform=node --packages=external | node"
+    "preprocess": "esbuild preprocess.ts --bundle --platform=node  | node"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.11",

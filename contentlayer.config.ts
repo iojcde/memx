@@ -10,18 +10,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
-import strip from 'strip-markdown'
-import { remark } from 'remark'
-
-const removeBacklinks = (content: string) => {
-  let newContent = content
-  const backlinks = content.matchAll(/.*\[\[(.+?)\]\].*/g)
-
-  for (const b of backlinks) {
-    newContent = newContent.replaceAll(`[[${b[1]}]]`, b[1])
-  }
-  return newContent
-}
+import { buildExcerpt } from './utils/buildExcerpt'
 
 const computedFields: ComputedFields = {
   readingTime: { type: `json`, resolve: (doc) => readingTime(doc.body.raw) },
@@ -42,17 +31,7 @@ const computedFields: ComputedFields = {
   },
   excerpt: {
     type: `string`,
-    resolve: (doc) => {
-      const stripped = remark()
-        .use(strip)
-        .processSync(removeBacklinks(doc.body.raw))
-
-      const final = `${String(stripped).trim().slice(0, 201)}${
-        String(stripped).length > 200 ? `...` : ``
-      }`
-
-      return final
-    },
+    resolve: (doc) => buildExcerpt(doc.body.raw),
   },
 
   slug: {

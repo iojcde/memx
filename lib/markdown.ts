@@ -1,5 +1,5 @@
 import { allDocuments, DocumentTypes } from 'contentlayer/generated'
-import filenames from 'data/filenames.json'
+import filenames from 'assets/filenames.json'
 
 export function getBacklinks(hex: string) {
   const backlinkingDocs = allDocuments.filter(

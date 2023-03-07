@@ -6,7 +6,7 @@ import { FC, ReactNode, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { TreeNode } from 'types/TreeNode'
-import { buildTree } from 'utils/buildTree'
+import tree from 'assets/tree.json'
 import { allResearch } from 'contentlayer/generated'
 
 import React from 'react'
@@ -17,6 +17,7 @@ import {
   KBarProvider,
   KBarResults,
   KBarSearch,
+  Action,
   useMatches,
 } from 'kbar'
 import { Card } from './common/Card'
@@ -25,9 +26,9 @@ import { Label } from './common/Label'
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
-  const researchTree = buildTree()
+  const researchTree = tree
   const actions = useMemo(() => {
-    const actions = [
+    const actions: Action[] = [
       {
         id: `0-homepage`,
         name: `Homepage`,
@@ -68,7 +69,9 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
             : element.title,
           keywords: `research post blog memex` + (element?.excerpt || ``),
           section: `Research`,
-          perform: () => router.push(element.urlPath),
+          perform: () => router.push(element.urlPath as string),
+
+          subtitle: element.excerpt,
         })
         id++
         if (element.children?.length)

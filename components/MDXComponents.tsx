@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
-import filenames from 'data/filenames.json'
-import fs from 'fs'
+import filenames from 'assets/filenames.json'
 import { isExternal } from 'util/types'
 
 interface Props {

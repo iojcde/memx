@@ -1,4 +1,6 @@
 import fs from 'fs'
+import { buildExcerpt } from 'utils/buildExcerpt'
+import type { TreeNode } from './types/TreeNode'
 
 const getHex = (content: string, filename: string, dir: string) => {
   // go through each file in directory to see if frontmatter contains hex
@@ -56,13 +58,13 @@ const compileBacklinks = (content: string, filename: string) => {
 }
 
 const cachedLastEdited: Record<string, string> = JSON.parse(
-  fs.readFileSync(`./data/last-edited.json`, `utf-8`),
+  fs.readFileSync(`./assets/last-edited.json`, `utf-8`),
 )
 
 const isEdited = (filename: string, hex: string) => {
-  const a = cachedLastEdited[hex]
-  if (a) {
-    if (a != fs.statSync(filename).atime.toDateString()) {
+  const cachedDate = cachedLastEdited[hex]
+  if (cachedDate) {
+    if (cachedDate != fs.statSync(filename).atime.toDateString()) {
       return true
     } else {
       return false
@@ -72,13 +74,27 @@ const isEdited = (filename: string, hex: string) => {
   }
 }
 
-const editedFiles: string[] = []
+const editedFiles: Record<string, string[]> = {}
 const filenames: Record<string, string> = {} // { hex: filename }
 const today = new Date()
 
+const finalTree: TreeNode[] = []
+
+const replaceDirNameMap = {
+  './data/research': `Research`,
+  './data/blog': `Blog`,
+}
+
 // loop through files
-for (const dir of [`./data/research`, `./data/blog`]) {
+for (const dir of [`./data/blog`, `./data/research`]) {
   const files = fs.readdirSync(dir)
+
+  const tmpTree: TreeNode = {
+    title: replaceDirNameMap[dir],
+    children: [],
+    collapsible: true,
+    collapsed: replaceDirNameMap[dir] == `Research` ?? false,
+  }
 
   for (const filename of files) {
     // read in file
@@ -90,35 +106,74 @@ for (const dir of [`./data/research`, `./data/blog`]) {
       filename.replace(/\.md$/, ``).replaceAll(` `, `-`).toLowerCase()
     ] = hex
 
-    if (isEdited(`${dir}/${filename}`, hex)) {
-      editedFiles.push(filename.replace(/\.md$/, ``))
+    tmpTree.children?.push({
+      title: filename.replace(`.md`, ``),
+      excerpt: buildExcerpt(fileContent),
+      urlPath: `/${hex}`,
+      collapsible: false,
+      collapsed: false,
+    })
 
-      cachedLastEdited[hex] = today.toDateString()
+    if (isEdited(`${dir}/${filename}`, hex)) {
+      editedFiles[fs.statSync(`${dir}/${filename}`).atime.toDateString()] = []
+      editedFiles[fs.statSync(`${dir}/${filename}`).atime.toDateString()].push(
+        filename.replace(/\.md$/, ``),
+      )
+
+      cachedLastEdited[hex] = fs
+        .statSync(`${dir}/${filename}`)
+        .atime.toDateString()
     }
   }
+  finalTree.push(tmpTree)
 }
 
 fs.writeFileSync(
-  `./data/last-edited.json`,
+  `./assets/last-edited.json`,
   JSON.stringify(cachedLastEdited, null, 2),
 )
 
 const generateJournal = () => {
-  const template = `
+  Object.keys(editedFiles).forEach((date) => {
+    const template = `
 ${
-  fs.existsSync(`./data/journals/${DateToString(today)}.md`)
+  fs.existsSync(`./data/journals/${date}.md`)
     ? ``
     : `## ${today.toDateString()}`
 }
-${editedFiles.map((f) => `- [[${f}]] `).join(`\n`)}`
+${editedFiles[date].map((f) => `- [[${f}]] `).join(`\n`)}`
 
-  return template
+    fs.writeFileSync(
+      `./data/journals/${DateToString(new Date(date))}.md`,
+      template,
+      {
+        flag: `a+`,
+      },
+    )
+  })
 }
-fs.writeFileSync(
-  `./data/journals/${DateToString(today)}.md`,
-  generateJournal(),
-  { flag: `a+` },
-)
+
+generateJournal()
+// iterate through Journal directory
+
+const journalFiles = fs.readdirSync(`./data/journals`)
+const journalTree: TreeNode = {
+  title: `Journals`,
+  children: [],
+  collapsible: true,
+  collapsed: true,
+}
+for (const filename of journalFiles) {
+  const title = filename.replace(`.md`, ``)
+
+  journalTree.children?.push({
+    title,
+    urlPath: `/${title}`, // for journals the title format should be fine to use as path
+  })
+}
+finalTree.push(journalTree)
+
+fs.writeFileSync(`./assets/tree.json`, JSON.stringify(finalTree, null, 2))
 
 // write filenames to file
-fs.writeFileSync(`./data/filenames.json`, JSON.stringify(filenames, null, 2))
+fs.writeFileSync(`./assets/filenames.json`, JSON.stringify(filenames, null, 2))

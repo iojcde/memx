@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Blog",
+    "children": [
+      {
+        "title": "What is this Memx thing anyways",
+        "excerpt": "hex: 98A155\n\nI've recently set up a personal second brain of sort, built with Next.js and Contentlayer. I haven't thought up of an unique enough name for it, but I've called it memx for now because it ...",
+        "urlPath": "/98A155",
+        "collapsible": false,
+        "collapsed": false
+      }
+    ],
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "title": "Research",
+    "children": [
+      {
+        "title": "Hello World",
+        "excerpt": "hex: 83D0B1\n\nHello World!\n\nlmao\n\ngo to the hi everyone page: Hi Everyone",
+        "urlPath": "/83D0B1",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "Hi everyone",
+        "excerpt": "hex: 160BFB\n\nyo hi everyone\n\ngo to the hello everyone page: Hello World",
+        "urlPath": "/160BFB",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "Linkflags",
+        "excerpt": "hex: 38B8EB\n\nhttps://github.com/anaclumos/linkflags is what I'm using to power Icons for the links.\n\nExamples\n\nanaclumos/linkflags\n\nGitBook - Where technical teams document.\n\nNext.js by Vercel - The Re...",
+        "urlPath": "/38B8EB",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "TailwindCSS Colors",
+        "excerpt": "hex: F95DAD\n\nTailwindcss - Customizing Colors",
+        "urlPath": "/F95DAD",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "anime idk",
+        "excerpt": "hex: 3285C5\n\n(long scroll test)\n\nDaijobu okasan Otaku, chotto nii san fuzakeru Baka Imoto arigatou Oppai. Nii san arigatou okasan, nii san okasan doki doki arigatou Tomodachi Imoto Otaku doki doki. Tsu...",
+        "urlPath": "/3285C5",
+        "collapsible": false,
+        "collapsed": false
+      }
+    ],
+    "collapsible": true,
+    "collapsed": true
+  },
+  {
+    "title": "Journals",
+    "children": [
+      {
+        "title": "2023-2-7",
+        "urlPath": "/2023-2-7"
+      },
+      {
+        "title": "Tue Mar 07 2023",
+        "urlPath": "/Tue Mar 07 2023"
+      }
+    ],
+    "collapsible": true,
+    "collapsed": true
+  }
+]

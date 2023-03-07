@@ -5,11 +5,11 @@ import { allDocuments } from 'contentlayer/generated'
 import { getBacklinks } from 'lib/markdown'
 import Backlink from './Backlink'
 import Image from 'next/image'
-import { buildTree } from 'utils/buildTree'
+import tree from 'assets/tree.json'
 import TopContext from './TopContext'
 
 const editUrl = (slug: string) =>
-  `https://github.com/jcdea/website/edit/main/data/blog/${slug}.mdx`
+  `https://github.com/iojcde/memx/edit/main/data/blog/${slug}.mdx`
 const discussUrl = (slug: string) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `https://jcde.xyz/blog/${slug}`,
@@ -37,7 +37,7 @@ export default function PostPage({ params }) {
   return (
     <>
       <div className="relative mb-16 mt-24 w-full max-w-4xl flex-col items-start justify-center lg:mt-12 ">
-        <TopContext title={post.title} tree={buildTree()} context={post.type} />
+        <TopContext title={post.title} tree={tree} context={post.type} />
         <header className="relative w-full px-6 lg:px-16">
           <h1 className="text-3xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 lg:text-5xl">
             {post.title}
