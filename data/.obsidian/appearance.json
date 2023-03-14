@@ -1,3 +1,6 @@
 {
-  "accentColor": ""
+  "accentColor": "",
+  "textFontFamily": "Pretendard",
+  "interfaceFontFamily": "",
+  "baseFontSize": 16
 }

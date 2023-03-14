@@ -1,34 +1,18 @@
 {
   "main": {
-    "id": "bb6fcc806e211fdf",
+    "id": "08d10d6168544afe",
     "type": "split",
     "children": [
       {
-        "id": "b2162373643aa44b",
+        "id": "3e7b46a48d63d962",
         "type": "tabs",
         "children": [
           {
-            "id": "58b7eca2566f6588",
+            "id": "37d375f08f894dd6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "journals/수업/디논 2023-3-14.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "fa7b78e33bd1a716",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "research/임피던스.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -37,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "5c784571ea73679d",
+    "id": "41bd89cc7affe639",
     "type": "split",
     "children": [
       {
-        "id": "750c2232c1a87fdf",
+        "id": "d93be69ec69554d7",
         "type": "tabs",
         "children": [
           {
-            "id": "6cb38ed63b6d2536",
+            "id": "e8f6bb3c40da21a6",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -55,7 +39,7 @@
             }
           },
           {
-            "id": "f3504ee49236d99a",
+            "id": "9e2e5a635ef28dc3",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -70,7 +54,7 @@
             }
           },
           {
-            "id": "5545b7a0bdc0fabe",
+            "id": "ff986051bcf46c7c",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -84,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "dbf12eb06870f6b1",
+    "id": "33d379584d6fbada",
     "type": "split",
     "children": [
       {
-        "id": "5eb4430b42899d2d",
+        "id": "51ae1ec7f994656a",
         "type": "tabs",
         "children": [
           {
-            "id": "61e28f8f430e0708",
+            "id": "96d5d5479da9a92a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "journals/수업/디논 2023-3-14.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,19 +92,18 @@
             }
           },
           {
-            "id": "54472e4c61b30b4a",
+            "id": "5ac44081f9b14170",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "journals/수업/디논 2023-3-14.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "58a28cef45251af5",
+            "id": "d1bfb82a153b009d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -132,13 +114,11 @@
             }
           },
           {
-            "id": "141bb6845461e446",
+            "id": "87e6bf771e46db05",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "journals/수업/디논 2023-3-14.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -158,29 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "58b7eca2566f6588",
-  "lastOpenFiles": [
-    "research/TTL.md",
-    "research/임피던스.md",
-    "research/Multimeter.md",
-    "research/IC.md",
-    "research/7408.md",
-    "journals/수업/디논 2023-3-14.md",
-    "research/CMOS.md",
-    "research/Linkflags.md",
-    "research/저항.md",
-    "journals/2023-2-7.md",
-    "research/TailwindCSS Colors.md",
-    "research/Next.js.md",
-    "journals/수업",
-    "journals",
-    "research/anime idk.md",
-    "research/Hello World.md",
-    "research/Hi everyone.md",
-    "research/Web Frameworks.md",
-    "research/Untitled 1.md",
-    "blog/What is this Memx thing anyways.md",
-    "research/Anime idk.md",
-    "hello.md"
-  ]
+  "active": "37d375f08f894dd6",
+  "lastOpenFiles": []
 }
