@@ -59,12 +59,16 @@
     "title": "Journals",
     "children": [
       {
+        "title": "2023-2-14",
+        "urlPath": "/2023-2-14"
+      },
+      {
         "title": "2023-2-7",
         "urlPath": "/2023-2-7"
       },
       {
-        "title": "Tue Mar 07 2023",
-        "urlPath": "/Tue Mar 07 2023"
+        "title": "2023-2-9",
+        "urlPath": "/2023-2-9"
       }
     ],
     "collapsible": true,

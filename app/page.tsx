@@ -1,4 +1,3 @@
-import { pick } from 'lib/utils'
 import { allBlogs, allResearch } from 'contentlayer/generated'
 import Link from 'next/link'
 

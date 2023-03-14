@@ -86,7 +86,7 @@ const Node: FC<{ node: TreeNode; level: number; activePath: string }> = ({
     ) {
       setCollapsed(false)
     }
-  }, [activePath, node.children, node.urlPath])
+  }, [])
 
   return (
     <>
@@ -132,11 +132,16 @@ const Tree: FC<{ tree: TreeNode[]; level: number; activePath: string }> = ({
 }
 
 export const Sidebar: FC<{ tree: TreeNode[] }> = ({ tree }) => {
+  const [hi, setHi] = useState(``)
   return (
     <aside className="-ml-6 w-80">
       <div>
         <Tree tree={tree} level={0} activePath={usePathname() || ``} />
       </div>
+      <div>state: {hi}</div>
+      <button className="text-pink-500" onClick={() => setHi(`hi`)}>
+        set hi
+      </button>
     </aside>
   )
 }
