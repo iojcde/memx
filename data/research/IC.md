@@ -1,3 +1,6 @@
+---
+hex: F04B4C
+---
 Integrated Circuit: 집적 회로
 
 ## TTL형 과 CMOS 형

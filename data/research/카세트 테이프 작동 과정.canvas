@@ -1,0 +1,16 @@
+---
+hex: 10F7CC
+---
+{
+	"nodes":[
+		{"type":"text","text":"카세트\n","id":"9232c1b9a6161184","x":-125,"y":-30,"width":250,"height":60},
+		{"type":"text","text":"**pre**AMP","id":"6a49445dca53f346","x":240,"y":-30,"width":250,"height":60},
+		{"type":"text","text":"AMP","id":"abdf2a5a6707422c","x":580,"y":-30,"width":250,"height":60},
+		{"id":"c606dbec1bf16b86","x":940,"y":-30,"width":250,"height":60,"type":"text","text":"스피커\n"}
+	],
+	"edges":[
+		{"id":"58a8b7518ecb707c","fromNode":"9232c1b9a6161184","fromSide":"top","toNode":"6a49445dca53f346","toSide":"bottom"},
+		{"id":"5e5e03fef776b45e","fromNode":"6a49445dca53f346","fromSide":"top","toNode":"abdf2a5a6707422c","toSide":"bottom"},
+		{"id":"b668f1c0cb6e3699","fromNode":"abdf2a5a6707422c","fromSide":"top","toNode":"c606dbec1bf16b86","toSide":"bottom"}
+	]
+}

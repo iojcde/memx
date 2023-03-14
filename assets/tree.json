@@ -17,16 +17,23 @@
     "title": "Research",
     "children": [
       {
-        "title": "Hello World",
-        "excerpt": "hex: 83D0B1\n\nHello World!\n\nlmao\n\ngo to the hi everyone page: Hi Everyone",
-        "urlPath": "/83D0B1",
+        "title": "7408",
+        "excerpt": "TTL AND 게이트",
+        "urlPath": "/748B5B",
         "collapsible": false,
         "collapsed": false
       },
       {
-        "title": "Hi everyone",
-        "excerpt": "hex: 160BFB\n\nyo hi everyone\n\ngo to the hello everyone page: Hello World",
-        "urlPath": "/160BFB",
+        "title": "CMOS",
+        "excerpt": "IC의 한 종류\n\n고임피던스\n\nTTL보다 훨씬 늦게 개발된 소자",
+        "urlPath": "/F8D0B8",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "IC",
+        "excerpt": "Integrated Circuit: 집적 회로\n\nTTL형 과 CMOS 형\n\n제조상의 소자로 분류\n\nTTL\n\nCMOS",
+        "urlPath": "/F04B4C",
         "collapsible": false,
         "collapsed": false
       },
@@ -38,16 +45,51 @@
         "collapsed": false
       },
       {
+        "title": "Multimeter",
+        "excerpt": "측정\n\n전압\n\n배터리\n\n저항\n\n전류\n\n전류 측정시 주의 (기기를 태울 수 있다..?)",
+        "urlPath": "/DCD758",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "Next.js",
+        "excerpt": "https://nextjs.org",
+        "urlPath": "/4A0C22",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
         "title": "TailwindCSS Colors",
-        "excerpt": "hex: F95DAD\n\nTailwindcss - Customizing Colors",
+        "excerpt": "hex: F95DAD\n\nTailwindcss - Customizing Colors\nUseful for picking colors, as it has every color included by default in TailwindCSS.",
         "urlPath": "/F95DAD",
         "collapsible": false,
         "collapsed": false
       },
       {
-        "title": "anime idk",
-        "excerpt": "hex: 3285C5\n\n(long scroll test)\n\nDaijobu okasan Otaku, chotto nii san fuzakeru Baka Imoto arigatou Oppai. Nii san arigatou okasan, nii san okasan doki doki arigatou Tomodachi Imoto Otaku doki doki. Tsu...",
-        "urlPath": "/3285C5",
+        "title": "TTL",
+        "excerpt": "IC의 한 종류\n\n저임피던스\n\nNPN형 트랜지스터 중심\n74 시리즈\nex) 7400\n7408",
+        "urlPath": "/46A5BB",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "임피던스",
+        "excerpt": "교류 회로에서 인가 전압 및 회로에 흐르는 전류의 비율",
+        "urlPath": "/1AF788",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "저항",
+        "excerpt": "일반적으로 색띠 4개\n검~흰\n0 ~ 9\n\n330Ω 저항: 주주갈\n4번째 색깔 => 오차 범위 표시\n\nLED 사용시 주로 330Ω 저항 사용\n\n색띠 5개\n\n일부 저항들은 색띠 5개\n\n오차범위 줄어든다.\n\n가격 ↑",
+        "urlPath": "/2E0DD8",
+        "collapsible": false,
+        "collapsed": false
+      },
+      {
+        "title": "카세트 테이프 작동 과정.canvas",
+        "excerpt": "{\n\"nodes\":\\[\n{\"type\":\"text\",\"text\":\"카세트\\n\",\"id\":\"9232c1b9a6161184\",\"x\":-125,\"y\":-30,\"width\":250,\"height\":60},\n{\"type\":\"text\",\"text\":\"preAMP\",\"id\":\"6a49445dca53f346\",\"x\":240,\"y\":-30,\"width\":250,\"height\"...",
+        "urlPath": "/10F7CC",
         "collapsible": false,
         "collapsed": false
       }
@@ -63,12 +105,8 @@
         "urlPath": "/2023-2-14"
       },
       {
-        "title": "2023-2-7",
-        "urlPath": "/2023-2-7"
-      },
-      {
-        "title": "2023-2-9",
-        "urlPath": "/2023-2-9"
+        "title": "수업",
+        "urlPath": "/수업"
       }
     ],
     "collapsible": true,
