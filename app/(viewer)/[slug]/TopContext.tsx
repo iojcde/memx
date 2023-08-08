@@ -2,7 +2,7 @@
 
 import { Icon } from 'components/common/Icon'
 import { useEffect, useState } from 'react'
-import { Sidebar } from './Sidebar'
+import { Sidebar } from '../Sidebar'
 
 const TopContext = ({ title, tree, context }) => {
   const [open, setOpen] = useState<boolean>(false)
