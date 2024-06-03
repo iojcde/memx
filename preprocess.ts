@@ -82,11 +82,11 @@ const finalTree: TreeNode[] = []
 
 const replaceDirNameMap = {
   './data/research': `Research`,
-  './data/blog': `Blog`,
+  './data/React & Next.js 겨우 마스터하기': `React & Next.js 겨우 마스터하기`,
 }
 
 // loop through files
-for (const dir of [`./data/blog`, `./data/research`]) {
+for (const dir of [`./data/React & Next.js 겨우 마스터하기`, `./data/research`]) {
   const files = fs.readdirSync(dir)
 
   const tmpTree: TreeNode = {
