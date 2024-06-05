@@ -3,8 +3,7 @@
   "eslint.alwaysShowStatus": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
-    // For ESLint
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "[css]": {
     "editor.defaultFormatter": "vscode.css-language-features"

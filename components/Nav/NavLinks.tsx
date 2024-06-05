@@ -71,7 +71,7 @@ const NavLinks = ({ links }) => {
         </button>
         {open && (
           <div className="fixed inset-0 z-50 h-screen bg-neutral-900/10 pb-20  backdrop-filter dark:bg-neutral-900/50">
-            <nav className="absolute top-4 right-4 w-full max-w-xs rounded-xl border bg-white p-4 dark:bg-black">
+            <nav className="absolute right-4 top-4 w-full max-w-xs rounded-xl border bg-white p-4 dark:bg-black">
               <div className="flex flex-col space-y-2 pb-8">
                 <div className="mb-2 flex justify-between">
                   <SearchButton showShortcut={false} />

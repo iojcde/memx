@@ -1,21 +1,7 @@
 /** @type {import('next').NextConfig} */
-const { withContentlayer } = require('next-contentlayer')
-const fs = require('fs')
-const filenamesFile = fs.readFileSync('./assets/filenames.json', 'utf8')
-
-const filenames = JSON.parse(filenamesFile)
-module.exports = withContentlayer({
-  experimental: {
-    appDir: true,
-  },
+const config = {
   reactStrictMode: true,
-  redirects: async () => {
-    return Object.keys(filenames).map((key) => ({
-      source: `/${key}`,
-      destination: `/${filenames[key]}`,
-      permanent: false,
-    }))
-  },
+
   images: {
     domains: [
       'avatars.githubusercontent.com',
@@ -26,4 +12,6 @@ module.exports = withContentlayer({
     ],
     formats: ['image/avif', 'image/webp'],
   },
-})
+}
+
+module.exports = config

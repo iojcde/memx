@@ -1,7 +1,6 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { notFound } from 'next/navigation'
 import components from 'components/MDXComponents'
-import { allDocuments } from 'contentlayer/generated'
 import { getBacklinks } from 'lib/markdown'
 import Backlink from './Backlink'
 import Image from 'next/image'
@@ -56,7 +55,7 @@ export default function PostPage({ params }) {
               {`Jeeho Ahn`}
             </p>
           </div>
-          <p className="min-w-32 mt-2 text-sm text-neutral-600 dark:text-neutral-400 md:mt-0">
+          <p className="mt-2 min-w-32 text-sm text-neutral-600 dark:text-neutral-400 md:mt-0">
             {post.readingTime.text}
           </p>
         </div>

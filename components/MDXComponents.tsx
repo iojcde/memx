@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { ReactNode } from 'react'
-import filenames from 'assets/filenames.json'
 import { isExternal } from 'util/types'
 
 interface Props {
@@ -15,13 +14,7 @@ const CustomLink = (props: Props) => {
   const isBacklink =
     href && props.className?.includes(`internal`) && props.href.startsWith(`/`)
 
-  if (isBacklink) {
-    return (
-      <Link href={filenames[href.replace(`/`, ``).toLowerCase()]}>
-        {props.children}
-      </Link>
-    )
-  } else if (isExternal(href)) {
+  if (isExternal(href)) {
     return <a target="_blank" rel="noopener noreferrer" {...props} />
   }
 
