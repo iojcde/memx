@@ -1,15 +1,12 @@
 'use client'
 
-import styled from 'styled-components'
+import { FC, ReactNode, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { FC, ReactNode, useEffect, useMemo } from 'react'
-import { useRouter } from 'next/navigation'
+import { TreeNode } from 'types/TreeNode';
+import tree from 'assets/tree.json';
 
-import { TreeNode } from 'types/TreeNode'
-import tree from 'assets/tree.json'
-import { allResearch } from 'contentlayer/generated'
-
-import React from 'react'
+import React from 'react';
 import {
   KBarAnimator,
   KBarPortal,
@@ -19,69 +16,40 @@ import {
   KBarSearch,
   Action,
   useMatches,
-} from 'kbar'
-import { Card } from './common/Card'
-import { Icon } from './common/Icon'
-import { Label } from './common/Label'
+} from 'kbar';
+import { Card } from './common/Card';
+import { Icon } from './common/Icon';
+import { Label } from './common/Label';
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const router = useRouter()
-  const researchTree = tree
+  const router = useRouter();
+  const researchTree = tree;
+
   const actions = useMemo(() => {
-    const actions: Action[] = [
-      {
-        id: `0-homepage`,
-        name: `Homepage`,
-        keywords: `Home Start Index Overview`,
-        section: `Home`,
-        perform: () => router.push(`/`),
-      },
-      {
-        id: `0-portfolio`,
-        name: `Portfolio`,
-        keywords: `About Jeeho Ahn Portfolio`,
-        section: `Portfolio`,
-        perform: () => window.open(`https://jcde.xyz`, `_blank`),
-      },
-      {
-        id: `3-github`,
-        name: `GitHub Repository`,
-        keywords: `Github Git Repository Repo Code`,
-        section: `External`,
-        perform: () => window.open(`https://github.com/iojcde/memx`, `_ blank`),
-      },
-      {
-        id: `3-twitter`,
-        name: `Twitter`,
-        keywords: `Twitter Account Tweets Tweet News`,
-        section: `External`,
-        perform: () => window.open(`https://twitter.com/iojcde`, `_ blank`),
-      },
-    ]
-    let id = 1
+    const actions: Action[] = [];
 
-    const mapDocs = (tree: TreeNode[], parent: string) => {
-      for (const element of tree) {
+    const mapDocs = (node: TreeNode, parentPath: string) => {
+      if (node.type === 'dir') {
+        for (const child of node.children || []) {
+          mapDocs(child, `${parentPath}/${node.name}`);
+        }
+      } else if (node.type === 'file') {
+        const filePath = `${parentPath}/${node.name}`;
         actions.push({
-          id: (`4-bldocsog-` + id).toString(),
-          name: element.label
-            ? `${element.title} (${element.label})`
-            : element.title,
-          keywords: `research post blog memex` + (element?.excerpt || ``),
+          id: `4-bldocsog-${filePath}`,
+          name: node.name,
+          keywords: `research post blog memex ${node.excerpt || ``}`,
           section: `Research`,
-          perform: () => router.push(element.urlPath as string),
-
-          subtitle: element.excerpt,
-        })
-        id++
-        if (element.children?.length)
-          mapDocs(element.children, parent + ` / ` + element.title)
+          perform: () => router.push(filePath),
+          subtitle: node.excerpt,
+        });
       }
-    }
-    mapDocs(researchTree, `Research`)
+    };
 
-    return actions
-  }, [researchTree, router])
+    mapDocs(researchTree, '');
+
+    return actions;
+  }, [researchTree, router]);
 
   return (
     <KBarProvider actions={actions}>
@@ -103,11 +71,11 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
       </KBarPortal>
       {children}
     </KBarProvider>
-  )
-}
+  );
+};
 
 const RenderResults = () => {
-  const { results } = useMatches()
+  const { results } = useMatches();
 
   if (results.length) {
     return (
@@ -126,7 +94,7 @@ const RenderResults = () => {
                 className={`block cursor-pointer rounded-lg px-4 py-2 transition duration-75 ${
                   active
                     ? `bg-neutral-200 text-black dark:bg-neutral-800 dark:text-white`
-                    : `bg-transparent text-neutral-500 dark:text-neutral-500 `
+                    : `bg-transparent text-neutral-500 dark:text-neutral-500`
                 }`}
               >
                 {item.subtitle && (
@@ -140,12 +108,12 @@ const RenderResults = () => {
           </div>
         )}
       />
-    )
+    );
   } else {
     return (
       <div className="block border-t border-neutral-100 px-4 py-8 text-center text-neutral-400 dark:border-neutral-800 dark:text-neutral-600">
         No results for your search...
       </div>
-    )
+    );
   }
-}
+};

@@ -29,7 +29,7 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply bg-white dark:bg-black transition duration-200 dark:text-neutral-100;
+    @apply bg-[#faf8f8] dark:bg-black transition duration-200 dark:text-neutral-100;
 }
 
 .prose a {
@@ -60,7 +60,7 @@ html {
 }
 @layer base {
     .apply-prose {
-        @apply prose prose-neutral prose-p:text-black dark:prose-p:text-neutral-100 dark:prose-invert;
+        @apply prose prose-sm prose-neutral prose-p:text-black dark:prose-p:text-neutral-100 dark:prose-invert;
     }
 }
 ::selection {

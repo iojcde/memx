@@ -1,10 +1,15 @@
-export type TreeNode = {
-  title: string
-  nav_title?: string
-  label?: string
-  urlPath?: string
-  children?: TreeNode[]
-  collapsible?: boolean
-  collapsed?: boolean
-  excerpt?: string
+export interface FileNode {
+  type: 'file';
+  name: string;
+  slug: string;
+  excerpt: string;
 }
+
+export interface DirectoryNode {
+  type: 'dir';
+  name: string;
+  slug: string;
+  children: TreeNode[];
+}
+
+export type TreeNode = FileNode | DirectoryNode;

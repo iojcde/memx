@@ -1,115 +1,51 @@
-[
-  {
-    "title": "Blog",
-    "children": [
-      {
-        "title": "What is this Memx thing anyways",
-        "excerpt": "hex: 98A155\n\nI've recently set up a personal second brain of sort, built with Next.js and Contentlayer. I haven't thought up of an unique enough name for it, but I've called it memx for now because it ...",
-        "urlPath": "/98A155",
-        "collapsible": false,
-        "collapsed": false
-      }
-    ],
-    "collapsible": true,
-    "collapsed": false
-  },
-  {
-    "title": "Research",
-    "children": [
-      {
-        "title": "7408",
-        "excerpt": "TTL AND 게이트",
-        "urlPath": "/748B5B",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "CMOS",
-        "excerpt": "IC의 한 종류\n\n고임피던스\n\nTTL보다 훨씬 늦게 개발된 소자",
-        "urlPath": "/F8D0B8",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "IC",
-        "excerpt": "Integrated Circuit: 집적 회로\n\nTTL형 과 CMOS 형\n\n제조상의 소자로 분류\n\nTTL\n\nCMOS",
-        "urlPath": "/F04B4C",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "Linkflags",
-        "excerpt": "hex: 38B8EB\n\nhttps://github.com/anaclumos/linkflags is what I'm using to power Icons for the links.\n\nExamples\n\nanaclumos/linkflags\n\nGitBook - Where technical teams document.\n\nNext.js by Vercel - The Re...",
-        "urlPath": "/38B8EB",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "Multimeter",
-        "excerpt": "측정\n\n전압\n\n배터리\n\n저항\n\n전류\n\n전류 측정시 주의 (기기를 태울 수 있다..?)",
-        "urlPath": "/DCD758",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "Next.js",
-        "excerpt": "https://nextjs.org",
-        "urlPath": "/4A0C22",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "TailwindCSS Colors",
-        "excerpt": "hex: F95DAD\n\nTailwindcss - Customizing Colors\nUseful for picking colors, as it has every color included by default in TailwindCSS.",
-        "urlPath": "/F95DAD",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "TTL",
-        "excerpt": "IC의 한 종류\n\n저임피던스\n\nNPN형 트랜지스터 중심\n74 시리즈\nex) 7400\n7408",
-        "urlPath": "/46A5BB",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "임피던스",
-        "excerpt": "교류 회로에서 인가 전압 및 회로에 흐르는 전류의 비율",
-        "urlPath": "/1AF788",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "저항",
-        "excerpt": "일반적으로 색띠 4개\n검~흰\n0 ~ 9\n\n330Ω 저항: 주주갈\n4번째 색깔 => 오차 범위 표시\n\nLED 사용시 주로 330Ω 저항 사용\n\n색띠 5개\n\n일부 저항들은 색띠 5개\n\n오차범위 줄어든다.\n\n가격 ↑",
-        "urlPath": "/2E0DD8",
-        "collapsible": false,
-        "collapsed": false
-      },
-      {
-        "title": "카세트 테이프 작동 과정.canvas",
-        "excerpt": "{\n\"nodes\":\\[\n{\"type\":\"text\",\"text\":\"카세트\\n\",\"id\":\"9232c1b9a6161184\",\"x\":-125,\"y\":-30,\"width\":250,\"height\":60},\n{\"type\":\"text\",\"text\":\"preAMP\",\"id\":\"6a49445dca53f346\",\"x\":240,\"y\":-30,\"width\":250,\"height\"...",
-        "urlPath": "/10F7CC",
-        "collapsible": false,
-        "collapsed": false
-      }
-    ],
-    "collapsible": true,
-    "collapsed": true
-  },
-  {
-    "title": "Journals",
-    "children": [
-      {
-        "title": "2023-2-14",
-        "urlPath": "/2023-2-14"
-      },
-      {
-        "title": "수업",
-        "urlPath": "/수업"
-      }
-    ],
-    "collapsible": true,
-    "collapsed": true
-  }
-]
+{
+  "type": "dir",
+  "name": "data",
+  "slug": "",
+  "children": [
+    {
+      "type": "dir",
+      "name": "React & Next.js 겨우 마스터하기",
+      "slug": "React-&-Next.js-겨우-마스터하기",
+      "children": [
+        {
+          "type": "file",
+          "name": "1탄.md",
+          "excerpt": "\n \n# 우리가 배울 것 - Next.js\n\nNext.js는 Vercel사가 개발하는 리액트 기반 프레임워크이다.\n\n\n일단 완전 기본부터 알아보자.\n\n## 웹페이지의 작동원리\n\n\n우리가 브라우저로 어떤 웹사이트에 들어갔다고 하자. 이때 우리의 브라우저와 서버는 어떤식으로 작동해 우리에게 웹페이지를 보여주는 걸까?\n\n이를 쉽게 정리하면 다음과 같다.\n\n1. 사용자의 브라우저가 서버에게 특정 URL을 요청 \n2. 서버는 요청을 받고 어떤 데이터를 돌려주면 될 지 생각함\n3. 서버가 데이터를 돌려줌\n4. 사용자의 컴퓨터 상의 브라우저가 이를 렌더링함\n\n\n이때, 서버는 데이터를 HTML의 형식으로 돌려준다.\n이제 먼저 HTML에 대해 알아보자. \n\n\n모든 웹페이지는 HTML, CSS, JS를 기반으로 작성된다. \n\nHTML은 기본적인 레이아웃을 정하고, 모든 Element(요소)를 기술한다.\n문법은 다음과 같다.\n\n각 `<...>`와 `<.../>`의 대응이 하나의 요소라 생각하면 되겠다. \n\n```html\n<!Doctype HTML>\n<html>\n\t\n\t<head>\n\t\t...\n\t</head>\n\t\n\t<body>\n\t\t...\n\t</body>\n\n</html>\n\n```\nhead 요소는 웹사이트의 제목, 크기, 등의 메타데이터를 기술한다. \n\n일단은 body 요소에 집중하자.\n\nbody 요소에는 사용자에게 보이는 모든 요소들을 기술하는 곳이라 생각하면 좋다.\n\n~~(Note. body밖에 요소를 놓는다 해도 브라우저는 이를 보여주긴 한다. 하지만 우리는 일단 정석적인 방법으로 하는게 좋으므로 그냥 body에 중요한 것들은 다 넣는다 생각하자.)~~\n\n\n그러면 이제 HTML의 다양한 요소에 대해 알아보도록 하자.\n\n## HTML의 다양한 요소\n\n### 1. div\n우리가 가장 많이 사용하게 될 요소이다. 가장 다양한 용도로 사용된다.\n\n### 2. img\n이미지를 표시하게 하는 요소이다. 문법은 다음과 같다.\n```html\n\t<img src=\"이미지URL\" />\t\n```\n\nimg는 Self closing tag라서 다른 요소들과 달리 슬래시가 앞 부분에 붙는다. 그냥 img 안에는 아무것도 넣을 수 없어서 그렇다 생각하고 넘어가자.\n\t\n### 3. button\n이름 그대로 버튼이다. 누르면 어떤 동작을 실행하게 할 수 있는데, 이 부분은 다음 Chapter에서 알아보기로 하자.\n\n```html\n\t<button onclick =\"...\">남훈이 머리 때리기</button>\n```\n\n### 4. anchor (a)\n이름을 보면 뭔지 잘 모를 수 있는데, 이는 페이지간 링크를 만드는 요소이다. 한 웹사이트 내의 페이지로 가는 것 일수도 있고, 외부 웹페이지의 링크로 가는 것 일 수도 있다.\n\n```html\n\t<a onclick =\"링크123\">단대소고 마이너갤러리로 가기</a>\n```\n### span\n인라인으로 텍스트를 보여줄 때 쓴다. 그냥 텍스트 보여주는 요소라 생각하자.\n\n\n\n참고로 저렇게 한줄에 적어도 되고,\n\n이렇게 적어도 브라우저는 잘 알아듣는다. \n\n\n```html\n\t<a onclick =\"링크123\">\n\t단대소고 마이너갤러리로 가기</a>\n```\n\n\n심지어 이렇게 적어도 알아듣는다. \n\n```html\n\t<a \n\tonclick =\"링크123\"\n\t>단대소고 마이너갤러리로 가기</\n\ta>\n```\n\n\n## HTML의 특징\n### 1. 요소를 네스팅 할 수 있다.\n\n```html\n\t<div>\n\t\t<div>남훈이바보</div>\n\t\t\n\t\t<div>\n\t\t\t<div>\n\t\t\t\t<div>\n\t\t\t\t\t<button> \n\t\t\t\t\t\t남훈이 때리기\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t<div>\n\t\n```\n\n### 2. 기본적으로는 스타일링이 되어있지 않다.\n-> CSS로 스타일링을 하는거임\n\n### 3. HTML만으로 작성한 웹사이트는 별로 쓸모가 없다.\n순수한 정보제공의 목적만 달성할뿐, 사용자에게 유용한 기능을 제공하기는 어렵다. \n\n\n다음으로 CSS에 대해 알아보자. \n\n## CSS가 뭐에요??\n\n우리는 CSS라는 언어를 이용해서 웹사이트를 이쁘게 스타일링할 수 있다. \n\n위의 내용을 잘 읽었다면(그랬기를 바라요), 서버가 HTML의 형식으로 데이터를 브라우저에게 반환한다는 것을 기억할 것이다. \n\n그렇다면 CSS는 사용자의 브라우저에게 어떻게 전달될까?\n\n이에 대한 답은 head 요소 안에 있다.\n\n앞서 우린 head에 제목과 같은 메타데이터를 저장한다고 배웠다. \n\n이러한 메타데이터 중에는 웹사이트에 필요한 자바스크립트 파일이나 CSS파일도 포함된다. \n\n예를들어, 우리 웹사이트에 `babo.css`라는 파일이 필요하다면, \n\n```html \n<head>\n\t  \n\t<link rel=\"stylesheet\" href=\"babo.css\" />\n\n\t...\n\t\n</head>\n```\n\n같이 쓰면 된다. \n\n이러면, 브라우저가 HTML 파일을 받자 마자 CSS파일이 필요하다는 것을 알게 돼 알아서 `/babo.css` 파일도 요청해 사용한다.\n\n\n또한, 기본적인 스타일링은 HTML파일 상에서  `style`태그를 이용해 할 수 있다. \n```html\n<style>\n\n.large {\n\tfont-size: 60px;\n}\n\n</style>\n\n```\n\n\n### CSS 문법\n대충만 배워도 될 것 같다.\n\nCSS 문법은 인터넷에 찾아보거나 챗봇에게 물어보면 금방 알 수 있고, 많이 보다 보면 자동으로 외워진다.\n\n```css\n// babo.css\n\n#babo {\n\tfont-size: 120px;\n\tcolor: red;\n}\n\n.namhoon {\n\tfont-size: 60px;\n\tcolor: #0000FF;\n}\n\na {\n\tcolor: pink;\n}\n\n```\n\n```html \n\n//index.html (안중요한건생략함)\n<head>  \n\t<link rel=\"stylesheet\" href=\"babo.css\" />\n</head>\n\n<body>\n\n\t<span class=\"namhoon\">김남훈</span>\n\t<span class=\"namhoon\">김남훈</span>\n\t<span class=\"namhoon\">김남훈</span>\n\t<span class=\"namhoon\">김남훈</span>\n\t\n\t\n\t<div id=\"babo\">\n\t\t바보\n\t</div>\n\t\n\n\t<a href=\"https://m.dcinside.com/board/dksw\">\n\t\t단대소고마이너갤러리\n\t</a>\n\t\n\t\n\t<button>\n\t\t때리기\n\t</button>\n\n</body>\n```\n\n\n위의 CSS파일을 보면 \n\n #, .(마침표)의 기호가 사용되는 것을 볼 수 있다.\n \n눈치 빠른 분들은 # 가 id를 의미하고,\n .(마침표)는 class를 가리킨 다는 것을 알았을 수도 있다. \n\n그렇다면 class하고 id는 무엇이 다를까?\n\n가장 중요한 차이는 id는 웹페이지상 하나밖에 없는 요소를 가리킬 때 쓰고,  class는 여러번 사용되는 스타일을 정의할 떄 사용된다는 것에 있다. \n\n마지막의 a는 모든 anchor 요소에 적용되는 스타일을 정의한다.\n\n## 중간 정리하기\n\n\n오늘 많은 것을 짧은 시간안에 배웠다. 이를 복습해보기 위해 간단한 O/X 문제를 준비해봤다. \n\n1. 사용자가 웹페이지를 접속할 때, 웹 서버는 브라우저에게 HTML, CSS, JS 데이터를 동시에 반환한다. (O/X)\n2. CSS는 웹사이트를 스타일 할 때 사용된다. (O/X)\n3. class는 웹사이트상에 한번만 표시되는 요소를 가리킬 때 가장 적합하다 (O/X)\n\n[[안지호의 React & Next.js 겨우 마스터하기 - 2탄]]\n",
+          "slug": "1탄"
+        },
+        {
+          "type": "file",
+          "name": "2탄.md",
+          "excerpt": "\n \n \n다음으로 자바스크립트에 대해 알아보자..\n\n자바스크립트는 웹페이지가 어떻게 작동하는지를 기술하는 언어이다. \n\n기존에 파이썬이나 C언어 같은 다른 프로그래밍 언어를 알고 있다면 기본적인 문법은 별로 어색하지 않을 것 같다. \n\n한 예로 버튼을 누르면 누른 횟수를 보여주는 웹페이지를 직접 제작해보자.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n   <title>딸깍</title>\n</head>\n<body>\n    <button id=\"alertButton\">태일이 때리기</button>\n\n\t<span>태일이를 0번 때렀어요! </span>\n\n    <script> \n\t\t...\n    </script>\n</body>\n</html>\n```\n\n자바스크립트 파일은 CSS 파일과 같이 외부 파일을 로딩하게 할 수 있지만, 간단하게 하기 위해 다음과 같이 HTML파일 내부에서 `script` 태그를 사용해 정의할 수 도 있다.\n\n~~딸깍~~\n\n이제 `script` 태그 안에 자바스크립트 코드를 추가해 보자.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n   <title>딸깍</title>\n</head>\n<body>\n    <button id=\"alertButton\">태일이 때리기</button>\n    <span id=\"clickCount\">태일이를 0번 때렸어요! </span>\n\n    <script>\n        // 클릭 횟수를 저장하는 변수\n        let count = 0;\n\n        // 버튼과 span 요소를 가져오기\n        const button = document.getElementById('alertButton');\n        const clickCountText = document.getElementById('clickCount');\n\n        // 버튼 클릭 시 실행될 함수\n        button.addEventListener('click', () => {\n            // 클릭 횟수 증가\n            count++;\n            // 새로운 텍스트 설정\n            clickCountText.textContent = `태일이를 ${count}번 때렸어요!`;\n        });\n\n\t\talert('♡')\n\t</script>\n</body>\n</html>\n```\n\n위 코드를 설명해보면 다음과 같다.\n\n1. **클릭 횟수를 저장할 변수를 초기화**:\n   ```javascript\n   let count = 0;\n   ```\n\n2. **HTML 요소를 JavaScript에서 select하기**\n   - 버튼 요소를 `getElementById`를 통해 선택한다.\n   - 클릭 횟수를 표시할 `span` 요소를 `getElementById`를 통해 선택한다.\n   ```javascript\n   const button = document.getElementById('alertButton');\n   const clickCountText = document.getElementById('clickCount');\n   ```\n\n3. **버튼에 클릭 이벤트 리스너를 추가하기**\n   - 버튼이 클릭될 때마다 호출될 함수를 `addEventListener`로 설정한다.\n   - 이 함수는 클릭 횟수를 증가시키고, `span` 요소의 텍스트를 업데이트한다.\n   ```javascript\n   button.addEventListener('click', () => {\n       count++;\n       clickCountText.textContent = `태일이를 ${count}번 때렸어요!`;\n   });\n   ```\n\n이렇게 하면 버튼을 누를 때마다 텍스트가 업데이트되어 클릭 횟수가 반영된다.\n\n\n여기서, \n\n```js\n(a,b) => { \n\t...\n}\n\n```\n\n는 arrow function이라 부르는데, 자바스크립트에서 함수를 정의하는 방법 중 하나이다. \n\n```js \nfunction asdf(a,b){\n\t....\n}\n```\n\n물론 이런 식으로 해도 일반적인 상황에서는 큰 차이는 없다. 하지만, 이름이 없는 함수를 정의할 때 유용하게 사용되곤 한다. \n\n[[안지호의 React & Next.js 겨우 마스터하기 - 3탄]]\n\n",
+          "slug": "2탄"
+        },
+        {
+          "type": "file",
+          "name": "3탄.md",
+          "excerpt": "\n \n \n지금까지는 HTML, CSS, JS 를 사용해 간단한 웹사이트를 제작해 보았다.\n\n하지만, 이러한 구조로 웹사이트를 제작하는 것은 간단한 프로토타입이나 작은 프로젝트에서는 괜찮을 수 있다. 그러나 실제로 대규모 웹 애플리케이션을 개발할 때는 비효율적일 수 있다.\n\n\n1. **코드가 드러워짐**: 이벤트 리스너를 많이 사용할수록 코드가 복잡해지고 관리가 어려워진다. 특히 대규모 애플리케이션에서는 이벤트 핸들링이 복잡해지면 버그를 찾기가 매우 어려워진다. \n\n2. **상태 관리의 어려움**: 이벤트 리스너를 통해 상태를 관리하려면 전역 변수나 DOM 요소의 속성을 사용해야 하는데, 다양한 기능이 있는 웹사이트에서는 이 관리가 매우 복잡해질 수 밖에 없다. 예를 들어, 다양한 파일에서 같은 변수를 접근하려 할때 문제가 생길 수 있는 것이다. \n\n3. **성능 문제**: 이벤트 리스너를 많이 사용하면 브라우저의 성능에 부담을 줄 수 있다는 문제도 있다. 특히 이벤트 리스너가 복잡하거나 실행 주기가 짧고 여러번 실행되는 경우에는 성능 문제가 발생할 수 있다. 자바스크립트는 기본적으로 싱글 쓰레드 언어라, 중요한 작업들이 한 쓰레드 위에서 실행되어, 하나의 작업이 끝나지 않으면 다른 작업들이 지연될 수 있다고 생각하면 좋다. \n\n\n이러한 문제를 해결하기 위해 우리를 위해 똑똑한 사람들이 **프론트엔드 프레임워크**들을 개발하기 시작했다. \n\nReact, Vue.js, Angular 같은 프레임워크들은 컴포넌트 기반 구조로 코드를 더 잘 구조화할 수 있게 하고, 상태 관리를 쉽게할 수 있도록 도와준다. 또한, 가상 DOM 등의 기술을 사용하여 성능을 최적화하는 경우도 많다.\n\n이러한 프레임워크를 사용하면 이벤트 리스너를 직접 작성할 필요 없이 컴포넌트 간의 통신이나 상태 관리를 더 효율적으로 할 수 있다.\n\n우리가 사용할 프런트엔드 프레임워크는 페이스북에서 개발한 React이다. React는 오픈소스로 개발되어 페이스북 뿐만 아니라, 외부 기여자들도 매우 많은 대형 프로젝트이다. \n\n다음 포스트에는 React의 기본 문법에 대해 알아보자.\n\n[[안지호의 React & Next.js 겨우 마스터하기 - 4탄]]\n",
+          "slug": "3탄"
+        },
+        {
+          "type": "dir",
+          "name": "test123",
+          "slug": "test123",
+          "children": [
+            {
+              "type": "file",
+              "name": "yeah.md",
+              "excerpt": "\n \n# Markdown: Syntax\n\n*   [Overview](#overview)\n    *   [Philosophy](#philosophy)\n    *   [Inline HTML](#html)\n    *   [Automatic Escaping for Special Characters](#autoescape)\n*   [Block Elements](#block)\n    *   [Paragraphs and Line Breaks](#p)\n    *   [Headers](#header)\n    *   [Blockquotes](#blockquote)\n    *   [Lists](#list)\n    *   [Code Blocks](#precode)\n    *   [Horizontal Rules](#hr)\n*   [Span Elements](#span)\n    *   [Links](#link)\n    *   [Emphasis](#em)\n    *   [Code](#code)\n    *   [Images](#img)\n*   [Miscellaneous](#misc)\n    *   [Backslash Escapes](#backslash)\n    *   [Automatic Links](#autolink)\n\n\n**Note:** This document is itself written using Markdown; you\ncan [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).\n \n\n## Overview\n\n### Philosophy\n\nMarkdown is intended to be as easy-to-read and easy-to-write as is feasible.\n\nReadability, however, is emphasized above all else. A Markdown-formatted\ndocument should be publishable as-is, as plain text, without looking\nlike it's been marked up with tags or formatting instructions. While\nMarkdown's syntax has been influenced by several existing text-to-HTML\nfilters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),\n[Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of\ninspiration for Markdown's syntax is the format of plain text email.\n\n## Block Elements\n\n### Paragraphs and Line Breaks\n\nA paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing but spaces or tabs is considered\nblank.) Normal paragraphs should not be indented with spaces or tabs.\n\nThe implication of the \"one or more consecutive lines of text\" rule is\nthat Markdown supports \"hard-wrapped\" text paragraphs. This differs\nsignificantly from most other text-to-HTML formatters (including Movable\nType's \"Convert Line Breaks\" option) which translate every line break\ncharacter in a paragraph into a `<br />` tag.\n\nWhen you *do* want to insert a `<br />` break tag using Markdown, you\nend a line with two or more spaces, then type return.\n\n### Headers\n\nMarkdown supports two styles of headers, [Setext] [1] and [atx] [2].\n\nOptionally, you may \"close\" atx-style headers. This is purely\ncosmetic -- you can use this if you think it looks better. The\nclosing hashes don't even need to match the number of hashes\nused to open the header. (The number of opening hashes\ndetermines the header level.)\n\n\n### Blockquotes\n\nMarkdown uses email-style `>` characters for blockquoting. If you're\nfamiliar with quoting passages of text in an email message, then you\nknow how to create a blockquote in Markdown. It looks best if you hard\nwrap the text and put a `>` before every line:\n\n> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n> \n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n> id sem consectetuer libero luctus adipiscing.\n\nMarkdown allows you to be lazy and only put the `>` before the first\nline of a hard-wrapped paragraph:\n\n> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\nVestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n\n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\nid sem consectetuer libero luctus adipiscing.\n\nBlockquotes can be nested (i.e. a blockquote-in-a-blockquote) by\nadding additional levels of `>`:\n\n> This is the first level of quoting.\n>\n> > This is nested blockquote.\n>\n> Back to the first level.\n\nBlockquotes can contain other Markdown elements, including headers, lists,\nand code blocks:\n\n> ## This is a header.\n> \n> 1.   This is the first list item.\n> 2.   This is the second list item.\n> \n> Here's some example code:\n> \n>     return shell_exec(\"echo $input | $markdown_script\");\n\nAny decent text editor should make email-style quoting easy. For\nexample, with BBEdit, you can make a selection and choose Increase\nQuote Level from the Text menu.\n\n\n### Lists\n\nMarkdown supports ordered (numbered) and unordered (bulleted) lists.\n\nUnordered lists use asterisks, pluses, and hyphens -- interchangably\n-- as list markers:\n\n*   Red\n*   Green\n*   Blue\n\nis equivalent to:\n\n+   Red\n+   Green\n+   Blue\n\nand:\n\n-   Red\n-   Green\n-   Blue\n\nOrdered lists use numbers followed by periods:\n\n1.  Bird\n2.  McHale\n3.  Parish\n\nIt's important to note that the actual numbers you use to mark the\nlist have no effect on the HTML output Markdown produces. The HTML\nMarkdown produces from the above list is:\n\nIf you instead wrote the list in Markdown like this:\n\n1.  Bird\n1.  McHale\n1.  Parish\n\nor even:\n\n3. Bird\n1. McHale\n8. Parish\n\nyou'd get the exact same HTML output. The point is, if you want to,\nyou can use ordinal numbers in your ordered Markdown lists, so that\nthe numbers in your source match the numbers in your published HTML.\nBut if you want to be lazy, you don't have to.\n\nTo make lists look nice, you can wrap items with hanging indents:\n\n*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n    viverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n    Suspendisse id sem consectetuer libero luctus adipiscing.\n\nBut if you want to be lazy, you don't have to:\n\n*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\nviverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\nSuspendisse id sem consectetuer libero luctus adipiscing.\n\nList items may consist of multiple paragraphs. Each subsequent\nparagraph in a list item must be indented by either 4 spaces\nor one tab:\n\n1.  This is a list item with two paragraphs. Lorem ipsum dolor\n    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n    mi posuere lectus.\n\n    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n    sit amet velit.\n\n2.  Suspendisse id sem consectetuer libero luctus adipiscing.\n\nIt looks nice if you indent every line of the subsequent\nparagraphs, but here again, Markdown will allow you to be\nlazy:\n\n*   This is a list item with two paragraphs.\n\n    This is the second paragraph in the list item. You're\nonly required to indent the first line. Lorem ipsum dolor\nsit amet, consectetuer adipiscing elit.\n\n*   Another item in the same list.\n\nTo put a blockquote within a list item, the blockquote's `>`\ndelimiters need to be indented:\n\n*   A list item with a blockquote:\n\n    > This is a blockquote\n    > inside a list item.\n\nTo put a code block within a list item, the code block needs\nto be indented *twice* -- 8 spaces or two tabs:\n\n*   A list item with a code block:\n\n        code goes here\n\n### Code Blocks\n\nPre-formatted code blocks are used for writing about programming or\nmarkup source code. Rather than forming normal paragraphs, the lines\nof a code block are interpreted literally. Markdown wraps a code block\nin both `<pre>` and `<code>` tags.\n\nTo produce a code block in Markdown, simply indent every line of the\nblock by at least 4 spaces or 1 tab.\n\nThis is a normal paragraph:\n\n    This is a code block.\n\nHere is an example of AppleScript:\n\n    tell application \"Foo\"\n        beep\n    end tell\n\nA code block continues until it reaches a line that is not indented\n(or the end of the article).\n\nWithin a code block, ampersands (`&`) and angle brackets (`<` and `>`)\nare automatically converted into HTML entities. This makes it very\neasy to include example HTML source code using Markdown -- just paste\nit and indent it, and Markdown will handle the hassle of encoding the\nampersands and angle brackets. For example, this:\n\n    <div class=\"footer\">\n        &copy; 2004 Foo Corporation\n    </div>\n\nRegular Markdown syntax is not processed within code blocks. E.g.,\nasterisks are just literal asterisks within a code block. This means\nit's also easy to use Markdown to write about Markdown's own syntax.\n\n```\ntell application \"Foo\"\n    beep\nend tell\n```\n\n## Span Elements\n\n### Links\n\nMarkdown supports two style of links: *inline* and *reference*.\n\nIn both styles, the link text is delimited by [square brackets].\n\nTo create an inline link, use a set of regular parentheses immediately\nafter the link text's closing square bracket. Inside the parentheses,\nput the URL where you want the link to point, along with an *optional*\ntitle for the link, surrounded in quotes. For example:\n\nThis is [an example](http://example.com/) inline link.\n\n[This link](http://example.net/) has no title attribute.\n\n### Emphasis\n\nMarkdown treats asterisks (`*`) and underscores (`_`) as indicators of\nemphasis. Text wrapped with one `*` or `_` will be wrapped with an\nHTML `<em>` tag; double `*`'s or `_`'s will be wrapped with an HTML\n`<strong>` tag. E.g., this input:\n\n*single asterisks*\n\n_single underscores_\n\n**double asterisks**\n\n__double underscores__\n\n### Code\n\nTo indicate a span of code, wrap it with backtick quotes (`` ` ``).\nUnlike a pre-formatted code block, a code span indicates code within a\nnormal paragraph. For example:\n\nUse the `printf()` function.",
+              "slug": "yeah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "hi.md",
+      "excerpt": "\n#yo hi\n\nhelo im bob",
+      "slug": "hi"
+    }
+  ]
+}

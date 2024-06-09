@@ -1,142 +1,150 @@
 'use client'
 
-import React, { FC, useState, useEffect } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import classNames from 'classnames'
-import { TreeNode } from 'types/TreeNode'
-import { Label } from 'components/common/Label'
-import { Icon } from 'components/common/Icon'
+import React, { FC, useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import classNames from 'classnames';
+import { DirectoryNode, TreeNode } from 'types/TreeNode';
+import { Label } from 'components/common/Label';
+import { Icon } from 'components/common/Icon';
 
 const NavLink: FC<{
-  title: string
-  label?: string
-  url?: string
-  level: number
-  activePath: string
-  collapsible: boolean
-  collapsed: boolean
-  toggleCollapsed: () => void
+  title: string;
+  label?: string;
+  url?: string;
+  level: number;
+  activePath: string;
+  collapsed: boolean;
+  toggleCollapsed: () => void;
 }> = ({
   title,
   label,
   url,
   level,
   activePath,
-  collapsible,
   collapsed,
   toggleCollapsed,
 }) => {
-  const K = ({ href, ...props }) => {
-    if (href) {
-      return <Link href={href} {...props}></Link>
-    } else return <div {...props} />
-  }
+    const K: FC<{ href?: string;[key: string]: any }> = ({ href, ...props }) => {
+      if (href) {
+        return <Link href={href} {...props}></Link>;
+      } else {
+        return <div {...props} />;
+      }
+    };
 
-  return (
-    <div
-      className={classNames(
-        `group flex h-8 items-center justify-between space-x-2 whitespace-nowrap rounded-md px-3 text-sm leading-none`,
-        url == activePath
-          ? `${
-              level == 0 ? `font-medium` : `font-normal`
-            } bg-neutral-100 text-black transition duration-200 dark:bg-neutral-500/20 dark:text-neutral-50`
-          : `hover:bg-neutral-50 dark:hover:bg-[rgb(16,16,16)] ${
-              level == 0
-                ? `font-medium text-neutral-700 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200`
-                : `font-normal hover:text-neutral-600 dark:hover:text-neutral-300`
-            }`,
-      )}
-    >
-      <K href={url} className="flex h-full grow items-center space-x-2">
-        <span className="capitalize">{title}</span>
-        {label && <Label text={label} />}
-      </K>
-      {collapsible && (
+    return (
+      <div
+        className={classNames(
+          `group flex items-center justify-between space-x-1 whitespace-nowrap rounded-md text-sm leading-none`,
+          url && 'ml-2'
+        )}
+      > {!url && (
         <button
           aria-label="Toggle children"
           onClick={toggleCollapsed}
-          className="mr-2 shrink-0 px-2 py-1"
+          className="shrink-0 px-1 py-1"
         >
           <span
-            className={`block w-2.5 dark:fill-neutral-400 ${
-              collapsed ? `-rotate-90 transform` : ``
-            }`}
+            className={`block w-2.5 dark:fill-neutral-400 ${collapsed ? `-rotate-90 transform` : ``
+              }`}
           >
             <Icon name="chevron-down" />
           </span>
         </button>
       )}
-    </div>
-  )
-}
+        <K href={url} className="flex h-full grow items-center space-x-2">
+          <span className={`capitalize ${!url && 'font-semibold'}`}>{title.replace('.md', '')}</span>
+        </K>
 
-const Node: FC<{ node: TreeNode; level: number; activePath: string }> = ({
+      </div>
+    );
+  };
+
+const Node: FC<{ node: TreeNode; level: number; activePath: string; path: string }> = ({
   node,
   level,
   activePath,
+  path,
 }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(node.collapsed ?? false)
-  const toggleCollapsed = () => setCollapsed(!collapsed)
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const toggleCollapsed = () => setCollapsed(!collapsed);
 
   useEffect(() => {
     if (
-      activePath == node.urlPath ||
-      node.children?.map((_) => _.urlPath).includes(activePath)
+      activePath === path ||
+      (node.type === 'dir' && node.children.some(child => activePath.startsWith(`${path}/${child.name}`)))
     ) {
-      setCollapsed(false)
+      setCollapsed(false);
     }
-  }, [])
+  }, [activePath, node, path]);
 
   return (
     <>
       <NavLink
-        title={node.nav_title || node.title}
-        label={node.label || undefined}
-        url={node.urlPath}
+        title={node.name}
+        url={node.type === 'file' ? path.replaceAll(' ', '-').replace('.md', '') : undefined}
         level={level}
         activePath={activePath}
-        collapsible={node.collapsible ?? false}
         collapsed={collapsed}
         toggleCollapsed={toggleCollapsed}
       />
-      {node.children && node.children.length > 0 && !collapsed && (
-        <Tree tree={node.children} level={level + 1} activePath={activePath} />
+      {node.type === 'dir' && node.children.length > 0 && !collapsed && (
+        <Tree tree={node.children} level={level + 1} activePath={activePath} parentPath={path} />
       )}
     </>
-  )
-}
+  );
+};
 
-const Tree: FC<{ tree: TreeNode[]; level: number; activePath: string }> = ({
+const Tree: FC<{ tree: TreeNode[]; level: number; activePath: string; parentPath: string }> = ({
   tree,
   level,
   activePath,
+  parentPath,
 }) => {
   return (
     <div
       className={classNames(
-        `ml-3 space-y-2 pl-3`,
+        `ml-2 space-y-4 pl-2`,
         level > 0 ? `border-l border-neutral-200 dark:border-neutral-800` : ``,
       )}
     >
-      {tree.map((treeNode, index) => (
-        <Node
-          key={index}
-          node={treeNode}
-          level={level}
-          activePath={activePath}
-        />
-      ))}
+      {tree.map((treeNode, index) => {
+        const path = `${parentPath}/${treeNode.name}`;
+        return (
+          <Node
+            key={index}
+            node={treeNode}
+            level={level}
+            activePath={activePath}
+            path={path}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export const Sidebar: FC<{ tree: TreeNode[] }> = ({ tree }) => {
+export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
   return (
-    <aside className="-ml-6 w-80">
-      <div>
-        <Tree tree={tree} level={0} activePath={usePathname() || ``} />
+    <aside className="flex flex-col gap-6 lg:p-8 lg:pt-20 lg:px-12 ">
+      <div className='text-xl lg:text-2xl font-semibold'>
+        🪴 jcde.xyz
       </div>
+
+      <div>
+        <button className='w-full inline-flex items-center text-neutral-700 justify-between text-sm px-3 py-1.5 bg-neutral-100 rounded-md'>
+          Search     <span className="block w-3  ">
+            <Icon name="search" />
+          </span>
+        </button>
+      </div>
+
+      <div>
+        <h3 className='text-sm font-bold text-neutral-700'>Explorer</h3>
+        <div className='overflow-y-auto -ml-4 mt-2  '>
+          <Tree tree={tree.children} level={0} activePath={usePathname() || ''} parentPath='' />
+        </div></div>
     </aside>
-  )
-}
+  );
+};
