@@ -1,8 +1,7 @@
 ---
-slug: yeah
+slug: Markdown:-Syntax
 ---
- 
-# Markdown: Syntax
+  
 
 *   [Overview](#overview)
     *   [Philosophy](#philosophy)

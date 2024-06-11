@@ -127,10 +127,10 @@ const Tree: FC<{ tree: TreeNode[]; level: number; activePath: string; parentPath
 
 export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
   return (
-    <aside className="flex flex-col gap-6 lg:p-8 lg:pt-20 lg:px-12 ">
-      <div className='text-xl lg:text-2xl font-semibold'>
+    <aside className="flex flex-col gap-6 lg:p-8 lg:pt-24  lg:pr-10 ">
+      <Link href='/' className='text-xl lg:text-2xl font-bold'>
         🪴 jcde.xyz
-      </div>
+      </Link>
 
       <div>
         <button className='w-full inline-flex items-center text-neutral-700 justify-between text-sm px-3 py-1.5 bg-neutral-100 rounded-md'>

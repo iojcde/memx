@@ -1,5 +1,8 @@
-const Page = () => {
-  return <div className="h-screen ">Hello im jeeho ahn yeah</div>
-}
+import PostPage from "./(viewer)/[...slug]/page"
 
-export default Page
+const Index = () => {
+    return (
+        <PostPage params={{ slug: 'index' }} />
+    )
+}
+export default Index

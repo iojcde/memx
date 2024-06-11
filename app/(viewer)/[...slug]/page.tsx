@@ -5,7 +5,6 @@ import Image from 'next/image'
 import tree from 'assets/tree.json'
 import TopContext from './TopContext'
 import Markdown from 'components/Markdown'
-import { Icon } from 'components/common/Icon'
 
 const editUrl = (slug: string) =>
   `https://github.com/iojcde/memx/edit/main/data/blog/${slug}.mdx`
@@ -15,7 +14,7 @@ const discussUrl = (slug: string) =>
   )}`
 
 export default async function PostPage({ params }) {
-  const slug = params.slug
+  let slug = params.slug
 
   const post = await getDocument({ slug })
 
@@ -31,24 +30,24 @@ export default async function PostPage({ params }) {
     <>
       <div className="relative mb-16 w-full max-w-4xl flex-col items-start justify-center lg:mt-0 mt-16 ">
         <TopContext title={post.data.title} tree={tree} context={context} />
-        <header className="relative w-full px-6 lg:px-16 mt-8">
+        <header className="relative w-full px-6 lg:px-8">
 
-          <h1 className="text-3xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 lg:text-5xl">
+          <h1 className="text-3xl font-semibold capitalize text-neutral-800 mt-4 dark:text-neutral-200 lg:text-4xl">
             {post.data.title}
           </h1>
         </header>
-        <div className="flex w-full flex-col items-start justify-between px-6 md:flex-row md:items-center lg:px-16">
+        <div className="flex w-full flex-col items-start justify-between px-6 lg:px-8 md:flex-row md:items-center ">
 
           <p className="mt-2 min-w-32 text-sm text-neutral-600 dark:text-neutral-400">
             {post.data.readingTime.text}
           </p>
         </div>
         <>
-          <article className="apply-prose mt-4 w-full max-w-none px-6 lg:px-16">
+          <article className="apply-prose mt-6 w-full max-w-none px-6 lg:px-8">
             <Markdown content={post} />
           </article>
         </>
-        <div className="px-6 text-xs text-neutral-700 dark:text-neutral-400 lg:px-16">
+        <div className="text-xs text-neutral-700 dark:text-neutral-400 px-6 lg:px-8 ">
           <a
             href={discussUrl(post.slug)}
             target="_blank"
@@ -65,7 +64,7 @@ export default async function PostPage({ params }) {
             {`Edit on GitHub`}
           </a>
         </div>
-        <div className="px-6 lg:px-16">
+        <div className="px-6 lg:px-8 ">
           <hr className="mt-8" />
           <Backlink backlinks={backlinks} />
         </div>

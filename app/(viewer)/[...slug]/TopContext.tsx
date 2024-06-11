@@ -7,8 +7,9 @@ import { DirectoryNode } from 'types/TreeNode'
 
 const TopContext = ({ title, tree, context }: { title: string; tree: any; context: string[] }) => {
   const [open, setOpen] = useState<boolean>(false)
-
   const [top, setTop] = useState<boolean>(true)
+
+  console.log('context', context)
 
   useEffect(() => {
     const handleScroll = () => setTop(window.scrollY <= 80)
@@ -46,7 +47,7 @@ const TopContext = ({ title, tree, context }: { title: string; tree: any; contex
         </div>
       )}
       <div
-        className={`sticky top-0 z-10 flex h-12  w-full items-center gap-2  border-neutral-200  bg-[#faf8f8]  bg-opacity-90 pr-6 pl-4 backdrop-blur backdrop-filter transition duration-200 dark:bg-black lg:px-16 ${top ? 'border-0' : 'border-b'}`}
+        className={`sticky top-0 z-10 flex h-10  w-full items-center gap-2  border-neutral-200  bg-[#faf8f8]  bg-opacity-90 pr-6 pl-4 backdrop-blur backdrop-filter transition duration-200 dark:bg-black lg:px-8 border-x border-b border-transparent  rounded-b-xl ${top ? 'border-0' : 'border-inherit  shadow-sm'}`}
       >
         <button
           type="button"
@@ -60,13 +61,17 @@ const TopContext = ({ title, tree, context }: { title: string; tree: any; contex
         </button>
         <span className="flex h-full items-center gap-2 text-xs capitalize">
           {
-            context.map(i => (<span key={i}> {i}
-              <span className="inline-block w-1.5 fill-neutral-400 dark:fill-neutral-500">
+            ["Home", ...context].flatMap((i, index) => ([
+              <span key={index}>{i}</span>,
+              <span key={index + 1} className="inline-block w-1.5 fill-neutral-400  dark:fill-neutral-500">
                 <Icon name="chevron-right" />
-              </span></span>))
-          } {title}
+              </span>
+            ]))
+          }
+
+          <span className={`transition font-semibold `}>{title}</span>
         </span>
-      </div>
+      </div >
     </>
   )
 }

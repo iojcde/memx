@@ -33,9 +33,9 @@
           "children": [
             {
               "type": "file",
-              "name": "yeah.md",
-              "excerpt": "# Markdown: Syntax\n\n*   [Overview](#overview)",
-              "slug": "yeah"
+              "name": "Markdown: Syntax.md",
+              "excerpt": "*   [Overview](#overview)\n    *   [Philosophy](#philosophy)\n    *   [Inline HTML](#html)",
+              "slug": "Markdown:-Syntax"
             }
           ]
         }
@@ -46,6 +46,12 @@
       "name": "hi.md",
       "excerpt": "# yo hi\n\nhelo im bob",
       "slug": "hi"
+    },
+    {
+      "type": "file",
+      "name": "index.md",
+      "excerpt": "# Hello!\nI'm Jeeho.",
+      "slug": "index"
     }
   ]
 }

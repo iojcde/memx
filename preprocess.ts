@@ -21,7 +21,7 @@ const getMetadata = (filePath: string, lines: number = 3) => {
     const content = fs.readFileSync(filePath, 'utf-8');
     const currentSlug = content.match(/slug: (.*)/)?.[1]
 
-    const newSlug = filePath.split('/').pop()?.replace('.md', '').replace(' ', '-').toLowerCase() as string;
+    const newSlug = filePath.split('/').pop()?.replace('.md', '').replace(' ', '-') as string;
 
     if (currentSlug && currentSlug !== newSlug) {
         addOldRedirection(currentSlug, newSlug);
