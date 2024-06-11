@@ -1,5 +1,5 @@
 ---
-slug: data-react-next.js-gyeou-maseuteohagi-test123-yeah
+slug: yeah
 ---
  
 # Markdown: Syntax

@@ -1,7 +1,8 @@
 import glob from 'tiny-glob';
 import path from 'path';
 import fs from 'fs';
-import type { DirectoryNode } from 'types/TreeNode'
+import type { DirectoryNode, TreeNode } from 'types/TreeNode'
+import { read } from 'to-vfile';
 
 const root_folder = 'data';
 
@@ -25,6 +26,14 @@ const getMetadata = (filePath: string, lines: number = 3) => {
     if (currentSlug && currentSlug !== newSlug) {
         addOldRedirection(currentSlug, newSlug);
 
+        if (content.includes('---')) {
+            const newContent = content.replace(`slug: ${currentSlug}`, `slug: ${newSlug}`);
+            fs.writeFileSync(filePath, newContent, 'utf-8');
+        } else {
+            const newContent = `---\nslug: ${newSlug}\n---\n${content}`;
+            fs.writeFileSync(filePath, newContent, 'utf-8')
+        }
+
 
     } else if (!currentSlug) {
         console.log(`no slug detected: adding slug ${newSlug} for ${filePath}`);
@@ -42,7 +51,7 @@ const getMetadata = (filePath: string, lines: number = 3) => {
         title: filePath.split('/').pop()?.replace('.md', '') as string,
         slug: newSlug,
         // ignore frontmatter from excerpt for number lines
-        excerpt: content.split('---').slice(2, lines + 2).join('---'),
+        excerpt: content.split('---').slice(2, lines + 2).join('').trim().split('\n').slice(0, lines).join('\n')
     }
 };
 
@@ -62,6 +71,7 @@ const buildTree = async (): Promise<DirectoryNode> => {
             if (index === parts.length - 1) {
                 // Last part is a file
                 const meta = getMetadata(file);
+
                 current.children.push({ type: 'file', name: part, excerpt: meta.excerpt, slug: meta.slug, });
             } else {
                 // Directory part
@@ -75,8 +85,71 @@ const buildTree = async (): Promise<DirectoryNode> => {
         });
     });
 
+
+
     return tree;
 };
+
+const mapFiles = (tree) => {
+    const traverse = (node: TreeNode, parentSlug: string = '', parentName: string = '') => {
+        if (node.type === 'file') {
+            node.slug = parentSlug;
+            node.name = parentName;
+            return node;
+        } else {
+            return node.children.flatMap(child => traverse(child,
+                parentSlug ? `${parentSlug}/${child.slug}` : child.slug,
+                parentName ? `${parentName}/${child.name}` : child.name))
+        }
+
+
+    }
+
+    const allFiles = traverse(tree);
+    //make into slug:title map
+    const fileMap = allFiles.reduce((acc, file) => {
+        acc[file.slug] = file.name;
+        return acc;
+    }, {});
+
+    fs.writeFileSync('./assets/filemap.json', JSON.stringify(fileMap, null, 2), 'utf-8');
+    console.log(`File map saved to ./assets/filemap.json`);
+}
+
+const mapBacklinks = async () => {
+    const filemap = JSON.parse(fs.readFileSync('./assets/filemap.json', 'utf-8'));
+    const backlinks = {};
+
+    Object.keys(filemap).flatMap(slug => {
+        const content = fs.readFileSync(`./data/${filemap[slug]}`, 'utf-8');
+
+        const links = String(content).match(/\[\[(.*?)\]\]/g) || [];
+
+        links.forEach(link => {
+            const mentioned = link.match(/\[\[(.*?)(?:\|.*)?\]\]/)[1].trim();
+
+            // search in values of filemap, including relative files
+            const [mentionedSlug, _] = Object.entries(filemap)
+                .find(([key, value]: [string, string]) => (value === `${mentioned}.md` ||
+                    (value.split('/').slice(0, -1).join('/') == filemap[slug].split('/').slice(0, -1).join('/') &&
+                        value.split('/').pop()?.replace('.md', '') === mentioned.split('/').pop()))
+
+                ) ?? [];
+
+
+            if (mentionedSlug) {
+                backlinks[mentionedSlug] = [...backlinks[mentionedSlug] ?? [], slug];
+                return
+            }
+
+            console.log(`warning: found broken backlink [[${mentioned}]] in ${filemap[slug]}`)
+        })
+    })
+
+    fs.writeFileSync('./assets/backlinks.json', JSON.stringify(backlinks, null, 2), 'utf-8');
+    console.log(`Backlinks saved to ./assets/backlinks.json`);
+}
+
 
 const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
     const treeJson = JSON.stringify(tree, null, 2);
@@ -87,4 +160,8 @@ const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
 (async function () {
     const tree = await buildTree();
     saveTreeToFile(tree, './assets/tree.json');
+
+    mapFiles(tree);
+
+    mapBacklinks();
 })();

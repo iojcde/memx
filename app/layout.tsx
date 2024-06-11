@@ -7,9 +7,8 @@ import '../styles/syntax.css'
 import '../styles/fonts.css'
 
 import localFont from 'next/font/local'
-import tree from 'assets/tree.json'
+import tree from 'assets/tree.json' 
 
-import Nav from 'components/Nav'
 import { Providers } from './providers'
 import { Sidebar } from './(viewer)/Sidebar'
 import { DirectoryNode } from 'types/TreeNode'

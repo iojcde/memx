@@ -3,14 +3,15 @@
 import { Icon } from 'components/common/Icon'
 import { useEffect, useState } from 'react'
 import { Sidebar } from '../Sidebar'
+import { DirectoryNode } from 'types/TreeNode'
 
-const TopContext = ({ title, tree, context }) => {
+const TopContext = ({ title, tree, context }: { title: string; tree: any; context: string[] }) => {
   const [open, setOpen] = useState<boolean>(false)
 
   const [top, setTop] = useState<boolean>(true)
 
   useEffect(() => {
-    const handleScroll = () => setTop(window.scrollY <= 30)
+    const handleScroll = () => setTop(window.scrollY <= 80)
     handleScroll()
     window.addEventListener(`scroll`, handleScroll)
     return () => {
@@ -45,8 +46,7 @@ const TopContext = ({ title, tree, context }) => {
         </div>
       )}
       <div
-        className={`fixed top-0 z-10 flex h-12  w-full items-center gap-2 border-b border-neutral-200  bg-[#faf8f8]  bg-opacity-90 pr-6 pl-4 backdrop-blur backdrop-filter transition duration-200 dark:bg-black lg:px-16 ${top ? `lg:opacity-0` : `lg:opacity-100`
-          }`}
+        className={`sticky top-0 z-10 flex h-12  w-full items-center gap-2  border-neutral-200  bg-[#faf8f8]  bg-opacity-90 pr-6 pl-4 backdrop-blur backdrop-filter transition duration-200 dark:bg-black lg:px-16 ${top ? 'border-0' : 'border-b'}`}
       >
         <button
           type="button"
@@ -59,13 +59,12 @@ const TopContext = ({ title, tree, context }) => {
           </span>
         </button>
         <span className="flex h-full items-center gap-2 text-xs capitalize">
-          {context}
-          {` `}
-          <span className="inline-block w-1.5 fill-neutral-400 dark:fill-neutral-500">
-            <Icon name="chevron-right" />
-          </span>
-          {` `}
-          {title}
+          {
+            context.map(i => (<span key={i}> {i}
+              <span className="inline-block w-1.5 fill-neutral-400 dark:fill-neutral-500">
+                <Icon name="chevron-right" />
+              </span></span>))
+          } {title}
         </span>
       </div>
     </>
