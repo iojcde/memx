@@ -6,18 +6,21 @@ import { matter } from 'vfile-matter'
 
 
 import { ObsidianFlavoredMarkdown } from "./obsidian-flavored-markdown"
-
+const ofm = ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false })
 
 export const process = async (f) => {
   // Parse Frontmatter
   matter(f, { strip: true })
 
+  // f.value = ofm.textTransform(Buffer.from(f.value.buffer).toString())
   const file = await unified()
     .use(remarkStringify)
     .use(remarkParse)
-    .use(ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }).markdownPlugins!())
+    .use(ofm.markdownPlugins!())
 
     .process(f)
+
+
 
   return file
 }

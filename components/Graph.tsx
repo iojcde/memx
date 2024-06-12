@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import { FullSlug, simplifySlug } from 'lib/path';
+import backlinks from 'assets/backlinks.json'
 
 export interface D3Config {
     drag: boolean;
@@ -57,13 +58,12 @@ const defaultOptions: GraphOptions = {
 };
 
 
- 
+
 const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partial<D3Config> }) => {
-    const containerRef = useRef(null);
+
     const graphContainerRef = useRef(null);
 
     useEffect(() => {
-        const container = containerRef.current;
         const graphContainer = graphContainerRef.current;
 
         const localStorageKey = "graph-visited";
@@ -78,17 +78,12 @@ const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partia
             localStorage.setItem(localStorageKey, JSON.stringify([...visited]));
         }
 
-        async function fetchData() {
-            // Replace this with the actual data fetching logic
-            // It should return a Map<SimpleSlug, ContentDetails>
-            return {};
-        }
 
         async function renderGraph(container, fullSlug) {
             const slug = simplifySlug(fullSlug);
             const visited = getVisited();
             const graph = container;
-            if (!graph) return; 
+            if (!graph) return;
 
             let {
                 drag: enableDrag,
@@ -106,7 +101,7 @@ const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partia
             } = config;
 
             const data = new Map(
-                Object.entries(await fetchData()).map(([k, v]) => [
+                Object.entries(backlinks).map(([k, v]) => [
                     simplifySlug(k as FullSlug),
                     v,
                 ]),
@@ -116,7 +111,7 @@ const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partia
 
             const validLinks = new Set(data.keys());
             for (const [source, details] of data.entries()) {
-                const outgoing = details.links ?? [];
+                const outgoing = links ?? [];
 
                 for (const dest of outgoing) {
                     if (validLinks.has(dest)) {
@@ -126,7 +121,7 @@ const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partia
 
                 if (showTags) {
                     const localTags = details.tags
-                        .filter((tag) => !removeTags.includes(tag))
+                        .filter((tag) => !removeTags?.includes(tag))
                         .map((tag) => simplifySlug(`tags/${tag}`));
 
                     tags.push(...localTags.filter((tag) => !tags.includes(tag)));
@@ -251,7 +246,7 @@ const GraphComponent = ({ fullSlug, config }: { fullSlug: string; config: Partia
     }, [fullSlug]);
 
     return (
-        <div ref={containerRef} id="graph-outer">
+        <div id="graph-outer">
             <div ref={graphContainerRef} id="graph-container" />
         </div>
     );

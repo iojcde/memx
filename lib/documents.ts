@@ -13,24 +13,26 @@ import backlinks from 'assets/backlinks.json'
 export async function getDocument({ slug }: { slug: string[] | string }) {
     if (typeof slug === 'string') slug = slug.split('/')
 
+
     const target = slug.map(s => decodeURIComponent(s)).join('/')
     if (!filemap[target]) return null
 
     const file = 'data/' + filemap[target]
-    try {
-        const f = await process(await read(file))
-        const path = f.history[0].replace('data/', '')
+    // try {
+    const f = await process(await read(file))
+    console.log(f)
+    const path = f.history[0].replace('data/', '')
 
-        f.data.title = path.split('/').pop().replace('.md', '')
-        f.data.slug = path.replaceAll(' ', '-').replace('.md', '')
-        f.data.readingTime = readingTime(f.value)
-        f.data.rawpath = path
+    f.data.title = path.split('/').pop().replace('.md', '')
+    f.data.slug = path.replaceAll(' ', '-').replace('.md', '')
+    f.data.readingTime = readingTime(f.value)
+    f.data.rawpath = path
 
-        return f
+    return f
 
-    } catch (err) {
-        throw new Error(err)
-    }
+    // } catch (err) {
+    //     throw new Error(err)
+    // }
 }
 
 

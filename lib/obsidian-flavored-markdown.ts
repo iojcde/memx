@@ -127,7 +127,7 @@ const calloutLineRegex = new RegExp(/^> *\[\!\w+\|?.*?\][+-]?.*$/, "gm")
 // #(...)               -> capturing group, tag itself must start with #
 // (?:[-_\p{L}\d\p{Z}])+       -> non-capturing group, non-empty string of (Unicode-aware) alpha-numeric characters and symbols, hyphens and/or underscores
 // (?:\/[-_\p{L}\d\p{Z}]+)*)   -> non-capturing group, matches an arbitrary number of tag strings separated by "/"
-const tagRegex = new RegExp(
+export const tagRegex = new RegExp(
   /(?:^| )#((?:[-_\p{L}\p{Emoji}\p{M}\d])+(?:\/[-_\p{L}\p{Emoji}\p{M}\d]+)*)/,
   "gu",
 )
@@ -151,7 +151,7 @@ export const ObsidianFlavoredMarkdown = (
 
   return {
     name: "ObsidianFlavoredMarkdown",
-    textTransform( src) {
+    textTransform(src) {
       // do comments at text level
       if (opts.comments) {
         if (src instanceof Buffer) {

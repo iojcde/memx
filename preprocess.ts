@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import type { DirectoryNode, TreeNode } from 'types/TreeNode'
 import { read } from 'to-vfile';
+import { tagRegex, wikilinkRegex } from 'lib/obsidian-flavored-markdown';
 
 const root_folder = 'data';
 
@@ -126,7 +127,7 @@ const mapBacklinks = async () => {
         const links = String(content).match(/\[\[(.*?)\]\]/g) || [];
 
         links.forEach(link => {
-            const mentioned = link.match(/\[\[(.*?)(?:\|.*)?\]\]/)[1].trim();
+            const mentioned = link.match(wikilinkRegex)[0].trim();
 
             // search in values of filemap, including relative files
             const [mentionedSlug, _] = Object.entries(filemap)
@@ -138,17 +139,30 @@ const mapBacklinks = async () => {
 
 
             if (mentionedSlug) {
-                backlinks[mentionedSlug] = [...backlinks[mentionedSlug] ?? [], slug];
+                backlinks[mentionedSlug] = { links: [...(backlinks[mentionedSlug] && backlinks[mentionedSlug].links) ?? [], slug] };
                 return
             }
 
             console.log(`warning: found broken backlink [[${mentioned}]] in ${filemap[slug]}`)
         })
+
+ 
+        const tags = String(content).match(
+            /(?<=tags:)(.*?)(?=\n)/g
+        ) || [];
+
+        tags.forEach(tag => tag.trim())
+
+        tags.forEach(tag => {
+            backlinks[slug] = { ...backlinks[tag], tags };
+        })
     })
+
 
     fs.writeFileSync('./assets/backlinks.json', JSON.stringify(backlinks, null, 2), 'utf-8');
     console.log(`Backlinks saved to ./assets/backlinks.json`);
 }
+
 
 
 const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
