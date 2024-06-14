@@ -15,36 +15,37 @@ import { DirectoryNode } from 'types/TreeNode'
 import dynamic from 'next/dynamic'
 
 const inter = localFont({
-  src: '../public/static/fonts/Inter.var.woff2',
-  display: 'swap',
-  variable: '--font-inter',
+    src: '../public/static/fonts/Inter.var.woff2',
+    display: 'swap',
+    variable: '--font-inter',
 })
 const Graph = dynamic(() => import('components/Graph'))
 
 export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
-  children,
+    // Layouts must accept a children prop.
+    // This will be populated with nested layouts or pages
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`${inter.className}`} suppressHydrationWarning>
-        <Providers>
-          <div className="flex max-w-[90rem] mx-auto">
-            <div className=' sticky top-0  min-h-dvh h-full hidden lg:block lg:w-[22rem] '>
-              <Sidebar tree={tree as DirectoryNode} />
-            </div>
+    return (
+        <html lang="en">
+            <body className={`${inter.className}`} suppressHydrationWarning>
+                <Providers>
+                    <div className="mx-auto flex max-w-[90rem]">
+                        <div className=" sticky top-0  hidden h-full max-h-dvh min-h-dvh lg:block lg:w-[22rem] ">
+                            <Sidebar tree={tree as DirectoryNode} />
+                        </div>
 
-            <div className='max-w-4xl w-full mx-auto lg:pt-20'>  {children}</div>
-            <div className='lg:block w-64 hidden sticky lg:pt-20 top-0 max-w-80 w-full p-6 min-h-dvh h-full'>
-              <Graph />
-
-            </div>
-          </div>
-        </Providers>
-      </body>
-    </html>
-  )
+                        <div className="mx-auto w-full max-w-4xl lg:pt-20">
+                            {children}
+                        </div>
+                        <div className="sticky top-0 hidden h-full min-h-dvh w-full  max-w-80 p-6 lg:block lg:pt-20">
+                            <Graph />
+                        </div>
+                    </div>
+                </Providers>
+            </body>
+        </html>
+    )
 }

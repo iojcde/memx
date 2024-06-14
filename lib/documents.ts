@@ -1,7 +1,5 @@
-
-
 import { read } from 'to-vfile'
-import { process } from 'lib/markdown'
+import { process as processMarkdown } from 'lib/markdown'
 import tree from 'assets/tree.json'
 import glob from 'tiny-glob'
 import { TreeNode } from 'types/TreeNode'
@@ -11,20 +9,19 @@ import type { VFile } from 'vfile'
 import backlinks from 'assets/backlinks.json'
 
 export async function getDocument({ slug }: { slug: string[] | string }) {
-    if (typeof slug === 'string') slug = slug.split('/')
+    if (typeof slug === `string`) slug = slug.split(`/`)
 
-
-    const target = slug.map(s => decodeURIComponent(s)).join('/')
+    const target = slug.map((s) => decodeURIComponent(s)).join(`/`)
     if (!filemap[target]) return null
 
-    const file = 'data/' + filemap[target]
+    const file = `data/` + filemap[target]
     // try {
-    const f = await process(await read(file))
-    console.log(f)
-    const path = f.history[0].replace('data/', '')
+    const f = await processMarkdown(await read(file))
 
-    f.data.title = path.split('/').pop().replace('.md', '')
-    f.data.slug = path.replaceAll(' ', '-').replace('.md', '')
+    const path = f.history[0].replace(`data/`, ``)
+
+    f.data.title = path.split(`/`).pop().replace(`.md`, ``)
+    f.data.slug = path.replaceAll(` `, `-`).replace(`.md`, ``)
     f.data.readingTime = readingTime(f.value)
     f.data.rawpath = path
 
@@ -35,66 +32,91 @@ export async function getDocument({ slug }: { slug: string[] | string }) {
     // }
 }
 
-
 export const getAllDocuments = async () => {
-    const files = await glob('data/' + '**/*.md')
+    let files = await glob(`data/` + `**/*.md`)
+    process.platform === `win32` &&
+        (files = files.map((file) => file.replace(/\\/g, `/`)))
 
-    const docs = await Promise.all(files.map(async (file) => {
-        const f: VFile = await process(await read(file))
-        const path = f.history[0].replace('data/', '')
+    const docs = await Promise.all(
+        files.map(async (file) => {
+            const f: VFile = await processMarkdown(await read(file))
+            const path = f.history[0].replace(`data/`, ``)
 
-        f.data.title = path.split('/').pop().replace('.md', '')
-        f.data.slug = path.replace(' ', '-').replace('.md', '')
-        f.data.rawpath = path
+            f.data.title = path.split(`/`).pop().replace(`.md`, ``)
+            f.data.slug = path.replace(` `, `-`).replace(`.md`, ``)
+            f.data.rawpath = path
 
-        return f
-    }))
+            return f
+        }),
+    )
 
     return docs
 }
 
 export const getBacklinks = async (slug: string) => {
-    if (!backlinks[slug]) return []
-    return await Promise.all(backlinks[slug].map(async (mentionedIn) => {
-        const doc = await read(`data/${filemap[mentionedIn]}`)
+    if (!backlinks[slug]?.links) return []
+    return await Promise.all(
+        backlinks[slug].links.map(async (mentionedIn) => {
+            const doc = await read(`data/${filemap[mentionedIn]}`)
 
-        const linkedFile = filemap[slug].replace('.md', '')
+            const linkedFile = filemap[slug].replace(`.md`, ``)
 
-        const line = String(doc.value).split('\n').find(line => {
-            return line.includes(`[[${linkedFile}`) || line.includes(`[[${linkedFile.split('/').pop()}`)
-        })
+            const line = String(doc.value)
+                .split(`\n`)
+                .find((line) => {
+                    return (
+                        line.includes(`[[${linkedFile}`) ||
+                        line.includes(`[[${linkedFile.split(`/`).pop()}`)
+                    )
+                })
 
-        // keep only 6 words around the linkconst wordsToKeep = 6;
-        const wordsToKeep = 6;
-        const mentionedFile = filemap[slug].replace('.md', '');
+            // keep only 6 words around the linkconst wordsToKeep = 6;
+            const wordsToKeep = 6
+            const mentionedFile = filemap[slug].replace(`.md`, ``)
 
-        let before: string, center: string, after: string;
-        let regex = new RegExp(`\\[\\[(${mentionedFile}|${mentionedFile.split('/').pop()})(?:\\|(.*?))?\\]\\]`);
-        let match = line?.match(regex);
+            let before: string, center: string, after: string
+            const regex = new RegExp(
+                `\\[\\[(${mentionedFile}|${mentionedFile
+                    .split(`/`)
+                    .pop()})(?:\\|(.*?))?\\]\\]`,
+            )
+            const match = line?.match(regex)
 
-        if (!line) {
-            throw new Error(`Backlink not found in ${mentionedIn} for ${slug}`);
+            if (!line) {
+                throw new Error(
+                    `Backlink not found in ${mentionedIn} for ${slug}`,
+                )
+            }
 
-        }
+            if (match) {
+                const [fullMatch, fileName, displayName] = match
+                before = line
+                    .split(fullMatch)[0]
+                    .split(` `)
+                    .slice(-wordsToKeep)
+                    .join(` `)
+                center = displayName || fileName
+                after = line
+                    .split(fullMatch)[1]
+                    .split(` `)
+                    .slice(0, wordsToKeep)
+                    .join(` `)
+            } else {
+                throw new Error(
+                    `Backlink not found in ${mentionedIn} for ${slug}`,
+                )
+            }
+            const text = `${before} [[${center}]] ${after}`
+            const title = doc.history[0].split(`/`).pop().replace(`.md`, ``)
 
-        if (match) {
-            let [fullMatch, fileName, displayName] = match;
-            before = line.split(fullMatch)[0].split(' ').slice(-wordsToKeep).join(' ');
-            center = displayName || fileName;
-            after = line.split(fullMatch)[1].split(' ').slice(0, wordsToKeep).join(' ');
-        } else {
-            throw new Error(`Backlink not found in ${mentionedIn} for ${slug}`);
-        }
-        const text = `${before} [[${center}]] ${after}`;
-        const title = doc.history[0].split('/').pop().replace('.md', '')
-
-        return {
-            title,
-            url: doc.history[0].replace('data/', '').replace('.md', '').replaceAll(' ', '-'),
-            text: text
-        }
-
-
-    })
+            return {
+                title,
+                url: doc.history[0]
+                    .replace(`data/`, ``)
+                    .replace(`.md`, ``)
+                    .replaceAll(` `, `-`),
+                text: text,
+            }
+        }),
     )
 }

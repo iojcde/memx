@@ -1,5 +1,5 @@
 ---
-slug: Markdown:-Syntax
+slug: Markdown-Syntax
 ---
   
 
