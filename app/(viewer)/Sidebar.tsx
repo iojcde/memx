@@ -140,7 +140,7 @@ const Tree: FC<{
 
 export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
     return (
-        <aside className="flex h-full max-h-full flex-col gap-6 lg:p-8 lg:pr-10 lg:pt-24 ">
+        <aside className="flex flex-col h-full items-stretch  gap-6 lg:p-8 lg:pr-10 lg:pt-24 ">
             <Link href="/" className="text-xl font-bold lg:text-2xl">
                 🪴 jcde.xyz
             </Link>
@@ -153,18 +153,17 @@ export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
                     </span>
                 </button>
             </div>
-
-            <div>
-                <h3 className="text-sm font-bold text-neutral-700">Explorer</h3>
-                <div className="-ml-4 mt-2 overflow-y-auto  ">
+ 
+            <div className='shrink min-h-0  pb-4'>
+               <h3 className="text-sm font-bold text-neutral-700">Explorer</h3>
+                <div className="-ml-4 mt-2 overflow-y-scroll h-full ">
                     <Tree
                         tree={tree.children}
                         level={0}
                         activePath={usePathname() || ``}
                         parentPath=""
                     />
-                </div>
-            </div>
+                </div> </div>
         </aside>
     )
 }

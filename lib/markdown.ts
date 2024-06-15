@@ -15,9 +15,9 @@ export const process = async (f) => {
 
     const file = await unified()
         .use(remarkStringify)
-        .use(remarkParse)
-        .use(ofm.markdownPlugins!())
+        .use(remarkParse) 
         .process(f)
+ 
 
     return file
 }

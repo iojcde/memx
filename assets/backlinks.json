@@ -3,12 +3,12 @@
     "links": [
       "advanced/architecture",
       "advanced/making-plugins",
+      "features/RSS-Feed",
+      "features/SPA-Routing",
       "features/full-text-search",
       "features/graph-view",
       "features/i18n",
       "features/private-pages",
-      "features/RSS-Feed",
-      "features/SPA-Routing",
       "hosting",
       "index",
       "migrating-from-Quartz-3",
@@ -89,31 +89,7 @@
       "features/folder-and-tag-listings"
     ]
   },
-  "features/popover-previews": {
-    "links": [
-      "features/backlinks"
-    ]
-  },
-  "features/backlinks": {},
-  "features/breadcrumbs": {},
-  "features/callouts": {},
-  "features/darkmode": {},
   "features/Docker-Support": {},
-  "features/table-of-contents": {
-    "links": [
-      "features/explorer"
-    ]
-  },
-  "features/explorer": {},
-  "features/folder-and-tag-listings": {
-    "tags": [
-      "component"
-    ]
-  },
-  "features/full-text-search": {},
-  "features/graph-view": {},
-  "features/i18n": {},
-  "features/index": {},
   "features/Latex": {
     "links": [
       "features/Latex",
@@ -139,10 +115,34 @@
     ]
   },
   "features/OxHugo-compatibility": {},
-  "features/private-pages": {},
-  "features/recent-notes": {},
   "features/RSS-Feed": {},
   "features/SPA-Routing": {},
+  "features/popover-previews": {
+    "links": [
+      "features/backlinks"
+    ]
+  },
+  "features/backlinks": {},
+  "features/breadcrumbs": {},
+  "features/callouts": {},
+  "features/darkmode": {},
+  "features/table-of-contents": {
+    "links": [
+      "features/explorer"
+    ]
+  },
+  "features/explorer": {},
+  "features/folder-and-tag-listings": {
+    "tags": [
+      "component"
+    ]
+  },
+  "features/full-text-search": {},
+  "features/graph-view": {},
+  "features/i18n": {},
+  "features/index": {},
+  "features/private-pages": {},
+  "features/recent-notes": {},
   "features/syntax-highlighting": {},
   "features/upcoming-features": {},
   "showcase": {
@@ -193,7 +193,6 @@
   },
   "plugins/GitHubFlavoredMarkdown": {},
   "plugins/HardLineBreaks": {},
-  "plugins/index": {},
   "plugins/NotFoundPage": {},
   "plugins/ObsidianFlavoredMarkdown": {
     "links": [
@@ -209,5 +208,6 @@
   "plugins/SyntaxHighlighting": {},
   "plugins/TableOfContents": {},
   "plugins/TagPage": {},
+  "plugins/index": {},
   "tags/component": {}
 }

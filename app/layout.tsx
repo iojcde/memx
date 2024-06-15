@@ -29,18 +29,19 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
-            <body className={`${inter.className}`} suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning>
+            <body className={`${inter.className} h-dvh relative`} >
                 <Providers>
                     <div className="mx-auto flex max-w-[90rem]">
-                        <div className=" sticky top-0  hidden h-full max-h-dvh min-h-dvh lg:block lg:w-[22rem] ">
+                   
+                       <div className=" sticky top-0 hidden h-dvh self-start  lg:block lg:w-[22rem] ">
                             <Sidebar tree={tree as DirectoryNode} />
-                        </div>
+                        </div> 
 
                         <div className="mx-auto w-full max-w-4xl lg:pt-20">
                             {children}
                         </div>
-                        <div className="sticky top-0 hidden h-full min-h-dvh w-full  max-w-80 p-6 lg:block lg:pt-20">
+                        <div className="sticky inset-y-0 hidden h-full min-h-dvh w-full  max-w-80 p-6 lg:block lg:pt-20">
                             <Graph />
                         </div>
                     </div>

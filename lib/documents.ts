@@ -78,7 +78,7 @@ export const getBacklinks = async (slug: string) => {
             const regex = new RegExp(
                 `\\[\\[(${mentionedFile}|${mentionedFile
                     .split(`/`)
-                    .pop()})(?:\\|(.*?))?\\]\\]`,
+                    .pop()})`,
             )
             const match = line?.match(regex)
 

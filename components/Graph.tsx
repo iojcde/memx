@@ -95,7 +95,11 @@ const GraphComponent = ({
         }
 
         function renderGraph(container, fullSlug) {
-            const slug = simplifySlug(fullSlug)
+            let slug = simplifySlug(fullSlug)
+
+            if (slug == '/') {
+                slug = 'index' as SimpleSlug
+            }
             const visited = getVisited()
             const graph = container
             if (!graph) return
@@ -119,8 +123,20 @@ const GraphComponent = ({
             // const tags: SimpleSlug[] = []
             const nodes: SimpleSlug[] = [slug]
 
-            const [source, details] = [slug, backlinks[slug]]
-            if (!details) return
+            Object.keys(backlinks).forEach((l) => {
+                const n = backlinks[l]
+                if (n.links && n.links.includes(slug)) {
+                    nodes.push(l as SimpleSlug)
+                    links.push({ source: l, target: slug })
+                }
+
+            })
+
+            let [source, details] = [slug, backlinks[slug]]
+            if (!details) details = {
+                links: [],
+                tags: [],
+            }
 
             const outgoing = details.links ?? []
 
@@ -181,10 +197,14 @@ const GraphComponent = ({
                 links: { source: string; target: string }[]
             } = {
                 nodes: nodes.map((url) => {
+
+
+
+
                     const text = url.startsWith(`tags/`)
                         ? `#${url.substring(5)}`
                         : filemap[url].split(`/`).pop().replace(`.md`, ``) ??
-                          url
+                        url
 
                     return {
                         id: url,
@@ -194,7 +214,6 @@ const GraphComponent = ({
                 links,
             }
 
-            console.log(graphData)
 
             const height = Math.max(graph.offsetHeight, 250)
             const width = graph.offsetWidth
@@ -246,7 +265,7 @@ const GraphComponent = ({
                     (l: any) => l.source.id === d.id || l.target.id === d.id,
                 ).length
 
-                return (2 + numLinks * 2) / transform.k
+                return (2 + Math.sqrt(numLinks  )) / transform.k
             }
 
             function ticked() {
@@ -347,12 +366,12 @@ const GraphComponent = ({
                         context.lineTo(d.target.x, d.target.y)
                         context.strokeStyle =
                             connectedNodes.includes(d.source.id) &&
-                            connectedNodes.includes(d.target.id)
+                                connectedNodes.includes(d.target.id)
                                 ? `gray`
                                 : `lightgray`
                         context.lineWidth =
                             connectedNodes.includes(d.source.id) &&
-                            connectedNodes.includes(d.target.id)
+                                connectedNodes.includes(d.target.id)
                                 ? 1 / transform.k
                                 : 0.5 / transform.k
                         context.stroke()

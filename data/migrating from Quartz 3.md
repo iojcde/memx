@@ -23,6 +23,7 @@ When running `npx quartz create`, you will be prompted as to how to initialize y
 
 > [!note]
 > If the existing content folder you'd like to use is at the _same_ path on a different branch, clone the repo again somewhere at a _different_ path in order to use it.
+>wow cool
 
 ## Key changes
 

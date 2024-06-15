@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
-import { ReactNode } from 'react'
+import { ReactNode,} from 'react'
 import { isExternal } from 'util/types'
-
+import Callout from './Callout'
 interface Props {
     children: ReactNode
     href: string
@@ -25,12 +25,12 @@ const CustomLink = (props: Props) => {
 
 const RoundedImage = (props: ImageProps) => {
     return <Image className=" rounded-lg" {...props} />
-}
+} 
 
 const MDXComponents = {
     Image: RoundedImage,
     a: CustomLink,
-    div: (props) => <div id="fuck" {...props} />,
-}
+    Callout,
+} 
 
 export default MDXComponents

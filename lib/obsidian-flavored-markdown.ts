@@ -148,7 +148,7 @@ const wikilinkImageEmbedRegex = new RegExp(
 export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
     const opts = { ...defaultOptions, ...userOpts }
 
-    const mdastToHtml = (ast: PhrasingContent | Paragraph) => {
+    const mdastToHtml = (ast) => {
         const hast = toHast(ast, { allowDangerousHtml: true })!
         return toHtml(hast, { allowDangerousHtml: true })
     }
@@ -236,9 +236,14 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
 
             // regex replacements
             plugins.push(() => {
-                return (tree: Root, file) => {
+                return (tree, file) => {
                     const replacements: [RegExp, string | ReplaceFunction][] =
                         []
+
+                    if (file.data.matter == null) {
+                        return
+                    }
+
                     const base = pathToRoot(file.data.matter.slug!)
 
                     if (opts.wikilinks) {
@@ -329,9 +334,8 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                                                     transclude: true,
                                                 },
                                             },
-                                            value: `<blockquote class="transclude" data-url="${url}" data-block="${block}"><a href="${
-                                                url + anchor
-                                            }" class="transclude-inner">Transclude of ${url}${block}</a></blockquote>`,
+                                            value: `<blockquote class="transclude" data-url="${url}" data-block="${block}"><a href="${url + anchor
+                                                }" class="transclude-inner">Transclude of ${url}${block}</a></blockquote>`,
                                         }
                                     }
 
@@ -446,7 +450,7 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                                                     .join(``)
                                             } else if (
                                                 typeof replaceValue ===
-                                                    `object` &&
+                                                `object` &&
                                                 replaceValue !== null
                                             ) {
                                                 return mdastToHtml(replaceValue)
@@ -487,140 +491,67 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
 
             if (opts.callouts) {
                 plugins.push(() => {
-                    return (tree, _file) => {
-                        visit(tree, `blockquote`, (node) => {
-                            if (node.children.length === 0) {
-                                return
-                            }
+                    return (tree, _file) => visit(tree, 'blockquote', (node) => {
+                        if (node.children.length === 0) {
+                            return;
+                        }
 
-                            // find first line and callout content
-                            const [firstChild, ...calloutContent] =
-                                node.children
+                        // find first line and callout content
+                        const [firstChild, ...calloutContent] = node.children;
 
-                            if (
-                                firstChild.type !== `paragraph` ||
-                                firstChild.children[0]?.type !== `text`
-                            ) {
-                                return
-                            }
+                        if (firstChild.type !== 'paragraph' || firstChild.children[0]?.type !== 'text') {
+                            return;
+                        }
 
-                            const text = firstChild.children[0].value
-                            const restOfTitle = firstChild.children.slice(1)
-                            const [firstLine, ...remainingLines] =
-                                text.split(`\n`)
-                            const remainingText = remainingLines.join(`\n`)
+                        const text = firstChild.children[0].value;
+                        const restOfTitle = firstChild.children.slice(1);
 
-                            const match = firstLine.match(calloutRegex)
-                            if (match && match.input) {
-                                const [
-                                    calloutDirective,
-                                    typeString,
-                                    calloutMetaData,
-                                    collapseChar,
-                                ] = match
-                                const calloutType = canonicalizeCallout(
-                                    typeString.toLowerCase(),
-                                )
-                                const collapse =
-                                    collapseChar === `+` || collapseChar === `-`
-                                const defaultState =
-                                    collapseChar === `-`
-                                        ? `collapsed`
-                                        : `expanded`
-                                const titleContent = match.input
-                                    .slice(calloutDirective.length)
-                                    .trim()
-                                const useDefaultTitle =
-                                    titleContent === `` &&
-                                    restOfTitle.length === 0
-                                const titleNode: Paragraph = {
-                                    type: `paragraph`,
-                                    children: [
-                                        {
-                                            type: `text`,
-                                            value: useDefaultTitle
-                                                ? capitalize(typeString)
-                                                : titleContent + ` `,
-                                        },
-                                        ...restOfTitle,
-                                    ],
-                                }
-                                const title = mdastToHtml(titleNode)
+                        const [firstLine, ...remainingLines] = text.split('\n');
+                        const remainingText = remainingLines.join('\n');
 
-                                const toggleIcon = `<div class="fold-callout-icon"></div>`
+                        const match = firstLine.match(calloutRegex);
+                        if (match && match.input) {
+                            const [
+                                calloutDirective,
+                                typeString,
+                                calloutMetaData,
+                                collapseChar,
+                            ] = match;
+                            const calloutType = canonicalizeCallout(typeString.toLowerCase());
+                            const collapse = collapseChar === '+' || collapseChar === '-';
+                            const defaultState = collapseChar === '-' ? 'collapsed' : 'expanded';
+                            const titleContent = match.input.slice(calloutDirective.length).trim();
+                            const useDefaultTitle = titleContent === "" && restOfTitle.length === 0
 
-                                const titleHtml: Html = {
-                                    type: `html`,
-                                    value: `<div
-                        class="callout-title"
-                      >
-                        <div class="callout-icon"></div>
-                        <div class="callout-title-inner">${title}</div>
-                        ${collapse ? toggleIcon : ``}
-                      </div>`,
-                                }
-
-                                const blockquoteContent: (
-                                    | BlockContent
-                                    | DefinitionContent
-                                )[] = [titleHtml]
-                                if (remainingText.length > 0) {
-                                    blockquoteContent.push({
-                                        type: `paragraph`,
-                                        children: [
-                                            {
-                                                type: `text`,
-                                                value: remainingText,
-                                            },
-                                        ],
-                                    })
-                                }
-
-                                // replace first line of blockquote with title and rest of the paragraph text
-                                node.children.splice(0, 1, ...blockquoteContent)
-
-                                const classNames = [`callout`, calloutType]
-                                if (collapse) {
-                                    classNames.push(`is-collapsible`)
-                                }
-                                if (defaultState === `collapsed`) {
-                                    classNames.push(`is-collapsed`)
-                                }
-
-                                // add properties to base blockquote
-                                node.data = {
-                                    hProperties: {
-                                        ...(node.data?.hProperties ?? {}),
-                                        className: classNames.join(` `),
-                                        'data-callout': calloutType,
-                                        'data-callout-fold': collapse,
-                                        'data-callout-metadata':
-                                            calloutMetaData,
+                            const titleNode: Paragraph = {
+                                type: "paragraph",
+                                children: [
+                                    {
+                                        type: "text",
+                                        value: useDefaultTitle ? capitalize(typeString) : titleContent + " ",
                                     },
-                                }
-
-                                // Add callout-content class to callout body if it has one.
-                                if (calloutContent.length > 0) {
-                                    const contentData:
-                                        | BlockContent
-                                        | DefinitionContent = {
-                                        data: {
-                                            hProperties: {
-                                                className: `callout-content`,
-                                            },
-                                            hName: `div`,
-                                        },
-                                        type: `blockquote`,
-                                        children: [...calloutContent],
-                                    }
-                                    node.children = [
-                                        node.children[0],
-                                        contentData,
-                                    ]
-                                }
+                                    ...restOfTitle,
+                                ],
                             }
-                        })
-                    }
+                            const title = mdastToHtml(titleNode)
+
+                            // Replace the original node with the new Callout component
+                            Object.assign(node, {
+                                type: 'mdxJsxFlowElement',
+                                name: 'Callout',
+                                attributes: [
+                                    {
+                                        type: 'mdxJsxAttribute', name: 'title', value: title
+
+                                    },
+                                    { type: 'mdxJsxAttribute', name: 'type', value: calloutType },
+                                    { type: 'mdxJsxAttribute', name: 'collapse', value: collapse },
+                                    { type: 'mdxJsxAttribute', name: 'defaultState', value: defaultState },
+                                ],
+                                children: calloutContent,
+                            });
+                        }
+                    });
                 })
             }
 

@@ -4,14 +4,18 @@ import MDXComponents from './MDXComponents'
 import rehypePrism from 'rehype-prism-plus'
 import remarkMdx from 'remark-mdx'
 
+import { ObsidianFlavoredMarkdown } from 'lib/obsidian-flavored-markdown'
+const ofm = ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false })
+ 
+
 export default async function Markdown({ content }) {
     // Compile the MDX source code to a function body
-    console.log(content.value)
+     
     const code = String(
         await compile(content, {
             outputFormat: `function-body`,
             rehypePlugins: [rehypePrism],
-            remarkPlugins: [remarkMdx],
+            remarkPlugins: [...ofm.markdownPlugins()!,remarkMdx],
         }),
     )
 
