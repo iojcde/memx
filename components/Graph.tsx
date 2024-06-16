@@ -117,7 +117,7 @@ const GraphComponent = ({
                 removeTags,
                 showTags,
                 focusOnHover,
-            } = {...config,...defaultOptions} as D3Config
+            } = { ...config, ...defaultOptions } as D3Config
 
             const links: { source: string; target: string }[] = []
             // const tags: SimpleSlug[] = []
@@ -265,7 +265,7 @@ const GraphComponent = ({
                     (l: any) => l.source.id === d.id || l.target.id === d.id,
                 ).length
 
-                return (2 + Math.sqrt(numLinks  )) / transform.k
+                return (2 + Math.sqrt(numLinks)) / transform.k
             }
 
             function ticked() {
@@ -342,15 +342,15 @@ const GraphComponent = ({
                 )
 
                 if (node) {
-                    canvas.node().style.cursor = `pointer`
+                    canvas.node()!.style.cursor = `pointer`
                     const currentId = node.id
 
                     const linkNodes = links.filter(
-                        (d) =>
+                        (d: any) =>
                             d.source.id === currentId ||
                             d.target.id === currentId,
                     )
-                    const connectedNodes = linkNodes.flatMap((d) => [
+                    const connectedNodes = linkNodes.flatMap((d: any) => [
                         d.source.id,
                         d.target.id,
                     ])
@@ -360,7 +360,7 @@ const GraphComponent = ({
                     context!.translate(transform.x, transform.y)
                     context!.scale(transform.k, transform.k)
 
-                    links.forEach((d) => {
+                    links.forEach((d: any) => {
                         context!.beginPath()
                         context!.moveTo(d.source.x, d.source.y)
                         context!.lineTo(d.target.x, d.target.y)
@@ -377,7 +377,7 @@ const GraphComponent = ({
                         context!.stroke()
                     })
 
-                    graphData.nodes.forEach((d) => {
+                    graphData.nodes.forEach((d: any) => {
                         context!.beginPath()
                         context!.arc(
                             d.x,
@@ -398,7 +398,7 @@ const GraphComponent = ({
 
                     context!.restore()
                 } else {
-                    canvas.node().style.cursor = `default`
+                    canvas.node()!.style.cursor = `default`
                 }
             })
 
@@ -432,7 +432,7 @@ const Graph = () => {
     const slug = decodeURIComponent(usePathname() ?? `/`)
 
     const [showLocal, setShowLocal] = useState(true)
-    const localGraph = { ...defaultOptions.localGraph,  }
+    const localGraph = { ...defaultOptions.localGraph, }
     const globalGraph = { ...defaultOptions.globalGraph, }
 
     return (
