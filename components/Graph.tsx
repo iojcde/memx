@@ -249,10 +249,10 @@ const GraphComponent = ({
                 .forceSimulation(graphData.nodes)
                 .force(
                     `link`,
-                    d3.forceLink(graphData.links).id((d) => d.id),
+                    d3.forceLink(graphData.links).id((d: any) => d.id).distance(linkDistance),
                 )
-                .force(`charge`, d3.forceManyBody())
-                .force(`center`, d3.forceCenter(width / 2, height / 2))
+                .force(`charge`, d3.forceManyBody().strength(-100 * repelForce))
+                .force(`center`, d3.forceCenter(width / 2, height / 2).strength(centerForce))
                 .on(`tick`, ticked)
 
             const zoom = d3.zoom().scaleExtent([0.25, 4]).on(`zoom`, zoomed)
