@@ -117,7 +117,7 @@ const GraphComponent = ({
                 removeTags,
                 showTags,
                 focusOnHover,
-            }:D3Config = {...config,...defaultOptions}
+            } = {...config,...defaultOptions} as D3Config
 
             const links: { source: string; target: string }[] = []
             // const tags: SimpleSlug[] = []
