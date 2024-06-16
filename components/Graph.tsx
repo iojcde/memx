@@ -428,15 +428,15 @@ const GraphComponent = ({
     )
 }
 
-const Graph = ({ displayClass, cfg, opts }) => {
+const Graph = () => {
     const slug = decodeURIComponent(usePathname() ?? `/`)
 
     const [showLocal, setShowLocal] = useState(true)
-    const localGraph = { ...defaultOptions.localGraph, ...opts?.localGraph }
-    const globalGraph = { ...defaultOptions.globalGraph, ...opts?.globalGraph }
+    const localGraph = { ...defaultOptions.localGraph,  }
+    const globalGraph = { ...defaultOptions.globalGraph, }
 
     return (
-        <div className={classNames(displayClass, `graph`)}>
+        <div className={`graph`}>
             <h3>Graph View</h3>
             <button onClick={() => setShowLocal(!showLocal)}>
                 {showLocal ? `Show Global Graph` : `Show Local Graph`}
