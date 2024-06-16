@@ -232,7 +232,7 @@ const GraphComponent = ({
             const context = canvas.node()?.getContext(`2d`)
             if (!context) return
 
-            context.scale(dpi, dpi)
+            context!.scale(dpi, dpi)
 
             const color = (d) => {
                 const isCurrent = d.id === slug
@@ -269,36 +269,36 @@ const GraphComponent = ({
             }
 
             function ticked() {
-                context.clearRect(0, 0, width * dpi, height * dpi)
-                context.save()
-                context.translate(transform.x, transform.y)
-                context.scale(transform.k, transform.k)
+                context!.clearRect(0, 0, width * dpi, height * dpi)
+                context!.save()
+                context!.translate(transform.x, transform.y)
+                context!.scale(transform.k, transform.k)
 
                 graphData.links.forEach(drawLink)
                 graphData.nodes.forEach(drawNode)
 
-                context.restore()
+                context!.restore()
             }
 
             function drawLink(d) {
-                context.beginPath()
-                context.moveTo(d.source.x, d.source.y)
-                context.lineTo(d.target.x, d.target.y)
-                context.strokeStyle = `pink`
-                context.lineWidth = 1 / transform.k
-                context.stroke()
+                context!.beginPath()
+                context!.moveTo(d.source.x, d.source.y)
+                context!.lineTo(d.target.x, d.target.y)
+                context!.strokeStyle = `pink`
+                context!.lineWidth = 1 / transform.k
+                context!.stroke()
             }
 
             function drawNode(d) {
-                context.beginPath()
-                context.arc(d.x, d.y, nodeRadius(d), 0, 2 * Math.PI, true)
-                context.fillStyle = color(d)
-                context.fill()
+                context!.beginPath()
+                context!.arc(d.x, d.y, nodeRadius(d), 0, 2 * Math.PI, true)
+                context!.fillStyle = color(d)
+                context!.fill()
 
-                context.font = `${fontSize / transform.k}em sans-serif`
-                context.textAlign = `center`
-                context.textBaseline = `middle`
-                context.fillText(d.text, d.x, d.y - 15 / transform.k)
+                context!.font = `${fontSize / transform.k}em sans-serif`
+                context!.textAlign = `center`
+                context!.textBaseline = `middle`
+                context!.fillText(d.text, d.x, d.y - 15 / transform.k)
             }
 
             function zoomed(event) {
@@ -355,31 +355,31 @@ const GraphComponent = ({
                         d.target.id,
                     ])
 
-                    context.clearRect(0, 0, width, height)
-                    context.save()
-                    context.translate(transform.x, transform.y)
-                    context.scale(transform.k, transform.k)
+                    context!.clearRect(0, 0, width, height)
+                    context!.save()
+                    context!.translate(transform.x, transform.y)
+                    context!.scale(transform.k, transform.k)
 
                     links.forEach((d) => {
-                        context.beginPath()
-                        context.moveTo(d.source.x, d.source.y)
-                        context.lineTo(d.target.x, d.target.y)
-                        context.strokeStyle =
+                        context!.beginPath()
+                        context!.moveTo(d.source.x, d.source.y)
+                        context!.lineTo(d.target.x, d.target.y)
+                        context!.strokeStyle =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
                                 ? `gray`
                                 : `lightgray`
-                        context.lineWidth =
+                        context!.lineWidth =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
                                 ? 1 / transform.k
                                 : 0.5 / transform.k
-                        context.stroke()
+                        context!.stroke()
                     })
 
                     graphData.nodes.forEach((d) => {
-                        context.beginPath()
-                        context.arc(
+                        context!.beginPath()
+                        context!.arc(
                             d.x,
                             d.y,
                             nodeRadius(d),
@@ -387,31 +387,31 @@ const GraphComponent = ({
                             2 * Math.PI,
                             true,
                         )
-                        context.fillStyle = color(d)
-                        context.fill()
+                        context!.fillStyle = color(d)
+                        context!.fill()
 
-                        context.font = `${fontSize / transform.k}em sans-serif`
-                        context.textAlign = `center`
-                        context.textBaseline = `middle`
-                        context.fillText(d.text, d.x, d.y - 15 / transform.k)
+                        context!.font = `${fontSize / transform.k}em sans-serif`
+                        context!.textAlign = `center`
+                        context!.textBaseline = `middle`
+                        context!.fillText(d.text, d.x, d.y - 15 / transform.k)
                     })
 
-                    context.restore()
+                    context!.restore()
                 } else {
                     canvas.node().style.cursor = `default`
                 }
             })
 
             canvas.on(`mouseout`, function (event) {
-                context.clearRect(0, 0, width, height)
-                context.save()
-                context.translate(transform.x, transform.y)
-                context.scale(transform.k, transform.k)
+                context!.clearRect(0, 0, width, height)
+                context!.save()
+                context!.translate(transform.x, transform.y)
+                context!.scale(transform.k, transform.k)
 
                 graphData.links.forEach(drawLink)
                 graphData.nodes.forEach(drawNode)
 
-                context.restore()
+                context!.restore()
             })
         }
         renderGraph(graphContainer, fullSlug)
