@@ -23,7 +23,8 @@ const addOldRedirection = (oldSlug: string, newSlug: string) => {
 
 const getMetadata = (filePath: string, lines = 3) => {
     const content = fs.readFileSync(filePath, `utf-8`)
-    const currentSlug = content.match(/slug: (.*)/)?.[1]
+    const frontmatter = content.match(/---([\s\S]*?)---/)
+    const currentSlug = frontmatter?.[1].match(/slug: (.*)/)?.[1]
 
     const newSlug = filePath
         .split(`/`)
@@ -177,7 +178,8 @@ const mapBacklinks = async () => {
                         (value.split(`/`).slice(0, -1).join(`/`) ==
                             filemap[slug].split(`/`).slice(0, -1).join(`/`) &&
                             value.split(`/`).pop()?.replace(`.md`, ``) ===
-                                mentioned.split(`/`).pop()),
+                            mentioned.split(`/`).pop())
+                        || value.split(`/`).pop()?.replace(`.md`, ``) === mentioned.split(`/`).pop()
                 ) ?? []
 
             if (
@@ -239,11 +241,11 @@ const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
     console.log(`Tree structure saved to ${filePath}`)
 }
 
-;(async function () {
-    const tree = await buildTree()
-    saveTreeToFile(tree, `./assets/tree.json`)
+    ; (async function () {
+        const tree = await buildTree()
+        saveTreeToFile(tree, `./assets/tree.json`)
 
-    mapFiles(tree)
+        mapFiles(tree)
 
-    mapBacklinks()
-})()
+        mapBacklinks()
+    })()

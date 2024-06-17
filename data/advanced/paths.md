@@ -1,4 +1,5 @@
 ---
+slug: paths
 title: Paths in Quartz
 ---
 

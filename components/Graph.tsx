@@ -43,9 +43,9 @@ const defaultOptions: GraphOptions = {
         zoom: true,
         depth: 1,
         scale: 1.1,
-        repelForce: 0.5,
+        repelForce: 0.6,
         centerForce: 0.3,
-        linkDistance: 40,
+        linkDistance: 50,
         fontSize: 0.7,
         opacityScale: 1,
         showTags: true,
@@ -197,13 +197,9 @@ const GraphComponent = ({
                 links: { source: string; target: string }[]
             } = {
                 nodes: nodes.map((url) => {
-
-
-
-
                     const text = url.startsWith(`tags/`)
                         ? `#${url.substring(5)}`
-                        : filemap[url].split(`/`).pop().replace(`.md`, ``) ??
+                        : filemap[url]?.split(`/`).pop().replace(`.md`, ``) ??
                         url
 
                     return {
@@ -256,7 +252,26 @@ const GraphComponent = ({
                 .on(`tick`, ticked)
 
             const zoom = d3.zoom().scaleExtent([0.25, 4]).on(`zoom`, zoomed)
-            canvas.call(zoom).on(`click`, click)
+            canvas.call((p) => {
+                d3.drag()
+                    .subject(event => {
+                        console.log(event)
+                        const [px, py] = d3.pointer(event, canvas.node());
+                        return simulation.find(
+                            px / transform.k - transform.x / transform.k,
+                            py / transform.k - transform.y / transform.k,
+                            5
+                        )
+
+                    })
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended)(p)
+
+
+                zoom(p)
+
+            }).on(`click`, click)
 
             let transform = d3.zoomIdentity
 
@@ -265,7 +280,7 @@ const GraphComponent = ({
                     (l: any) => l.source.id === d.id || l.target.id === d.id,
                 ).length
 
-                return (2 + Math.sqrt(numLinks)) / transform.k
+                return (2 + Math.sqrt(numLinks)) / Math.sqrt(transform.k)
             }
 
             function ticked() {
@@ -278,6 +293,7 @@ const GraphComponent = ({
                 graphData.nodes.forEach(drawNode)
 
                 context!.restore()
+                // console.log(graphData.nodes[0])
             }
 
             function drawLink(d) {
@@ -285,22 +301,22 @@ const GraphComponent = ({
                 context!.moveTo(d.source.x, d.source.y)
                 context!.lineTo(d.target.x, d.target.y)
                 context!.strokeStyle = `pink`
-                context!.lineWidth = 1 / transform.k
+                context!.lineWidth = 1 / Math.sqrt(transform.k)
                 context!.stroke()
             }
-
             function drawNode(d) {
                 context!.beginPath()
                 context!.arc(d.x, d.y, nodeRadius(d), 0, 2 * Math.PI, true)
                 context!.fillStyle = color(d)
                 context!.fill()
 
+                const opacity = Math.min(1, Math.max(0, (transform.k - 1) * 2))
+                context!.fillStyle = `rgba(0, 0, 0, ${opacity})`
                 context!.font = `${fontSize / transform.k}em sans-serif`
                 context!.textAlign = `center`
                 context!.textBaseline = `middle`
-                context!.fillText(d.text, d.x, d.y - 15 / transform.k)
+                context!.fillText(d.text, d.x, d.y - 15 / Math.sqrt(transform.k))
             }
-
             function zoomed(event) {
                 transform = event.transform
                 ticked()
@@ -333,26 +349,25 @@ const GraphComponent = ({
             }
 
             // Mouseover and mouseout events for highlighting
-            canvas.on(`mousemove`, function (event) {
+            canvas.on('mousemove', function (event) {
                 const [x, y] = d3.pointer(event)
                 const node = simulation.find(
                     x / transform.k - transform.x / transform.k,
                     y / transform.k - transform.y / transform.k,
-                    5,
+                    5
                 )
 
                 if (node) {
-                    canvas.node()!.style.cursor = `pointer`
+                    canvas.node()!.style.cursor = 'pointer'
                     const currentId = node.id
 
                     const linkNodes = links.filter(
                         (d: any) =>
-                            d.source.id === currentId ||
-                            d.target.id === currentId,
+                            d.source.id === currentId || d.target.id === currentId
                     )
                     const connectedNodes = linkNodes.flatMap((d: any) => [
                         d.source.id,
-                        d.target.id,
+                        d.target.id
                     ])
 
                     context!.clearRect(0, 0, width, height)
@@ -367,8 +382,8 @@ const GraphComponent = ({
                         context!.strokeStyle =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
-                                ? `gray`
-                                : `lightgray`
+                                ? 'gray'
+                                : 'lightgray'
                         context!.lineWidth =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
@@ -378,43 +393,56 @@ const GraphComponent = ({
                     })
 
                     graphData.nodes.forEach((d: any) => {
-                        context!.beginPath()
-                        context!.arc(
-                            d.x,
-                            d.y,
-                            nodeRadius(d),
-                            0,
-                            2 * Math.PI,
-                            true,
-                        )
-                        context!.fillStyle = color(d)
-                        context!.fill()
-
-                        context!.font = `${fontSize / transform.k}em sans-serif`
-                        context!.textAlign = `center`
-                        context!.textBaseline = `middle`
-                        context!.fillText(d.text, d.x, d.y - 15 / transform.k)
+                        drawNode(d,)
                     })
 
                     context!.restore()
                 } else {
-                    canvas.node()!.style.cursor = `default`
+                    canvas.node()!.style.cursor = 'default'
                 }
             })
 
-            canvas.on(`mouseout`, function (event) {
+            canvas.on('mouseout', function (event) {
                 context!.clearRect(0, 0, width, height)
                 context!.save()
                 context!.translate(transform.x, transform.y)
                 context!.scale(transform.k, transform.k)
 
                 graphData.links.forEach(drawLink)
-                graphData.nodes.forEach(drawNode)
+                graphData.nodes.forEach((d: any) => drawNode(d,))
 
                 context!.restore()
             })
+
+
+
+            // Reheat the simulation when drag starts, and fix the subject position.
+            function dragstarted(event) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                event.subject.fx = event.subject.x / transform.k + transform.x / transform.k;
+                event.subject.fy = event.subject.y / transform.k + transform.y / transform.k;
+            }
+
+            // Update the subject (dragged node) position during drag.
+            function dragged(event) {
+                event.subject.fx = event.x / transform.k + transform.x / transform.k;
+                event.subject.fy = event.y / transform.k + transform.y / transform.k;
+            }
+
+            // Restore the target alpha so the simulation cools after dragging ends.
+            // Unfix the subject position now that it’s no longer being dragged.
+            function dragended(event) {
+                if (!event.active) simulation.alphaTarget(0);
+                event.subject.fx = null;
+                event.subject.fy = null;
+            }
+
+
+
         }
         renderGraph(graphContainer, fullSlug)
+
+
 
         return () => {
             // Cleanup if needed

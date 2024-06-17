@@ -1,4 +1,5 @@
 ---
+slug: making-plugins
 title: Making your own plugins
 ---
 

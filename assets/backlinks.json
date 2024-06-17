@@ -35,16 +35,35 @@
       "plugins/ContentPage"
     ]
   },
+  "features/SPA-Routing": {
+    "links": [
+      "advanced/architecture",
+      "advanced/creating-components",
+      "configuration",
+      "index"
+    ]
+  },
   "advanced/making-plugins": {
     "links": [
       "advanced/architecture",
-      "advanced/creating-components"
+      "advanced/creating-components",
+      "configuration",
+      "index"
     ]
   },
-  "advanced/architecture": {},
+  "advanced/architecture": {
+    "links": [
+      "index"
+    ]
+  },
   "advanced/creating-components": {
     "links": [
-      "advanced/making-plugins"
+      "advanced/making-plugins",
+      "features/popover-previews",
+      "index",
+      "layout",
+      "migrating-from-Quartz-3",
+      "tags/component"
     ]
   },
   "advanced/index": {},
@@ -55,10 +74,37 @@
       "index"
     ]
   },
-  "plugins/Latex": {
+  "features/Latex": {
     "links": [
       "advanced/making-plugins",
-      "configuration"
+      "configuration",
+      "features/Latex",
+      "index",
+      "plugins/Latex",
+      "plugins/OxHugoFlavoredMarkdown"
+    ]
+  },
+  "features/callouts": {
+    "links": [
+      "authoring-content",
+      "plugins/ObsidianFlavoredMarkdown"
+    ]
+  },
+  "features/wikilinks": {
+    "links": [
+      "authoring-content",
+      "features/Obsidian-compatibility",
+      "index",
+      "plugins/ObsidianFlavoredMarkdown",
+      "plugins/OxHugoFlavoredMarkdown"
+    ]
+  },
+  "features/private-pages": {
+    "links": [
+      "authoring-content",
+      "configuration",
+      "plugins/ExplicitPublish",
+      "plugins/RemoveDrafts"
     ]
   },
   "setting-up-your-GitHub-repository": {
@@ -68,9 +114,47 @@
       "index"
     ]
   },
+  "plugins/Frontmatter": {
+    "links": [
+      "authoring-content",
+      "features/Obsidian-compatibility",
+      "plugins/OxHugoFlavoredMarkdown"
+    ]
+  },
+  "plugins/CreatedModifiedDate": {
+    "links": [
+      "authoring-content"
+    ]
+  },
+  "plugins/Description": {
+    "links": [
+      "authoring-content"
+    ]
+  },
   "authoring-content": {
     "links": [
       "features/explorer",
+      "index"
+    ]
+  },
+  "features/RSS-Feed": {
+    "links": [
+      "configuration",
+      "hosting",
+      "plugins/ContentIndex",
+      "plugins/Description"
+    ]
+  },
+  "features/popover-previews": {
+    "links": [
+      "configuration",
+      "features/backlinks",
+      "index"
+    ]
+  },
+  "features/i18n": {
+    "links": [
+      "configuration",
       "index"
     ]
   },
@@ -83,67 +167,143 @@
       "plugins/CreatedModifiedDate"
     ]
   },
+  "features/graph-view": {
+    "links": [
+      "configuration",
+      "index"
+    ]
+  },
+  "features/syntax-highlighting": {
+    "links": [
+      "configuration",
+      "index",
+      "plugins/SyntaxHighlighting"
+    ]
+  },
+  "plugins/ExplicitPublish": {
+    "links": [
+      "configuration",
+      "features/private-pages"
+    ]
+  },
   "tags/plugin": {
     "links": [
       "configuration",
       "features/folder-and-tag-listings"
     ]
   },
-  "features/Docker-Support": {},
-  "features/Latex": {
+  "features/Docker-Support": {
     "links": [
-      "features/Latex",
-      "index",
-      "plugins/Latex",
-      "plugins/OxHugoFlavoredMarkdown"
+      "index"
     ]
   },
   "features/Obsidian-compatibility": {
     "links": [
       "features/Mermaid-diagrams",
-      "features/wikilinks"
+      "features/wikilinks",
+      "index",
+      "plugins/CrawlLinks",
+      "plugins/Frontmatter",
+      "plugins/HardLineBreaks",
+      "plugins/ObsidianFlavoredMarkdown"
+    ]
+  },
+  "plugins/ObsidianFlavoredMarkdown": {
+    "links": [
+      "features/Mermaid-diagrams",
+      "features/Obsidian-compatibility",
+      "features/callouts",
+      "plugins/OxHugoFlavoredMarkdown"
+    ]
+  },
+  "plugins/SyntaxHighlighting": {
+    "links": [
+      "features/Mermaid-diagrams",
+      "features/callouts",
+      "features/syntax-highlighting"
     ]
   },
   "features/Mermaid-diagrams": {
     "links": [
-      "features/Obsidian-compatibility"
+      "features/Obsidian-compatibility",
+      "plugins/ObsidianFlavoredMarkdown"
     ]
   },
-  "features/wikilinks": {
+  "plugins/CrawlLinks": {
     "links": [
-      "features/Obsidian-compatibility"
+      "features/Obsidian-compatibility",
+      "features/wikilinks"
     ]
   },
-  "features/OxHugo-compatibility": {},
-  "features/RSS-Feed": {},
-  "features/SPA-Routing": {},
-  "features/popover-previews": {
+  "plugins/OxHugoFlavoredMarkdown": {
     "links": [
-      "features/backlinks"
+      "features/OxHugo-compatibility"
     ]
   },
-  "features/backlinks": {},
+  "features/OxHugo-compatibility": {
+    "links": [
+      "plugins/Frontmatter",
+      "plugins/OxHugoFlavoredMarkdown"
+    ]
+  },
+  "plugins/ContentIndex": {
+    "links": [
+      "features/RSS-Feed"
+    ]
+  },
+  "features/backlinks": {
+    "links": [
+      "index"
+    ]
+  },
   "features/breadcrumbs": {},
-  "features/callouts": {},
   "features/darkmode": {},
   "features/table-of-contents": {
     "links": [
-      "features/explorer"
+      "features/explorer",
+      "plugins/TableOfContents"
     ]
   },
   "features/explorer": {},
+  "plugins/FolderPage": {
+    "links": [
+      "features/folder-and-tag-listings"
+    ]
+  },
+  "plugins/TagPage": {
+    "links": [
+      "features/folder-and-tag-listings"
+    ]
+  },
   "features/folder-and-tag-listings": {
     "tags": [
       "component"
+    ],
+    "links": [
+      "migrating-from-Quartz-3",
+      "plugins/Description",
+      "plugins/FolderPage",
+      "plugins/TagPage"
     ]
   },
-  "features/full-text-search": {},
-  "features/graph-view": {},
-  "features/i18n": {},
+  "features/full-text-search": {
+    "links": [
+      "index"
+    ]
+  },
   "features/index": {},
-  "features/private-pages": {},
+  "plugins/RemoveDrafts": {
+    "links": [
+      "features/private-pages",
+      "plugins/ExplicitPublish"
+    ]
+  },
   "features/recent-notes": {},
-  "features/syntax-highlighting": {},
+  "plugins/TableOfContents": {
+    "links": [
+      "features/table-of-contents"
+    ]
+  },
   "features/upcoming-features": {},
   "showcase": {
     "links": [
@@ -174,40 +334,16 @@
   },
   "plugins/CNAME": {},
   "plugins/ComponentResources": {},
-  "plugins/ContentIndex": {},
   "plugins/ContentPage": {},
-  "plugins/CrawlLinks": {},
-  "plugins/CreatedModifiedDate": {},
-  "plugins/Description": {},
-  "plugins/RemoveDrafts": {
-    "links": [
-      "plugins/ExplicitPublish"
-    ]
-  },
-  "plugins/ExplicitPublish": {},
-  "plugins/FolderPage": {},
-  "plugins/Frontmatter": {
-    "links": [
-      "plugins/OxHugoFlavoredMarkdown"
-    ]
-  },
   "plugins/GitHubFlavoredMarkdown": {},
   "plugins/HardLineBreaks": {},
+  "plugins/Latex": {},
   "plugins/NotFoundPage": {},
-  "plugins/ObsidianFlavoredMarkdown": {
-    "links": [
-      "plugins/OxHugoFlavoredMarkdown"
-    ]
-  },
-  "plugins/OxHugoFlavoredMarkdown": {},
   "plugins/Static": {
     "links": [
       "plugins/Static"
     ]
   },
-  "plugins/SyntaxHighlighting": {},
-  "plugins/TableOfContents": {},
-  "plugins/TagPage": {},
   "plugins/index": {},
   "tags/component": {}
 }

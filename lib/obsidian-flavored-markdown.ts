@@ -243,7 +243,7 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                     if (file.data.matter == null) {
                         return
                     }
-
+                    
                     const base = pathToRoot(file.data.matter.slug!)
 
                     if (opts.wikilinks) {
