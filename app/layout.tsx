@@ -30,13 +30,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.className} h-dvh relative`} >
+            <body className={`${inter.className} relative h-dvh`}>
                 <Providers>
                     <div className="mx-auto flex max-w-[90rem]">
-                   
-                       <div className=" sticky top-0 hidden h-dvh self-start  lg:block lg:w-[22rem] ">
+                        <div className=" sticky top-0 hidden h-dvh self-start  lg:block lg:w-[22rem] ">
                             <Sidebar tree={tree as DirectoryNode} />
-                        </div> 
+                        </div>
 
                         <div className="mx-auto w-full max-w-4xl lg:pt-20">
                             {children}

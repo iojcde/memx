@@ -76,9 +76,14 @@ const GraphComponent = ({
     config: Partial<D3Config>
 }) => {
     const graphContainerRef = useRef(null)
+    const [pos, setPos] = useState({ x: 0, y: 0 })
+    const [transform, setTransform] = useState(d3.zoomIdentity)
 
     useEffect(() => {
         const graphContainer = graphContainerRef.current
+        if (graphContainer.children.length > 0) {
+            return
+        }
 
         const localStorageKey = `graph-visited`
 
@@ -97,8 +102,8 @@ const GraphComponent = ({
         function renderGraph(container, fullSlug) {
             let slug = simplifySlug(fullSlug)
 
-            if (slug == '/') {
-                slug = 'index' as SimpleSlug
+            if (slug == `/`) {
+                slug = `index` as SimpleSlug
             }
             const visited = getVisited()
             const graph = container
@@ -129,14 +134,14 @@ const GraphComponent = ({
                     nodes.push(l as SimpleSlug)
                     links.push({ source: l, target: slug })
                 }
-
             })
 
             let [source, details] = [slug, backlinks[slug]]
-            if (!details) details = {
-                links: [],
-                tags: [],
-            }
+            if (!details)
+                details = {
+                    links: [],
+                    tags: [],
+                }
 
             const outgoing = details.links ?? []
 
@@ -210,7 +215,6 @@ const GraphComponent = ({
                 links,
             }
 
-
             const height = Math.max(graph.offsetHeight, 250)
             const width = graph.offsetWidth
 
@@ -245,33 +249,19 @@ const GraphComponent = ({
                 .forceSimulation(graphData.nodes)
                 .force(
                     `link`,
-                    d3.forceLink(graphData.links).id((d: any) => d.id).distance(linkDistance),
+                    d3
+                        .forceLink(graphData.links)
+                        .id((d: any) => d.id)
+                        .distance(linkDistance),
                 )
                 .force(`charge`, d3.forceManyBody().strength(-100 * repelForce))
-                .force(`center`, d3.forceCenter(width / 2, height / 2).strength(centerForce))
+                .force(
+                    `center`,
+                    d3.forceCenter(width / 2, height / 2).strength(centerForce),
+                )
                 .on(`tick`, ticked)
 
-            const zoom = d3.zoom().scaleExtent([0.25, 4]).on(`zoom`, zoomed)
-            canvas.call((p) => {
-                d3.drag()
-                    .subject(event => {
-                        console.log(event)
-                        const [px, py] = d3.pointer(event, canvas.node());
-                        return simulation.find(
-                            px / transform.k - transform.x / transform.k,
-                            py / transform.k - transform.y / transform.k,
-                            5
-                        )
-
-                    })
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended)(p)
-
-
-                zoom(p)
-
-            }).on(`click`, click)
+            const zoom = d3.zoom().scaleExtent([0.25, 12]).on(`zoom`, zoomed)
 
             let transform = d3.zoomIdentity
 
@@ -284,6 +274,7 @@ const GraphComponent = ({
             }
 
             function ticked() {
+                setTransform(transform)
                 context!.clearRect(0, 0, width * dpi, height * dpi)
                 context!.save()
                 context!.translate(transform.x, transform.y)
@@ -305,6 +296,7 @@ const GraphComponent = ({
                 context!.stroke()
             }
             function drawNode(d) {
+                context.moveTo(d.x + 5, d.y)
                 context!.beginPath()
                 context!.arc(d.x, d.y, nodeRadius(d), 0, 2 * Math.PI, true)
                 context!.fillStyle = color(d)
@@ -315,7 +307,11 @@ const GraphComponent = ({
                 context!.font = `${fontSize / transform.k}em sans-serif`
                 context!.textAlign = `center`
                 context!.textBaseline = `middle`
-                context!.fillText(d.text, d.x, d.y - 15 / Math.sqrt(transform.k))
+                context!.fillText(
+                    d.text,
+                    d.x,
+                    d.y - 15 / Math.sqrt(transform.k),
+                )
             }
             function zoomed(event) {
                 transform = event.transform
@@ -323,16 +319,19 @@ const GraphComponent = ({
             }
 
             function click(event) {
-                const [x, y] = d3.pointer(event)
-                const node = simulation.find(
-                    x / transform.k - transform.x / transform.k,
-                    y / transform.k - transform.y / transform.k,
-                    5,
-                )
-                if (node) {
-                    const targ = resolveRelative(fullSlug, node.id)
-                    //navigate
-                }
+                // const [x, y] = d3.pointer(event)
+                // const node = simulation.find(
+                //     transform.invertX(x),
+                //     transform.invertY(y),
+                //     5,
+                // )
+                // if (node) {
+                //     const targ = resolveRelative(fullSlug, node.id)
+                // }
+                // graphData.nodes.forEach((d: any) => {
+                //     d.fx = 0
+                //     d.fy = 0
+                // })
             }
 
             function resolveRelative(base, relative) {
@@ -349,25 +348,28 @@ const GraphComponent = ({
             }
 
             // Mouseover and mouseout events for highlighting
-            canvas.on('mousemove', function (event) {
+            canvas.on(`mousemove`, function (event) {
                 const [x, y] = d3.pointer(event)
+                setPos({ x, y })
+
                 const node = simulation.find(
-                    x / transform.k - transform.x / transform.k,
-                    y / transform.k - transform.y / transform.k,
-                    5
+                    transform.invertX(x),
+                    transform.invertY(y),
+                    5,
                 )
 
                 if (node) {
-                    canvas.node()!.style.cursor = 'pointer'
+                    canvas.node()!.style.cursor = `pointer`
                     const currentId = node.id
 
                     const linkNodes = links.filter(
                         (d: any) =>
-                            d.source.id === currentId || d.target.id === currentId
+                            d.source.id === currentId ||
+                            d.target.id === currentId,
                     )
                     const connectedNodes = linkNodes.flatMap((d: any) => [
                         d.source.id,
-                        d.target.id
+                        d.target.id,
                     ])
 
                     context!.clearRect(0, 0, width, height)
@@ -382,8 +384,8 @@ const GraphComponent = ({
                         context!.strokeStyle =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
-                                ? 'gray'
-                                : 'lightgray'
+                                ? `gray`
+                                : `lightgray`
                         context!.lineWidth =
                             connectedNodes.includes(d.source.id) &&
                                 connectedNodes.includes(d.target.id)
@@ -393,80 +395,108 @@ const GraphComponent = ({
                     })
 
                     graphData.nodes.forEach((d: any) => {
-                        drawNode(d,)
+                        drawNode(d)
                     })
 
                     context!.restore()
                 } else {
-                    canvas.node()!.style.cursor = 'default'
+                    canvas.node()!.style.cursor = `default`
                 }
             })
 
-            canvas.on('mouseout', function (event) {
+            canvas.on(`mouseout`, function (event) {
                 context!.clearRect(0, 0, width, height)
                 context!.save()
                 context!.translate(transform.x, transform.y)
                 context!.scale(transform.k, transform.k)
 
                 graphData.links.forEach(drawLink)
-                graphData.nodes.forEach((d: any) => drawNode(d,))
+                graphData.nodes.forEach((d: any) => drawNode(d))
 
                 context!.restore()
             })
 
+            const drag = () => {
+                return d3
+                    .drag()
+                    .subject((e) => {
+                        const [x, y] = d3.pointer(e)
+                        const node = simulation.find(
+                            transform.invertX(x),
+                            transform.invertY(y),
+                            5,
+                        )
 
+                        return node
+                    })
+                    .on(`start`, dragstarted)
+                    .on(`drag`, dragged)
+                    .on(`end`, dragended)
+            }
 
-            // Reheat the simulation when drag starts, and fix the subject position.
+            let initialDragPos = { x: 0, y: 0 }
             function dragstarted(event) {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                event.subject.fx = event.subject.x / transform.k + transform.x / transform.k;
-                event.subject.fy = event.subject.y / transform.k + transform.y / transform.k;
+                if (!event.active) simulation.alphaTarget(0.3).restart()
+                const subject = event.subject
+                if (!subject.x || !subject.y) {
+                    return
+                }
+                initialDragPos = { x: subject.x, y: subject.y }
+                subject.fx = subject.x
+                subject.fy = subject.y
             }
 
-            // Update the subject (dragged node) position during drag.
             function dragged(event) {
-                event.subject.fx = event.x / transform.k + transform.x / transform.k;
-                event.subject.fy = event.y / transform.k + transform.y / transform.k;
+                event.subject.fx =
+                    initialDragPos.x +
+                    (event.x - initialDragPos.x) / transform.k
+                event.subject.fy =
+                    initialDragPos.y +
+                    (event.y - initialDragPos.y) / transform.k
             }
 
-            // Restore the target alpha so the simulation cools after dragging ends.
-            // Unfix the subject position now that it’s no longer being dragged.
             function dragended(event) {
-                if (!event.active) simulation.alphaTarget(0);
-                event.subject.fx = null;
-                event.subject.fy = null;
+                if (!event.active) simulation.alphaTarget(0)
+                event.subject.fx = null
+                event.subject.fy = null
             }
 
+            canvas.call(
+                drag().on(`start.render drag.render end.render`, ticked),
+            )
 
-
+            canvas.call(zoom).on(`click`, click)
         }
         renderGraph(graphContainer, fullSlug)
-
-
+        console.log(`rendered graph`)
 
         return () => {
             // Cleanup if needed
         }
-    }, [fullSlug])
+    }, [])
 
     return (
-        <div id="graph-outer">
+        <>
             <div ref={graphContainerRef} id="graph-container" />
-        </div>
+        </>
     )
 }
 
-const Graph = () => {
-    const slug = decodeURIComponent(usePathname() ?? `/`)
+const Graph = ({ slug }) => {
+    const path = usePathname()
+    if (!slug) slug = decodeURIComponent(path ?? `/`)
 
     const [showLocal, setShowLocal] = useState(true)
-    const localGraph = { ...defaultOptions.localGraph, }
-    const globalGraph = { ...defaultOptions.globalGraph, }
+    const localGraph = { ...defaultOptions.localGraph }
+    const globalGraph = { ...defaultOptions.globalGraph }
 
     return (
         <div className={`graph`}>
-            <h3>Graph View</h3>
-            <button onClick={() => setShowLocal(!showLocal)}>
+            <h3>Interactive Graph</h3>
+            <button
+                className="font-neutral-800 text-xs"
+                onClick={() => setShowLocal(!showLocal)}
+            >
                 {showLocal ? `Show Global Graph` : `Show Local Graph`}
             </button>
             <div className="graph-outer">
