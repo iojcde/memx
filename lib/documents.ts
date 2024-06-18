@@ -5,6 +5,7 @@ import glob from 'tiny-glob'
 import { TreeNode } from 'types/TreeNode'
 import readingTime from 'reading-time'
 import filemap from 'assets/filemap.json'
+import { VFile } from 'vfile'
 import backlinks from 'assets/backlinks.json'
 
 export async function getDocument({ slug }: { slug: string[] | string }) {
@@ -38,7 +39,7 @@ export const getAllDocuments = async () => {
 
     const docs = await Promise.all(
         files.map(async (file) => {
-            const f = await processMarkdown(await read(file))
+            const f: VFile = await processMarkdown(await read(file))
             const path = f.history[0].replace(`data/`, ``)
 
             f.data.title = path.split(`/`).pop().replace(`.md`, ``)
@@ -75,7 +76,9 @@ export const getBacklinks = async (slug: string) => {
 
             let before: string, center: string, after: string
             const regex = new RegExp(
-                `\\[\\[(${mentionedFile}|${mentionedFile.split(`/`).pop()})`,
+                `\\[\\[(${mentionedFile}|${mentionedFile
+                    .split(`/`)
+                    .pop()})`,
             )
             const match = line?.match(regex)
 

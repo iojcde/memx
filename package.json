@@ -15,6 +15,7 @@
     "@types/d3": "^7.4.3",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
+    "@types/vfile": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "classnames": "^2.5.1",
@@ -56,7 +57,6 @@
     "to-vfile": "^8.0.0",
     "transliteration": "^2.3.5",
     "unified": "^11.0.4",
-    "vfile": "^6.0.1",
     "vfile-matter": "^5.0.0"
   },
   "devDependencies": {

@@ -249,7 +249,7 @@ export function transformLink(
         return targetSlug as RelativeURL
     } else {
         const folderTail = isFolderPath(targetSlug) ? `/` : ``
-        const canonicalSlug = stripSlashes(targetplice(`.`.length))
+        const canonicalSlug = stripSlashes(targetSlug.slice(`.`.length))
         const [targetCanonical, targetAnchor] = splitAnchor(canonicalSlug)
 
         if (opts.strategy === `shortest`) {
