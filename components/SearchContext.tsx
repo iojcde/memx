@@ -3,7 +3,7 @@
 import { FC, ReactNode, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { TreeNode } from 'types/TreeNode'
+import { DirectoryNode, FileNode, TreeNode } from 'types/TreeNode'
 import tree from 'assets/tree.json'
 
 import React from 'react'
@@ -23,12 +23,14 @@ import { Label } from './common/Label'
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const router = useRouter()
-    const researchTree = tree
 
     const actions = useMemo(() => {
         const actions: Action[] = []
 
-        const mapDocs = (node: TreeNode, parentPath: string) => {
+        const mapDocs = (
+            node: DirectoryNode | FileNode,
+            parentPath: string,
+        ) => {
             if (node.type === `dir`) {
                 for (const child of node.children || []) {
                     mapDocs(child, `${parentPath}/${node.name}`)
@@ -37,19 +39,19 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
                 const filePath = `${parentPath}/${node.name}`
                 actions.push({
                     id: `4-bldocsog-${filePath}`,
-                    name: node.name,
+                    name: node.name.replace(`.md`, ``),
                     keywords: `research post blog memex ${node.excerpt || ``}`,
                     section: `Research`,
-                    perform: () => router.push(filePath),
+                    perform: () => router.push(node.slug),
                     subtitle: node.excerpt,
                 })
             }
         }
 
-        mapDocs(researchTree, ``)
+        mapDocs(tree as DirectoryNode, ``)
 
         return actions
-    }, [researchTree, router])
+    }, [tree, router])
 
     return (
         <KBarProvider actions={actions}>
