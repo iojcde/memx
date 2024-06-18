@@ -81,7 +81,10 @@ const GraphComponent = ({
 
     useEffect(() => {
         const graphContainer = graphContainerRef.current
-        if (graphContainer?.children) {
+        if (
+            graphContainer?.children.length &&
+            graphContainer?.children.length > 0
+        ) {
             return
         }
 
