@@ -11,31 +11,26 @@
         {
           "type": "file",
           "name": "architecture.md",
-          "excerpt": "Quartz is a static site generator. How does it work?\n\nThis question is best answered by tracing what happens when a user (you!) runs `npx quartz build` in the command line:",
           "slug": "architecture"
         },
         {
           "type": "file",
           "name": "creating components.md",
-          "excerpt": "> [!warning]\n> This guide assumes you have experience writing JavaScript and are familiar with TypeScript.\n",
           "slug": "creating-components"
         },
         {
           "type": "file",
           "name": "index.md",
-          "excerpt": "",
           "slug": "index"
         },
         {
           "type": "file",
           "name": "making plugins.md",
-          "excerpt": "> [!warning]\n> This part of the documentation will assume you have working knowledge in TypeScript and will include code snippets that describe the interface of what Quartz plugins should look like.\n",
           "slug": "making-plugins"
         },
         {
           "type": "file",
           "name": "paths.md",
-          "excerpt": "Paths are pretty complex to reason about because, especially for a static site generator, they can come from so many places.\n\nA full file path to a piece of content? Also a path. What about a slug for a piece of content? Yet another path.",
           "slug": "paths"
         }
       ]
@@ -43,19 +38,16 @@
     {
       "type": "file",
       "name": "authoring content.md",
-      "excerpt": "All of the content in your Quartz should go in the `/content` folder. The content for the home page of your Quartz lives in `content/index.md`. If you've [[index#🪴 Get Started|setup Quartz]] already, this folder should already be initialized. Any Markdown in this folder will get processed by Quartz.\n\nIt is recommended that you use [Obsidian](https://obsidian.md/) as a way to edit and maintain your Quartz. It comes with a nice editor and graphical interface to preview, edit, and link your local files and attachments.",
       "slug": "authoring-content"
     },
     {
       "type": "file",
       "name": "build.md",
-      "excerpt": "Once you've [[index#🪴 Get Started|initialized]] Quartz, let's see what it looks like locally:\n\n```bash",
       "slug": "build"
     },
     {
       "type": "file",
       "name": "configuration.md",
-      "excerpt": "Quartz is meant to be extremely configurable, even if you don't know any coding. Most of the configuration you should need can be done by just editing `quartz.config.ts` or changing [[layout|the layout]] in `quartz.layout.ts`.\n\n> [!tip]",
       "slug": "configuration"
     },
     {
@@ -65,146 +57,122 @@
       "children": [
         {
           "type": "file",
-          "name": "Docker Support.md",
-          "excerpt": "Quartz comes shipped with a Docker image that will allow you to preview your Quartz locally without installing Node.\n\nYou can run the below one-liner to run Quartz in Docker.",
-          "slug": "Docker-Support"
-        },
-        {
-          "type": "file",
-          "name": "Latex.md",
-          "excerpt": "Quartz uses [Katex](https://katex.org/) by default to typeset both inline and block math expressions at build time.\n\n## Syntax",
-          "slug": "Latex"
-        },
-        {
-          "type": "file",
-          "name": "Mermaid diagrams.md",
-          "excerpt": "Quartz supports Mermaid which allows you to add diagrams and charts to your notes. Mermaid supports a range of diagrams, such as [flow charts](https://mermaid.js.org/syntax/flowchart.html), [sequence diagrams](https://mermaid.js.org/syntax/sequenceDiagram.html), and [timelines](https://mermaid.js.org/syntax/timeline.html). This is enabled as a part of [[Obsidian compatibility]] and can be configured and enabled/disabled from that plugin.\n\nBy default, Quartz will render Mermaid diagrams to match the site theme.",
-          "slug": "Mermaid-diagrams"
-        },
-        {
-          "type": "file",
-          "name": "Obsidian compatibility.md",
-          "excerpt": "Quartz was originally designed as a tool to publish Obsidian vaults as websites. Even as the scope of Quartz has widened over time, it hasn't lost the ability to seamlessly interoperate with Obsidian.\n\nBy default, Quartz ships with the [[ObsidianFlavoredMarkdown]] plugin, which is a transformer plugin that adds support for [Obsidian Flavored Markdown](https://help.obsidian.md/Editing+and+formatting/Obsidian+Flavored+Markdown). This includes support for features like [[wikilinks]] and [[Mermaid diagrams]].",
-          "slug": "Obsidian-compatibility"
-        },
-        {
-          "type": "file",
-          "name": "OxHugo compatibility.md",
-          "excerpt": "[org-roam](https://www.orgroam.com/) is a plain-text personal knowledge management system for [emacs](https://en.wikipedia.org/wiki/Emacs). [ox-hugo](https://github.com/kaushalmodi/ox-hugo) is org exporter backend that exports `org-mode` files to [Hugo](https://gohugo.io/) compatible Markdown.\n\nBecause the Markdown generated by ox-hugo is not pure Markdown but Hugo specific, we need to transform it to fit into Quartz. This is done by the [[OxHugoFlavoredMarkdown]] plugin. Even though this plugin was written with `ox-hugo` in mind, it should work for any Hugo specific Markdown.",
-          "slug": "OxHugo-compatibility"
-        },
-        {
-          "type": "file",
-          "name": "RSS Feed.md",
-          "excerpt": "Quartz emits an RSS feed for all the content on your site by generating an `index.xml` file that RSS readers can subscribe to. Because of the RSS spec, this requires the `baseUrl` property in your [[configuration]] to be set properly for RSS readers to pick it up properly.\n\n## Configuration",
-          "slug": "RSS-Feed"
-        },
-        {
-          "type": "file",
-          "name": "SPA Routing.md",
-          "excerpt": "Single-page-app style rendering. This prevents flashes of unstyled content and improves the smoothness of Quartz.\n\nUnder the hood, this is done by hijacking page navigations and instead fetching the HTML via a `GET` request and then diffing and selectively replacing parts of the page using [micromorph](https://github.com/natemoo-re/micromorph). This allows us to change the content of the page without fully refreshing the page, reducing the amount of content that the browser needs to load.",
-          "slug": "SPA-Routing"
-        },
-        {
-          "type": "file",
           "name": "backlinks.md",
-          "excerpt": "A backlink for a note is a link from another note to that note. Links in the backlink pane also feature rich [[popover previews]] if you have that feature enabled.\n\n## Customization",
           "slug": "backlinks"
         },
         {
           "type": "file",
           "name": "breadcrumbs.md",
-          "excerpt": "Breadcrumbs provide a way to navigate a hierarchy of pages within your site using a list of its parent folders.\n\nBy default, the element at the very top of your page is the breadcrumb navigation bar (can also be seen at the top on this page!).",
           "slug": "breadcrumbs"
         },
         {
           "type": "file",
           "name": "callouts.md",
-          "excerpt": "Quartz supports the same Admonition-callout syntax as Obsidian.\n\nThis includes",
           "slug": "callouts"
         },
         {
           "type": "file",
           "name": "darkmode.md",
-          "excerpt": "Quartz supports darkmode out of the box that respects the user's theme preference. Any future manual toggles of the darkmode switch will be saved in the browser's local storage so it can be persisted across future page loads.\n\n## Customization",
           "slug": "darkmode"
         },
         {
           "type": "file",
+          "name": "Docker Support.md",
+          "slug": "Docker-Support"
+        },
+        {
+          "type": "file",
           "name": "explorer.md",
-          "excerpt": "Quartz features an explorer that allows you to navigate all files and folders on your site. It supports nested folders and is highly customizable.\n\nBy default, it shows all folders and files on your page. To display the explorer in a different spot, you can edit the [[layout]].",
           "slug": "explorer"
         },
         {
           "type": "file",
           "name": "folder and tag listings.md",
-          "excerpt": "Quartz emits listing pages for any folders and tags you have.\n\n## Folder Listings",
           "slug": "folder-and-tag-listings"
         },
         {
           "type": "file",
           "name": "full-text search.md",
-          "excerpt": "Full-text search in Quartz is powered by [Flexsearch](https://github.com/nextapps-de/flexsearch). It's fast enough to return search results in under 10ms for Quartzs as large as half a million words.\n\nIt can be opened by either clicking on the search bar or pressing `⌘`/`ctrl` + `K`. The top 5 search results are shown on each query. Matching subterms are highlighted and the most relevant 30 words are excerpted. Clicking on a search result will navigate to that page.",
           "slug": "full-text-search"
         },
         {
           "type": "file",
           "name": "graph view.md",
-          "excerpt": "Quartz features a graph-view that can show both a local graph view and a global graph view.\n\n- The local graph view shows files that either link to the current file or are linked from the current file. In other words, it shows all notes that are _at most_ one hop away.",
           "slug": "graph-view"
         },
         {
           "type": "file",
           "name": "i18n.md",
-          "excerpt": "Internationalization allows users to translate text in the Quartz interface into various supported languages without needing to make extensive code changes. This can be changed via the `locale` [[configuration]] field in `quartz.config.ts`.\n\nThe locale field generally follows a certain format: `{language}-{REGION}`",
           "slug": "i18n"
         },
         {
           "type": "file",
           "name": "index.md",
-          "excerpt": "",
           "slug": "index"
         },
         {
           "type": "file",
+          "name": "Latex.md",
+          "slug": "Latex"
+        },
+        {
+          "type": "file",
+          "name": "Mermaid diagrams.md",
+          "slug": "Mermaid-diagrams"
+        },
+        {
+          "type": "file",
+          "name": "Obsidian compatibility.md",
+          "slug": "Obsidian-compatibility"
+        },
+        {
+          "type": "file",
+          "name": "OxHugo compatibility.md",
+          "slug": "OxHugo-compatibility"
+        },
+        {
+          "type": "file",
           "name": "popover previews.md",
-          "excerpt": "Like Wikipedia, when you hover over a link in Quartz, there is a popup of a page preview that you can scroll to see the entire content. Links to headers will also scroll the popup to show that specific header in view.\n\nBy default, Quartz only fetches previews for pages inside your vault due to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). It does this by selecting all HTML elements with the `popover-hint` class. For most pages, this includes the page title, page metadata like words and time to read, tags, and the actual page content.",
           "slug": "popover-previews"
         },
         {
           "type": "file",
           "name": "private pages.md",
-          "excerpt": "There may be some notes you want to avoid publishing as a website. Quartz supports this through two mechanisms which can be used in conjunction:\n\n## Filter Plugins",
           "slug": "private-pages"
         },
         {
           "type": "file",
           "name": "recent notes.md",
-          "excerpt": "Quartz can generate a list of recent notes based on some filtering and sorting criteria. Though this component isn't included in any [[layout]] by default, you can add it by using `Component.RecentNotes` in `quartz.layout.ts`.\n\n## Customization",
           "slug": "recent-notes"
         },
         {
           "type": "file",
+          "name": "RSS Feed.md",
+          "slug": "RSS-Feed"
+        },
+        {
+          "type": "file",
+          "name": "SPA Routing.md",
+          "slug": "SPA-Routing"
+        },
+        {
+          "type": "file",
           "name": "syntax highlighting.md",
-          "excerpt": "Syntax highlighting in Quartz is completely done at build-time. This means that Quartz only ships pre-calculated CSS to highlight the right words so there is no heavy client-side bundle that does the syntax highlighting.\n\nAnd, unlike some client-side highlighters, it has a full TextMate parser grammar instead of using Regexes, allowing for highly accurate code highlighting.",
           "slug": "syntax-highlighting"
         },
         {
           "type": "file",
           "name": "table of contents.md",
-          "excerpt": "Quartz can automatically generate a table of contents (TOC) from a list of headings on each page. It will also show you your current scrolling position on the page by highlighting headings you've scrolled through with a different color.\n\nYou can hide the TOC on a page by adding `enableToc: false` to the frontmatter for that page.",
           "slug": "table-of-contents"
         },
         {
           "type": "file",
           "name": "upcoming features.md",
-          "excerpt": "## high priority backlog\n\n- static dead link detection",
           "slug": "upcoming-features"
         },
         {
           "type": "file",
           "name": "wikilinks.md",
-          "excerpt": "Wikilinks were pioneered by earlier internet wikis to make it easier to write links across pages without needing to write Markdown or HTML links each time.\n\nQuartz supports Wikilinks by default and these links are resolved by Quartz using the [[CrawlLinks]] plugin. See the [Obsidian Help page on Internal Links](https://help.obsidian.md/Linking+notes+and+files/Internal+links) for more information on Wikilink syntax.",
           "slug": "wikilinks"
         }
       ]
@@ -212,31 +180,26 @@
     {
       "type": "file",
       "name": "hosting.md",
-      "excerpt": "Quartz effectively turns your Markdown files and other resources into a bundle of HTML, JS, and CSS files (a website!).\n\nHowever, if you'd like to publish your site to the world, you need a way to host it online. This guide will detail how to deploy with common hosting providers but any service that allows you to deploy static HTML should work as well.",
       "slug": "hosting"
     },
     {
       "type": "file",
       "name": "index.md",
-      "excerpt": "Quartz is a fast, batteries-included static-site generator that transforms Markdown content into fully functional websites. Thousands of students, developers, and teachers are [[showcase|already using Quartz]] to publish personal notes, websites, and [digital gardens](https://jzhao.xyz/posts/networked-thought) to the web.\n\n## 🪴 Get Started",
       "slug": "index"
     },
     {
       "type": "file",
       "name": "layout.md",
-      "excerpt": "Certain emitters may also output [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) files. To enable easy customization, these emitters allow you to fully rearrange the layout of the page. The default page layouts can be found in `quartz.layout.ts`.\n\nEach page is composed of multiple different sections which contain `QuartzComponents`. The following code snippet lists all of the valid sections that you can add components to:",
       "slug": "layout"
     },
     {
       "type": "file",
       "name": "migrating from Quartz 3.md",
-      "excerpt": "As you already have Quartz locally, you don't need to fork or clone it again. Simply just checkout the alpha branch, install the dependencies, and import your old vault.\n\n```bash",
       "slug": "migrating-from-Quartz-3"
     },
     {
       "type": "file",
       "name": "philosophy.md",
-      "excerpt": "## A garden should be a true hypertext\n\n> The garden is the web as topology. Every walk through the garden creates new paths, new meanings, and when we add things to the garden we add them in a way that allows many future, unpredicted relationships.",
       "slug": "philosophy"
     },
     {
@@ -247,159 +210,133 @@
         {
           "type": "file",
           "name": "AliasRedirects.md",
-          "excerpt": "This plugin emits HTML redirect pages for aliases and permalinks defined in the frontmatter of content files.\n\nFor example, A `foo.md` has the following frontmatter",
           "slug": "AliasRedirects"
         },
         {
           "type": "file",
           "name": "Assets.md",
-          "excerpt": "This plugin emits all non-Markdown static assets in your content folder (like images, videos, HTML, etc). The plugin respects the `ignorePatterns` in the global [[configuration]].\n\nNote that all static assets will then be accessible through its path on your generated site, i.e: `host.me/path/to/static.pdf`",
           "slug": "Assets"
         },
         {
           "type": "file",
           "name": "CNAME.md",
-          "excerpt": "This plugin emits a `CNAME` record that points your subdomain to the default domain of your site.\n\nIf you want to use a custom domain name like `quartz.example.com` for the site, then this is needed.",
           "slug": "CNAME"
         },
         {
           "type": "file",
           "name": "ComponentResources.md",
-          "excerpt": "This plugin manages and emits the static resources required for the Quartz framework. This includes CSS stylesheets and JavaScript scripts that enhance the functionality and aesthetics of the generated site. See also the `cdnCaching` option in the `theme` section of the [[configuration]].\n\n> [!note]",
           "slug": "ComponentResources"
         },
         {
           "type": "file",
           "name": "ContentIndex.md",
-          "excerpt": "This plugin emits both RSS and an XML sitemap for your site. The [[RSS Feed]] allows users to subscribe to content on your site and the sitemap allows search engines to better index your site. The plugin also emits a `contentIndex.json` file which is used by dynamic frontend components like search and graph.\n\nThis plugin emits a comprehensive index of the site's content, generating additional resources such as a sitemap, an RSS feed, and a",
           "slug": "ContentIndex"
         },
         {
           "type": "file",
           "name": "ContentPage.md",
-          "excerpt": "This plugin is a core component of the Quartz framework. It generates the HTML pages for each piece of Markdown content. It emits the full-page [[layout]], including headers, footers, and body content, among others.\n\n> [!note]",
           "slug": "ContentPage"
         },
         {
           "type": "file",
           "name": "CrawlLinks.md",
-          "excerpt": "This plugin parses links and processes them to point to the right places. It is also needed for embedded links (like images). See [[Obsidian compatibility]] for more information.\n\n> [!note]",
           "slug": "CrawlLinks"
         },
         {
           "type": "file",
           "name": "CreatedModifiedDate.md",
-          "excerpt": "This plugin determines the created, modified, and published dates for a document using three potential data sources: frontmatter metadata, Git history, and the filesystem. See [[authoring content#Syntax]] for more information.\n\n> [!note]",
           "slug": "CreatedModifiedDate"
         },
         {
           "type": "file",
           "name": "Description.md",
-          "excerpt": "This plugin generates descriptions that are used as metadata for the HTML `head`, the [[RSS Feed]] and in [[folder and tag listings]] if there is no main body content, the description is used as the text between the title and the listing.\n\nIf the frontmatter contains a `description` property, it is used (see [[authoring content#Syntax]]). Otherwise, the plugin will do its best to use the first few sentences of the content to reach the target description length.",
           "slug": "Description"
         },
         {
           "type": "file",
           "name": "ExplicitPublish.md",
-          "excerpt": "This plugin filters content based on an explicit `publish` flag in the frontmatter, allowing only content that is explicitly marked for publication to pass through. It's the opt-in version of [[RemoveDrafts]]. See [[private pages]] for more information.\n\n> [!note]",
           "slug": "ExplicitPublish"
         },
         {
           "type": "file",
           "name": "FolderPage.md",
-          "excerpt": "This plugin generates index pages for folders, creating a listing page for each folder that contains multiple content files. See [[folder and tag listings]] for more information.\n\nExample: [[advanced/|Advanced]]",
           "slug": "FolderPage"
         },
         {
           "type": "file",
           "name": "Frontmatter.md",
-          "excerpt": "This plugin parses the frontmatter of the page using the [gray-matter](https://github.com/jonschlinkert/gray-matter) library. See [[authoring content#Syntax]], [[Obsidian compatibility]] and [[OxHugo compatibility]] for more information.\n\n> [!note]",
           "slug": "Frontmatter"
         },
         {
           "type": "file",
           "name": "GitHubFlavoredMarkdown.md",
-          "excerpt": "This plugin enhances Markdown processing to support GitHub Flavored Markdown (GFM) which adds features like autolink literals, footnotes, strikethrough, tables and tasklists.\n\nIn addition, this plugin adds optional features for typographic refinement (such as converting straight quotes to curly quotes, dashes to en-dashes/em-dashes, and ellipses) and automatic heading links as a symbol that appears next to the heading on hover.",
           "slug": "GitHubFlavoredMarkdown"
         },
         {
           "type": "file",
           "name": "HardLineBreaks.md",
-          "excerpt": "This plugin automatically converts single line breaks in Markdown text into hard line breaks in the HTML output. This plugin is not enabled by default as this doesn't follow the semantics of actual Markdown but you may enable it if you'd like parity with [[Obsidian compatibility|Obsidian]].\n\n> [!note]",
           "slug": "HardLineBreaks"
         },
         {
           "type": "file",
+          "name": "index.md",
+          "slug": "index"
+        },
+        {
+          "type": "file",
           "name": "Latex.md",
-          "excerpt": "This plugin adds LaTeX support to Quartz. See [[features/Latex|Latex]] for more information.\n\n> [!note]",
           "slug": "Latex"
         },
         {
           "type": "file",
           "name": "NotFoundPage.md",
-          "excerpt": "This plugin emits a 404 (Not Found) page for broken or non-existent URLs.\n\n> [!note]",
           "slug": "NotFoundPage"
         },
         {
           "type": "file",
           "name": "ObsidianFlavoredMarkdown.md",
-          "excerpt": "This plugin provides support for [[Obsidian compatibility]].\n\n> [!note]",
           "slug": "ObsidianFlavoredMarkdown"
         },
         {
           "type": "file",
           "name": "OxHugoFlavoredMarkdown.md",
-          "excerpt": "This plugin provides support for [ox-hugo](https://github.com/kaushalmodi/ox-hugo) compatibility. See [[OxHugo compatibility]] for more information.\n\n> [!note]",
           "slug": "OxHugoFlavoredMarkdown"
         },
         {
           "type": "file",
           "name": "RemoveDrafts.md",
-          "excerpt": "This plugin filters out content from your vault, so that only finalized content is made available. This prevents [[private pages]] from being published. By default, it filters out all pages with `draft: true` in the frontmatter and leaves all other pages intact.\n\n> [!note]",
           "slug": "RemoveDrafts"
         },
         {
           "type": "file",
           "name": "Static.md",
-          "excerpt": "This plugin emits all static resources needed by Quartz. This is used, for example, for fonts and images that need a stable position, such as banners and icons. The plugin respects the `ignorePatterns` in the global [[configuration]].\n\n> [!important]",
           "slug": "Static"
         },
         {
           "type": "file",
           "name": "SyntaxHighlighting.md",
-          "excerpt": "This plugin is used to add syntax highlighting to code blocks in Quartz. See [[syntax highlighting]] for more information.\n\n> [!note]",
           "slug": "SyntaxHighlighting"
         },
         {
           "type": "file",
           "name": "TableOfContents.md",
-          "excerpt": "This plugin generates a table of contents (TOC) for Markdown documents. See [[table of contents]] for more information.\n\n> [!note]",
           "slug": "TableOfContents"
         },
         {
           "type": "file",
           "name": "TagPage.md",
-          "excerpt": "This plugin emits dedicated pages for each tag used in the content. See [[folder and tag listings]] for more information.\n\n> [!note]",
           "slug": "TagPage"
-        },
-        {
-          "type": "file",
-          "name": "index.md",
-          "excerpt": "",
-          "slug": "index"
         }
       ]
     },
     {
       "type": "file",
       "name": "setting up your GitHub repository.md",
-      "excerpt": "First, make sure you have Quartz [[index#🪴 Get Started|cloned and setup locally]].\n\nThen, create a new repository on GitHub.com. Do **not** initialize the new repository with `README`, license, or `gitignore` files.",
       "slug": "setting-up-your-GitHub-repository"
     },
     {
       "type": "file",
       "name": "showcase.md",
-      "excerpt": "Want to see what Quartz can do? Here are some cool community gardens:\n\n- [Quartz Documentation (this site!)](https://quartz.jzhao.xyz/)",
       "slug": "showcase"
     },
     {
@@ -410,13 +347,11 @@
         {
           "type": "file",
           "name": "component.md",
-          "excerpt": "Want to create your own custom component? Check out the advanced guide on [[creating components]] for more information.",
           "slug": "component"
         },
         {
           "type": "file",
           "name": "plugin.md",
-          "excerpt": "",
           "slug": "plugin"
         }
       ]
@@ -424,7 +359,6 @@
     {
       "type": "file",
       "name": "upgrading.md",
-      "excerpt": "> [!note]\n> This is specifically a guide for upgrading Quartz 4 version to a more recent update. If you are coming from Quartz 3, check out the [[migrating from Quartz 3|migration guide]] for more info.\n",
       "slug": "upgrading"
     }
   ]

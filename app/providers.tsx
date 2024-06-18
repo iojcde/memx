@@ -1,12 +1,13 @@
 'use client'
 
-import { SearchProvider } from 'components/SearchContext'
+import Search from 'components/Search'
 import { ThemeProvider } from 'next-themes'
 
 export function Providers({ children }) {
     return (
         <ThemeProvider attribute="class">
-            <SearchProvider>{children}</SearchProvider>
+            <Search />
+            {children}
         </ThemeProvider>
     )
 }

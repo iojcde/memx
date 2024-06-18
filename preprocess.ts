@@ -2,6 +2,8 @@ import glob from 'tiny-glob'
 import path from 'path'
 import fs from 'fs'
 import type { DirectoryNode, TreeNode } from 'types/TreeNode'
+import { read } from 'to-vfile'
+import { title } from 'process'
 
 const root_folder = `data`
 
@@ -61,14 +63,6 @@ const getMetadata = (filePath: string, lines = 3) => {
         title: filePath.split(`/`).pop()?.replace(`.md`, ``) as string,
         slug: newSlug,
         // ignore frontmatter from excerpt for number lines
-        excerpt: content
-            .split(`---`)
-            .slice(2, lines + 2)
-            .join(``)
-            .trim()
-            .split(`\n`)
-            .slice(0, lines)
-            .join(`\n`),
     }
 }
 
@@ -99,7 +93,6 @@ const buildTree = async (): Promise<DirectoryNode> => {
                 current.children.push({
                     type: `file`,
                     name: part,
-                    excerpt: meta.excerpt,
                     slug: meta.slug,
                 })
             } else {
@@ -154,6 +147,8 @@ const mapFiles = (tree) => {
         `utf-8`,
     )
     console.log(`File map saved to ./assets/filemap.json`)
+
+    return fileMap
 }
 
 const mapBacklinks = async () => {
@@ -178,8 +173,9 @@ const mapBacklinks = async () => {
                         (value.split(`/`).slice(0, -1).join(`/`) ==
                             filemap[slug].split(`/`).slice(0, -1).join(`/`) &&
                             value.split(`/`).pop()?.replace(`.md`, ``) ===
-                            mentioned.split(`/`).pop())
-                        || value.split(`/`).pop()?.replace(`.md`, ``) === mentioned.split(`/`).pop()
+                            mentioned.split(`/`).pop()) ||
+                        value.split(`/`).pop()?.replace(`.md`, ``) ===
+                        mentioned.split(`/`).pop(),
                 ) ?? []
 
             if (
@@ -197,6 +193,7 @@ const mapBacklinks = async () => {
                 }
                 // return
             } else if (!mentionedSlug) {
+                if (mentioned.startsWith(`#`) || mentioned.endsWith(`/`)) return
                 console.log(
                     `warning: found broken backlink [[${mentioned}]] in ${filemap[slug]}`,
                 )
@@ -235,6 +232,24 @@ const mapBacklinks = async () => {
     console.log(`Backlinks saved to ./assets/backlinks.json`)
 }
 
+const buildSearchIndex = (filemap) => {
+    const index: Record<string, unknown> = {}
+    Object.entries(filemap).forEach(([slug, path]: [string, string]) => {
+        const file = fs.readFileSync(`./data/${path}`, `utf-8`)
+        
+        index[slug] = {
+            title: path.split(`/`).pop()?.replace(`.md`, ``),
+            content: file,
+        }
+    })
+
+    fs.writeFileSync(
+        `./assets/search-index.json`,
+        JSON.stringify(index, null, 2),
+    )
+    console.log(`Search index saved to ./assets/search-index.json`)
+}
+
 const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
     const treeJson = JSON.stringify(tree, null, 2)
     fs.writeFileSync(filePath, treeJson, `utf-8`)
@@ -245,7 +260,8 @@ const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
         const tree = await buildTree()
         saveTreeToFile(tree, `./assets/tree.json`)
 
-        mapFiles(tree)
+        const filemap = mapFiles(tree)
+        buildSearchIndex(filemap)
 
         mapBacklinks()
     })()

@@ -57,6 +57,7 @@
     "to-vfile": "^8.0.0",
     "transliteration": "^2.3.5",
     "unified": "^11.0.4",
+    "use-debounce": "^10.0.1",
     "vfile-matter": "^5.0.0"
   },
   "devDependencies": {
