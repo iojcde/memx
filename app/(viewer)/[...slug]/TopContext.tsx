@@ -53,8 +53,10 @@ const TopContext = ({
                 </div>
             )}
             <div
-                className={`sticky top-0 z-10 flex h-10  w-full items-center gap-2  rounded-b-xl  border-x  border-b border-neutral-200 border-transparent bg-[#faf8f8] bg-opacity-90 pl-4 pr-6 backdrop-blur backdrop-filter transition duration-200 dark:bg-black  lg:px-8 ${
-                    top ? `border-0` : `border-inherit  shadow-sm`
+                className={`sticky top-0 z-10 flex h-10  w-full items-center gap-2  rounded-b-xl  border-x  border-b border-neutral-200   bg-[#faf8f8] bg-opacity-90 pl-4 pr-6 backdrop-blur backdrop-filter transition dark:bg-black  lg:px-8 ${
+                    top
+                        ? `border-transparent`
+                        : ` border-neutral-200  shadow-sm`
                 }`}
             >
                 <button
