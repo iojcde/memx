@@ -299,7 +299,7 @@ const GraphComponent = ({
                 context!.stroke()
             }
             function drawNode(d) {
-                context.moveTo(d.x + 5, d.y)
+                context!.moveTo(d.x + 5, d.y)
                 context!.beginPath()
                 context!.arc(d.x, d.y, nodeRadius(d), 0, 2 * Math.PI, true)
                 context!.fillStyle = color(d)
