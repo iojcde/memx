@@ -75,13 +75,13 @@ const GraphComponent = ({
     fullSlug: string
     config: Partial<D3Config>
 }) => {
-    const graphContainerRef = useRef(null)
+    const graphContainerRef = useRef<HTMLDivElement>(null)
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const [transform, setTransform] = useState(d3.zoomIdentity)
 
     useEffect(() => {
         const graphContainer = graphContainerRef.current
-        if (graphContainer.children.length > 0) {
+        if (graphContainer?.children) {
             return
         }
 
