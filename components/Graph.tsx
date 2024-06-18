@@ -482,9 +482,9 @@ const GraphComponent = ({
     )
 }
 
-const Graph = ({ slug }) => {
+const Graph = () => {
     const path = usePathname()
-    if (!slug) slug = decodeURIComponent(path ?? `/`)
+    const slug = decodeURIComponent(path ?? `/`)
 
     const [showLocal, setShowLocal] = useState(true)
     const localGraph = { ...defaultOptions.localGraph }
