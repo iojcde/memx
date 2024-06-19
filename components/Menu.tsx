@@ -9,7 +9,7 @@ const Menu = () => {
   return (
     <>
       <button
-        className={`fixed inset-0 z-40 bg-black transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-black transition-opacity  ${
           open
             ? `pointer-events-auto opacity-20`
             : ` pointer-events-none opacity-0`

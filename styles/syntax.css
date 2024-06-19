@@ -67,11 +67,11 @@
 }
 
 code[class*='language-'] {
-    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black transition duration-100;
+    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black transition ;
 }
 
 pre[class*='language-'] {
-    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black border border-neutral-200 dark:border-neutral-700 transition duration-100;
+    @apply text-neutral-800 dark:text-neutral-50 bg-neutral-100 dark:bg-black border border-neutral-200 dark:border-neutral-700 transition ;
 }
 
 pre::-webkit-scrollbar {
@@ -86,7 +86,7 @@ pre {
 }
 
 .rehype-code-title {
-    @apply transition duration-100 px-5 py-3 font-mono text-sm font-bold text-neutral-800 bg-neutral-200 border border-b-0 border-neutral-200 rounded-t-lg dark:text-neutral-200 dark:border-neutral-700 dark:bg-black;
+    @apply transition  px-5 py-3 font-mono text-sm font-bold text-neutral-800 bg-neutral-200 border border-b-0 border-neutral-200 rounded-t-lg dark:text-neutral-200 dark:border-neutral-700 dark:bg-black;
 }
 
 .rehype-code-title+pre {

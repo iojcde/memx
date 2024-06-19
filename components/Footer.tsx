@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="dark relative z-0 mx-auto h-screen overflow-hidden border-t bg-black transition duration-100"
+      className="dark relative z-0 mx-auto h-screen overflow-hidden border-t bg-black transition "
       aria-labelledby="footerHeading"
       data-cursor="-inverse"
     >
