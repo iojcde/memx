@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, SVGProps } from 'react'
 
-export const SearchIcon: FC = (props: any) => {
+export const SearchIcon: FC<SVGProps> = (props:SVGProps) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

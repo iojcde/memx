@@ -8,11 +8,11 @@ import '../styles/fonts.css'
 
 import localFont from 'next/font/local'
 import tree from 'assets/tree.json'
-
-import { Providers } from './providers'
+import { ThemeProvider } from 'next-themes'
 import { Sidebar } from './(viewer)/Sidebar'
 import { DirectoryNode } from 'types/TreeNode'
 import dynamic from 'next/dynamic'
+import { SearchMenu } from 'components/Search'
 
 const inter = localFont({
     src: '../public/static/fonts/Inter.var.woff2',
@@ -30,8 +30,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head />
             <body className={`${inter.className} relative h-dvh`}>
-                <Providers>
+
+                <ThemeProvider attribute="class">
+                    <SearchMenu />
                     <div className="mx-auto flex max-w-[90rem]">
                         <div className=" sticky top-0 hidden h-dvh self-start  lg:block lg:w-[22rem] ">
                             <Sidebar tree={tree as DirectoryNode} />
@@ -44,7 +47,7 @@ export default function RootLayout({
                             <Graph />
                         </div>
                     </div>
-                </Providers>
+                </ThemeProvider>
             </body>
         </html>
     )

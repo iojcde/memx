@@ -57,6 +57,41 @@
       "children": [
         {
           "type": "file",
+          "name": "Docker Support.md",
+          "slug": "Docker-Support"
+        },
+        {
+          "type": "file",
+          "name": "Latex.md",
+          "slug": "Latex"
+        },
+        {
+          "type": "file",
+          "name": "Mermaid diagrams.md",
+          "slug": "Mermaid-diagrams"
+        },
+        {
+          "type": "file",
+          "name": "Obsidian compatibility.md",
+          "slug": "Obsidian-compatibility"
+        },
+        {
+          "type": "file",
+          "name": "OxHugo compatibility.md",
+          "slug": "OxHugo-compatibility"
+        },
+        {
+          "type": "file",
+          "name": "RSS Feed.md",
+          "slug": "RSS-Feed"
+        },
+        {
+          "type": "file",
+          "name": "SPA Routing.md",
+          "slug": "SPA-Routing"
+        },
+        {
+          "type": "file",
           "name": "backlinks.md",
           "slug": "backlinks"
         },
@@ -74,11 +109,6 @@
           "type": "file",
           "name": "darkmode.md",
           "slug": "darkmode"
-        },
-        {
-          "type": "file",
-          "name": "Docker Support.md",
-          "slug": "Docker-Support"
         },
         {
           "type": "file",
@@ -112,26 +142,6 @@
         },
         {
           "type": "file",
-          "name": "Latex.md",
-          "slug": "Latex"
-        },
-        {
-          "type": "file",
-          "name": "Mermaid diagrams.md",
-          "slug": "Mermaid-diagrams"
-        },
-        {
-          "type": "file",
-          "name": "Obsidian compatibility.md",
-          "slug": "Obsidian-compatibility"
-        },
-        {
-          "type": "file",
-          "name": "OxHugo compatibility.md",
-          "slug": "OxHugo-compatibility"
-        },
-        {
-          "type": "file",
           "name": "popover previews.md",
           "slug": "popover-previews"
         },
@@ -144,16 +154,6 @@
           "type": "file",
           "name": "recent notes.md",
           "slug": "recent-notes"
-        },
-        {
-          "type": "file",
-          "name": "RSS Feed.md",
-          "slug": "RSS-Feed"
-        },
-        {
-          "type": "file",
-          "name": "SPA Routing.md",
-          "slug": "SPA-Routing"
         },
         {
           "type": "file",
@@ -279,11 +279,6 @@
         },
         {
           "type": "file",
-          "name": "index.md",
-          "slug": "index"
-        },
-        {
-          "type": "file",
           "name": "Latex.md",
           "slug": "Latex"
         },
@@ -326,6 +321,11 @@
           "type": "file",
           "name": "TagPage.md",
           "slug": "TagPage"
+        },
+        {
+          "type": "file",
+          "name": "index.md",
+          "slug": "index"
         }
       ]
     },
