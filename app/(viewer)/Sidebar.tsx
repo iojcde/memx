@@ -163,7 +163,8 @@ export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
                         activePath={usePathname() || ``}
                         parentPath=""
                     />
-                </div>{' '}
+                </div>
+                {` `}
             </div>
         </aside>
     )

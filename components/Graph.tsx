@@ -139,7 +139,9 @@ const GraphComponent = ({
                 }
             })
 
-            let [source, details] = [slug, backlinks[slug]]
+            const source = slug
+            let details = backlinks[slug]
+
             if (!details)
                 details = {
                     links: [],
@@ -306,7 +308,7 @@ const GraphComponent = ({
 
                 const opacity = Math.min(1, Math.max(0, (transform.k - 1) * 2))
                 context!.fillStyle =
-                    resolvedTheme == 'dark'
+                    resolvedTheme == `dark`
                         ? `rgba(255, 255, 255, ${opacity})`
                         : `rgba(0, 0, 0, ${opacity})`
                 context!.font = `${fontSize / transform.k}em sans-serif`

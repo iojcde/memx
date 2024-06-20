@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 const Callout = ({ title, type, collapse, defaultState, children }) => {
-    const [collapsed, setCollapsed] = useState(defaultState != 'expanded')
+    const [collapsed, setCollapsed] = useState(defaultState != `expanded`)
 
     return (
         <blockquote
@@ -15,7 +15,7 @@ const Callout = ({ title, type, collapse, defaultState, children }) => {
                     className="callout-title-inner"
                     dangerouslySetInnerHTML={{ __html: title }}
                 />
-                {collapse == 'true' && (
+                {collapse == `true` && (
                     <button
                         className="fold-callout-icon"
                         onClick={() => setCollapsed(!collapsed)}

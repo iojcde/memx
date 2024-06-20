@@ -493,7 +493,7 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
             if (opts.callouts) {
                 plugins.push(() => {
                     return (tree, _file) =>
-                        visit(tree, 'blockquote', (node) => {
+                        visit(tree, `blockquote`, (node) => {
                             if (node.children.length === 0) {
                                 return
                             }
@@ -503,8 +503,8 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                                 node.children
 
                             if (
-                                firstChild.type !== 'paragraph' ||
-                                firstChild.children[0]?.type !== 'text'
+                                firstChild.type !== `paragraph` ||
+                                firstChild.children[0]?.type !== `text`
                             ) {
                                 return
                             }
@@ -513,8 +513,8 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                             const restOfTitle = firstChild.children.slice(1)
 
                             const [firstLine, ...remainingLines] =
-                                text.split('\n')
-                            const remainingText = remainingLines.join('\n')
+                                text.split(`\n`)
+                            const remainingText = remainingLines.join(`\n`)
 
                             const match = firstLine.match(calloutRegex)
                             if (match && match.input) {
@@ -528,26 +528,26 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
                                     typeString.toLowerCase(),
                                 )
                                 const collapse =
-                                    collapseChar === '+' || collapseChar === '-'
+                                    collapseChar === `+` || collapseChar === `-`
                                 const defaultState =
-                                    collapseChar === '-'
-                                        ? 'collapsed'
-                                        : 'expanded'
+                                    collapseChar === `-`
+                                        ? `collapsed`
+                                        : `expanded`
                                 const titleContent = match.input
                                     .slice(calloutDirective.length)
                                     .trim()
                                 const useDefaultTitle =
-                                    titleContent === '' &&
+                                    titleContent === `` &&
                                     restOfTitle.length === 0
 
                                 const titleNode: Paragraph = {
-                                    type: 'paragraph',
+                                    type: `paragraph`,
                                     children: [
                                         {
-                                            type: 'text',
+                                            type: `text`,
                                             value: useDefaultTitle
                                                 ? capitalize(typeString)
-                                                : titleContent + ' ',
+                                                : titleContent + ` `,
                                         },
                                         ...restOfTitle,
                                     ],
@@ -556,27 +556,27 @@ export const ObsidianFlavoredMarkdown = (userOpts: Partial<Options>) => {
 
                                 // Replace the original node with the new Callout component
                                 Object.assign(node, {
-                                    type: 'mdxJsxFlowElement',
-                                    name: 'Callout',
+                                    type: `mdxJsxFlowElement`,
+                                    name: `Callout`,
                                     attributes: [
                                         {
-                                            type: 'mdxJsxAttribute',
-                                            name: 'title',
+                                            type: `mdxJsxAttribute`,
+                                            name: `title`,
                                             value: title,
                                         },
                                         {
-                                            type: 'mdxJsxAttribute',
-                                            name: 'type',
+                                            type: `mdxJsxAttribute`,
+                                            name: `type`,
                                             value: calloutType,
                                         },
                                         {
-                                            type: 'mdxJsxAttribute',
-                                            name: 'collapse',
+                                            type: `mdxJsxAttribute`,
+                                            name: `collapse`,
                                             value: collapse,
                                         },
                                         {
-                                            type: 'mdxJsxAttribute',
-                                            name: 'defaultState',
+                                            type: `mdxJsxAttribute`,
+                                            name: `defaultState`,
                                             value: defaultState,
                                         },
                                     ],

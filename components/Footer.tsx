@@ -23,7 +23,7 @@ const Footer = () => {
                         <div className="col-span-2">
                             <div className="text-3xl">
                                 <a href="mailto:io@fosshost.org">
-                                    {' '}
+                                    {` `}
                                     &rarr; io@jcde.xyz
                                 </a>
                             </div>

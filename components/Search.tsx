@@ -35,6 +35,7 @@ const Item = forwardRef<HTMLDivElement, CustomItemComponentProps>(
     },
 )
 
+Item.displayName = `Item`
 export function SearchMenu() {
     const router = useRouter()
 
@@ -110,7 +111,7 @@ export function SearchMenu() {
         }))
         .filter(
             (i) =>
-                search != '' &&
+                search != `` &&
                 (i.title.toLowerCase().includes(search.toLowerCase()) ||
                     i.content.toLowerCase().includes(search.toLowerCase())),
         )
@@ -182,7 +183,7 @@ export function SearchMenu() {
                                             key={i}
                                             className="text-gray-11"
                                             onSelect={() => {
-                                                router.push('/' + item.slug)
+                                                router.push(`/` + item.slug)
                                                 toggleOpen(false)
                                             }}
                                         >
