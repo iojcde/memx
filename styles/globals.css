@@ -30,7 +30,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-[#faf8f8] dark:bg-black transition  dark:text-neutral-100;
+  @apply bg-[#faf8f8] dark:bg-black transition dark:text-neutral-100;
 }
 
 .prose a {
@@ -180,7 +180,7 @@ body .scroll-content {
   margin: 0.5em 0;
   position: relative;
   overflow: hidden;
-  @apply border-neutral-300 border;
+  @apply border;
 }
 
 .graph>.graph-outer>#global-graph-icon {

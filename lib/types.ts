@@ -1,23 +1,23 @@
 export enum Form {
-  Initial,
-  Loading,
-  Success,
-  Error,
+    Initial,
+    Loading,
+    Success,
+    Error,
 }
 
 export type FormState = {
-  state: Form
-  message?: string
+    state: Form
+    message?: string
 }
 
 export type Subscribers = {
-  count: number
+    count: number
 }
 
 export type Views = {
-  total: number
+    total: number
 }
 
 export type Gumroad = {
-  sales: number
+    sales: number
 }

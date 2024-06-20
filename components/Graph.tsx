@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { FullSlug, SimpleSlug, simplifySlug } from 'lib/path'
 import backlinks from 'assets/backlinks.json'
 import filemap from 'assets/filemap.json'
+import { useTheme } from 'next-themes'
 
 type NodeData = {
     id: SimpleSlug
@@ -76,8 +77,7 @@ const GraphComponent = ({
     config: Partial<D3Config>
 }) => {
     const graphContainerRef = useRef<HTMLDivElement>(null)
-    const [pos, setPos] = useState({ x: 0, y: 0 })
-    const [transform, setTransform] = useState(d3.zoomIdentity)
+    const { resolvedTheme } = useTheme()
 
     useEffect(() => {
         const graphContainer = graphContainerRef.current
@@ -208,7 +208,7 @@ const GraphComponent = ({
                     const text = url.startsWith(`tags/`)
                         ? `#${url.substring(5)}`
                         : filemap[url]?.split(`/`).pop().replace(`.md`, ``) ??
-                        url
+                          url
 
                     return {
                         id: url,
@@ -264,7 +264,7 @@ const GraphComponent = ({
                 )
                 .on(`tick`, ticked)
 
-            const zoom = d3.zoom().scaleExtent([0.25, 12]).on(`zoom`, zoomed)
+            const zoom = d3.zoom().scaleExtent([0.25, 4]).on(`zoom`, zoomed)
 
             let transform = d3.zoomIdentity
 
@@ -273,11 +273,10 @@ const GraphComponent = ({
                     (l: any) => l.source.id === d.id || l.target.id === d.id,
                 ).length
 
-                return (2 + Math.sqrt(numLinks)) / Math.sqrt(transform.k)
+                return (4 + Math.sqrt(numLinks)) / Math.sqrt(transform.k)
             }
 
             function ticked() {
-                setTransform(transform)
                 context!.clearRect(0, 0, width * dpi, height * dpi)
                 context!.save()
                 context!.translate(transform.x, transform.y)
@@ -306,7 +305,10 @@ const GraphComponent = ({
                 context!.fill()
 
                 const opacity = Math.min(1, Math.max(0, (transform.k - 1) * 2))
-                context!.fillStyle = `rgba(0, 0, 0, ${opacity})`
+                context!.fillStyle =
+                    resolvedTheme == 'dark'
+                        ? `rgba(255, 255, 255, ${opacity})`
+                        : `rgba(0, 0, 0, ${opacity})`
                 context!.font = `${fontSize / transform.k}em sans-serif`
                 context!.textAlign = `center`
                 context!.textBaseline = `middle`
@@ -353,8 +355,6 @@ const GraphComponent = ({
             // Mouseover and mouseout events for highlighting
             canvas.on(`mousemove`, function (event) {
                 const [x, y] = d3.pointer(event)
-                setPos({ x, y })
-
                 const node = simulation.find(
                     transform.invertX(x),
                     transform.invertY(y),
@@ -386,12 +386,12 @@ const GraphComponent = ({
                         context!.lineTo(d.target.x, d.target.y)
                         context!.strokeStyle =
                             connectedNodes.includes(d.source.id) &&
-                                connectedNodes.includes(d.target.id)
+                            connectedNodes.includes(d.target.id)
                                 ? `gray`
                                 : `lightgray`
                         context!.lineWidth =
                             connectedNodes.includes(d.source.id) &&
-                                connectedNodes.includes(d.target.id)
+                            connectedNodes.includes(d.target.id)
                                 ? 1 / transform.k
                                 : 0.5 / transform.k
                         context!.stroke()

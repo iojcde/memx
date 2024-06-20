@@ -15,9 +15,8 @@ export const process = async (f) => {
 
     const file = await unified()
         .use(remarkStringify)
-        .use(remarkParse) 
+        .use(remarkParse)
         .process(f)
- 
 
     return file
 }

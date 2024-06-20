@@ -6,16 +6,15 @@ import remarkMdx from 'remark-mdx'
 
 import { ObsidianFlavoredMarkdown } from 'lib/obsidian-flavored-markdown'
 const ofm = ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false })
- 
 
 export default async function Markdown({ content }) {
     // Compile the MDX source code to a function body
-     
+
     const code = String(
         await compile(content, {
             outputFormat: `function-body`,
             rehypePlugins: [rehypePrism],
-            remarkPlugins: [...ofm.markdownPlugins()!,remarkMdx],
+            remarkPlugins: [...ofm.markdownPlugins()!, remarkMdx],
         }),
     )
 

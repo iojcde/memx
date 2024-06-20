@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
-import { ReactNode, } from 'react'
+import { ReactNode } from 'react'
 import Callout from './Callout'
 interface Props {
     children: ReactNode
     href: string
     className?: string
 }
-
 
 const isExternalUrl = (link: string): boolean => !link.startsWith(`/`)
 

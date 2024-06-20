@@ -8,21 +8,41 @@ import {
     CommandInput,
     CommandList,
 } from 'components/ui/command'
-import { startTransition, useEffect, useState } from 'react'
+import {
+    forwardRef,
+    cloneElement,
+    ReactElement,
+    useEffect,
+    useState,
+    useRef,
+} from 'react'
 import searchIndex from 'assets/search-index.json'
 import { Dialog, DialogContent } from 'components/ui/dialog'
 import { useTheme } from 'next-themes'
 import { Home, Laptop, Moon, Plus, Settings, SunMedium } from 'lucide-react'
 import { useCommandState } from 'cmdk'
 import { useRouter } from 'next/navigation'
+import { CustomItemComponentProps, Virtualizer } from 'virtua'
+
+const Item = forwardRef<HTMLDivElement, CustomItemComponentProps>(
+    ({ children, style }, ref) => {
+        children = children as ReactElement
+
+        return cloneElement(children, {
+            ref,
+            style: { ...children.props.style, ...style },
+        })
+    },
+)
 
 export function SearchMenu() {
     const router = useRouter()
 
+    const ref = useRef<HTMLDivElement>(null)
     const [open, setOpen] = useState(false)
 
     const [search, setSearch] = useState(``)
-    const [pages, setPages] = useState([])
+    const [pages, setPages] = useState<string[]>([])
 
     const [selected, setSelected] = useState(``)
     const page = pages[pages.length - 1]
@@ -81,11 +101,24 @@ export function SearchMenu() {
         setSearch(``)
     }
 
-    const searchItems = Object.entries(searchIndex).map(([slug, details]) => ({
-        title: details.title,
-        content: details.content,
-        
-    }))
+    // score higher if included in title
+    const searchItems = Object.entries(searchIndex)
+        .map(([slug, details]) => ({
+            title: details.title,
+            content: details.content,
+            slug: slug,
+        }))
+        .filter(
+            (i) =>
+                search != '' &&
+                (i.title.toLowerCase().includes(search.toLowerCase()) ||
+                    i.content.toLowerCase().includes(search.toLowerCase())),
+        )
+        .sort(
+            (a, b) =>
+                (b.title.toLowerCase().includes(search.toLowerCase()) ? 1 : 0) -
+                (a.title.toLowerCase().includes(search.toLowerCase()) ? 1 : 0),
+        )
 
     return (
         <>
@@ -105,7 +138,9 @@ export function SearchMenu() {
                         ))}
                     </div>
                     <Command
+                        loop
                         value={selected}
+                        shouldFilter={false}
                         onValueChange={setSelected}
                         onKeyDown={(e) => {
                             // Escape goes to previous page
@@ -130,12 +165,33 @@ export function SearchMenu() {
                             onValueChange={setSearch}
                             placeholder="Type a command or search..."
                         />
-                        <CommandList className="mt-1.5 h-full max-h-none  sm:max-h-[325px]">
+                        <CommandList
+                            ref={ref}
+                            className="mt-1.5 h-full max-h-none  sm:max-h-[325px]"
+                        >
                             <Highlighter
                                 setSelected={setSelected}
                                 page={page}
                             />
-                            {!page && (
+
+                            <Virtualizer scrollRef={ref} item={Item}>
+                                <CommandEmpty>No results found.</CommandEmpty>
+                                <CommandGroup heading="Search">
+                                    {searchItems.map((item, i) => (
+                                        <CommandItem
+                                            key={i}
+                                            className="text-gray-11"
+                                            onSelect={() => {
+                                                router.push('/' + item.slug)
+                                                toggleOpen(false)
+                                            }}
+                                        >
+                                            {item.title}
+                                        </CommandItem>
+                                    ))}
+                                </CommandGroup>
+                            </Virtualizer>
+                            {/* {!page && (
                                 <>
                                     <CommandEmpty>
                                         No results found.
@@ -223,21 +279,7 @@ export function SearchMenu() {
                                         </CommandItem>
                                     </CommandGroup>
                                 </>
-                            )}
-
-                            <CommandGroup heading="Search">
-                                {searchItems.map((item, i) => (
-                                    <CommandItem
-                                        key={i}
-                                        className="text-gray-11"
-                                        onSelect={() => {
-                                            router.push('/' + items.slug)
-                                        }}
-                                    >
-                                        {item.title}
-                                    </CommandItem>
-                                ))}
-                            </CommandGroup>
+                            )} */}
                         </CommandList>
                     </Command>
                 </DialogContent>
@@ -284,7 +326,7 @@ const Highlighter = ({
         const firstItem = document.querySelector(`.command-menu [cmdk-item]`)
         if (firstItem) {
             firstItem.setAttribute(`aria-selected`, `true`)
-            setSelected(firstItem.getAttribute(`data-value`))
+            setSelected(firstItem.getAttribute(`data-value`) as string)
         }
     }, [page])
 

@@ -30,7 +30,7 @@ const TopContext = ({
         <>
             {open && (
                 <div className="fixed inset-0 z-50 h-dvh bg-neutral-900/20 pb-20 backdrop-blur-lg backdrop-filter">
-                    <div className="absolute left-0 h-full divide-y divide-neutral-200 border-r  bg-[#faf8f8]  p-4 ">
+                    <div className="absolute left-0 h-full divide-y divide-neutral-200 border-r    p-4 ">
                         <div className="flex items-center justify-between pb-2">
                             <h2 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200">
                                 Navigation

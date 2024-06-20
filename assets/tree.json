@@ -5,361 +5,47 @@
   "children": [
     {
       "type": "dir",
-      "name": "advanced",
-      "slug": "advanced",
+      "name": "React & Next.js 겨우 마스터하기",
+      "slug": "React-&-Next.js-겨우-마스터하기",
       "children": [
         {
           "type": "file",
-          "name": "architecture.md",
-          "slug": "architecture"
+          "name": "1탄.md",
+          "slug": "1탄"
         },
         {
           "type": "file",
-          "name": "creating components.md",
-          "slug": "creating-components"
+          "name": "2탄.md",
+          "slug": "2탄"
         },
         {
           "type": "file",
-          "name": "index.md",
-          "slug": "index"
+          "name": "3탄.md",
+          "slug": "3탄"
         },
         {
-          "type": "file",
-          "name": "making plugins.md",
-          "slug": "making-plugins"
-        },
-        {
-          "type": "file",
-          "name": "paths.md",
-          "slug": "paths"
+          "type": "dir",
+          "name": "test123",
+          "slug": "test123",
+          "children": [
+            {
+              "type": "file",
+              "name": "Markdown Syntax.md",
+              "slug": "Markdown-Syntax"
+            }
+          ]
         }
       ]
     },
     {
       "type": "file",
-      "name": "authoring content.md",
-      "slug": "authoring-content"
-    },
-    {
-      "type": "file",
-      "name": "build.md",
-      "slug": "build"
-    },
-    {
-      "type": "file",
-      "name": "configuration.md",
-      "slug": "configuration"
-    },
-    {
-      "type": "dir",
-      "name": "features",
-      "slug": "features",
-      "children": [
-        {
-          "type": "file",
-          "name": "Docker Support.md",
-          "slug": "Docker-Support"
-        },
-        {
-          "type": "file",
-          "name": "Latex.md",
-          "slug": "Latex"
-        },
-        {
-          "type": "file",
-          "name": "Mermaid diagrams.md",
-          "slug": "Mermaid-diagrams"
-        },
-        {
-          "type": "file",
-          "name": "Obsidian compatibility.md",
-          "slug": "Obsidian-compatibility"
-        },
-        {
-          "type": "file",
-          "name": "OxHugo compatibility.md",
-          "slug": "OxHugo-compatibility"
-        },
-        {
-          "type": "file",
-          "name": "RSS Feed.md",
-          "slug": "RSS-Feed"
-        },
-        {
-          "type": "file",
-          "name": "SPA Routing.md",
-          "slug": "SPA-Routing"
-        },
-        {
-          "type": "file",
-          "name": "backlinks.md",
-          "slug": "backlinks"
-        },
-        {
-          "type": "file",
-          "name": "breadcrumbs.md",
-          "slug": "breadcrumbs"
-        },
-        {
-          "type": "file",
-          "name": "callouts.md",
-          "slug": "callouts"
-        },
-        {
-          "type": "file",
-          "name": "darkmode.md",
-          "slug": "darkmode"
-        },
-        {
-          "type": "file",
-          "name": "explorer.md",
-          "slug": "explorer"
-        },
-        {
-          "type": "file",
-          "name": "folder and tag listings.md",
-          "slug": "folder-and-tag-listings"
-        },
-        {
-          "type": "file",
-          "name": "full-text search.md",
-          "slug": "full-text-search"
-        },
-        {
-          "type": "file",
-          "name": "graph view.md",
-          "slug": "graph-view"
-        },
-        {
-          "type": "file",
-          "name": "i18n.md",
-          "slug": "i18n"
-        },
-        {
-          "type": "file",
-          "name": "index.md",
-          "slug": "index"
-        },
-        {
-          "type": "file",
-          "name": "popover previews.md",
-          "slug": "popover-previews"
-        },
-        {
-          "type": "file",
-          "name": "private pages.md",
-          "slug": "private-pages"
-        },
-        {
-          "type": "file",
-          "name": "recent notes.md",
-          "slug": "recent-notes"
-        },
-        {
-          "type": "file",
-          "name": "syntax highlighting.md",
-          "slug": "syntax-highlighting"
-        },
-        {
-          "type": "file",
-          "name": "table of contents.md",
-          "slug": "table-of-contents"
-        },
-        {
-          "type": "file",
-          "name": "upcoming features.md",
-          "slug": "upcoming-features"
-        },
-        {
-          "type": "file",
-          "name": "wikilinks.md",
-          "slug": "wikilinks"
-        }
-      ]
-    },
-    {
-      "type": "file",
-      "name": "hosting.md",
-      "slug": "hosting"
+      "name": "hi.md",
+      "slug": "hi"
     },
     {
       "type": "file",
       "name": "index.md",
       "slug": "index"
-    },
-    {
-      "type": "file",
-      "name": "layout.md",
-      "slug": "layout"
-    },
-    {
-      "type": "file",
-      "name": "migrating from Quartz 3.md",
-      "slug": "migrating-from-Quartz-3"
-    },
-    {
-      "type": "file",
-      "name": "philosophy.md",
-      "slug": "philosophy"
-    },
-    {
-      "type": "dir",
-      "name": "plugins",
-      "slug": "plugins",
-      "children": [
-        {
-          "type": "file",
-          "name": "AliasRedirects.md",
-          "slug": "AliasRedirects"
-        },
-        {
-          "type": "file",
-          "name": "Assets.md",
-          "slug": "Assets"
-        },
-        {
-          "type": "file",
-          "name": "CNAME.md",
-          "slug": "CNAME"
-        },
-        {
-          "type": "file",
-          "name": "ComponentResources.md",
-          "slug": "ComponentResources"
-        },
-        {
-          "type": "file",
-          "name": "ContentIndex.md",
-          "slug": "ContentIndex"
-        },
-        {
-          "type": "file",
-          "name": "ContentPage.md",
-          "slug": "ContentPage"
-        },
-        {
-          "type": "file",
-          "name": "CrawlLinks.md",
-          "slug": "CrawlLinks"
-        },
-        {
-          "type": "file",
-          "name": "CreatedModifiedDate.md",
-          "slug": "CreatedModifiedDate"
-        },
-        {
-          "type": "file",
-          "name": "Description.md",
-          "slug": "Description"
-        },
-        {
-          "type": "file",
-          "name": "ExplicitPublish.md",
-          "slug": "ExplicitPublish"
-        },
-        {
-          "type": "file",
-          "name": "FolderPage.md",
-          "slug": "FolderPage"
-        },
-        {
-          "type": "file",
-          "name": "Frontmatter.md",
-          "slug": "Frontmatter"
-        },
-        {
-          "type": "file",
-          "name": "GitHubFlavoredMarkdown.md",
-          "slug": "GitHubFlavoredMarkdown"
-        },
-        {
-          "type": "file",
-          "name": "HardLineBreaks.md",
-          "slug": "HardLineBreaks"
-        },
-        {
-          "type": "file",
-          "name": "Latex.md",
-          "slug": "Latex"
-        },
-        {
-          "type": "file",
-          "name": "NotFoundPage.md",
-          "slug": "NotFoundPage"
-        },
-        {
-          "type": "file",
-          "name": "ObsidianFlavoredMarkdown.md",
-          "slug": "ObsidianFlavoredMarkdown"
-        },
-        {
-          "type": "file",
-          "name": "OxHugoFlavoredMarkdown.md",
-          "slug": "OxHugoFlavoredMarkdown"
-        },
-        {
-          "type": "file",
-          "name": "RemoveDrafts.md",
-          "slug": "RemoveDrafts"
-        },
-        {
-          "type": "file",
-          "name": "Static.md",
-          "slug": "Static"
-        },
-        {
-          "type": "file",
-          "name": "SyntaxHighlighting.md",
-          "slug": "SyntaxHighlighting"
-        },
-        {
-          "type": "file",
-          "name": "TableOfContents.md",
-          "slug": "TableOfContents"
-        },
-        {
-          "type": "file",
-          "name": "TagPage.md",
-          "slug": "TagPage"
-        },
-        {
-          "type": "file",
-          "name": "index.md",
-          "slug": "index"
-        }
-      ]
-    },
-    {
-      "type": "file",
-      "name": "setting up your GitHub repository.md",
-      "slug": "setting-up-your-GitHub-repository"
-    },
-    {
-      "type": "file",
-      "name": "showcase.md",
-      "slug": "showcase"
-    },
-    {
-      "type": "dir",
-      "name": "tags",
-      "slug": "tags",
-      "children": [
-        {
-          "type": "file",
-          "name": "component.md",
-          "slug": "component"
-        },
-        {
-          "type": "file",
-          "name": "plugin.md",
-          "slug": "plugin"
-        }
-      ]
-    },
-    {
-      "type": "file",
-      "name": "upgrading.md",
-      "slug": "upgrading"
     }
   ]
 }

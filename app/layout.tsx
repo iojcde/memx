@@ -32,7 +32,6 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <head />
             <body className={`${inter.className} relative h-dvh`}>
-
                 <ThemeProvider attribute="class">
                     <SearchMenu />
                     <div className="mx-auto flex max-w-[90rem]">
