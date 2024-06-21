@@ -163,7 +163,7 @@ const mapBacklinks = async () => {
         const links = String(content).match(/\[\[(.*?)\]\]/g) || []
 
         links.forEach((link) => {
-            const mentioned = link.match(/\[\[(.*?)(?:\|.*)?\]\]/)[1].trim()
+            const mentioned = link.match(/\[\[(.*?)(?:\|.*)?\]\]/)![1].trim()
 
             // search in values of filemap, including relative files
             const [mentionedSlug, _] =
