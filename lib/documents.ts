@@ -6,8 +6,7 @@ import { TreeNode } from 'types/TreeNode'
 import readingTime from 'reading-time'
 import filemap from 'assets/filemap.json'
 import backlinks from 'assets/backlinks.json'
-import nodepath from 'path'
-import { cwd } from 'process'
+import { resolve } from 'path'
 
 export async function getDocument({ slug }: { slug: string[] | string }) {
     if (typeof slug === `string`) slug = slug.split(`/`)
@@ -17,7 +16,7 @@ export async function getDocument({ slug }: { slug: string[] | string }) {
 
     const file = `data/` + filemap[target]
     // try {
-    const f = await processMarkdown(await read(file))
+    const f = await processMarkdown(await read(resolve(file)))
 
     const path = f.history[0].replace(`data/`, ``)
 
@@ -40,7 +39,7 @@ export const getAllDocuments = async () => {
 
     const docs = await Promise.all(
         files.map(async (file) => {
-            const f = await processMarkdown(await read(file))
+            const f = await processMarkdown(await read(resolve(file)))
             const path = f.history[0].replace(`data/`, ``)
 
             f.data.title = path.split(`/`).pop().replace(`.md`, ``)
@@ -58,7 +57,7 @@ export const getBacklinks = async (slug: string) => {
     if (!backlinks[slug]?.links) return []
     return await Promise.all(
         backlinks[slug].links.map(async (mentionedIn) => {
-            const doc = await read(`data/${filemap[mentionedIn]}`)
+            const doc = await read(resolve(`data/${filemap[mentionedIn]}`))
 
             const linkedFile = filemap[slug].replace(`.md`, ``)
 
