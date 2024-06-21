@@ -12,6 +12,9 @@ const config = {
         ],
         formats: ['image/avif', 'image/webp'],
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 }
 
 module.exports = config

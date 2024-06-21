@@ -478,7 +478,7 @@ const GraphComponent = ({
         return () => {
             // Cleanup if needed
         }
-    }, [])
+    }, [fullSlug])
 
     return (
         <>

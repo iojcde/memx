@@ -19,10 +19,19 @@ import {
 import searchIndex from 'assets/search-index.json'
 import { Dialog, DialogContent } from 'components/ui/dialog'
 import { useTheme } from 'next-themes'
-import { Home, Laptop, Moon, Plus, Settings, SunMedium } from 'lucide-react'
+import {
+    FileText,
+    Home,
+    Laptop,
+    Moon,
+    Plus,
+    Settings,
+    SunMedium,
+} from 'lucide-react'
 import { useCommandState } from 'cmdk'
 import { useRouter } from 'next/navigation'
 import { CustomItemComponentProps, Virtualizer } from 'virtua'
+import { ScrollArea } from './ui/scroll-area'
 
 const Item = forwardRef<HTMLDivElement, CustomItemComponentProps>(
     ({ children, style }, ref) => {
@@ -36,6 +45,7 @@ const Item = forwardRef<HTMLDivElement, CustomItemComponentProps>(
 )
 
 Item.displayName = `Item`
+
 export function SearchMenu() {
     const router = useRouter()
 
@@ -111,33 +121,23 @@ export function SearchMenu() {
         }))
         .filter(
             (i) =>
-                search != `` &&
-                (i.title.toLowerCase().includes(search.toLowerCase()) ||
-                    i.content.toLowerCase().includes(search.toLowerCase())),
+                i.title.toLowerCase().includes(search.toLowerCase()) ||
+                i.content.toLowerCase().includes(search.toLowerCase()),
         )
+        .slice(0, 20)
         .sort(
             (a, b) =>
                 (b.title.toLowerCase().includes(search.toLowerCase()) ? 1 : 0) -
                 (a.title.toLowerCase().includes(search.toLowerCase()) ? 1 : 0),
         )
+    const selectedURL = searchItems.find(
+        (i) => i.title.toLowerCase() === selected,
+    )?.slug
 
     return (
         <>
-            <Dialog open={open} onOpenChange={toggleOpen}>
-                <DialogContent className="command-menu ease-ease bottom-0 top-0 flex max-w-[38rem] flex-col gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[20%] sm:border-x">
-                    <div className="text-gray-11 flex h-[40px] gap-2 bg-background p-2 px-4 text-xs  ">
-                        <button className="bg-gray-3 rounded px-2 py-1 ">
-                            Home
-                        </button>
-                        {pages.map((page, i) => (
-                            <button
-                                className="bg-gray-3 rounded px-2 py-1 outline-none "
-                                key={i}
-                            >
-                                {page}
-                            </button>
-                        ))}
-                    </div>
+            <Dialog modal open={open} onOpenChange={toggleOpen}>
+                <DialogContent className="command-menu ease-ease  bottom-0 top-0 flex  max-w-[54rem] gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[10%] sm:border-x">
                     <Command
                         loop
                         value={selected}
@@ -164,35 +164,41 @@ export function SearchMenu() {
                             value={search}
                             autoFocus
                             onValueChange={setSearch}
-                            placeholder="Type a command or search..."
+                            placeholder="What are you searching for?"
+                            className="text-lg"
                         />
-                        <CommandList
-                            ref={ref}
-                            className="mt-1.5 h-full max-h-none  sm:max-h-[325px]"
-                        >
-                            <Highlighter
-                                setSelected={setSelected}
-                                page={page}
-                            />
-
-                            <Virtualizer scrollRef={ref} item={Item}>
+                        <div className="flex">
+                            <CommandList
+                                ref={ref}
+                                className="mt-1.5 h-full max-h-none w-full sm:max-h-[600px]"
+                            >
+                                <Highlighter
+                                    setSelected={setSelected}
+                                    page={page}
+                                />
                                 <CommandEmpty>No results found.</CommandEmpty>
-                                <CommandGroup heading="Search">
-                                    {searchItems.map((item, i) => (
-                                        <CommandItem
-                                            key={i}
-                                            className="text-gray-11"
-                                            onSelect={() => {
-                                                router.push(`/` + item.slug)
-                                                toggleOpen(false)
-                                            }}
-                                        >
-                                            {item.title}
-                                        </CommandItem>
-                                    ))}
-                                </CommandGroup>
-                            </Virtualizer>
-                            {/* {!page && (
+
+                                <Virtualizer scrollRef={ref} item={Item}>
+                                    <CommandGroup>
+                                        {searchItems.map((item, i) => (
+                                            <CommandItem
+                                                key={i}
+                                                className="text-gray-11"
+                                                onSelect={() => {
+                                                    router.push(`/` + item.slug)
+                                                    toggleOpen(false)
+                                                }}
+                                            >
+                                                <FileText
+                                                    className="text-neutral-300"
+                                                    size={12}
+                                                />
+                                                {item.title}
+                                            </CommandItem>
+                                        ))}
+                                    </CommandGroup>
+                                </Virtualizer>
+                                {/* {!page && (
                                 <>
                                     <CommandEmpty>
                                         No results found.
@@ -277,11 +283,18 @@ export function SearchMenu() {
                                         >
                                             <Moon />
                                             Dark
-                                        </CommandItem>
+                                    f    </CommandItem>
                                     </CommandGroup>
                                 </>
                             )} */}
-                        </CommandList>
+                            </CommandList>
+                            <div className="w-full border-l">
+                                <iframe
+                                    src={`/` + selectedURL}
+                                    className="h-full w-full"
+                                />
+                            </div>
+                        </div>
                     </Command>
                 </DialogContent>
             </Dialog>
