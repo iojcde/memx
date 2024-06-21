@@ -17,12 +17,7 @@ export async function getDocument({ slug }: { slug: string[] | string }) {
 
     const file = `data/` + filemap[target]
     // try {
-    const f = await processMarkdown(
-        await read({
-            path: file,
-            cwd: cwd(),
-        }),
-    )
+    const f = await processMarkdown(await read(file))
 
     const path = f.history[0].replace(`data/`, ``)
 
@@ -45,12 +40,7 @@ export const getAllDocuments = async () => {
 
     const docs = await Promise.all(
         files.map(async (file) => {
-            const f = await processMarkdown(
-                await read({
-                    path: file,
-                    cwd: cwd(),
-                }),
-            )
+            const f = await processMarkdown(await read(file))
             const path = f.history[0].replace(`data/`, ``)
 
             f.data.title = path.split(`/`).pop().replace(`.md`, ``)
@@ -68,10 +58,7 @@ export const getBacklinks = async (slug: string) => {
     if (!backlinks[slug]?.links) return []
     return await Promise.all(
         backlinks[slug].links.map(async (mentionedIn) => {
-            const doc = await read({
-                path: `data/${filemap[mentionedIn]}`,
-                cwd: cwd(),
-            })
+            const doc = await read(`data/${filemap[mentionedIn]}`)
 
             const linkedFile = filemap[slug].replace(`.md`, ``)
 

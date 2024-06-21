@@ -15,6 +15,11 @@ const config = {
     eslint: {
         ignoreDuringBuilds: true,
     },
+    experimental: {
+        outputFileTracingIncludes: {
+            '/(viewer)/[...slug]': ['./data/**/*'],
+        },
+    },
 }
 
 module.exports = config
