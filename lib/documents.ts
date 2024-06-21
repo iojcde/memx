@@ -7,6 +7,7 @@ import readingTime from 'reading-time'
 import filemap from 'assets/filemap.json'
 import backlinks from 'assets/backlinks.json'
 import nodepath from 'path'
+import { cwd } from 'process'
 
 export async function getDocument({ slug }: { slug: string[] | string }) {
     if (typeof slug === `string`) slug = slug.split(`/`)
@@ -17,7 +18,10 @@ export async function getDocument({ slug }: { slug: string[] | string }) {
     const file = `data/` + filemap[target]
     // try {
     const f = await processMarkdown(
-        await read(nodepath.join(process.cwd(), file)),
+        await read({
+            path: file,
+            cwd: cwd(),
+        }),
     )
 
     const path = f.history[0].replace(`data/`, ``)
@@ -42,7 +46,10 @@ export const getAllDocuments = async () => {
     const docs = await Promise.all(
         files.map(async (file) => {
             const f = await processMarkdown(
-                await read(nodepath.join(process.cwd(), file)),
+                await read({
+                    path: file,
+                    cwd: cwd(),
+                }),
             )
             const path = f.history[0].replace(`data/`, ``)
 
@@ -61,9 +68,10 @@ export const getBacklinks = async (slug: string) => {
     if (!backlinks[slug]?.links) return []
     return await Promise.all(
         backlinks[slug].links.map(async (mentionedIn) => {
-            const doc = await read(
-                nodepath.join(process.cwd(), `data/${filemap[mentionedIn]}`),
-            )
+            const doc = await read({
+                path: `data/${filemap[mentionedIn]}`,
+                cwd: cwd(),
+            })
 
             const linkedFile = filemap[slug].replace(`.md`, ``)
 
