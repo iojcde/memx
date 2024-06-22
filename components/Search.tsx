@@ -290,7 +290,7 @@ export function SearchMenu() {
                             </CommandList>
                             <div className="w-full border-l">
                                 <iframe
-                                    src={`/` + selectedURL}
+                                    src={`/` + selectedURL+'/preview'}
                                     className="h-full w-full"
                                 />
                             </div>

@@ -18,7 +18,7 @@ export async function getDocument({ slug }: { slug: string[] | string }) {
     // try {
     const f = await processMarkdown(await read(resolve(file)))
 
-    const path = f.history[0].replace(`data/`, ``).replace(process.cwd(), ``)
+    const path = f.history[0].replace(`data/`, ``).replace(`${process.cwd()}/`, ``)
 
     f.data.title = path.split(`/`).pop().replace(`.md`, ``)
     f.data.slug = path.replaceAll(` `, `-`).replace(`.md`, ``)

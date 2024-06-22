@@ -13,7 +13,7 @@ const discussUrl = (slug: string) =>
         `https://jcde.xyz/blog/${slug}`,
     )}`
 
-export default async function PostPage({ params }) {
+export default async function PostPage({ params,preview }) {
     const slug = params.slug
 
     const post = await getDocument({ slug })
