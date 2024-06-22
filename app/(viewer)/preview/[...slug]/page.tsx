@@ -1,4 +1,4 @@
-import PostPage from "../page";
+import PostPage from "../../[...slug]/page";
 const PreviewPage = ({params}) => {
     return (
         <PostPage params={params} preview={false} />
