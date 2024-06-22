@@ -29,11 +29,13 @@ export default async function PostPage({ params,preview }) {
     return (
         <>
             <div className="relative mb-16 mt-16 w-full max-w-4xl flex-col items-start justify-center lg:mt-0 ">
-                <TopContext
+             {
+                !preview && (   <TopContext
                     title={post.data.title}
                     tree={tree}
                     context={context}
-                />
+                />)
+             }
                 <header className="relative w-full px-6 lg:px-8">
                     <h1 className="mt-4 text-3xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 lg:text-4xl">
                         {post.data.title}

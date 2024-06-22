@@ -137,7 +137,7 @@ export function SearchMenu() {
     return (
         <>
             <Dialog modal open={open} onOpenChange={toggleOpen}>
-                <DialogContent className="command-menu ease-ease  bottom-0 top-0 flex  max-w-[54rem] gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[10%] sm:border-x">
+                <DialogContent className="command-menu ease-ease  bottom-0 top-0 flex  max-w-[60rem] gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[10%] sm:border-x">
                     <Command
                         loop
                         value={selected}
@@ -170,7 +170,7 @@ export function SearchMenu() {
                         <div className="flex">
                             <CommandList
                                 ref={ref}
-                                className="mt-1.5 h-full max-h-none w-full sm:max-h-[600px]"
+                                className="mt-1.5 h-full max-h-none w-full max-w-[18rem] sm:max-h-[600px]"
                             >
                                 <Highlighter
                                     setSelected={setSelected}

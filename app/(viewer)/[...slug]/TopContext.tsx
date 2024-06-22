@@ -29,7 +29,7 @@ const TopContext = ({
     return (
         <>
             {open && (
-                <div className="fixed inset-0 z-50 h-dvh bg-neutral-900/20 pb-20 backdrop-blur-lg backdrop-filter">
+                <div className="fixed inset-0 z-50 h-dvh bg-neutral-100/20 dark:bg-neutral-900/20  pb-20 backdrop-blur-lg backdrop-filter">
                     <div className="absolute left-0 h-full divide-y divide-neutral-200 border-r    p-4 ">
                         <div className="flex items-center justify-between pb-2">
                             <h2 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200">
@@ -53,7 +53,7 @@ const TopContext = ({
                 </div>
             )}
             <div
-                className={`sticky top-0 z-10 flex h-10 w-full  items-center gap-2 rounded-b-xl  border-x  border-b  bg-[#faf8f8]  bg-opacity-90 pl-4 pr-6 transition dark:bg-black  lg:px-8 ${
+                className={`sticky top-0 z-10 flex h-10 w-full  items-center gap-2 rounded-b-xl  border-x  border-b  bg-[#faf8f8]  bg-opacity-90 pl-4 pr-6 transition dark:bg-neutral-950  lg:px-8 ${
                     top
                         ? `border-transparent`
                         : ` border-border  shadow-sm  backdrop-blur`

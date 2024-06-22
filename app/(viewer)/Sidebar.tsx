@@ -155,7 +155,7 @@ export const Sidebar: FC<{ tree: DirectoryNode }> = ({ tree }) => {
             </div>
 
             <div className="min-h-0 shrink  pb-4">
-                <h3 className="text-sm font-bold text-neutral-700">Explorer</h3>
+                <h3 className="text-sm font-bold text-neutral-700 dark:text-neutral-200">Explorer</h3>
                 <div className="-ml-4 mt-2 h-full overflow-y-scroll ">
                     <Tree
                         tree={tree.children}

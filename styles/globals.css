@@ -30,7 +30,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-[#faf8f8] dark:bg-black transition dark:text-neutral-100;
+  @apply bg-[#faf8f8] dark:bg-neutral-950 transition dark:text-neutral-100;
 }
 
 .prose a {
