@@ -1,6 +1,6 @@
 import PostPage from './(viewer)/[...slug]/page'
 
 const Index = () => {
-    return <PostPage params={{ slug: `index` }} />
+    return <PostPage preview={false} params={{ slug: `index` }} />
 }
 export default Index
