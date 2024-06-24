@@ -105,12 +105,13 @@ export const getBacklinks = async (slug: string) => {
                     `Backlink not found in ${mentionedIn} for ${slug}`,
                 )
             }
+            const rawpath = resolve(doc.history[0])
             const text = `${before} [[${center}]] ${after}`
-            const title = doc.history[0].split(`/`).pop().replace(`.md`, ``)
+            const title = rawpath.split(`/`).pop()?.replace(`.md`, ``)
 
             return {
                 title,
-                url: doc.history[0]
+                url: rawpath
                     .replace(`data/`, ``)
                     .replace(`.md`, ``)
                     .replaceAll(` `, `-`),

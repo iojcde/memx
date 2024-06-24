@@ -2,8 +2,6 @@ import glob from 'tiny-glob'
 import path from 'path'
 import fs from 'fs'
 import type { DirectoryNode, TreeNode } from 'types/TreeNode'
-import { read } from 'to-vfile'
-import { title } from 'process'
 
 const root_folder = `data`
 
