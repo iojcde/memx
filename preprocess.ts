@@ -118,12 +118,15 @@ const buildTree = async (): Promise<DirectoryNode> => {
 }
 
 const mapFiles = (tree) => {
+    const dirs: Record<string, string> = {}
+
     const traverse = (node: TreeNode, parentSlug = ``, parentName = ``) => {
         if (node.type === `file`) {
             node.slug = parentSlug
             node.name = parentName
             return node
         } else {
+            node.slug && (dirs[parentSlug + `/`] = parentName)
             return node.children.flatMap((child) =>
                 traverse(
                     child,
@@ -136,10 +139,12 @@ const mapFiles = (tree) => {
 
     const allFiles = traverse(tree)
     //make into slug:title map
-    const fileMap = allFiles.reduce((acc, file) => {
+    let fileMap = allFiles.reduce((acc, file) => {
         acc[file.slug] = file.name
         return acc
     }, {})
+
+    fileMap = { ...fileMap, ...dirs }
 
     fs.writeFileSync(
         `./assets/filemap.json`,
@@ -158,6 +163,7 @@ const mapBacklinks = async () => {
     const backlinks = {}
 
     for (const slug of Object.keys(filemap)) {
+        if (slug.endsWith(`/`)) return
         const content = fs.readFileSync(`./data/${filemap[slug]}`, `utf-8`)
 
         const links = String(content).match(/\[\[(.*?)\]\]/g) || []
@@ -173,9 +179,9 @@ const mapBacklinks = async () => {
                         (value.split(`/`).slice(0, -1).join(`/`) ==
                             filemap[slug].split(`/`).slice(0, -1).join(`/`) &&
                             value.split(`/`).pop()?.replace(`.md`, ``) ===
-                                mentioned.split(`/`).pop()) ||
+                            mentioned.split(`/`).pop()) ||
                         value.split(`/`).pop()?.replace(`.md`, ``) ===
-                            mentioned.split(`/`).pop(),
+                        mentioned.split(`/`).pop(),
                 ) ?? []
 
             if (
@@ -235,6 +241,7 @@ const mapBacklinks = async () => {
 const buildSearchIndex = (filemap) => {
     const index: Record<string, unknown> = {}
     Object.entries(filemap).forEach(([slug, path]: [string, string]) => {
+        if (slug.endsWith(`/`)) return
         const file = fs.readFileSync(`./data/${path}`, `utf-8`)
 
         index[slug] = {
@@ -256,12 +263,12 @@ const saveTreeToFile = (tree: DirectoryNode, filePath: string): void => {
     console.log(`Tree structure saved to ${filePath}`)
 }
 
-;(async function () {
-    const tree = await buildTree()
-    saveTreeToFile(tree, `./assets/tree.json`)
+    ; (async function () {
+        const tree = await buildTree()
+        saveTreeToFile(tree, `./assets/tree.json`)
 
-    const filemap = mapFiles(tree)
-    buildSearchIndex(filemap)
+        const filemap = mapFiles(tree)
+        buildSearchIndex(filemap)
 
-    mapBacklinks()
-})()
+        mapBacklinks()
+    })()

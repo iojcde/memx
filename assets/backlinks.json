@@ -1,20 +1,20 @@
 {
   "React-&-Next.js-겨우-마스터하기/2탄": {
     "links": [
-      "React-&-Next.js-겨우-마스터하기/1탄",
-      "hi"
+      "hi",
+      "React-&-Next.js-겨우-마스터하기/1탄"
     ],
     "tags": [
       "webdev"
     ]
   },
+  "hi": {},
+  "index": {},
   "React-&-Next.js-겨우-마스터하기/1탄": {
     "links": [
       "React-&-Next.js-겨우-마스터하기/2탄"
     ]
   },
   "React-&-Next.js-겨우-마스터하기/3탄": {},
-  "React-&-Next.js-겨우-마스터하기/test123/Markdown-Syntax": {},
-  "hi": {},
-  "index": {}
+  "React-&-Next.js-겨우-마스터하기/test123/Markdown-Syntax": {}
 }

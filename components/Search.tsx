@@ -137,7 +137,7 @@ export function SearchMenu() {
     return (
         <>
             <Dialog modal open={open} onOpenChange={toggleOpen}>
-                <DialogContent className="command-menu ease-ease  bottom-0 top-0 flex  max-w-[60rem] gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[10%] sm:border-x">
+                <DialogContent className="command-menu ease-ease  bottom-0 top-0 flex max-w-[38rem] gap-0 overflow-hidden  border-x-0 p-0 shadow-xl outline-none transition  sm:bottom-auto sm:top-[20%] sm:border-x">
                     <Command
                         loop
                         value={selected}
@@ -167,38 +167,37 @@ export function SearchMenu() {
                             placeholder="What are you searching for?"
                             className="text-lg"
                         />
-                        <div className="flex">
-                            <CommandList
-                                ref={ref}
-                                className="mt-1.5 h-full max-h-none w-full max-w-[18rem] sm:max-h-[600px]"
-                            >
-                                <Highlighter
-                                    setSelected={setSelected}
-                                    page={page}
-                                />
-                                <CommandEmpty>No results found.</CommandEmpty>
+                        <CommandList
+                            ref={ref}
+                            className="mt-1.5 h-full max-h-none w-full "
+                        >
+                            <Highlighter
+                                setSelected={setSelected}
+                                page={page}
+                            />
+                            <CommandEmpty>No results found.</CommandEmpty>
 
-                                <Virtualizer scrollRef={ref} item={Item}>
-                                    <CommandGroup>
-                                        {searchItems.map((item, i) => (
-                                            <CommandItem
-                                                key={i}
-                                                className="text-gray-11"
-                                                onSelect={() => {
-                                                    router.push(`/` + item.slug)
-                                                    toggleOpen(false)
-                                                }}
-                                            >
-                                                <FileText
-                                                    className="text-neutral-300"
-                                                    size={12}
-                                                />
-                                                {item.title}
-                                            </CommandItem>
-                                        ))}
-                                    </CommandGroup>
-                                </Virtualizer>
-                                {/* {!page && (
+                            <Virtualizer scrollRef={ref} item={Item}>
+                                <CommandGroup>
+                                    {searchItems.map((item, i) => (
+                                        <CommandItem
+                                            key={i}
+                                            className="text-gray-11"
+                                            onSelect={() => {
+                                                router.push(`/` + item.slug)
+                                                toggleOpen(false)
+                                            }}
+                                        >
+                                            <FileText
+                                                className="text-neutral-300"
+                                                size={12}
+                                            />
+                                            {item.title}
+                                        </CommandItem>
+                                    ))}
+                                </CommandGroup>
+                            </Virtualizer>
+                            {/* {!page && (
                                 <>
                                     <CommandEmpty>
                                         No results found.
@@ -287,14 +286,7 @@ export function SearchMenu() {
                                     </CommandGroup>
                                 </>
                             )} */}
-                            </CommandList>
-                            <div className="w-full border-l">
-                                <iframe
-                                    src={`/preview/` + selectedURL}
-                                    className="h-full w-full"
-                                />
-                            </div>
-                        </div>
+                        </CommandList>
                     </Command>
                 </DialogContent>
             </Dialog>

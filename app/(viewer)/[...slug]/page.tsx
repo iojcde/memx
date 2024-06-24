@@ -5,7 +5,8 @@ import Image from 'next/image'
 import tree from 'assets/tree.json'
 import TopContext from './TopContext'
 import Markdown from 'components/Markdown'
-
+import filemap from 'assets/filemap.json'
+import DirectoryPage from './Directory'
 const editUrl = (slug: string) =>
     `https://github.com/iojcde/memx/edit/main/data/blog/${slug}.mdx`
 const discussUrl = (slug: string) =>
@@ -13,12 +14,30 @@ const discussUrl = (slug: string) =>
         `https://jcde.xyz/blog/${slug}`,
     )}`
 
-export default async function PostPage({ params,preview }) {
-    const slug = params.slug
+export default async function PostPage({ params, preview }) {
+    let slug = params.slug
 
     const post = await getDocument({ slug })
 
     if (!post) {
+        if (typeof slug === `string`) slug = slug.split(`/`)
+
+        const target = slug.map((s) => decodeURIComponent(s)).join(`/`)
+        if (filemap[target + `/`]) {
+            const files = Object.keys(filemap).filter(
+                (f) => f.includes(target) && f !== target + `/`,
+            )
+            return (
+                <DirectoryPage
+                    cwd={target}
+                    files={files.map((f) =>
+                        filemap[f]
+                            .replace(filemap[target + `/`] + `/`, ``)
+                            .replace(`.md`, ``),
+                    )}
+                />
+            )
+        }
         notFound()
     }
 
@@ -29,13 +48,13 @@ export default async function PostPage({ params,preview }) {
     return (
         <>
             <div className="relative mb-16 mt-16 w-full max-w-4xl flex-col items-start justify-center lg:mt-0 ">
-             {
-                !preview && (   <TopContext
-                    title={post.data.title}
-                    tree={tree}
-                    context={context}
-                />)
-             }
+                {!preview && (
+                    <TopContext
+                        title={post.data.title}
+                        tree={tree}
+                        context={context}
+                    />
+                )}
                 <header className="relative w-full px-6 lg:px-8">
                     <h1 className="mt-4 text-3xl font-semibold capitalize text-neutral-800 dark:text-neutral-200 lg:text-4xl">
                         {post.data.title}

@@ -4,6 +4,21 @@
   "slug": "",
   "children": [
     {
+      "type": "file",
+      "name": "hi.md",
+      "slug": "hi"
+    },
+    {
+      "type": "file",
+      "name": "index.md",
+      "slug": "index"
+    },
+    {
+      "type": "file",
+      "name": "Markdown Syntax.md",
+      "slug": "Markdown-Syntax"
+    },
+    {
       "type": "dir",
       "name": "React & Next.js 겨우 마스터하기",
       "slug": "React-&-Next.js-겨우-마스터하기",
@@ -22,30 +37,8 @@
           "type": "file",
           "name": "3탄.md",
           "slug": "3탄"
-        },
-        {
-          "type": "dir",
-          "name": "test123",
-          "slug": "test123",
-          "children": [
-            {
-              "type": "file",
-              "name": "Markdown Syntax.md",
-              "slug": "Markdown-Syntax"
-            }
-          ]
         }
       ]
-    },
-    {
-      "type": "file",
-      "name": "hi.md",
-      "slug": "hi"
-    },
-    {
-      "type": "file",
-      "name": "index.md",
-      "slug": "index"
     }
   ]
 }
